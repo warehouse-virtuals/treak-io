@@ -1,10 +1,18 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useRef } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
+
+import LoginSvg from '../../Assets/login-i.svg'
+
+import TextInput from "../../UITools/TextInput"
+import Button from "../../UITools/Button"
+
 
 const Login = () => {
   const emailRef = useRef("")
   const passwordRef = useRef("")
+
   const navigate = useNavigate()
 
   const { login } = UserAuth()
@@ -22,29 +30,37 @@ const Login = () => {
     }
   }
 
+
   return (
-    <div>
-      <h1>Login</h1>
-      <label htmlFor="email-input">Email:</label>
-      <input
-        ref={emailRef}
-        type="email"
-        id="email-input"
-        name="email-input"
-      ></input>
-      <br />
-      <label htmlFor="password-input">Password:</label>
-      <input
-        ref={passwordRef}
-        type="password"
-        id="password-input"
-        name="password-input"
-      ></input>
-      <br />
-      <button onClick={handleLoginButtonPress}>Login</button>
-      <h3>
-        Dont have an account? <Link to="/register">Register</Link>
-      </h3>
+    <div className="w-full h-full flex flex-row dark:bg-slate-800">
+      <div className="w-full lg:w-1/2 flex items-center content-center justify-center flex-col">
+        <h6
+          className="dark:text-white text-slate-700 font-black text-6xl mb-10 select-none"
+        >
+          İyi Akşamlar.
+        </h6>
+        <TextInput
+          inputRef={emailRef}
+          type={'text'}
+          label="Email"
+        />
+        <TextInput
+          inputRef={passwordRef}
+          type={'password'}
+          label="Password"
+        />
+        <Button
+          label="Login"
+          onClick={handleLoginButtonPress}
+        />
+
+      </div>
+      <div className="hidden lg:flex w-1/2 justify-center select-none">
+        <img
+          className="w-1/2"
+          src={LoginSvg}
+        />
+      </div>
     </div>
   )
 }
