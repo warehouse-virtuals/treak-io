@@ -1,5 +1,5 @@
 .App {
   width: 100vw;
   height: 100vh;
-  background-color: #ffffff;
+  transition: background-color 2s;
 }
