@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react"
 
-import { collection, getDocs } from "firebase/firestore"
 import { db } from "../../firebase"
+import {
+  collection,
+  getDocs,
+  getDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore"
 
+const customerCollectionRef = collection(db, "customers")
 const Customer = () => {
   const [customers, setCustomers] = useState([])
 
@@ -10,35 +19,97 @@ const Customer = () => {
     getCustomers()
   }, [])
 
-  useEffect(() => {
-    console.log(customers)
-  }, [customers])
+  //Datayı çekiyor fakat state güncellemiyor
+  const getCustomers = async () => {
+    const data = await getDocs(customerCollectionRef)
+    const customersFromData = await data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }))
 
-  const getCustomers = () => {
-    const customerCollectionRef = collection(db, "customers")
-    getDocs(customerCollectionRef)
-      .then((response) => {
-        const customersFromFirestore = response.docs.map((doc) => ({
-          data: doc.data(),
-          id: doc.id,
-        }))
-        setCustomers(customersFromFirestore[0].data.customers)
-      })
-      .catch((error) => console.log(error.message))
+    setCustomers(customersFromData)
+    console.log(customers)
+  }
+  //Customer ekliyor
+  const newCompany = {
+    customerFullName: "İdea İşitme Sistemleri",
+    customerShortName: "İDİS",
+    addres:
+      "Sahrayıcedit Mahallesi Batman Sokak Royal Plaza No:18/7 Kat:3-4-5 Kadıköy, İstanbul",
+    city: "İstanbul",
+    phone: "4444347",
+    postalCode: "",
+    territories: [
+      {
+        territoryName: "Marmara",
+        manager: "Ahmet Atlı",
+        clinics: [
+          {
+            clinicCode: "3401",
+            clinicName: "Kadıköy",
+            adress: "SomewhereInIstanbul Kadıköy/İSTANBUL",
+            city: "İstanbul",
+            phone: "05354901078",
+          },
+          {
+            clinicCode: "3402",
+            clinicName: "Maltepe",
+            adress: "SomewhereInIstanbul Malteoe/İSTANBUL",
+            city: "İstanbul",
+            phone: "05354901078",
+          },
+        ],
+      },
+      {
+        territoryName: "Antalya",
+        manager: "Kıvanç Karağaç",
+        clinics: [
+          {
+            clinicCode: "0701",
+            clinicName: "Muratpaşa",
+            adress: "SomewhereInIstanbul Muratpaşa/Antalya",
+            city: "Antalya",
+            phone: "05354901078",
+          },
+        ],
+      },
+    ],
+    employees: [
+      {
+        clinicCode: "0701",
+        firstName: "Nazlı",
+        lastName: "Aydın",
+        email: "nazliaydin@gmail.com",
+      },
+      {
+        clinicCode: "3401",
+        firstName: "Mustafa",
+        lastName: "Mıstık",
+        email: "mistikmustaf@gmail.com",
+      },
+    ],
+    patients: [
+      {
+        patientId: "070101",
+        firstName: "Hatice",
+        lastName: "Teyze",
+        age: "47",
+        registeredAt: "Kadıköy",
+      },
+      {
+        patientId: "070102",
+        firstName: "Mahmut",
+        lastName: "Amca",
+        age: "56",
+        registeredAt: "Muratpaşa",
+      },
+    ],
+  }
+  const addCustomer = (newCustomer) => {
+    return addDoc(customerCollectionRef, newCustomer)
   }
 
-  return (
-    <div>
-      {customers.map((c) => {
-        return (
-          <div>
-            {c.customerShortName}
-            {c.city}
-          </div>
-        )
-      })}
-    </div>
-  )
+  return <div></div>
 }
 
 export default Customer
