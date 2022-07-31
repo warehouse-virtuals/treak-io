@@ -9,6 +9,8 @@ import LoginSvg from '../../Assets/login-i.svg'
 import TextInput from "../../UITools/TextInput"
 import Button from "../../UITools/Button"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const emailRef = useRef("")
@@ -21,6 +23,7 @@ const Login = () => {
 
 
   const handleLoginButtonPress = async () => {
+
     const email = emailRef.current.value
     const password = passwordRef.current.value
     console.log("login", emailRef.current.value, passwordRef.current.value)
@@ -30,9 +33,15 @@ const Login = () => {
       navigate("/home")
     } catch (error) {
       console.log(error.message)
+
+
+      
+      toast.error("Wrong email or password.", {
+        theme: "light",
+        hideProgressBar: true
+      })
     }
   }
-
 
   return (
     <div className="w-full h-full flex flex-row dark:bg-slate-800">
@@ -43,6 +52,7 @@ const Login = () => {
           {t('Good Morning')}
         </h6>
         <TextInput
+          onInput={null}
           inputRef={emailRef}
           type={'text'}
           label={t('Email')}
