@@ -2,6 +2,7 @@
 import React, { useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
+import { useTranslation } from "react-i18next"
 
 import LoginSvg from '../../Assets/login-i.svg'
 
@@ -16,6 +17,8 @@ const Login = () => {
   const navigate = useNavigate()
 
   const { login } = UserAuth()
+  const { t } = useTranslation('login')
+
 
   const handleLoginButtonPress = async () => {
     const email = emailRef.current.value
@@ -37,20 +40,23 @@ const Login = () => {
         <h6
           className="dark:text-white text-slate-700 font-black text-6xl mb-10 select-none"
         >
-          İyi Akşamlar.
+          {t('Good Morning')}
         </h6>
         <TextInput
           inputRef={emailRef}
           type={'text'}
-          label="Email"
+          label={t('Email')}
+          placeholder={t('Please enter your email address')}
         />
         <TextInput
           inputRef={passwordRef}
           type={'password'}
-          label="Password"
+          label={t('Password')}
+          placeholder={t('Please enter your password')}
+
         />
         <Button
-          label="Login"
+          label={t('Login Button')}
           onClick={handleLoginButtonPress}
         />
 
