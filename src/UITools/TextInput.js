@@ -1,6 +1,6 @@
 import React from "react"
 
-const TextInput = ({ type, label, inputRef }) => {
+const TextInput = ({ type, label, inputRef, placeholder }) => {
   return (
     <div className="w-2/3  flex justify-center items-start flex-col">
       <div
@@ -10,7 +10,7 @@ const TextInput = ({ type, label, inputRef }) => {
         ref={inputRef}
         className="w-full border-2 border-slate-300 h-14 rounded-lg px-5 text-slate-700"
         type={type}
-        placeholder="Please enter your email."
+        placeholder={placeholder}
       />
     </div>
   )
