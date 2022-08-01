@@ -4,11 +4,12 @@ import { db } from "../../firebase"
 import {
   collection,
   getDocs,
-  getDoc,
+  // getDoc,
   addDoc,
   updateDoc,
   deleteDoc,
   doc,
+  getDoc,
 } from "firebase/firestore"
 
 const customerCollectionRef = collection(db, "customers")
@@ -19,7 +20,7 @@ const Customer = () => {
     getCustomers()
   }, [])
 
-  //Datayı çekiyor fakat state güncellemiyor
+  //Get customers
   const getCustomers = async () => {
     const data = await getDocs(customerCollectionRef)
     const customersFromData = await data.docs.map((doc) => ({
@@ -30,6 +31,13 @@ const Customer = () => {
     setCustomers(customersFromData)
     console.log(customers)
   }
+
+  //Get single customer from id
+  const getCustomer = (id) => {
+    const customerDoc = doc(db, "customers", id)
+    return getDoc(customerDoc)
+  }
+
   //Customer ekliyor
   const newCompany = {
     customerFullName: "İdea İşitme Sistemleri",
@@ -105,8 +113,21 @@ const Customer = () => {
       },
     ],
   }
+
+  //Add customer
   const addCustomer = (newCustomer) => {
     return addDoc(customerCollectionRef, newCustomer)
+  }
+
+  //Update customer
+  const updateCustomersSomething = (id, updatedInfo) => {
+    const customerDoc = doc(db, "customers", id)
+    return updateDoc(customerDoc, updateCustomersSomething)
+  }
+
+  //delete customer
+  const deleteCustomer = (id) => {
+    return deleteDoc(id)
   }
 
   return <div></div>
