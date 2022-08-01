@@ -38,7 +38,7 @@ const Customer = () => {
     return getDoc(customerDoc)
   }
 
-  //Customer ekliyor
+  //Yeni customer bilgileri
   const newCompany = {
     customerFullName: "İdea İşitme Sistemleri",
     customerShortName: "İDİS",
