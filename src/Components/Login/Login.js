@@ -9,7 +9,7 @@ import LoginSvg from "../../Assets/login-i.svg"
 import TextInput from "../../UITools/TextInput"
 import Button from "../../UITools/Button"
 
-import { ToastContainer, toast } from "react-toastify"
+import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 const Login = () => {
@@ -19,6 +19,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   const { login } = UserAuth()
+
   const { t } = useTranslation("login")
 
   const handleLoginButtonPress = async () => {
