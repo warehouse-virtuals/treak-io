@@ -3,34 +3,80 @@ import React, { useState, useEffect } from "react"
 import { db } from "../../firebase"
 import {
   collection,
+  onSnapshot,
   getDocs,
-  // getDoc,
+  getDoc,
   addDoc,
   updateDoc,
   deleteDoc,
   doc,
-  getDoc,
 } from "firebase/firestore"
-
-const customerCollectionRef = collection(db, "customers")
 const Customer = () => {
   const [customers, setCustomers] = useState([])
+  const [newCustomerForm, setNewCustomerForm] = useState({
+    customerFullName: "",
+    customerShortName: "",
+    addres: "",
+    city: "",
+    phone: "",
+    postalCode: "",
+    territories: [
+      {
+        territoryName: "",
+        manager: "",
+        clinics: [
+          {
+            clinicCode: "",
+            clinicName: "",
+            adress: "",
+            city: "",
+            phone: "",
+          },
+        ],
+      },
+    ],
+    employees: [
+      {
+        clinicCode: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+      },
+    ],
+    patients: [
+      {
+        patientId: "",
+        firstName: "",
+        lastName: "",
+        age: "",
+        registeredAt: "",
+      },
+    ],
+  })
+  const customerCollectionRef = collection(db, "customers")
 
   useEffect(() => {
-    getCustomers()
+    //Getting copy of information on database
+    onSnapshot(customerCollectionRef, (snapshot) => {
+      setCustomers(
+        snapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() }
+        })
+      )
+    })
   }, [])
 
-  //Get customers
-  const getCustomers = async () => {
-    const data = await getDocs(customerCollectionRef)
-    const customersFromData = await data.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }))
+  // ------Get customers
+  // const getCustomers = async () => {
+  //   const data = await getDocs(customerCollectionRef)
+  //   const customersFromData = await data.docs.map((doc) => ({
+  //     ...doc.data(),
+  //     id: doc.id,
+  //   }))
 
-    setCustomers(customersFromData)
-    console.log(customers)
-  }
+  //   setCustomers(customersFromData)
+  //   console.log(customers)
+  // }
 
   //Get single customer from id
   const getCustomer = (id) => {
@@ -130,7 +176,41 @@ const Customer = () => {
     return deleteDoc(id)
   }
 
-  return <div></div>
+  return (
+    <div>
+      {customers.map((customer, i) => (
+        <div key={i}>
+          <div className="text-slate-700 font-black text-2xl">
+            Customer bilgileri
+          </div>
+          <div>{customer.customerFullName}</div>
+          <div>{customer.customerShortName}</div>
+          <div>{customer.addres}</div>
+
+          <div className="text-slate-700 font-black text-2xl">Bölgeler</div>
+          <div>
+            {customer.territories.map((territory, i) => (
+              <div>{territory.territoryName}</div>
+            ))}
+          </div>
+
+          <div className="text-slate-700 font-black text-2xl">Çalışanlar</div>
+          {customer.employees.map((employee, i) => (
+            <div>{employee.firstName + employee.lastName}</div>
+          ))}
+
+          <div className="text-slate-700 font-black text-2xl">
+            Antalyada Çalışanlar
+          </div>
+          {customer.employees.map((employee, i) =>
+            employee.clinicName === "Muratpaşa" ? (
+              <div>{employee.firstName}</div>
+            ) : null
+          )}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default Customer
