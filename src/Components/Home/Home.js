@@ -1,6 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
+import Customer from "../Customer/Customer"
 
 const Home = () => {
   const navigate = useNavigate()
@@ -18,6 +19,7 @@ const Home = () => {
     <div>
       <h1>Home</h1>
       <div>User Email:{user && user.email}</div>
+      <Customer />
       <button onClick={handleLogoutButtonPress}>Logout</button>
     </div>
   )

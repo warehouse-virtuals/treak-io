@@ -2,4 +2,5 @@
   width: 100vw;
   height: 100vh;
   transition: background-color 2s;
+  font-family: 'Poppins', sans-serif ;
 }
