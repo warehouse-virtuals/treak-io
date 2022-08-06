@@ -4,11 +4,11 @@ import { db } from "../../firebase"
 import {
   collection,
   onSnapshot,
-  getDocs,
-  getDoc,
-  addDoc,
+  // getDocs,
+  // getDoc,
+  // addDoc,
   updateDoc,
-  deleteDoc,
+  // deleteDoc,
   doc,
 } from "firebase/firestore"
 const Customer = () => {
@@ -55,15 +55,21 @@ const Customer = () => {
   })
   const customerCollectionRef = collection(db, "customers")
 
+  const clinicsRef = collection(db, "customers/idis/clinics") //this is a subcollection, output->array
+  const employeesRef = collection(db, "customers/idis/employees")
+  const territoriesRef = collection(db, "customers/idis/territories")
+  const patientsRef = collection(db, "customers/idis/patients/")
+
   useEffect(() => {
     //Getting copy of information on database
     onSnapshot(customerCollectionRef, (snapshot) => {
       setCustomers(
         snapshot.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() }
+          return { id: doc.id, viewing: false, ...doc.data() }
         })
       )
     })
+    console.log(customers)
   }, [])
 
   // ------Get customers
@@ -79,91 +85,15 @@ const Customer = () => {
   // }
 
   //Get single customer from id
-  const getCustomer = (id) => {
-    const customerDoc = doc(db, "customers", id)
-    return getDoc(customerDoc)
-  }
-
-  //Yeni customer bilgileri
-  const newCompany = {
-    customerFullName: "İdea İşitme Sistemleri",
-    customerShortName: "İDİS",
-    addres:
-      "Sahrayıcedit Mahallesi Batman Sokak Royal Plaza No:18/7 Kat:3-4-5 Kadıköy, İstanbul",
-    city: "İstanbul",
-    phone: "4444347",
-    postalCode: "",
-    territories: [
-      {
-        territoryName: "Marmara",
-        manager: "Ahmet Atlı",
-        clinics: [
-          {
-            clinicCode: "3401",
-            clinicName: "Kadıköy",
-            adress: "SomewhereInIstanbul Kadıköy/İSTANBUL",
-            city: "İstanbul",
-            phone: "05354901078",
-          },
-          {
-            clinicCode: "3402",
-            clinicName: "Maltepe",
-            adress: "SomewhereInIstanbul Malteoe/İSTANBUL",
-            city: "İstanbul",
-            phone: "05354901078",
-          },
-        ],
-      },
-      {
-        territoryName: "Antalya",
-        manager: "Kıvanç Karağaç",
-        clinics: [
-          {
-            clinicCode: "0701",
-            clinicName: "Muratpaşa",
-            adress: "SomewhereInIstanbul Muratpaşa/Antalya",
-            city: "Antalya",
-            phone: "05354901078",
-          },
-        ],
-      },
-    ],
-    employees: [
-      {
-        clinicCode: "0701",
-        firstName: "Nazlı",
-        lastName: "Aydın",
-        email: "nazliaydin@gmail.com",
-      },
-      {
-        clinicCode: "3401",
-        firstName: "Mustafa",
-        lastName: "Mıstık",
-        email: "mistikmustaf@gmail.com",
-      },
-    ],
-    patients: [
-      {
-        patientId: "070101",
-        firstName: "Hatice",
-        lastName: "Teyze",
-        age: "47",
-        registeredAt: "Kadıköy",
-      },
-      {
-        patientId: "070102",
-        firstName: "Mahmut",
-        lastName: "Amca",
-        age: "56",
-        registeredAt: "Muratpaşa",
-      },
-    ],
-  }
+  // const getCustomer = (id) => {
+  //   const customerDoc = doc(db, "customers", id)
+  //   return getDoc(customerDoc)
+  // }
 
   //Add customer
-  const addCustomer = (newCustomer) => {
-    return addDoc(customerCollectionRef, newCustomer)
-  }
+  // const addCustomer = (newCustomer) => {
+  //   return addDoc(customerCollectionRef, newCustomer)
+  // }
 
   //Update customer
   const updateCustomersSomething = (id, updatedInfo) => {
@@ -172,45 +102,11 @@ const Customer = () => {
   }
 
   //delete customer
-  const deleteCustomer = (id) => {
-    return deleteDoc(id)
-  }
+  // const deleteCustomer = (id) => {
+  //   return deleteDoc(id)
+  // }
 
-  return (
-    <div>
-      {customers.map((customer, i) => (
-        <div key={i}>
-          <div className="text-slate-700 font-black text-2xl">
-            Customer bilgileri
-          </div>
-          <div>{customer.customerFullName}</div>
-          <div>{customer.customerShortName}</div>
-          <div>{customer.addres}</div>
-
-          <div className="text-slate-700 font-black text-2xl">Bölgeler</div>
-          <div>
-            {customer.territories.map((territory, i) => (
-              <div>{territory.territoryName}</div>
-            ))}
-          </div>
-
-          <div className="text-slate-700 font-black text-2xl">Çalışanlar</div>
-          {customer.employees.map((employee, i) => (
-            <div>{employee.firstName + employee.lastName}</div>
-          ))}
-
-          <div className="text-slate-700 font-black text-2xl">
-            Antalyada Çalışanlar
-          </div>
-          {customer.employees.map((employee, i) =>
-            employee.clinicName === "Muratpaşa" ? (
-              <div>{employee.firstName}</div>
-            ) : null
-          )}
-        </div>
-      ))}
-    </div>
-  )
+  return <div></div>
 }
 
 export default Customer
