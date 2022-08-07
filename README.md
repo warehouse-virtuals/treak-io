@@ -1,6 +1,6 @@
 # Usefool Sites
 
-#Mockup
+# Mockup
 freepik.com
 previewed.app
 ls.graphics
@@ -10,7 +10,7 @@ Mockup-design.com
 pixeden.com
 mockuuups.studio
 
-#Icons
+# Icons
 feathericons.com
 fonts.google.com/icons
 flaticon.com
@@ -20,7 +20,7 @@ Iconly(https://www.figma.com/community/plugin/861001888228800074/Iconly-v2.3)
 thenounproject.com
 iconsax.io
 
-#Typography
+# Typography
 fontspace.com
 fonts.google.com
 fontbundles.net/free-fonts
@@ -30,7 +30,7 @@ cufonts.com
 fontfabric.com/freefonts
 fontsquirrel.com
 
-#Illustrations
+# Illustrations
 blush.design
 wistore.design/ouch-free
 humaaaans.com
@@ -40,7 +40,7 @@ Mockup-design.com
 drawkit.com
 undraw.co
 
-#Inspiration
+# Inspiration
 dribbble.com
 awwwards.com
 mobbin.com
@@ -50,7 +50,7 @@ siiimple.com
 muz.li
 pinterest.com
 
-#Images
+# Images
 unsplash.com
 freepik.com
 freeimages.com
