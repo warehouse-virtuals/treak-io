@@ -1,4 +1,5 @@
-import { Suspense, useEffect } from "react"
+/* eslint-disable jsx-a11y/alt-text */
+import { Suspense } from "react"
 import "./App.css"
 import MainRouter from "./Components/MainRouter/MainRouter"
 import { AuthContextProvider } from "./Context/AuthContext"

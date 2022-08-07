@@ -1,24 +1,39 @@
-import whLogo from "../../Assets/logo.svg"
-import homeSVG from "../../Assets/home.svg"
-import logoutSVG from "../../Assets/logout.svg"
-import searchSVG from "../../Assets/search.svg"
-import archiveSVG from "../../Assets/archive.svg"
-import hdSVG from "../../Assets/hard-drive.svg"
-import activySVG from "../../Assets/activity.svg"
+//import whLogo from "../../Assets/Logo.svg"
 
-const Navbar = () => {
+import { FiLogOut } from "react-icons/fi"
+
+
+const Navbar = ({ buttons, onLogout }) => {
   return (
-    <div className="h-full w-48 bg-gray-100 bg-clip-padding text-gray-700 flex flex-col drop-shadow-lg items-center">
-      <div className="mt-10 mb-20 border-b-2">
-        <img src={whLogo} />
-        warehouse
+    <div className="w-32 h-full bg-[#0a1f33] flex flex-col ">
+      <div className="w-full h-5/6">
+        <div className="w-full">
+          {
+            buttons.map((button, index) => {
+              return (
+                <div
+                  key={button.route}
+                  className="w-full h-24 flex flex-col justify-center items-center hover:border-l-8 border-white transition-all cursor-default ease-out select-none">
+                  {button.icon}
+                  <div
+                    className="text-white text-sm"
+                  >{button.name}</div>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
-      <img src={homeSVG} />
-      <img src={searchSVG} />
-      <img src={archiveSVG} />
-      <img src={hdSVG} />
-      <img src={activySVG} />
-      <img src={logoutSVG} />
+      <div className="w-full h-1/6 flex flex-col justify-end">
+        <div
+          onClick={onLogout}
+          className="w-full h-24 flex flex-col justify-center items-center hover:border-l-8 border-white transition-all cursor-default ease-out select-none">
+          <FiLogOut color="#ffffff60" size={22} className="mb-1" />
+          <div
+            className="text-white text-sm"
+          >{'Logout'}</div>
+        </div>
+      </div>
     </div>
   )
 }

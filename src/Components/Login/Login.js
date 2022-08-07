@@ -43,7 +43,7 @@ const Login = () => {
   return (
     <div className="w-full h-full flex flex-row dark:bg-slate-800">
       <div className="w-full lg:w-1/2 flex items-center content-center justify-center flex-col">
-        <h6 className="dark:text-white text-slate-700 font-black text-6xl mb-10 select-none font-light">
+        <h6 className="dark:text-white text-slate-700 text-6xl mb-10 select-none font-light">
           {t("Good Morning")}
         </h6>
         <TextInput
