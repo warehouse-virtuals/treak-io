@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
 // import Customer from "../Customer/Customer"
 import Navbar from "../Navbar/Navbar"
-
-import { FiActivity, FiCalendar, FiGrid, FiUsers, FiMail } from "react-icons/fi"
+import Card from "../Card/Card"
+import Calendar from "../Calendar/Calendar"
+import Statistics from "../Statistics/Statistics"
+import AboutMe from "../AboutMe/AboutMe"
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -26,25 +28,15 @@ const Dashboard = () => {
           Dashboard
         </div>
         <div className="flex h-50 mb-5 bg-red-600">
-          <div className="flex justify-center items-center bg-blue-300 h-40 w-1/6 mr-10 text-[#0a1f33] text-5xl">
-            Card 1
-          </div>
-          <div className="flex justify-center items-center bg-blue-300 h-40 w-1/6 text-[#0a1f33] text-5xl">
-            Card 2
-          </div>
+          <Card whatDisDo="Add Patient" />
+          <Card whatDisDo="Appntmnt" />
         </div>
         <div className="flex justify-center items-center h-full">
-          <div className="flex justify-center items-center bg-purple-300 h-full w-3/6 text-[#0a1f33] text-5xl">
-            Ben Kalendar Meşrebim
-          </div>
-          <div className="flex justify-center items-center bg-orange-300 h-full w-3/6 text-[#0a1f33] text-5xl">
-            Statistics
-          </div>
+          <Calendar whatDisDo="Ben Kalendar Meşrebim" />
+          <Statistics whatDisDo="Statistics" />
         </div>
       </div>
-      <div className="w-1/4 flex bg-green-300 justify-center items-center">
-        placeholder
-      </div>
+      <AboutMe whatDisDo="placeholder" />
     </div>
   )
 }
