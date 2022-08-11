@@ -29,7 +29,7 @@ const Login = () => {
 
     try {
       await login(email, password)
-      navigate("/home")
+      navigate("/dashboard")
     } catch (error) {
       console.log(error.message)
 
