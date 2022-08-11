@@ -7,6 +7,7 @@ import Card from "../Card/Card"
 import Calendar from "../Calendar/Calendar"
 import Statistics from "../Statistics/Statistics"
 import AboutMe from "../AboutMe/AboutMe"
+import CardIcons from "../Card/CardIcons"
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -28,8 +29,11 @@ const Dashboard = () => {
           Dashboard
         </div>
         <div className="flex h-50 mb-5 bg-red-600">
-          <Card whatDisDo="Add Patient" />
-          <Card whatDisDo="Appntmnt" />
+          <Card
+            onClick={() => navigate(CardIcons.FiPlusCircle.route)}
+            icon={CardIcons.FiPlusCircle.icon}
+            whatDisDo="Add Patient"
+          />
         </div>
         <div className="flex justify-center items-center h-full">
           <Calendar whatDisDo="Ben Kalendar Meşrebim" />

@@ -1,4 +1,3 @@
-//import whLogo from "../../Assets/Logo.svg"
 import { useNavigate } from "react-router-dom"
 import { FiLogOut } from "react-icons/fi"
 import NavbarButtons from "./NavbarButtons"
