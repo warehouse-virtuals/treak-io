@@ -1,7 +1,9 @@
 {
   "login": {
-    "Good Morning": "Günaydın",
-    "Please enter your email address": "Lütfen eposta adresinizi giriniz",
+    "Good Morning": "Günaydın!",
+    "Good Afternoon": "Tünaydın!",
+    "Good Evening": "İyi Akşamlar!",
+    "Please enter your email address": "Lütfen e-mail adresinizi giriniz",
     "Please enter your password": "Lütfen parolanızı giriniz",
     "Login Button": "Giriş yap",
     "Email": "Eposta",

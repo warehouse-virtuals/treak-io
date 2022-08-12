@@ -25,12 +25,21 @@ const Dashboard = () => {
     <div className="w-full h-full flex flex-row">
       <Navbar onLogout={handleNavbarLogoutButtonClick} />
       <div className="w-3/4 h-full p-10 flex flex-col bg-[#FAFAFA]">
-        <div className="w-4/4 mb-10 text-[#0a1f33] text-5xl">Dashboard</div>
+        <div className="w-4/4 mb-10 text-black text-5xl font-bold ">
+          Dashboard
+        </div>
         <div className="flex h-50 mb-5">
           <Card
+            bg="blue"
             onClick={() => navigate(CardIcons.FiPlusCircle.route)}
             icon={CardIcons.FiPlusCircle.icon}
             whatDisDo="Add Patient"
+          />
+          <Card
+            bg="purple"
+            onClick={() => navigate(CardIcons.FiPlusCircle2.route)}
+            icon={CardIcons.FiPlusCircle2.icon}
+            whatDisDo="Make Appointment"
           />
         </div>
         <div className="flex justify-center items-center h-full">

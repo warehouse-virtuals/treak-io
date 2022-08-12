@@ -1,6 +1,8 @@
 {
   "login": {
-    "Good Morning": "Good Morning.",
+    "Good Morning": "Good morning!",
+    "Good Afternoon": "Good afternoon!",
+    "Good Evening": "Good Evening!",
     "Please enter your email address": "Please enter your email address",
     "Please enter your password": "Please enter your password",
     "Login Button": "Login",

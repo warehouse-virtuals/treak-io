@@ -1,4 +1,11 @@
-import { FiActivity, FiCalendar, FiGrid, FiUsers, FiMail } from "react-icons/fi"
+import {
+  FiActivity,
+  FiCalendar,
+  FiGrid,
+  FiUsers,
+  FiMail,
+  FiTool,
+} from "react-icons/fi"
 
 const NavbarButtons = [
   {
@@ -18,6 +25,12 @@ const NavbarButtons = [
     icon: <FiCalendar color="#ffffff60" size={22} className="mb-1" />,
     route: "/scheduler",
     alt: "Scheduler",
+  },
+  {
+    name: "Maintenance",
+    icon: <FiTool color="#ffffff60" size={22} className="mb-1" />,
+    route: "/maintenance",
+    alt: "Maintenance",
   },
   {
     name: "Messages",
