@@ -14,10 +14,10 @@ const NavbarButtons = [
     alt: "Patients",
   },
   {
-    name: "Calender",
+    name: "Scheduler",
     icon: <FiCalendar color="#ffffff60" size={22} className="mb-1" />,
-    route: "/calender",
-    alt: "Calender",
+    route: "/scheduler",
+    alt: "Scheduler",
   },
   {
     name: "Messages",
