@@ -25,8 +25,8 @@ const Dashboard = () => {
     <div className="w-full h-full flex flex-row">
       <Navbar onLogout={handleNavbarLogoutButtonClick} />
       <div className="w-3/4 h-full p-10 flex flex-col bg-[#FAFAFA]">
-        <div className="w-4/4 mb-10 text-black text-5xl font-bold ">
-          Dashboard
+        <div className="w-4/4 mb-10 text-[#404b61] text-5xl font-bold ">
+          Hi, Username
         </div>
         <div className="flex h-50 mb-5">
           <Card
