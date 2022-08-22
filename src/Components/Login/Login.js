@@ -22,6 +22,18 @@ const Login = () => {
 
   const { t } = useTranslation("login")
 
+  const welcomeMessage = () => {
+    const today = new Date()
+    const currentHour = today.getHours
+    if (currentHour < 12) {
+      return t("Good Morning")
+    } else if (currentHour < 18) {
+      return t("Good Afternoon")
+    } else {
+      return t("Good Evening")
+    }
+  }
+
   const handleLoginButtonPress = async () => {
     const email = emailRef.current.value
     const password = passwordRef.current.value
@@ -29,7 +41,7 @@ const Login = () => {
 
     try {
       await login(email, password)
-      navigate("/home")
+      navigate("/dashboard")
     } catch (error) {
       console.log(error.message)
 
@@ -43,14 +55,14 @@ const Login = () => {
   return (
     <div className="w-full h-full flex flex-row dark:bg-slate-800">
       <div className="w-full lg:w-1/2 flex items-center content-center justify-center flex-col">
-        <h6 className="dark:text-white text-slate-700 font-black text-6xl mb-10 select-none font-light">
-          {t("Good Morning")}
+        <h6 className="dark:text-white text-slate-700 text-6xl mb-10 select-none font-light">
+          {welcomeMessage()}
         </h6>
         <TextInput
           onInput={null}
           inputRef={emailRef}
           type={"text"}
-          label={t("Email")}
+          label={t("E-Mail")}
           placeholder={t("Please enter your email address")}
         />
         <TextInput
@@ -61,7 +73,7 @@ const Login = () => {
         />
         <Button label={t("Login Button")} onClick={handleLoginButtonPress} />
       </div>
-      <div className="hidden lg:flex w-1/2 justify-center select-none">
+      <div className="hidden lg:flex w-1/2 justify-center select-none bg-[#6b63ffa1]">
         <img className="w-1/2" src={LoginSvg} />
       </div>
     </div>
