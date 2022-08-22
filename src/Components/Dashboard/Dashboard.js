@@ -6,7 +6,7 @@ import Navbar from "../Navbar/Navbar"
 import Card from "../Card/Card"
 import Agenda from "../Agenda/Agenda"
 import Statistics from "../Statistics/Statistics"
-import AboutMe from "../AboutMe/AboutMe"
+import Sidebar from "../Sidebar/Sidebar"
 import CardIcons from "../Card/CardIcons"
 
 const Dashboard = () => {
@@ -24,7 +24,7 @@ const Dashboard = () => {
   return (
     <div className="w-full h-full flex flex-row">
       <Navbar onLogout={handleNavbarLogoutButtonClick} />
-      <div className="w-3/4 h-full p-10 flex flex-col bg-[#FAFAFA]">
+      <div className="w-3/4 h-full p-10 flex flex-col bg-[#f1f1ffff]">
         <div className="w-4/4 mb-10 text-[#404b61] text-5xl font-bold ">
           Hi, Username
         </div>
@@ -44,10 +44,11 @@ const Dashboard = () => {
         </div>
         <div className="flex justify-center items-center h-full">
           <Agenda whatDisDo="Little calendar + Upcoming appointments" />
+
           <Statistics whatDisDo="Statistics" />
         </div>
       </div>
-      <AboutMe whatDisDo="placeholder" />
+      <Sidebar whatDisDo="placeholder" />
     </div>
   )
 }

@@ -7,7 +7,7 @@ const Card = (props) => {
       classBase = classBase + " bg-[#fae6c2] text-[#D6872E]"
       break
     case "purple":
-      classBase = classBase + " bg-[#F2E9FE] text-[#7831CB] "
+      classBase = classBase + " bg-[#e5d1ff] text-[#7831CB] "
       break
     default:
       break
@@ -15,7 +15,7 @@ const Card = (props) => {
 
   return (
     <div onClick={props.onClick} className={classBase}>
-      <div className="h-2/4 w-full">{props.icon}</div>
+      <div className="h-2/4 w-full ">{props.icon}</div>
       <div className="h-2/4 w-full">{props.whatDisDo}</div>
     </div>
   )
