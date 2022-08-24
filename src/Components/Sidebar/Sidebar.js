@@ -1,13 +1,13 @@
 import SidebarTop from "../SidebarTop/SidebarTop"
-import SidebarMiniCalender from "../SidebarMiniCalendar/SidebarMiniCalendar"
-import SidebarMonthlyReports from "../SidebarMonthlyReports/SidebarMonthlyReports"
+// import SidebarMiniCalender from "../SidebarMiniCalendar/SidebarMiniCalendar"
+// import SidebarMonthlyReports from "../SidebarMonthlyReports/SidebarMonthlyReports"
 
 const Sidebar = (props) => {
   return (
-    <div className="w-1/4 flex pl-6 flex-col bg-[#f7f7ff] justify-left items-center">
+    <div className="w-1/4 flex pl-6 flex-col bg-[#ffffff] justify-left items-center">
       <SidebarTop />
-      <SidebarMiniCalender />
-      <SidebarMonthlyReports />
+      {/* <SidebarMiniCalender /> */}
+      {/* <SidebarMonthlyReports /> */}
     </div>
   )
 }

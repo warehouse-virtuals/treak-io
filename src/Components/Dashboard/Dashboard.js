@@ -4,8 +4,8 @@ import { UserAuth } from "../../Context/AuthContext"
 // import Customer from "../Customer/Customer"
 import Navbar from "../Navbar/Navbar"
 import Card from "../Card/Card"
-import Agenda from "../Agenda/Agenda"
-import Statistics from "../Statistics/Statistics"
+// import Agenda from "../Agenda/Agenda"
+// import Statistics from "../Statistics/Statistics"
 import Sidebar from "../Sidebar/Sidebar"
 import CardIcons from "../Card/CardIcons"
 
@@ -24,28 +24,49 @@ const Dashboard = () => {
   return (
     <div className="w-full h-full flex flex-row">
       <Navbar onLogout={handleNavbarLogoutButtonClick} />
-      <div className="w-3/4 h-full p-10 flex flex-col bg-[#f1f1ffff]">
+      <div className="w-3/4 h-full p-10 flex flex-col bg-[#F9FAFE]">
         <div className="w-4/4 mb-10 text-[#404b61] text-5xl font-bold ">
           Hi, Username
         </div>
         <div className="flex h-50 mb-5">
           <Card
-            bg="blue"
-            onClick={() => navigate(CardIcons.FiPlusCircle.route)}
-            icon={CardIcons.FiPlusCircle.icon}
-            whatDisDo="Add Patient"
+            icon={CardIcons.FiCalendar}
+            whatDisDo="Today's appointments"
+            showAppointmentsPercentage={true}
+            booked={12}
+            punctuation="/"
+            finished={4}
+            open={4}
+            cancelled={2}
           />
           <Card
-            bg="purple"
-            onClick={() => navigate(CardIcons.FiPlusCircle2.route)}
-            icon={CardIcons.FiPlusCircle2.icon}
-            whatDisDo="Make Appointment"
+            icon={CardIcons.FiFile}
+            showAllAppointments={true}
+            whatDisDo="All appointments"
+            lastMonth={64}
+            currentMonth={72}
+          />
+          <Card
+            icon={CardIcons.FiShoppingBag}
+            whatDisDo="Goal progress"
+            showGoalPercentage={true}
+            punctuation="/"
+            goal={8}
+            sold={3}
+          />
+          <Card
+            icon={CardIcons.FiUserPlus}
+            whatDisDo="New patients"
+            showPatients={true}
+            totalPatients={142}
+            lastMonthPatients={10}
+            newPatients={8}
           />
         </div>
         <div className="flex justify-center items-center h-full">
-          <Agenda whatDisDo="Little calendar + Upcoming appointments" />
+          {/* <Agenda whatDisDo="Little calendar + Upcoming appointments" /> */}
 
-          <Statistics whatDisDo="Statistics" />
+          {/* <Statistics whatDisDo="Statistics" /> */}
         </div>
       </div>
       <Sidebar whatDisDo="placeholder" />
