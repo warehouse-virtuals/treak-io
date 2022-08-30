@@ -9,20 +9,9 @@ const Card = (props) => {
   }
 
   return (
-    <div className="flex flex-col pt-5 pl-5 items-center h-56 bg-[#ffffff] w-1/5 mr-10 transition-all cursor-pointer text-xl rounded-3xl drop-shadow-[0_10px_10px_rgba(147,197,253,0.25)] ">
-      <div className="flex h-1/4 w-full">
-        <div className="h-1/4 w-1/2">{props.icon}</div>
-        <div className="h-1/4 w-1/2">
-          {props.totalPatients ? (
-            <div className="flex text-gray-400">
-              {props.totalPatients} Total
-            </div>
-          ) : (
-            false
-          )}
-        </div>
-      </div>
-      <div className="h-1/4 w-full">{props.whatDisDo}</div>
+    <div className="flex flex-col pt-5 pl-5 items-center h-56 bg-[#ffffff] w-1/5 transition-all cursor-pointer text-xl rounded-3xl drop-shadow-[0_10px_10px_rgba(147,197,253,0.25)] ">
+      <div className="flex h-1/4 w-full">{props.icon}</div>
+      <div className="h-1/4 w-full">{props.title}</div>
       <div className="h-1/4 w-full flex items-center ">
         <div className="flex text-4xl">{props.currentMonth}</div>
         <div className="flex text-4xl">{props.sold}</div>

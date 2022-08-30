@@ -4,7 +4,8 @@ const Button = ({ label, icon, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="px-10 py-3 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-lg mt-10 text-lg select-none">
+      className="px-10 py-3 bg-[#605bff] hover:bg-[#7a75ff] text-white font-bold rounded-lg mt-10 text-lg select-none"
+    >
       {label}
     </div>
   )
