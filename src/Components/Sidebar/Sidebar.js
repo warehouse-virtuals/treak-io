@@ -4,8 +4,9 @@ import SidebarTop from "../SidebarTop/SidebarTop"
 
 const Sidebar = (props) => {
   return (
-    <div className="w-1/4 flex pl-6 flex-col bg-[#ffffff] justify-left items-center">
+    <div className="w-1/3 flex pl-6 flex-col bg-[#ffffff] justify-left items-center">
       <SidebarTop />
+      bıdıbıdı
       {/* <SidebarMiniCalender /> */}
       {/* <SidebarMonthlyReports /> */}
     </div>

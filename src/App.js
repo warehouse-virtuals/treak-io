@@ -4,15 +4,13 @@ import "./App.css"
 import MainRouter from "./Components/MainRouter/MainRouter"
 import { AuthContextProvider } from "./Context/AuthContext"
 import { ThemeProvider } from "./Context/ThemeContext"
-import 'react-toastify/dist/ReactToastify.min.css';
+import "react-toastify/dist/ReactToastify.min.css"
 import { ToastContainer } from "react-toastify"
 
-
 const App = () => {
-
   return (
     <Suspense fallback="loading">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="App">
         <AuthContextProvider>
           <ThemeProvider>

@@ -8,5 +8,24 @@
     "Login Button": "Giriş yap",
     "Email": "Eposta",
     "Password": "Parola"
+  },
+  "overview": {
+    "Hi": "Merhaba",
+    "Search appointments, patients...": "Randevu, kullanıcı...",
+    "Monthly Reports": "Aylık Rapor",
+    "Have a nice day at work!": "İyi çalışmalar!",
+    "Today's Appointments": "Bugünkü Randevular",
+    "All Appointments": "Tüm Randevular",
+    "Upcoming Appointments": "Yaklaşan Randevular",
+    "Name": "İsim",
+    "Date": "Tarih",
+    "Time": "Saat",
+    "Status": "Durum",
+    "Reason": "Nedeni",
+    "Goal Progress": "Hedef İlerlemesi",
+    "New Patients": "Yeni Kullanıcılar",
+    "cancelled appointments": "iptal edilen",
+    "vs last month": "geçen aya göre",
+    "more to go": "daha"
   }
 }

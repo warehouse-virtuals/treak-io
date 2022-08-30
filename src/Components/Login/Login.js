@@ -73,7 +73,7 @@ const Login = () => {
         />
         <Button label={t("Login Button")} onClick={handleLoginButtonPress} />
       </div>
-      <div className="hidden lg:flex w-1/2 justify-center select-none bg-[#6b63ffa1]">
+      <div className="hidden lg:flex w-1/2 justify-center select-none bg-[#605bff]">
         <img className="w-1/2" src={LoginSvg} />
       </div>
     </div>
