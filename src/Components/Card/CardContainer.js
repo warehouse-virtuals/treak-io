@@ -5,7 +5,7 @@ const CardContainer = () => {
   return (
     <div className="flex flex-col">
       <div className="m-2 text-xl">Monthly Reports</div>
-      <div className="flex justify-between h-50 w-full mb-8">
+      <div className="flex select-none justify-between cursor-default h-50 w-full mb-8">
         <Card
           icon={CardIcons.FiCalendar}
           title="Today's appointments"

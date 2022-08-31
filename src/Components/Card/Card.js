@@ -9,7 +9,7 @@ const Card = (props) => {
   }
 
   return (
-    <div className="flex flex-col pt-5 pl-5 items-center h-56 bg-[#ffffff] w-1/5 transition-all cursor-pointer text-xl rounded-3xl drop-shadow-[0_10px_10px_rgba(147,197,253,0.25)] ">
+    <div className="flex flex-col pt-5 pl-5 items-center h-56 bg-[#ffffff] w-1/5 min-w-[180px] transition-all text-xl rounded-3xl  drop-shadow-[0_10px_10px_rgba(147,197,253,0.25)] ">
       <div className="flex h-1/4 w-full">{props.icon}</div>
       <div className="h-1/4 w-full">{props.title}</div>
       <div className="h-1/4 w-full flex items-center ">

@@ -1,10 +1,13 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { FiLogOut } from "react-icons/fi"
 import { GiHealthNormal } from "react-icons/gi"
 import NavbarButtons from "./NavbarButtons"
 
 const Navbar = ({ onLogout }) => {
   const navigate = useNavigate()
+
+  const location = useLocation()
+
   return (
     <div className="w-40 h-full bg-[#605bff] flex flex-col justify-center items-center">
       <GiHealthNormal size={50} color="#FFFFFF" className="mt-10" />
@@ -13,11 +16,13 @@ const Navbar = ({ onLogout }) => {
           {NavbarButtons.map((button, index) => {
             return (
               <div
-                key={button.route}
-                className=" w-full h-24 flex flex-col justify-center items-center text-[#ffffff60] text-sm hover:border-l-8 transition-all cursor-default ease-out select-none"
-                onClick={() => navigate(button.route)}
+                key={button.pathname}
+                className=" w-full h-24 flex flex-col justify-center items-center text-[#ffffff60] text-sm hover:border-l-4 transition-all cursor-default ease-out select-none"
+                onClick={() => navigate(button.pathname)}
               >
-                {button.icon}
+                <div className={`p-3 ${location.pathname === button.pathname ? 'bg-[#7c77ff]' : ''}  rounded-2xl`}>
+                  {button.icon}
+                </div>
                 {/* <div className="">{button.name}</div> */}
               </div>
             )
