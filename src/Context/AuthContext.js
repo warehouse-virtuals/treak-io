@@ -50,7 +50,7 @@ export const AuthContextProvider = ({ children }) => {
       unsubscribe()
     }
   }, [])
-
+  console.log(user)
   return (
     <UserContext.Provider value={{ createUser, user, logout, login }}>
       {children}

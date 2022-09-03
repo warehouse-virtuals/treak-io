@@ -1,5 +1,9 @@
 import Card from "../Card/Card"
 import CardIcons from "../Card/CardIcons"
+import CardTodaysAppointments from "./CardTodaysAppointments"
+import CardAllAppointments from "./CardAllAppointments"
+import CardGoalProgress from "./CardGoalProgress"
+import CardNewPatients from "./CardNewPatients"
 
 const CardContainer = () => {
   return (
@@ -9,35 +13,43 @@ const CardContainer = () => {
         <Card
           icon={CardIcons.FiCalendar}
           title="Today's appointments"
-          showAppointmentsPercentage={true}
-          booked={12}
-          punctuation="/"
-          finished={1}
-          open={4}
-          cancelled={2}
+          body={
+            <CardTodaysAppointments
+              finished={2}
+              cancelled={2}
+              booked={12}
+              open={8}
+            />
+          }
         />
         <Card
           icon={CardIcons.FiFile}
           title="All appointments"
-          showAllAppointments={true}
-          lastMonth={64}
-          currentMonth={72}
+          body={
+            <CardAllAppointments
+              currentMonth={72}
+              lastMonth={64}
+              cancelled={2}
+              booked={12}
+              open={8}
+            />
+          }
         />
         <Card
           icon={CardIcons.FiShoppingBag}
           title="Goal progress"
-          showGoalPercentage={true}
-          punctuation="/"
-          goal={8}
-          sold={3}
+          body={<CardGoalProgress goal={8} sold={3} />}
         />
         <Card
           icon={CardIcons.FiUserPlus}
           title="New patients"
-          showPatients={true}
-          totalPatients={142}
-          lastMonthPatients={10}
-          newPatients={8}
+          body={
+            <CardNewPatients
+              totalPatients={142}
+              lastMonthPatients={10}
+              newPatients={8}
+            />
+          }
         />
       </div>
     </div>
