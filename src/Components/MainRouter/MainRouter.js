@@ -8,11 +8,11 @@ import Repair from "../Repair/Repair"
 const MainRouter = () => {
   return (
     <Routes>
-      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<Login />} />
-      <Route path="/repair" element={<Repair />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/repair" element={<Repair />} />
       <Route path="/scheduler" element={<Scheduler />} />
     </Routes>
   )

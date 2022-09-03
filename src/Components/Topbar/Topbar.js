@@ -1,5 +1,4 @@
 import SearchField from "../SearchField/SearchField"
-import Button from "../../UITools/Button"
 const Topbar = () => {
   return (
     <div className="flex justify-between items-center mb-12">
