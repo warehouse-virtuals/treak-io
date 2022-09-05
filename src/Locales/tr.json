@@ -6,7 +6,7 @@
     "Please enter your email address": "Lütfen e-mail adresinizi giriniz",
     "Please enter your password": "Lütfen parolanızı giriniz",
     "Login Button": "Giriş yap",
-    "Email": "Eposta",
+    "Email": "E-Posta",
     "Password": "Parola"
   },
   "overview": {
@@ -27,5 +27,21 @@
     "cancelled appointments": "iptal edilen",
     "vs last month": "geçen aya göre",
     "more to go": "daha"
+  },
+  "repair": {
+    "Repair/Maintenance Form": "Tamir/Bakım Formu",
+    "Upload Images": "Görüntü Yükleyin",
+    "ID": "Kimlik No",
+    "Name/Surname": "İsim/Soyisim",
+    "Device Serial No": "Cihaz Seri No",
+    "Device Name": "Cihaz Adı",
+    "Side": "Yön",
+    "Warranty Start Date": "Garanti Başlangıç Tarihi",
+    "Warranty Period": "Garanti Süresi",
+    "Warranty Finish Date": "Garanti Bitiş Tarihi",
+    "Customer Complaint": "Kullanıcı Şikayetleri",
+    "Findings": "Bulgular",
+    "Carer": "İlgilenen",
+    "Submit": "Oluştur"
   }
 }
