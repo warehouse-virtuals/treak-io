@@ -37,7 +37,7 @@ class Scheduler extends Component {
 
   render() {
     return (
-      <div className="h-30">
+      <div className="flex items-center justify-center h-full w-full">
         <DnDCalendar
           defaultDate={moment().toDate()}
           defaultView="month"

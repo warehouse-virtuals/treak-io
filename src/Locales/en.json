@@ -25,5 +25,21 @@
     "Login Button": "Login",
     "Email": "Email",
     "Password": "Password"
+  },
+  "repair": {
+    "Repair/Maintenance Form": "Repair/Maintenance Form",
+    "Upload Images": "Upload Images",
+    "ID": "ID",
+    "Name/Surname": "Name/Surname",
+    "Device Serial No": "Device Serial No",
+    "Device Name": "Device Name",
+    "Side": "Side",
+    "Warranty Start Date": "Warranty Start Date",
+    "Warranty Period": "Warranty Period",
+    "Warranty Finish Date": "Warranty Finish Date",
+    "Customer Complaint": "Customer Complaint",
+    "Findings": "Findings",
+    "Carer": "Carer",
+    "Submit": "Submit"
   }
 }

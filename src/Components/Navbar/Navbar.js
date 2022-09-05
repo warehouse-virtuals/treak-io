@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
 import { FiLogOut } from "react-icons/fi"
-import { GiHealthNormal } from "react-icons/gi"
+
 import NavbarButtons from "./NavbarButtons"
 import whlogo from "../../Assets/logobw.svg"
 
@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div className="w-28 h-full bg-[#605bff] flex flex-col justify-center items-center">
       {/* <GiHealthNormal size={50} color="#FFFFFF" className="mt-10" /> */}
-      <img className="mt-10 w-1/2 " src={whlogo} />
+      <img className="mt-10 w-1/2 " alt="logo" src={whlogo} />
       <div className="flex w-full h-5/6 items-center">
         <div className="w-full">
           {NavbarButtons.map((button, index) => {
