@@ -12,7 +12,7 @@ const CardContainer = () => {
       <div className="flex select-none justify-between cursor-default h-50 w-full mb-8">
         <Card
           icon={CardIcons.FiCalendar}
-          title="Today's appointments"
+          title="Today's Appointments"
           body={
             <CardTodaysAppointments
               finished={2}

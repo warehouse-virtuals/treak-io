@@ -21,7 +21,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="w-28 h-full bg-[#605bff] flex flex-col justify-center items-center">
+    <div className="w-28 h-full rounded-tr-3xl bg-[#20295a] flex flex-col justify-center items-center">
       {/* <GiHealthNormal size={50} color="#FFFFFF" className="mt-10" /> */}
       <img className="mt-10 w-1/2 " alt="logo" src={whlogo} />
       <div className="flex w-full h-5/6 items-center">
@@ -30,17 +30,18 @@ const Navbar = () => {
             return (
               <div
                 key={button.pathname}
-                className=" w-full h-24 flex flex-col justify-center items-center text-[#ffffff60] text-sm hover:border-l-4 transition-all cursor-default ease-out select-none"
+                className=" w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white text-sm  transition-all cursor-default ease-out select-none"
                 onClick={() => navigate(button.pathname)}
               >
                 <div
-                  className={`p-3 ${
-                    location.pathname === button.pathname ? "bg-[#7c77ff]" : ""
+                  className={`p-3 mb-1 ${
+                    location.pathname === button.pathname ? "bg-[#59e2f7]" : ""
                   }  rounded-2xl`}
                 >
                   {button.icon}
                 </div>
-                {/* <div className="">{button.name}</div> */}
+
+                <div className="">{button.name}</div>
               </div>
             )
           })}
@@ -49,9 +50,10 @@ const Navbar = () => {
       <div className="w-full h-1/6 flex flex-col justify-end">
         <div
           onClick={handleNavbarLogoutButtonClick}
-          className="w-full h-24 flex flex-col justify-center items-center hover:border-l-8  border-white transition-all cursor-default ease-out select-none"
+          className="w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white  transition-all cursor-default ease-out select-none"
         >
           <FiLogOut color="#F9FAFE" size={22} className="mb-1" />
+          <div className="">Logout</div>
           {/* <div className="text-white text-sm">{"Logout"}</div> */}
         </div>
       </div>
