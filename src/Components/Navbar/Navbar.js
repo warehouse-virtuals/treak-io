@@ -52,7 +52,7 @@ const Navbar = () => {
           onClick={handleNavbarLogoutButtonClick}
           className="w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white  transition-all cursor-default ease-out select-none"
         >
-          <FiLogOut color="#F9FAFE" size={22} className="mb-1" />
+          <FiLogOut color="#F9FAFE" size={22} className=" mb-1" />
           <div className="">Logout</div>
           {/* <div className="text-white text-sm">{"Logout"}</div> */}
         </div>

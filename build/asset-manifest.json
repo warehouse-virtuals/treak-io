@@ -1,18 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.87439259.css",
-    "main.js": "/static/js/main.62bba3d7.js",
+    "main.css": "/static/css/main.c2905cc5.css",
+    "main.js": "/static/js/main.196c515e.js",
     "static/media/fakeDoc2.png": "/static/media/fakeDoc2.444b25a19f9054c0034c.png",
-    "static/media/orangeDashboard.svg": "/static/media/orangeDashboard.c8b10aabe2aa403ea91d95f3c883e409.svg",
     "static/media/login-i.svg": "/static/media/login-i.7b775f53bfc1248b4f985ed5cb6d2b47.svg",
     "static/media/logotest.svg": "/static/media/logotest.243cc54ad6c38d1def3926b5a99cea08.svg",
     "index.html": "/index.html",
     "static/media/logobw.svg": "/static/media/logobw.a1834e171bd7cf224433fce1f8a06ca8.svg",
-    "main.87439259.css.map": "/static/css/main.87439259.css.map",
-    "main.62bba3d7.js.map": "/static/js/main.62bba3d7.js.map"
+    "main.c2905cc5.css.map": "/static/css/main.c2905cc5.css.map",
+    "main.196c515e.js.map": "/static/js/main.196c515e.js.map"
   },
   "entrypoints": [
-    "static/css/main.87439259.css",
-    "static/js/main.62bba3d7.js"
+    "static/css/main.c2905cc5.css",
+    "static/js/main.196c515e.js"
   ]
 }

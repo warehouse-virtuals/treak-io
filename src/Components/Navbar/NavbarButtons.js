@@ -7,40 +7,42 @@ import {
   FiTool,
 } from "react-icons/fi"
 
+const color = "#F9FAFE"
+const size = 22
 const NavbarButtons = [
   {
     name: "Dashboard",
-    icon: <FiGrid color="#F9FAFE" size={22} className="" />,
+    icon: <FiGrid color={color} size={size} className="" />,
     pathname: "/dashboard",
     alt: "Dashboard",
   },
   {
     name: "Patients",
-    icon: <FiUsers color="#F9FAFE" size={22} className="" />,
+    icon: <FiUsers color={color} size={size} className="" />,
     pathname: "/patients",
     alt: "Patients",
   },
   {
     name: "Scheduler",
-    icon: <FiCalendar color="#F9FAFE" size={22} className="" />,
+    icon: <FiCalendar color={color} size={size} className="" />,
     pathname: "/scheduler",
     alt: "Scheduler",
   },
   {
     name: "Repair",
-    icon: <FiTool color="#F9FAFE" size={22} className="" />,
+    icon: <FiTool color={color} size={size} className="" />,
     pathname: "/repair",
     alt: "Repair",
   },
   {
     name: "Messages",
-    icon: <FiMail color="#F9FAFE" size={22} className="" />,
+    icon: <FiMail color={color} size={size} className="" />,
     pathname: "/messages",
     alt: "Messages",
   },
   {
     name: "Analytics",
-    icon: <FiActivity color="#F9FAFE" size={22} className="" />,
+    icon: <FiActivity color={color} size={size} className="" />,
     pathname: "/analytics",
     alt: "Analytics",
   },
