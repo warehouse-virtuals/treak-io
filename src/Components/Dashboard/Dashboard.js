@@ -2,7 +2,7 @@ import React from "react"
 import { UserAuth } from "../../Context/AuthContext"
 import HiMsg from "../HiMsg/HiMsg"
 
-import Topbar from "../Topbar/Topbar"
+import SearchField from "../SearchField/SearchField"
 import CardContainer from "../Card/CardContainer"
 import UpcomingAppointments from "../UpcomingAppointments/UpcomingAppointments"
 import Sidebar from "../Sidebar/Sidebar"
@@ -12,7 +12,7 @@ const Dashboard = () => {
   return (
     <div className="w-full h-full flex flex-row">
       <div className="w-full p-10  h-full flex flex-col">
-        <Topbar />
+        <SearchField />
         <HiMsg user={user} />
         <CardContainer />
         <UpcomingAppointments />
