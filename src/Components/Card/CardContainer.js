@@ -5,26 +5,27 @@ import CardAllAppointments from "./CardAllAppointments"
 import CardGoalProgress from "./CardGoalProgress"
 import CardNewPatients from "./CardNewPatients"
 
-const CardContainer = () => {
+const CardContainer = (props) => {
   return (
     <div className="flex flex-col">
-      <div className="m-2 text-xl">Monthly Reports</div>
+      <div className="m-2 text-xl">{props.t("Monthly Reports")}</div>
       <div className="flex select-none justify-between cursor-default h-50 w-full mb-8">
         <Card
           icon={CardIcons.FiCalendar}
-          title="Today's Appointments"
+          title={props.t("Today's Appointments")}
           body={
             <CardTodaysAppointments
               finished={2}
               cancelled={2}
               booked={12}
               open={8}
+              t={props.t}
             />
           }
         />
         <Card
           icon={CardIcons.FiFile}
-          title="All appointments"
+          title={props.t("All Appointments")}
           body={
             <CardAllAppointments
               currentMonth={72}
@@ -32,22 +33,24 @@ const CardContainer = () => {
               cancelled={2}
               booked={12}
               open={8}
+              t={props.t}
             />
           }
         />
         <Card
           icon={CardIcons.FiShoppingBag}
-          title="Goal progress"
-          body={<CardGoalProgress goal={8} sold={3} />}
+          title={props.t("Goal progress")}
+          body={<CardGoalProgress goal={8} sold={3} t={props.t} />}
         />
         <Card
           icon={CardIcons.FiUserPlus}
-          title="New patients"
+          title={props.t("New patients")}
           body={
             <CardNewPatients
               totalPatients={142}
               lastMonthPatients={10}
               newPatients={8}
+              t={props.t}
             />
           }
         />

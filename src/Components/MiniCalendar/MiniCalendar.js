@@ -15,20 +15,20 @@ import React from "react"
 
 const MiniCalendar = () => {
   const today = startOfToday()
-  console.log(today)
+  // console.log(today)
   const firstDayCurrentMonth = parse(
     format(startOfToday(), "MMM-yyyy"),
     "MMM-yyyy",
     new Date()
   )
-  console.log(firstDayCurrentMonth)
+  // console.log(firstDayCurrentMonth)
 
   const days = eachDayOfInterval({
     start: startOfWeek(previousDay(firstDayCurrentMonth, 1), { locale: tr }),
     end: endOfWeek(endOfMonth(firstDayCurrentMonth), { locale: tr }),
   })
 
-  console.log(days)
+  // console.log(days)
 
   return (
     <div className="flex rounded-lg flex-col justify-center items-center w-full mt-10 select-none bg-[#f9fafe] box-border p-3 ">

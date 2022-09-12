@@ -23,10 +23,10 @@ const NavbarButtons = [
     alt: "Patients",
   },
   {
-    name: "Scheduler",
+    name: "Agenda",
     icon: <FiCalendar color={color} size={size} className="" />,
-    pathname: "/scheduler",
-    alt: "Scheduler",
+    pathname: "/agenda",
+    alt: "Agenda",
   },
   {
     name: "Repair",

@@ -1,26 +1,26 @@
-const UpcomingAppointments = () => {
+const UpcomingAppointments = (props) => {
   return (
     <div className="flex flex-col w-full h-96">
-      <div className="m-2 mb-4 text-xl">Upcoming Appointments</div>
+      <div className="m-2 mb-4 text-xl">{props.t("Upcoming Appointments")}</div>
       {/* <div className="flex w-full h-full bg-[#ffffff] rounded-3xl drop-shadow-[0_10px_10px_rgba(147,197,253,0.25)]"> */}
       <div className="overflow-x-auto relative drop-shadow-[0_10px_10px_rgba(147,197,253,0.25)]">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700   dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="py-3 px-6">
-                Name
+                {props.t("Name")}
               </th>
               <th scope="col" className="py-3 px-6">
-                Date
+                {props.t("Date")}
               </th>
               <th scope="col" className="py-3 px-6">
-                Time
+                {props.t("Time")}
               </th>
               <th scope="col" className="py-3 px-6">
-                Status
+                {props.t("Status")}
               </th>
               <th scope="col" className="py-3 px-6">
-                Reason
+                {props.t("Reason")}
               </th>
             </tr>
           </thead>
@@ -28,7 +28,7 @@ const UpcomingAppointments = () => {
             <tr className="bg-white border-b  dark:bg-gray-800 dark:border-gray-700">
               <th
                 scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="py-4 px-6 font-medium text-slate-700 whitespace-nowrap dark:text-white"
               >
                 Mıstık Fıstık
               </th>
@@ -40,7 +40,7 @@ const UpcomingAppointments = () => {
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th
                 scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="py-4 px-6 font-medium text-slate-700 whitespace-nowrap dark:text-white"
               >
                 Işıl Mışıl
               </th>
@@ -52,7 +52,7 @@ const UpcomingAppointments = () => {
             <tr className="bg-white dark:bg-gray-800">
               <th
                 scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="py-4 px-6 font-medium text-slate-700 whitespace-nowrap dark:text-white"
               >
                 Denis Penis
               </th>

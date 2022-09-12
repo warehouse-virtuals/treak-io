@@ -2,9 +2,10 @@ import { Routes, Route } from "react-router-dom"
 import Dashboard from "../Dashboard/Dashboard"
 import Login from "../Login/Login"
 import Register from "../Register/Register"
-import Scheduler from "../Scheduler/Scheduler"
+import Agenda from "../Agenda/Agenda"
 import Repair from "../Repair/Repair"
 import Patients from "../Patients/Patients"
+import AddPatient from "../Patients/AddPatient"
 import Messages from "../Messages/Messages"
 import Analytics from "../Analytics/Analytics"
 
@@ -16,7 +17,8 @@ const MainRouter = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/patients" element={<Patients />} />
-      <Route path="/scheduler" element={<Scheduler />} />
+      <Route path="/addPatient" element={<AddPatient />} />
+      <Route path="/agenda" element={<Agenda />} />
       <Route path="/repair" element={<Repair />} />
       <Route path="/messages" element={<Messages />} />
       <Route path="/analytics" element={<Analytics />} />

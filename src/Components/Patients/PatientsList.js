@@ -27,7 +27,7 @@ const PatientsList = () => {
   }
   const TableRow = ({ data }) => {
     return (
-      <div className="grid border-r-8 border-green-400 pl-5 gap-10 items-center grid-cols-4 text-sm mb-3 h-14 rounded-2xl drop-shadow-lg bg-white">
+      <div className="grid border-r-8 border-green-400 pl-5 gap-10 items-center grid-cols-4 text-sm mb-1 h-14 rounded-2xl drop-shadow-sm bg-white">
         {data.map((item) => {
           return (
             <div className="border-r-2 border-slate-100 " key={item}>
@@ -58,7 +58,7 @@ const PatientsList = () => {
       <Table
         theadData={theadData}
         tbodyData={tbodyData}
-        customClass="w-2/3 font-semibold "
+        customClass="w-full font-semibold "
       />
     </div>
   )

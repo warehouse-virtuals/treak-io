@@ -1,18 +1,25 @@
 {
+  "navbar": {
+    "Dashboard": "Panel",
+    "Patients": "Kullanıcılar",
+    "Calendar": "Ajanda",
+    "Repair": "Tamir",
+    "Messages": "Mesajlar",
+    "Analytics": "Analitikler",
+    "Logout": "Çıkış"
+  },
   "login": {
     "Good Morning": "Günaydın!",
     "Good Afternoon": "Tünaydın!",
     "Good Evening": "İyi Akşamlar!",
-    "Please enter your email address": "Lütfen e-mail adresinizi giriniz",
-    "Please enter your password": "Lütfen parolanızı giriniz",
     "Login Button": "Giriş yap",
-    "Email": "E-Posta",
+    "E-Mail": "E-Posta",
     "Password": "Parola"
   },
-  "overview": {
+  "dashboard": {
     "Hi": "Merhaba",
-    "Search appointments, patients...": "Randevu, kullanıcı...",
-    "Monthly Reports": "Aylık Rapor",
+    "Search patients...": "Kullanıcı ara...",
+    "Monthly Reports": "Aylık Raporlar",
     "Have a nice day at work!": "İyi çalışmalar!",
     "Today's Appointments": "Bugünkü Randevular",
     "All Appointments": "Tüm Randevular",
@@ -22,11 +29,32 @@
     "Time": "Saat",
     "Status": "Durum",
     "Reason": "Nedeni",
-    "Goal Progress": "Hedef İlerlemesi",
-    "New Patients": "Yeni Kullanıcılar",
-    "cancelled appointments": "iptal edilen",
+    "Goal progress": "Hedef İlerlemesi",
+    "New patients": "Yeni Kullanıcılar",
+    "cancelled": "iptal edilen",
     "vs last month": "geçen aya göre",
-    "more to go": "daha"
+    "more to go": "daha",
+    "is done": "bitti"
+  },
+  "addPatient": {
+    "Personal Information": "Kullanıcı Bilgileri",
+    "Name": "İsim",
+    "Surname": "Soyisim",
+    "ID Number": "Kimlik No",
+    "DOB": "Doğum Tarihi",
+    "Gender": "Cinsiyet",
+    "Permission": "KVKK Onayı",
+    "Device Information": "Cihaz Bilgileri",
+    "Right": "Sağ",
+    "Left": "Sol",
+    "Serial Number": "Seri Numarası",
+    "Device Name": "Cihaz Adı",
+    "Warranty Start Date": "Garanti Başlangıç Tarihi",
+    "Warranty Duration": "Garanti Süresi",
+    "Month": "Ay",
+    "Years": "Yıl",
+    "Save": "Kaydet",
+    "Cancel": "Vazgeç"
   },
   "repair": {
     "Repair/Maintenance Form": "Tamir/Bakım Formu",
