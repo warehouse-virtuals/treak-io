@@ -10,7 +10,7 @@ const CardAllAppointments = (props) => {
       </div>
       <div className="flex h-1/2 w-full items-center text-sm text-green-300">
         {"+" + calculated + "%"}
-        <div className="text-gray-300 ml-2">vs last month!</div>
+        <div className="text-gray-400 ml-2">{props.t("vs last month")}</div>
       </div>
     </div>
   )

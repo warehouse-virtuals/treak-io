@@ -4,7 +4,7 @@ import MiniCalender from "../MiniCalendar/MiniCalendar"
 
 const Sidebar = (props) => {
   return (
-    <div className="w-1/3 flex pl-5 pr-5 box-border flex-col bg-white">
+    <div className="w-full flex h-full pl-5 pr-5 box-border flex-col bg-white">
       <SidebarTop />
       <MiniCalender />
       {/* <SidebarMonthlyReports /> */}
