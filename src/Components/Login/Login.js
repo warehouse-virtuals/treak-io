@@ -5,7 +5,7 @@ import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
 
 import LoginSvg from "../../Assets/login-i.svg"
-import TestSvg from "../../Assets/logotest.svg"
+import TestSvg from "../../Assets/lastlogo.svg"
 
 import { FiChevronRight } from "react-icons/fi"
 
@@ -56,7 +56,7 @@ const Login = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-row dark:bg-slate-800">
+    <div className="w-full h-full flex flex-row bg-[#f9faff]">
       <div className="w-full h-full lg:w-1/2 flex items-center content-center  flex-col">
         <div className="flex items-center h-[80px] w-full pl-10 text-2xl font-bold">
           <img className="w-[60px] mr-3 " src={TestSvg} />
@@ -69,21 +69,21 @@ const Login = () => {
           <h6 className="dark:text-white text-slate-700 text-2xl mb-10 select-none font-light">
             Uygulamaya giriş yap
           </h6>
-          <div className="w-full flex items-center justify-center flex-col">
+          <div className="flex items-center justify-center flex-col">
             <TextInput
               onInput={null}
               inputRef={emailRef}
               type={"text"}
               label={t("E-Mail")}
               placeholder={t("E-Mail")}
-              addCSS="w-[400px] border-b-2 mb-5 placeholder:italic"
+              addCSS="w-[400px] mb-5 placeholder:italic"
             />
             <TextInput
               inputRef={passwordRef}
               type={"password"}
               label={t("Password")}
               placeholder={t("Password")}
-              addCSS="w-[400px] border-b-2 placeholder:italic "
+              addCSS="w-[400px] placeholder:italic "
             />
           </div>
           <Button

@@ -24,7 +24,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="w-28 h-full rounded-tr-3xl bg-[#20295a] flex flex-col justify-center items-center">
+    <div className="w-28 h-full bg-[#20295a] flex flex-col justify-center items-center">
       <GiHealthNormal size={50} color="#FFFFFF" className="mt-10" />
       {/* <img className="mt-10 w-1/2 " alt="logo" src={whlogo} /> */}
       <div className="flex w-full h-5/6 items-center">

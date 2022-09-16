@@ -4,15 +4,15 @@ const PatientsList = () => {
   const tbodyData = [
     {
       id: "1",
-      items: ["Mıstık Fıstık", "01 / 01 / 1993", "Male", "ACTIVE"],
+      items: ["Mıstık Fıstık", "01 Ocak 1993", "Erkek", "AKTİF"],
     },
     {
       id: "2",
-      items: ["Denis Penis", "12 / 24 / 1994", "Male", "INACTIVE"],
+      items: ["Denis Penis", "21 Aralık 1994", "Erkek", "AKTİF"],
     },
     {
       id: "3",
-      items: ["Işıl Mışıl", "12 / 01 / 1995", "Top", "Pasif;)"],
+      items: ["Işıl Mışıl", "12 Temmuz 1995", "Kadın", "PASİF"],
     },
   ]
 
@@ -58,7 +58,7 @@ const PatientsList = () => {
       <Table
         theadData={theadData}
         tbodyData={tbodyData}
-        customClass="w-full font-semibold "
+        customClass="w-full font-normal "
       />
     </div>
   )
