@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react"
-import { FiSun, FiClock } from "react-icons/fi"
+import {
+  FiSun,
+  //  FiMoon,
+  FiClock,
+} from "react-icons/fi"
+
 const DateAndTime = (props) => {
   const [dateState, setDateState] = useState(new Date())
   useEffect(() => {
     setInterval(() => setDateState(new Date()), 1000)
   }, [])
+
   return (
     <div className="flex items-center justify-center text-white">
       <div className="flex mr-10 ">

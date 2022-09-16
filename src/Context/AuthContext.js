@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         updateProfile(userCredential.user, {
-          displayName: "cumali ceber",
+          displayName: "Musa Kutlay Tunç",
           photoURL:
             "https://im.haberturk.com/2022/02/22/ver1645561161/3352558_810x458.jpg",
           school: "Sakarya Univorsity",
@@ -43,14 +43,12 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser)
       setUser(currentUser)
     })
     return () => {
       unsubscribe()
     }
   }, [])
-  console.log(user)
   return (
     <UserContext.Provider value={{ createUser, user, logout, login }}>
       {children}

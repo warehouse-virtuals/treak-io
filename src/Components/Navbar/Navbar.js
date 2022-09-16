@@ -10,14 +10,13 @@ import NavbarButtons from "./NavbarButtons"
 const Navbar = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const { user, logout } = UserAuth()
+  const { logout } = UserAuth()
   const { t } = useTranslation("navbar")
 
   const handleNavbarLogoutButtonClick = async () => {
     try {
       await logout()
       navigate("/login")
-      console.log("Logged out from: " + user.email)
     } catch (error) {
       console.log(error.message)
     }
@@ -30,7 +29,6 @@ const Navbar = () => {
       <div className="flex w-full h-5/6 items-center">
         <div className="w-full">
           {NavbarButtons.map((button, index) => {
-            console.log(t(button.name))
             return (
               <div
                 key={button.pathname}
