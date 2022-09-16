@@ -8,8 +8,8 @@ import CardNewPatients from "./CardNewPatients"
 const CardContainer = (props) => {
   return (
     <div className="flex flex-col">
-      <div className="m-2 text-xl">{props.t("Monthly Reports")}</div>
-      <div className="flex select-none justify-between cursor-default h-50 w-full mb-8">
+      <div className=" text-xl">{props.t("Monthly Reports")}</div>
+      <div className="flex select-none justify-between cursor-default h-50 w-full">
         <Card
           icon={CardIcons.FiCalendar}
           title={props.t("Today's Appointments")}

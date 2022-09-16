@@ -4,18 +4,17 @@ import { useTranslation } from "react-i18next"
 
 import HiMsg from "../HiMsg/HiMsg"
 
-import SearchField from "../SearchField/SearchField"
 import CardContainer from "../Card/CardContainer"
 import UpcomingAppointments from "../UpcomingAppointments/UpcomingAppointments"
-import Sidebar from "../Sidebar/Sidebar"
+import TopBar from "../TopBar/TopBar"
 
 const Dashboard = () => {
   const { t } = useTranslation("dashboard")
   const { user } = UserAuth()
   return (
-    <div className="w-full h-full flex flex-row">
-      <div className="w-full p-10  h-full flex flex-col">
-        <SearchField pholder={t("Search patients...")} />
+    <div className="w-full h-full flex flex-col">
+      <TopBar placeholder={t("Search patients...")} />
+      <div className="w-full p-5 bg-[#f9faff] rounded-tl-3xl h-full flex flex-col">
         <HiMsg
           user={user}
           primary={t("Hi")}
@@ -23,9 +22,6 @@ const Dashboard = () => {
         />
         <CardContainer t={t} />
         <UpcomingAppointments t={t} />
-      </div>
-      <div className="flex flex-col  w-[600px] h-full  text-[#1f2433]">
-        <Sidebar whatDisDo="placeholder" />
       </div>
     </div>
   )

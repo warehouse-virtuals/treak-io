@@ -14,7 +14,7 @@ const AddPatient = () => {
     }
   }
   return (
-    <div className="flex pt-5 pl-10 justify-center items-center text-slate-700 w-full h-full flex-col ">
+    <div className="flex pt-5 pl-10 justify-center items-center bg-[#f9faff] text-slate-700 w-full h-full flex-col ">
       <div className="flex flex-col h-1/2 w-full">
         <div className="flex h-16 items-center drop-shadow-md font-bold text-3xl">
           {t("Personal Information")}
