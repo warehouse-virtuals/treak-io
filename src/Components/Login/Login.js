@@ -40,7 +40,6 @@ const Login = () => {
   const handleLoginButtonPress = async () => {
     const email = emailRef.current.value
     const password = passwordRef.current.value
-    console.log("login", emailRef.current.value, passwordRef.current.value)
 
     try {
       await login(email, password)
