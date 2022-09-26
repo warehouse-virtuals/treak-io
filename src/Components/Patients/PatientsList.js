@@ -1,4 +1,10 @@
+import { UserAuth } from "../../Context/AuthContext"
+
 const PatientsList = () => {
+  const { getCustomers } = UserAuth()
+
+  getCustomers()
+
   const theadData = ["NAME", "DATE OF BIRTH", "GENDER", "STATUS"]
 
   const tbodyData = [
@@ -19,8 +25,12 @@ const PatientsList = () => {
   const TableHeadItem = ({ item }) => {
     return (
       <div className="pl-3 gap-10 grid grid-cols-4 mb-3 ">
-        {item.map((h) => {
-          return <div className="">{h}</div>
+        {item.map((h, index) => {
+          return (
+            <div key={index} className="">
+              {h}
+            </div>
+          )
         })}
       </div>
     )

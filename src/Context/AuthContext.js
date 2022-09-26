@@ -4,10 +4,16 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
-  updateProfile,
+  // updateProfile,
 } from "firebase/auth"
 
-import { auth } from "../firebase"
+import {
+  // collection,
+  // getDocs,
+  setDoc,
+  doc,
+} from "firebase/firestore"
+import { auth, db } from "../firebase"
 
 const UserContext = createContext()
 
@@ -15,16 +21,22 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({})
 
   const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        updateProfile(userCredential.user, {
-          displayName: "Musa Kutlay Tunç",
-          photoURL:
-            "https://im.haberturk.com/2022/02/22/ver1645561161/3352558_810x458.jpg",
-          school: "Sakarya Univorsity",
-        })
+    const newUser = {
+      email: "damn@damn.com",
+      password: "123456",
+      customerID: "kCuw9LV3G2cwrMkzX247",
+      userID: "",
+    }
 
-        console.log("success: ", userCredential.user)
+    return createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
+      .then((data) => {
+        const additionalInfos = {
+          email: newUser.email,
+          customerID: newUser.customerID,
+          uid: data.user.uid,
+        }
+        const docRef = doc(db, "users", data.user.uid)
+        setDoc(docRef, additionalInfos)
       })
       .catch((error) => {
         const errorCode = error.code
@@ -41,6 +53,15 @@ export const AuthContextProvider = ({ children }) => {
     return signOut(auth)
   }
 
+  const getCustomers = async () => {
+    // const customersRef = collection(db, "customers")
+    // getDocs(customersRef)
+    //   .then((customers) => {
+    //     console.log(customers.forEach((customer) => console.log(customer.id)))
+    //   })
+    //   .catch((err) => console.error(err))
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser)
@@ -50,7 +71,9 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, [])
   return (
-    <UserContext.Provider value={{ createUser, user, logout, login }}>
+    <UserContext.Provider
+      value={{ createUser, user, logout, login, getCustomers }}
+    >
       {children}
     </UserContext.Provider>
   )
