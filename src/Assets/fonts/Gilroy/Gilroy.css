@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Thin.woff") format("woff");
+  /* src: url("Gilroy-Thin.eot") format("eot");
+  src: url("Gilroy-Thin.ttf") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-ThinItalic.woff") format("woff");
+  /* src: url("Gilroy-ThinItalic.eot") format("eot");
+  src: url("Gilroy-ThinItalic.ttf") format("ttf"); */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-UltraLight.woff") format("woff");
+  /* src: url("Gilroy-UltraLight.ttf") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-UltraLightItalic.woff") format("woff");
+  /* src: url("Gilroy-UltraLightItalic.eot") format("eot");
+  src: url("Gilroy-UltraLightItalic.ttf") format("ttf"); */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Light.woff") format("woff");
+  /* src: url("Gilroy-Light.eot") format("eot");
+  src: url("Gilroy-Light.ttf") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-LightItalic.woff") format("woff");
+  /* src: url("Gilroy-LightItalic.eot") format("eot");
+  src: url("Gilroy-LightItalic.ttf") format("ttf"); */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Regular.woff") format("woff");
+  /* src: url("Gilroy-Regular.eot") format("eot");
+  src: url("Gilroy-Regular.ttf") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-RegularItalic.woff") format("woff");
+  /* src: url("Gilroy-RegularItalic.eot") format("eot");
+  src: url("Gilroy-RegularItalic.ttf") format("ttf"); */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Medium.woff") format("woff");
+  /* src: url("Gilroy-Medium.eot") format("eot");
+  src: url("Gilroy-Medium.ttf") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-MediumItalic.woff") format("woff");
+  /* src: url("Gilroy-MediumItalic.eot") format("eot");
+  src: url("Gilroy-MediumItalic.ttf") format("ttf"); */
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Semibold.woff") format("woff");
+  /* src: url("Gilroy-Semibold.eot") format("eot");
+  src: url("Gilroy-Semibold.ttf") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-SemiboldItalic.woff") format("woff");
+  /* src: url("Gilroy-SemiboldItalic.eot") format("eot");
+  src: url("Gilroy-SemiboldItalic.ttf") format("ttf"); */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("./Gilroy-Bold.woff") format("woff");
+  /* src: url("./Gilroy-Bold.eot") local("Gilroy") format("eot");
+  src: url("Gilroy-Bold.ttf") local("Gilroy") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-BoldItalic.woff") format("woff");
+  /* src: url("Gilroy-BoldItalic.eot") local("Gilroy") format("eot");
+  src: url("Gilroy-BoldItalic.ttf") local("Gilroy") format("ttf"); */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Extrabold.woff") format("woff");
+  /* src: url("Gilroy-Extrabold.eot") local("Gilroy") format("eot");
+  src: url("Gilroy-Extrabold.ttf") local("Gilroy") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-ExtraboldItalic.woff") format("woff");
+  /* src: url("Gilroy-ExtraboldItalic.eot") local("Gilroy") format("eot");
+  src: url("Gilroy-ExtraboldItalic.ttf") local("Gilroy") format("ttf"); */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Heavy.woff") format("woff");
+  /* src: url("Gilroy-Heavy.eot") local("Gilroy") format("eot");
+  src: url("Gilroy-Heavy.ttf") local("Gilroy") format("ttf"); */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-HeavyItalic.woff") format("woff");
+  /* src: url("Gilroy-HeavyItalic.eot") local("Gilroy") format("eot");
+  src: url("Gilroy-HeavyItalic.ttf") local("Gilroy") format("ttf"); */
+  font-style: italic;
+}
