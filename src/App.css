@@ -1,3 +1,5 @@
+@import url("./Assets/fonts/Gilroy/Gilroy.css");
+
 .App {
   display: flex;
   justify-content: center;
@@ -6,9 +8,7 @@
   height: 100vh;
   background-color: #20295a;
   transition: background-color 2s;
-  font-family: 'Gilroy', sans-serif ;
+  font-family: "Gilroy", sans-serif;
   /* font-family: 'Poppins', sans-serif ; */
   /* font-family: 'Quicksand', sans-serif; */
-  font-weight: 400;
-
 }
