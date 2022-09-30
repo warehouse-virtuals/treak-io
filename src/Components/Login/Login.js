@@ -65,7 +65,7 @@ const Login = () => {
           <h6 className="dark:text-white text-slate-700 text-6xl mb-5 select-none ">
             {welcomeMessage()}
           </h6>
-          <h6 className="dark:text-white text-slate-700 text-2xl mb-10 select-none font-light">
+          <h6 className="dark:text-white text-slate-700 text-2xl mb-10 select-none font-thin">
             Uygulamaya giriş yap
           </h6>
           <div className="flex items-center justify-center flex-col">
