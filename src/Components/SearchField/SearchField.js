@@ -4,16 +4,12 @@ import { useTranslation } from "react-i18next"
 const SearchField = (props) => {
   const { t } = useTranslation("dashboard")
   return (
-    <div className="ml-10 flex h-full justify-center items-center w-1/4 ">
+    <div className="ml-10 bg-white rounded-3xl flex justify-center  items-center w-[400px] ">
       <input
         placeholder={t("Search patients...")}
-        className="w-full bg-[#ffffff] h-14 italic focus:outline-none rounded-l-3xl px-5 text-black"
+        className="w-full h-12 italic focus:outline-none rounded-l-3xl px-5 text-[#1d2431]"
       ></input>
-      <FiSearch
-        color="#20295a"
-        className="h-14 pr-2 bg-[#ffffff] rounded-r-3xl "
-        size={40}
-      />
+      <FiSearch color="#1d2431" className="h-full mr-4" size={34} />
     </div>
   )
 }

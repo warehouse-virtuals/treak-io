@@ -57,9 +57,9 @@ const Login = () => {
   return (
     <div className="w-full h-full flex flex-row bg-[#f9faff]">
       <div className="w-full h-full lg:w-1/2 flex items-center content-center  flex-col">
-        <div className="flex items-center h-[80px] w-full pl-10 text-2xl font-bold">
+        <div className="flex items-center h-[80px] w-full pl-10 pt-5 select-none text-4xl font-normal">
           <img className="w-[60px] mr-3 " src={TestSvg} />
-          warehouse
+          umbo
         </div>
         <div className="w-full h-full flex items-center justify-center flex-col ">
           <h6 className="dark:text-white text-slate-700 text-6xl mb-5 select-none ">

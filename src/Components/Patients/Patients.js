@@ -20,11 +20,8 @@ const Patients = () => {
   return (
     <div className="flex flex-col h-full w-full">
       <TopBar pholder={t("Search patients...")} />
-      <div className="flex pl-10 w-full rounded-tl-3xl h-full bg-[#f9faff]  text-[#1f2433]">
-        <div className="flex flex-col w-full h-full mr-5 ">
-          <div className="flex items-center h-28 text-4xl mb-5 font-semibold drop-shadow-lg ">
-            Patients
-          </div>
+      <div className="flex pl-10 w-full rounded-tl-3xl h-full bg-[#f9faff]  text-[#20295a]">
+        <div className="flex flex-col w-full h-full mr-5 mt-10">
           <div
             onClick={handleAddPatientButtonClick}
             className="flex items-center justify-center h-12 w-12 rounded-l-2xl rounded-tr-2xl bg-[#59e2f7] mb-5 hover:bg-[#48c3d6]  "
@@ -33,7 +30,7 @@ const Patients = () => {
           </div>
           <PatientsList />
         </div>
-        <div className="flex flex-col  w-[600px] h-full  text-[#1f2433]">
+        <div className="flex flex-col  w-[600px] h-full  text-[#20295a]">
           <PatientOverview />
         </div>
       </div>
