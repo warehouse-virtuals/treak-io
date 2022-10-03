@@ -1,7 +1,9 @@
 const UpcomingAppointments = (props) => {
   return (
-    <div className="flex flex-col w-full ">
-      <div className=" text-xl">{props.t("Upcoming Appointments")}</div>
+    <div className="flex flex-col px-10 w-full ">
+      <div className="font-medium text-xl">
+        {props.t("Upcoming Appointments")}
+      </div>
       {/* <div className="flex w-full h-full bg-[#ffffff] rounded-3xl drop-shadow-[0_10px_10px_rgba(147,197,253,0.25)]"> */}
       <div className="overflow-x-auto relative drop-shadow-[0_10px_10px_rgba(147,197,253,0.25)]">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

@@ -16,7 +16,7 @@ const SidebarTop = () => {
       <div className="flex justify-center items-center h-full w-1/4">
         <img
           alt="pp"
-          className="h-20 w-20 shadow-lg rounded-full bg-slate-500"
+          className="h-30 w-30 shadow-lg rounded-full bg-slate-500"
           src={fakePP}
         />
       </div>

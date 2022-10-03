@@ -1,11 +1,11 @@
 {
   "navbar": {
-    "Dashboard": "Panel",
-    "Patients": "Kullanıcılar",
+    "Dashboard": "Dashboard",
+    "Patients": "Patients",
     "Calendar": "Calendar",
-    "Repair": "Tamir",
-    "Messages": "Mesajlar",
-    "Analytics": "Analitikler",
+    "Repair": "Repair",
+    "Messages": "Messages",
+    "Analytics": "Analytics",
     "Logout": "Logout"
   },
   "login": {
@@ -17,6 +17,7 @@
     "Password": "Password"
   },
   "dashboard": {
+    "Dashboard": "Dashboard",
     "Hi": "Hi",
     "Search patients...": "Search patients...",
     "Monthly Reports": "Monthly Reports",
@@ -35,6 +36,16 @@
     "more to go": "daha",
     "is done": "is done"
   },
+  "topbar": {
+    "/dashboard": "Dashboard",
+    "/patients": "Patients",
+    "/agenda": "Calendar",
+    "/repair": "Repair",
+    "/messages": "Messages",
+    "/analytics": "Analytics"
+  },
+  "patients": { "Patients": "Patients" },
+
   "addPatient": {
     "Personal Information": "Personal information",
     "Name": "Name",
@@ -56,6 +67,7 @@
     "Cancel": "Cancel"
   },
   "repair": {
+    "Repair": "Repair",
     "Repair/Maintenance Form": "Repair/Maintenance Form",
     "Upload Images": "Upload Images",
     "ID": "ID",

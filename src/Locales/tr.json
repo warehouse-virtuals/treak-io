@@ -17,6 +17,7 @@
     "Password": "Parola"
   },
   "dashboard": {
+    "Dashboard": "Genel Bakış",
     "Hi": "Merhaba",
     "Search patients...": "Kullanıcı ara...",
     "Monthly Reports": "Aylık Raporlar",
@@ -36,6 +37,15 @@
     "more to go": "daha",
     "is done": "bitti"
   },
+  "topbar": {
+    "/dashboard": "Genel Bakış",
+    "/patients": "Kullanıcılar",
+    "/agenda": "Ajanda",
+    "/repair": "Tamir ve Bakım",
+    "/messages": "Mesajlar",
+    "/analytics": "Analitikler"
+  },
+  "patients": { "Patients": "Kullanıcılar" },
   "addPatient": {
     "Personal Information": "Kullanıcı Bilgileri",
     "Name": "İsim",

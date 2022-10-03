@@ -7,12 +7,7 @@ import {
   // updateProfile,
 } from "firebase/auth"
 
-import {
-  // collection,
-  // getDocs,
-  setDoc,
-  doc,
-} from "firebase/firestore"
+import { collection, setDoc, doc, getDoc, getDocs } from "firebase/firestore"
 
 import { auth, db } from "../firebase"
 
@@ -20,6 +15,7 @@ const UserContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({})
+  const [userData, setUserData] = useState({})
 
   const createUser = (email, password) => {
     const newUser = {
@@ -54,26 +50,44 @@ export const AuthContextProvider = ({ children }) => {
     return signOut(auth)
   }
 
+  const fetchUserData = (userID) => {
+    const usersDocRef = doc(db, "users", userID)
+    getDoc(usersDocRef).then((doc) => {
+      const data = doc.data()
+      setUserData(data)
+    })
+  }
+
   const getCustomers = async () => {
-    // const customersRef = collection(db, "customers")
-    // getDocs(customersRef)
-    //   .then((customers) => {
-    //     console.log(customers.forEach((customer) => console.log(customer.id)))
-    //   })
-    //   .catch((err) => console.error(err))
+    const customersRef = collection(db, "customers")
+    getDocs(customersRef)
+      .then((customers) => {
+        customers.forEach((customer) => customer.id)
+      })
+      .catch((err) => console.error(err))
   }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      fetchUserData(auth.currentUser.uid)
       setUser(currentUser)
     })
     return () => {
       unsubscribe()
     }
   }, [])
+
   return (
     <UserContext.Provider
-      value={{ createUser, user, logout, login, getCustomers }}
+      value={{
+        createUser,
+        user,
+        logout,
+        login,
+        getCustomers,
+        fetchUserData,
+        userData,
+      }}
     >
       {children}
     </UserContext.Provider>

@@ -12,18 +12,19 @@ const DateAndTime = (props) => {
   }, [])
 
   return (
-    <div className="flex items-center justify-center text-white">
-      <div className="flex mr-10 ">
-        <FiSun size={22} className="mr-3" />
-
-        {dateState.toLocaleString("tr", {
-          day: "numeric",
-          month: "long",
-        })}
+    <div className="flex w-full items-center justify-evenly ">
+      <div className="flex">
+        <FiSun size={26} color="#1d2431" className="mr-3" />
+        <div className="flex items-center w-[60px]">
+          {dateState.toLocaleString("tr", {
+            day: "numeric",
+            month: "long",
+          })}
+        </div>
       </div>
       <div className="flex">
-        <FiClock size={22} className="mr-3" />
-        <div className="flex w-[60px]">
+        <FiClock size={26} color="#1d2431" className="mr-3" />
+        <div className="flex items-center w-[60px]">
           {("0" + dateState.getHours()).slice(-2)} <span>:</span>
           {("0" + dateState.getMinutes()).slice(-2)}
           <span>:</span> {("0" + dateState.getSeconds()).slice(-2)}

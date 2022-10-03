@@ -1,17 +1,19 @@
 import SearchField from "../SearchField/SearchField"
 import DateAndTime from "./DateAndTime"
-import { FiBell } from "react-icons/fi"
+import { useTranslation } from "react-i18next"
+import { useLocation } from "react-router-dom"
 
 const TopBar = (props) => {
+  const location = useLocation()
+  const { t } = useTranslation("topbar")
   return (
-    <div className="flex justify-between text-m items-center w-full h-24 bg-[#20295a]">
-      <SearchField />
-      <div className="flex justify-evenly w-1/4">
+    <div className="flex justify-between text-[#20295a] italic  items-center w-full h-20 px-10 mt-5  ">
+      <div className="flex justify-center drop-shadow-3xl items-center text-4xl font-semibold">
+        {t(location.pathname)}
+      </div>
+      <div className="flex">
+        <SearchField />
         <DateAndTime />
-        <FiBell
-          className="flex p-2 h-[40px] w-[40px] rounded-xl border border-slate-500 "
-          color="white"
-        />
       </div>
     </div>
   )

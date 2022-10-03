@@ -59,7 +59,7 @@ const MiniCalendar = () => {
         </div>
       </div>
 
-      <div className="w-full h-[400px] grid grid-cols-7 grid-rows-6 row-auto ">
+      <div className="w-full h-[300px] grid grid-cols-7 grid-rows-6 row-auto ">
         {days.map((day, index) => {
           return (
             <time
