@@ -11,7 +11,7 @@ import Sidebar from "../Sidebar/Sidebar"
 
 const Dashboard = () => {
   const { t } = useTranslation("dashboard")
-  const { user } = UserAuth()
+  const { userData } = UserAuth()
 
   return (
     <div className="flex flex-col w-full h-full ">
@@ -19,14 +19,14 @@ const Dashboard = () => {
       <div className="flex w-full h-full">
         <div className="w-full bg-[#f9faff] rounded-tl-3xl h-full flex flex-col">
           <HiMsg
-            user={user}
+            userData={userData}
             primary={t("Hi")}
             secondary={t("Have a nice day at work!")}
           />
           <CardContainer t={t} />
           <UpcomingAppointments t={t} />
         </div>
-        <Sidebar />
+        <Sidebar userData={userData} />
       </div>
     </div>
   )

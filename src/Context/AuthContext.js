@@ -8,12 +8,14 @@ import {
 } from "firebase/auth"
 
 import { collection, setDoc, doc, getDoc, getDocs } from "firebase/firestore"
+import { getStorage, ref, getDownloadURL } from "firebase/storage"
 
 import { auth, db } from "../firebase"
 
 const UserContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
+  const storage = getStorage()
   const [user, setUser] = useState({})
   const [userData, setUserData] = useState({})
 
@@ -54,7 +56,12 @@ export const AuthContextProvider = ({ children }) => {
     const usersDocRef = doc(db, "users", userID)
     getDoc(usersDocRef).then((doc) => {
       const data = doc.data()
-      setUserData(data)
+      console.log(data)
+      const ppRef = ref(storage, data.ppurl)
+      getDownloadURL(ppRef).then((promise) => {
+        const ppurl = promise
+        setUserData({ ...data, ppurl: ppurl })
+      })
     })
   }
 
@@ -69,12 +76,17 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      fetchUserData(auth.currentUser.uid)
-      setUser(currentUser)
+      try {
+        setUser(currentUser)
+        fetchUserData(auth.currentUser.uid)
+      } catch (error) {
+        console.log("Error: " + error)
+      }
     })
     return () => {
       unsubscribe()
     }
+    //eslint-disable-next-line
   }, [])
 
   return (
