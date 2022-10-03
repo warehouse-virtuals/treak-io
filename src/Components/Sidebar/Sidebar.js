@@ -5,7 +5,7 @@ import SidebarTop from "../SidebarTop/SidebarTop"
 const Sidebar = (props) => {
   return (
     <div className="w-1/4 flex h-full px-5 rounded-tl-3xl box-border flex-col bg-white">
-      <SidebarTop />
+      <SidebarTop userData={props.userData} />
       {/* <MiniCalender /> */}
       {/* <SidebarMonthlyReports /> */}
     </div>
