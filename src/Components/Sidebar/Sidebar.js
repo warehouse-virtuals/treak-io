@@ -1,6 +1,6 @@
-import SidebarTop from "../SidebarTop/SidebarTop"
-// import MiniCalender from "../MiniCalendar/MiniCalendar"
-// import SidebarMonthlyReports from "../SidebarMonthlyReports/SidebarMonthlyReports"
+import SidebarTop from "./SidebarTop"
+// import MiniCalender from "./MiniCalendar"
+// import SidebarMonthlyReports from "./SidebarMonthlyReports"
 
 const Sidebar = (props) => {
   return (

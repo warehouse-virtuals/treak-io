@@ -7,7 +7,15 @@ import {
   // updateProfile,
 } from "firebase/auth"
 
-import { collection, setDoc, doc, getDoc, getDocs } from "firebase/firestore"
+import {
+  collection,
+  query,
+  where,
+  setDoc,
+  doc,
+  getDoc,
+  getDocs,
+} from "firebase/firestore"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 
 import { auth, db } from "../firebase"
@@ -21,21 +29,32 @@ export const AuthContextProvider = ({ children }) => {
 
   const createUser = (email, password) => {
     const newUser = {
-      email: "damn@damn.com",
+      name: "Hıdır",
+      surname: "Hıdıroğlu",
+      email: "hidir@hidir.com",
       password: "123456",
-      customerID: "kCuw9LV3G2cwrMkzX247",
-      userID: "",
+      jobTitle: "İşitme Uzmanı",
+      customerID: "Aw3Sv7wLX8YBYObNCFRk",
+      clinicID: "8JhRM4E2T2KoYTGKJZKz",
+      ppURL: "users/profilePictures/hidir.jpeg",
     }
 
+    console.log(newUser)
     return createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
       .then((data) => {
         const additionalInfos = {
+          name: newUser.name,
+          surname: newUser.surname,
           email: newUser.email,
-          customerID: newUser.customerID,
+          jobTitle: newUser.jobTitle,
           uid: data.user.uid,
+          customerID: newUser.customerID,
+          clinicID: newUser.clinicID,
+          ppURL: newUser.ppURL,
         }
         const docRef = doc(db, "users", data.user.uid)
         setDoc(docRef, additionalInfos)
+        console.log("oldu")
       })
       .catch((error) => {
         const errorCode = error.code
@@ -52,15 +71,15 @@ export const AuthContextProvider = ({ children }) => {
     return signOut(auth)
   }
 
-  const fetchUserData = (userID) => {
+  const fetchUserData = async (userID) => {
     const usersDocRef = doc(db, "users", userID)
     getDoc(usersDocRef).then((doc) => {
       const data = doc.data()
-      console.log(data)
-      const ppRef = ref(storage, data.ppurl)
+      const ppRef = ref(storage, data.ppURL)
       getDownloadURL(ppRef).then((promise) => {
         const ppurl = promise
         setUserData({ ...data, ppurl: ppurl })
+        console.log(userData)
       })
     })
   }
@@ -74,8 +93,21 @@ export const AuthContextProvider = ({ children }) => {
       .catch((err) => console.error(err))
   }
 
+  const getPatients = async (customerid, usersClinic) => {
+    console.log(customerid)
+    const patientsRef = collection(db, "customers/", customerid, "/patients")
+    const q = query(patientsRef, where("assignedClinic", "==", usersClinic))
+    const querySnapshotOfAssignedPatients = await getDocs(q)
+    let arr = []
+    querySnapshotOfAssignedPatients.forEach((doc) => {
+      arr.push(doc.data())
+    })
+    return arr
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(auth.currentUser.uid)
       try {
         setUser(currentUser)
         fetchUserData(auth.currentUser.uid)
@@ -99,6 +131,7 @@ export const AuthContextProvider = ({ children }) => {
         getCustomers,
         fetchUserData,
         userData,
+        getPatients,
       }}
     >
       {children}

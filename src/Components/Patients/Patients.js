@@ -31,7 +31,7 @@ const Patients = () => {
           <PatientsList />
         </div>
         <div className="flex flex-col  w-[600px] h-full  text-[#20295a]">
-          <PatientOverview />
+          {/* <PatientOverview /> */}
         </div>
       </div>
     </div>
