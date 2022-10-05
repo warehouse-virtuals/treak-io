@@ -13,7 +13,7 @@ const SidebarTop = (props) => {
         <h1 className="text-lg font-medium">
           {props.userData.name}&nbsp;{props.userData.surname}
         </h1>
-        <h3 className="text-sm font-thin">İşitme Uzmanı</h3>
+        <h3 className="text-sm font-thin">{props.userData.jobTitle}</h3>
       </div>
 
       <div className="flex justify-center items-center h-full w-1/4">

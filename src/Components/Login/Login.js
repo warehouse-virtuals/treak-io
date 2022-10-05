@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
@@ -21,8 +20,12 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  const { login } = UserAuth()
+  const {
+    login,
+    //  createUser
+  } = UserAuth()
 
+  // createUser()
   const { t } = useTranslation("login")
 
   const welcomeMessage = () => {
@@ -58,7 +61,7 @@ const Login = () => {
     <div className="w-full h-full flex flex-row bg-[#f9faff]">
       <div className="w-full h-full lg:w-1/2 flex items-center content-center  flex-col">
         <div className="flex items-center h-[80px] w-full pl-10 pt-5 select-none text-4xl font-normal">
-          <img className="w-[60px] mr-3 " src={TestSvg} />
+          <img alt="svg" className="w-[60px] mr-3 " src={TestSvg} />
           umbo
         </div>
         <div className="w-full h-full flex items-center justify-center flex-col ">
@@ -93,7 +96,7 @@ const Login = () => {
         </div>
       </div>
       <div className="hidden lg:flex w-1/2 justify-center select-none m-7 rounded-3xl bg-gradient-to-r from-[#20295a] to-[#6966c1] ">
-        <img className="w-1/2" src={LoginSvg} />
+        <img alt="svg" className="w-1/2" src={LoginSvg} />
       </div>
     </div>
   )

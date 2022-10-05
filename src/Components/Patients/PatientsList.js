@@ -1,26 +1,55 @@
+import { toDate } from "date-fns"
+import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
 
 const PatientsList = () => {
-  const { getCustomers } = UserAuth()
+  const [patients, setPatients] = useState([])
+  const { getPatients, userData } = UserAuth()
 
-  getCustomers()
+  useEffect(() => {
+    const fetchPatientData = async () => {
+      const data = await getPatients(userData.customerID, userData.clinicID)
+      const stateSetter = (data) => {
+        setPatients(data)
+      }
+      await stateSetter(data)
+    }
+    fetchPatientData()
+    //eslint-disable-next-line
+  }, [])
+  console.log(patients)
 
-  const theadData = ["NAME", "DATE OF BIRTH", "GENDER", "STATUS"]
+  const tbodyData = []
+  patients.forEach((patient, i) => {
+    const dateOfBirth = toDate(patient.DOB.seconds * 1000).toLocaleDateString()
 
-  const tbodyData = [
-    {
-      id: "1",
-      items: ["Mıstık Fıstık", "01 Ocak 1993", "Erkek", "AKTİF"],
-    },
-    {
-      id: "2",
-      items: ["Denis Penis", "21 Aralık 1994", "Erkek", "AKTİF"],
-    },
-    {
-      id: "3",
-      items: ["Işıl Mışıl", "12 Temmuz 1995", "Kadın", "PASİF"],
-    },
-  ]
+    const obj = {
+      id: i,
+      items: [
+        patient.name + " " + patient.surname,
+        dateOfBirth,
+        patient.isMale ? "Erkek" : "Kadın",
+      ],
+    }
+    tbodyData.push(obj)
+  })
+
+  const theadData = ["NAME", "DATE OF BIRTH", "GENDER"]
+
+  // const tbodyData = [
+  //   {
+  //     id: "1",
+  //     items: ["Mıstık Fıstık", "01 Ocak 1993", "Erkek", ],
+  //   },
+  //   {
+  //     id: "2",
+  //     items: ["Denis Penis", "21 Aralık 1994", "Erkek", ],
+  //   },
+  //   {
+  //     id: "3",
+  //     items: ["Işıl Mışıl", "12 Temmuz 1995", "Kadın", ],
+  //   },
+  // ]
 
   const TableHeadItem = ({ item }) => {
     return (
