@@ -4,7 +4,8 @@ import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
 
 import LoginSvg from "../../Assets/login-i.svg"
-import TestSvg from "../../Assets/lastlogo.svg"
+import umboLogo from "../../Assets/umbo-logo-black.svg"
+import tesseractLogo from "../../Assets/tesseract-logo-black.svg"
 
 import { FiChevronRight } from "react-icons/fi"
 
@@ -61,8 +62,8 @@ const Login = () => {
     <div className="w-full h-full flex flex-row bg-[#f9faff]">
       <div className="w-full h-full lg:w-1/2 flex items-center content-center  flex-col">
         <div className="flex items-center h-[80px] w-full pl-10 pt-5 select-none text-4xl font-normal">
-          <img alt="svg" className="w-[60px] mr-3 " src={TestSvg} />
-          umbo
+          <img alt="svg" className="w-[60px] mr-5" src={umboLogo} />
+          Umbo
         </div>
         <div className="w-full h-full flex items-center justify-center flex-col ">
           <h6 className="dark:text-white text-slate-700 text-6xl mb-5 select-none ">
@@ -93,6 +94,10 @@ const Login = () => {
             onClick={handleLoginButtonPress}
             addCSS={"bg-[#20295a] hover:bg-[#273169]"}
           />
+        </div>
+        <div className="flex items-center h-16 text-slate-900 text-lg ">
+          <img alt="svg" className="w-[36px] " src={tesseractLogo} />
+          Warehouse, Inc.
         </div>
       </div>
       <div className="hidden lg:flex w-1/2 justify-center select-none m-7 rounded-3xl bg-gradient-to-r from-[#20295a] to-[#6966c1] ">
