@@ -15,6 +15,8 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
+  limit,
 } from "firebase/firestore"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 
@@ -104,7 +106,23 @@ export const AuthContextProvider = ({ children }) => {
     })
     return arr
   }
-
+  const getAppointments = async (customerid, usersClinic, limitCount) => {
+    const patientsRef = collection(
+      db,
+      "customers/",
+      customerid,
+      "/clinics/",
+      usersClinic,
+      "/appointments"
+    )
+    const q = query(patientsRef, orderBy("date"), limit(limitCount))
+    const querySnapshotOfAssignedPatients = await getDocs(q)
+    let arr = []
+    querySnapshotOfAssignedPatients.forEach((doc) => {
+      arr.push(doc.data())
+    })
+    return arr
+  }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(auth.currentUser.uid)
@@ -132,6 +150,7 @@ export const AuthContextProvider = ({ children }) => {
         fetchUserData,
         userData,
         getPatients,
+        getAppointments,
       }}
     >
       {children}
