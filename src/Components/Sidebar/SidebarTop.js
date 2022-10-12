@@ -1,16 +1,11 @@
-import { FiSettings, FiBell } from "react-icons/fi"
-
 const SidebarTop = (props) => {
   console.log(props.userData.ppurl)
   return (
-    <div className="flex justify-center items-center h-[100px] w-full pr-4 pt-4">
-      <div className="flex justify-left items-center space h-full w-1/4 ">
-        <FiSettings className="ml-5" size={24} stroke="#404b61" />
-        <FiBell className="ml-5" size={24} stroke="#404b61" />
-      </div>
+    <div className="flex justify-center items-center h-[100px] w-full">
+      <div className="flex justify-left items-center space h-10 select-none  w-1/4 "></div>
 
       <div className="flex flex-col justify-center items-end w-2/4 h-full mr-4">
-        <h1 className="text-lg font-medium">
+        <h1 className="text-lg font-medium select-none">
           {props.userData.name}&nbsp;{props.userData.surname}
         </h1>
         <h3 className="text-sm font-thin">{props.userData.jobTitle}</h3>
