@@ -7,11 +7,11 @@ const TopBar = (props) => {
   const location = useLocation()
   const { t } = useTranslation("topbar")
   return (
-    <div className="flex justify-between text-[#20295a] italic  items-center w-full h-20 px-10 mt-5  ">
-      <div className="flex justify-center drop-shadow-3xl items-center text-4xl font-semibold">
+    <div className="flex bg-[#20295a] justify-between  text-white  items-center w-full h-16  select-none">
+      <div className="flex drop-shadow-3xl w-1/2 items-center text-4xl font-semibold">
         {t(location.pathname)}
       </div>
-      <div className="flex">
+      <div className="flex justify-between items-center  w-1/2">
         <SearchField />
         <DateAndTime />
       </div>
