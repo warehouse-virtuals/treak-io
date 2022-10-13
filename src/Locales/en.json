@@ -48,7 +48,14 @@
     "/messages": "Messages",
     "/analytics": "Analytics"
   },
-  "patients": { "Patients": "Patients" },
+  "patients": {
+    "Patients": "Patients",
+    "NAME": "NAME",
+    "SSN": "SSN",
+    "PHONE": "PHONE",
+    "DOB": "DOB",
+    "GENDER": "GENDER"
+  },
 
   "addPatient": {
     "Personal Information": "Personal information",
