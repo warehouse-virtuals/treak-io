@@ -26,7 +26,7 @@ const Dashboard = () => {
           <CardContainer t={t} />
           <UpcomingAppointments t={t} />
         </div>
-        <div className="flex w-[400px] h-full">
+        <div className="flex w-[600px] h-full">
           <Sidebar userData={userData} />
         </div>
       </div>

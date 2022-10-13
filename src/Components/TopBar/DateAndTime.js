@@ -12,8 +12,8 @@ const DateAndTime = (props) => {
   }, [])
 
   return (
-    <div className="flex h-full w-full items-center justify-evenly ">
-      <div className="flex">
+    <div className="flex h-full mr-10 items-center  ">
+      <div className="flex mr-10">
         <FiSun size={26} color="white" className="mr-3" />
         <div className="flex items-center w-[60px]">
           {dateState.toLocaleString("tr", {

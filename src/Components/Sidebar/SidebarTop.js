@@ -11,10 +11,10 @@ const SidebarTop = (props) => {
         <h3 className="text-sm font-thin">{props.userData.jobTitle}</h3>
       </div>
 
-      <div className="flex justify-center items-center h-full w-1/4">
+      <div className="flex justify-center items-center h-20 w-20 overflow-hidden">
         <img
           alt="pp"
-          className="h-30 w-30 shadow-lg rounded-full bg-slate-500"
+          className="h-full w-full shadow-lg rounded-full object-cover bg-slate-500"
           src={props.userData.ppurl}
         />
       </div>
