@@ -81,7 +81,6 @@ export const AuthContextProvider = ({ children }) => {
       getDownloadURL(ppRef).then((promise) => {
         const ppurl = promise
         setUserData({ ...data, ppurl: ppurl })
-        console.log(userData)
       })
     })
   }
@@ -96,7 +95,6 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const getPatients = async (customerid, usersClinic) => {
-    console.log(customerid)
     const patientsRef = collection(db, "customers/", customerid, "/patients")
     const q = query(patientsRef, where("assignedClinic", "==", usersClinic))
     const querySnapshotOfAssignedPatients = await getDocs(q)
@@ -125,7 +123,6 @@ export const AuthContextProvider = ({ children }) => {
   }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(auth.currentUser.uid)
       try {
         setUser(currentUser)
         fetchUserData(auth.currentUser.uid)
