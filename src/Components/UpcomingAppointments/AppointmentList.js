@@ -13,12 +13,13 @@ const AppointmentList = (props) => {
         userData.clinicID,
         5
       )
-      const stateSetter = (data) => {
-        setAppointments(data)
+      const stateSetter = async (appointments) => {
+        setAppointments(appointments)
       }
       await stateSetter(data)
     }
     fetchAppointmentData()
+
     //eslint-disable-next-line
   }, [])
   console.log(appointments)
@@ -81,9 +82,9 @@ const AppointmentList = (props) => {
       <div
         className={`grid border-r-8 hover:bg-slate-100 ${statusColor} transition-all pl-5 gap-10 items-center grid-cols-5 text-sm mb-1 h-14 rounded-2xl drop-shadow-sm bg-white`}
       >
-        {data.items.map((item) => {
+        {data.items.map((item, index) => {
           return (
-            <div className="border-r-2 border-slate-100 " key={item}>
+            <div className="border-r-2 border-slate-100 " key={index}>
               {item}
             </div>
           )

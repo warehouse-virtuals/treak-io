@@ -13,7 +13,8 @@ const PatientsList = () => {
   useEffect(() => {
     const fetchPatientData = async () => {
       const data = await getPatients(userData.customerID, userData.clinicID)
-      const stateSetter = (data) => {
+
+      const stateSetter = async (data) => {
         setPatients(data)
       }
       await stateSetter(data)
@@ -22,21 +23,19 @@ const PatientsList = () => {
     //eslint-disable-next-line
   }, [])
 
+  console.log(patients)
   const tbodyData = []
   patients.forEach((patient, i) => {
-    const dateOfBirth = toDate(
-      patient.infoPersonal.dob.seconds * 1000
-    ).toLocaleDateString()
-
+    const dateOfBirth = toDate(patient.DOB.seconds * 1000).toLocaleDateString()
     const obj = {
       id: i,
-      patientData: patient,
+      patientData: { ...patient, DOB: dateOfBirth },
       items: [
-        patient.infoPersonal.name + " " + patient.infoPersonal.surname,
-        patient.infoPersonal.ssn,
-        patient.infoPersonal.phone,
+        patient.name + " " + patient.surname,
+        patient.SSN,
+        patient.phone,
         dateOfBirth,
-        patient.infoPersonal.isMale ? "Erkek" : "Kadın",
+        patient.isMale ? "Erkek" : "Kadın",
       ],
     }
     tbodyData.push(obj)
@@ -64,6 +63,7 @@ const PatientsList = () => {
     )
   }
   const TableRow = ({ data, patient }) => {
+    console.log(patient)
     return (
       <div
         className="grid border-r-8 border-green-400  hover:bg-slate-100 transition-all pl-5 gap-10 items-center grid-cols-5 text-sm mb-1 h-14 rounded-2xl drop-shadow-sm bg-white"
@@ -99,7 +99,7 @@ const PatientsList = () => {
       </div>
     )
   }
-
+  console.log(focusedPatient)
   return (
     <div className="flex  justify-around w-full">
       <div className="flex w-2/3">

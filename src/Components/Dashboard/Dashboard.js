@@ -12,7 +12,6 @@ import Sidebar from "../Sidebar/Sidebar"
 const Dashboard = () => {
   const { t } = useTranslation("dashboard")
   const { userData } = UserAuth()
-  console.log(userData)
   return (
     <div className="flex flex-col w-full h-full ">
       <TopBar placeholder={t("Search patients...")} />
