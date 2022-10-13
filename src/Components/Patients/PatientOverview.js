@@ -8,15 +8,21 @@ import {
 } from "react-icons/fi"
 
 const PatientOverview = (props) => {
+  console.log(props.focusedPatientData)
+  let person = props.focusedPatientData.infoPersonal
+  // let hearingAid = props.focusedPatientData.infoHearingAid
+
   return (
-    <div className="w-full flex h-full box-border flex-col rounded-tl-3xl bg-[#fff] ">
+    <div className="w-full flex h-full box-border flex-col rounded-3xl p-4 bg-[#fff] ">
       <div className="flex w-full items-center justify-center  ">
-        <FiUser size={120} color="#1f2433" />
+        <FiUser size={120} color="#60698e" />
       </div>
       <div className="flex justify-center mt-10 font-medium text-2xl ">
-        Deniz Yeşilırmak
+        {person.name}&nbsp;{person.surname}
       </div>
-      <div className="flex justify-center font-medium text-m ">35495733492</div>
+      <div className="flex justify-center font-medium text-m ">
+        {person.ssn}
+      </div>
       <div className="flex justify-between pl-5 pr-5 mt-10 font-medium text-m  ">
         <div className="flex w-1/2 flex-col ">
           <div className="text-[#eb5656] font-semibold">Sağ</div>
@@ -63,7 +69,7 @@ const PatientOverview = (props) => {
           <div className="flex w-1/2 font-light">Muratpaşa</div>
         </div>
       </div>
-      <div className="flex justify-around items-center ">
+      <div className="flex mt-10 justify-around items-center ">
         <div>
           <FiTrash size={24} color="red" />
         </div>

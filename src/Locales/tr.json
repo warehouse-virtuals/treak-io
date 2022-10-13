@@ -48,7 +48,14 @@
     "/messages": "Mesajlar",
     "/analytics": "Analitikler"
   },
-  "patients": { "Patients": "Kullanıcılar" },
+  "patients": {
+    "Patients": "Kullanıcılar",
+    "NAME": "İSİM",
+    "SSN": "KİMLİK NO",
+    "PHONE": "TELEFON",
+    "DOB": "DOĞUM TARİHİ",
+    "GENDER": "CİNSİYET"
+  },
   "addPatient": {
     "Personal Information": "Kullanıcı Bilgileri",
     "Name": "İsim",
