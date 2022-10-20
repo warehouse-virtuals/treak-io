@@ -70,6 +70,8 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const logout = () => {
+    setUser({})
+    setUserData({})
     return signOut(auth)
   }
 

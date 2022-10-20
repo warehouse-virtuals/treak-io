@@ -13,10 +13,10 @@ const Dashboard = () => {
   const { t } = useTranslation("dashboard")
   const { userData } = UserAuth()
   return (
-    <div className="flex flex-col w-full h-full ">
+    <div className='flex flex-col w-full h-full '>
       <TopBar placeholder={t("Search patients...")} />
-      <div className="flex w-full h-full">
-        <div className="w-full bg-[#f9faff] rounded-tl-3xl h-full flex flex-col">
+      <div className='flex w-full h-full'>
+        <div className='w-full bg-[#f9faff] rounded-tl-3xl h-full flex flex-col'>
           <HiMsg
             userData={userData}
             primary={t("Hi")}
@@ -25,7 +25,7 @@ const Dashboard = () => {
           <CardContainer t={t} />
           <UpcomingAppointments t={t} />
         </div>
-        <div className="flex w-[600px] h-full">
+        <div className='flex w-[600px] h-full'>
           <Sidebar userData={userData} />
         </div>
       </div>
