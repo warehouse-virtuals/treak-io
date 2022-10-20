@@ -10,20 +10,15 @@ const PatientsList = () => {
   const { getPatients, userData } = UserAuth()
   const { t } = useTranslation("patients")
 
-  useEffect(() => {
-    const fetchPatientData = async () => {
-      const data = await getPatients(userData.customerID, userData.clinicID)
+  const fetchPatientData = async () => {
+    return await getPatients(userData.customerID, userData.clinicID)
+  }
 
-      const stateSetter = async (data) => {
-        setPatients(data)
-      }
-      await stateSetter(data)
-    }
-    fetchPatientData()
+  useEffect(() => {
+    fetchPatientData().then((data) => setPatients(data))
     //eslint-disable-next-line
   }, [])
 
-  console.log(patients)
   const tbodyData = []
   patients.forEach((patient, i) => {
     const dateOfBirth = toDate(patient.DOB.seconds * 1000).toLocaleDateString()
@@ -51,10 +46,10 @@ const PatientsList = () => {
 
   const TableHeadItem = ({ item }) => {
     return (
-      <div className="pl-3 gap-10 grid grid-cols-5 mb-3 ">
+      <div className='pl-3 gap-10 grid grid-cols-5 mb-3 '>
         {item.map((h, index) => {
           return (
-            <div key={index} className="">
+            <div key={index} className=''>
               {h}
             </div>
           )
@@ -63,15 +58,14 @@ const PatientsList = () => {
     )
   }
   const TableRow = ({ data, patient }) => {
-    console.log(patient)
     return (
       <div
-        className="grid border-r-8 border-green-400  hover:bg-slate-100 transition-all pl-5 gap-10 items-center grid-cols-5 text-sm mb-1 h-14 rounded-2xl drop-shadow-sm bg-white"
+        className='grid border-r-8 border-green-400  hover:bg-slate-100 transition-all pl-5 gap-10 items-center grid-cols-5 text-sm mb-1 h-14 rounded-2xl drop-shadow-sm bg-white'
         onClick={() => setFocusedPatient(patient)}
       >
         {data.map((item, index) => {
           return (
-            <div className="border-r-2 border-slate-100 " key={index}>
+            <div className='border-r-2 border-slate-100 ' key={index}>
               {item}
             </div>
           )
@@ -82,10 +76,10 @@ const PatientsList = () => {
   const Table = ({ theadData, tbodyData, customClass }) => {
     return (
       <div className={customClass}>
-        <div className="text-[#c4c8d5] text-sm font-semibold">
+        <div className='text-[#c4c8d5] text-sm font-semibold'>
           <TableHeadItem item={theadData} />
         </div>
-        <div className="">
+        <div className=''>
           {tbodyData.map((item) => {
             return (
               <TableRow
@@ -101,15 +95,15 @@ const PatientsList = () => {
   }
   console.log(focusedPatient)
   return (
-    <div className="flex  justify-around w-full">
-      <div className="flex w-2/3">
+    <div className='flex  justify-around w-full'>
+      <div className='flex w-2/3'>
         <Table
           theadData={theadData}
           tbodyData={tbodyData}
-          customClass="w-full font-normal "
+          customClass='w-full font-normal '
         />
       </div>
-      <div className="flex w-[400px]">
+      <div className='flex w-[400px]'>
         <PatientOverview focusedPatientData={focusedPatient} />
       </div>
     </div>
