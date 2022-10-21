@@ -93,7 +93,7 @@ const PatientsList = () => {
       </div>
     )
   }
-  console.log(focusedPatient)
+
   return (
     <div className='flex  justify-around w-full'>
       <div className='flex w-2/3'>

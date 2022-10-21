@@ -149,6 +149,7 @@ export const AuthContextProvider = ({ children }) => {
         fetchUserData,
         userData,
         getPatients,
+        db,
         getAppointments,
       }}
     >
