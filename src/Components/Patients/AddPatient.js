@@ -77,6 +77,7 @@ const AddPatient = () => {
       collection(db, "customers/", userData.customerID, "/patients"),
       userInformation
     ).then((data) => {
+      console.log(data)
       console.log(navigate("/patients"))
     })
     console.log("Document written with ID: ", newPatientRef.id)
