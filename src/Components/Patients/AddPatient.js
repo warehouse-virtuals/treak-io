@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react"
 import DatePicker from "react-date-picker"
 
-import { collection, addDoc } from "firebase/firestore"
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore"
 import { UserAuth } from "../../Context/AuthContext"
 
 import { useNavigate } from "react-router-dom"
@@ -46,39 +46,50 @@ const AddPatient = () => {
       SSN: socialSecurityNumberRef.current.value,
       address: addressRef.current.value,
       assignedClinic: await userData.clinicID,
+      email: patientEmailRef.current.value,
       hearingAids: [
         {
           aidBrand: rightAidBrandRef.current.value,
           aidModel: rightAidModelRef.current.value,
           aidSN: rightSerialNumberRef.current.value,
           isRightSide: true,
-          warrantyDuration: rightWarrantyDurationRef.current.value,
           warrantStart: rightWarrantyStart,
+          warrantyDuration: rightWarrantyDurationRef.current.value,
         },
         {
           aidBrand: leftAidBrandRef.current.value,
           aidModel: leftAidModelRef.current.value,
           aidSN: leftSerialNumberRef.current.value,
           isRightSide: false,
-          warrantyDuration: leftWarrantyDurationRef.current.value,
           warrantStart: leftWarrantyStart,
+          warrantyDuration: leftWarrantyDurationRef.current.value,
         },
       ],
       id: null,
       isMale: isMaleRef.current.value === "Erkek" ? true : false,
-      name: patientNameRef.current.value,
-      surname: patientSurnameRef.current.value,
-      phone: patientPhoneRef.current.value,
-      email: patientEmailRef.current.value,
       legalPermit: legalPermitRef.current.checked,
+      name: patientNameRef.current.value,
+      phone: patientPhoneRef.current.value,
+      surname: patientSurnameRef.current.value,
     }
 
     const newPatientRef = await addDoc(
       collection(db, "customers/", userData.customerID, "/patients"),
       userInformation
-    ).then((data) => {
+    ).then(async (data) => {
+      const patientRef = doc(
+        db,
+        "customers/",
+        userData.customerID,
+        "/patients",
+        data.id
+      )
+      console.log(data.id)
+      await updateDoc(patientRef, {
+        id: data.id,
+      })
       console.log(data)
-      console.log(navigate("/patients"))
+      navigate("/patients")
     })
     console.log("Document written with ID: ", newPatientRef.id)
   }
