@@ -8,20 +8,22 @@ import Patients from "../Patients/Patients"
 import AddPatient from "../Patients/AddPatient"
 import Messages from "../Messages/Messages"
 import Analytics from "../Analytics/Analytics"
+import Appointments from "../Appointments/Appointments"
 
 const MainRouter = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/patients" element={<Patients />} />
-      <Route path="/addPatient" element={<AddPatient />} />
-      <Route path="/agenda" element={<Agenda />} />
-      <Route path="/repair" element={<Repair />} />
-      <Route path="/messages" element={<Messages />} />
-      <Route path="/analytics" element={<Analytics />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/patients' element={<Patients />} />
+      <Route path='/addPatient' element={<AddPatient />} />
+      <Route path='/addAppointment' element={<Appointments />} />
+      <Route path='/agenda' element={<Agenda />} />
+      <Route path='/repair' element={<Repair />} />
+      <Route path='/messages' element={<Messages />} />
+      <Route path='/analytics' element={<Analytics />} />
     </Routes>
   )
 }
