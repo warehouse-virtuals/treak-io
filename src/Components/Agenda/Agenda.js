@@ -39,12 +39,12 @@ class Agenda extends Component {
 
   render() {
     return (
-      <div className="flex flex-col h-full w-full">
+      <div className='flex flex-col h-full w-full'>
         <TopBar />
-        <div className="flex rounded-tl-3xl  bg-[#f9faff] items-center justify-center h-full w-full">
+        <div className='flex rounded-tl-3xl  bg-[#f9faff] items-center justify-center h-full w-full'>
           <DnDCalendar
             defaultDate={moment().toDate()}
-            defaultView="month"
+            defaultView='month'
             events={this.state.events}
             localizer={localizer}
             onEventDrop={this.onEventDrop}

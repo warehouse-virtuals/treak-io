@@ -1,13 +1,16 @@
+import { useNavigate } from "react-router-dom"
 import {
   FiUser,
   FiEdit,
   // FiFolder,
-  // FiCalendar,
+  FiCalendar,
   // FiMessageSquare,
   FiTrash,
 } from "react-icons/fi"
 
 const PatientOverview = (props) => {
+  const navigate = useNavigate()
+
   let person = props.focusedPatientData
   let hearingAids = person.hearingAids
 
@@ -76,6 +79,13 @@ const PatientOverview = (props) => {
         <div className='flex mt-10 justify-around items-center '>
           <div>
             <FiTrash size={24} color='red' />
+          </div>
+          <div
+            onClick={() =>
+              navigate("/addAppointment", { state: { patient: person } })
+            }
+          >
+            <FiCalendar size={24} color='blue' />
           </div>
           <div>
             <FiEdit size={24} color='gray' />
