@@ -1,11 +1,99 @@
-import TextInput from "../../UITools/TextInput"
+import React, { useState, useRef } from "react"
+import DatePicker from "react-date-picker"
+
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore"
+import { UserAuth } from "../../Context/AuthContext"
+
 import { useNavigate } from "react-router-dom"
-import Button from "../../UITools/Button"
 import { useTranslation } from "react-i18next"
 
+import TextInput from "../../UITools/TextInput"
+import Button from "../../UITools/Button"
+
 const AddPatient = () => {
+  const [DOB, onChangeDOB] = useState(new Date())
+  const patientNameRef = useRef()
+  const patientSurnameRef = useRef("")
+  const patientPhoneRef = useRef("")
+  const patientEmailRef = useRef("")
+  const addressRef = useRef("")
+  const socialSecurityNumberRef = useRef("")
+  const isMaleRef = useRef()
+  const legalPermitRef = useRef(false)
+
+  const rightAidBrandRef = useRef("")
+  const rightAidModelRef = useRef("")
+  const rightSerialNumberRef = useRef("")
+  const [rightWarrantyStart, onChangeRightWarrantyStart] = useState(new Date())
+  const rightWarrantyDurationRef = useRef("")
+
+  const leftAidBrandRef = useRef("")
+  const leftAidModelRef = useRef("")
+  const leftSerialNumberRef = useRef("")
+  const [leftWarrantyStart, onChangeLeftWarrantyStart] = useState(new Date())
+  const leftWarrantyDurationRef = useRef()
+
   const navigate = useNavigate()
+
   const { t } = useTranslation("addPatient")
+
+  const { userData, db } = UserAuth()
+  console.log(userData)
+
+  const handleAddPatientButtonPress = async () => {
+    const userInformation = {
+      DOB: DOB,
+      SSN: socialSecurityNumberRef.current.value,
+      address: addressRef.current.value,
+      assignedClinic: await userData.clinicID,
+      email: patientEmailRef.current.value,
+      hearingAids: [
+        {
+          aidBrand: rightAidBrandRef.current.value,
+          aidModel: rightAidModelRef.current.value,
+          aidSN: rightSerialNumberRef.current.value,
+          isRightSide: true,
+          warrantStart: rightWarrantyStart,
+          warrantyDuration: rightWarrantyDurationRef.current.value,
+        },
+        {
+          aidBrand: leftAidBrandRef.current.value,
+          aidModel: leftAidModelRef.current.value,
+          aidSN: leftSerialNumberRef.current.value,
+          isRightSide: false,
+          warrantStart: leftWarrantyStart,
+          warrantyDuration: leftWarrantyDurationRef.current.value,
+        },
+      ],
+      id: null,
+      isMale: isMaleRef.current.value === "Erkek" ? true : false,
+      legalPermit: legalPermitRef.current.checked,
+      name: patientNameRef.current.value,
+      phone: patientPhoneRef.current.value,
+      surname: patientSurnameRef.current.value,
+    }
+
+    const newPatientRef = await addDoc(
+      collection(db, "customers/", userData.customerID, "/patients"),
+      userInformation
+    ).then(async (data) => {
+      const patientRef = doc(
+        db,
+        "customers/",
+        userData.customerID,
+        "/patients",
+        data.id
+      )
+      console.log(data.id)
+      await updateDoc(patientRef, {
+        id: data.id,
+      })
+      console.log(data)
+      navigate("/patients")
+    })
+    console.log("Document written with ID: ", newPatientRef.id)
+  }
+
   const handleCancelButtonPress = async () => {
     try {
       navigate("/patients")
@@ -14,92 +102,114 @@ const AddPatient = () => {
     }
   }
   return (
-    <div className="flex pt-5 pl-10 justify-center items-center bg-[#f9faff] text-slate-700 w-full h-full flex-col ">
-      <div className="flex flex-col h-1/2 w-full">
-        <div className="flex h-16 items-center drop-shadow-md font-bold text-3xl">
+    <div className='flex w-full h-full items-center bg-[#f9faff] text-slate-700  flex-col '>
+      <div className='flex mt-10  h-1/4 flex-col w-3/4'>
+        <div className='items-center drop-shadow-md font-bold text-3xl'>
           {t("Personal Information")}
         </div>
-        <div className="flex  ">
+        <div className='flex'>
           <TextInput
-            //   inputRef={}
+            inputRef={patientNameRef}
             type={"text"}
             label={t("Name")}
-            addCSS="w-[400px] mr-20 border-b-2 placeholder:italic "
+            addCSS='border-b-2 placeholder:italic '
           />
           <TextInput
-            //   inputRef={}
+            inputRef={patientSurnameRef}
             type={"text"}
             label={t("Surname")}
-            addCSS="w-[400px] mr-20 border-b-2 placeholder:italic "
+            addCSS=' border-b-2 placeholder:italic '
+          />
+          <TextInput
+            inputRef={patientPhoneRef}
+            type={"text"}
+            label={t("Phone")}
+            addCSS=' border-b-2 placeholder:italic '
           />{" "}
           <TextInput
-            //   inputRef={}
+            inputRef={patientEmailRef}
+            type={"text"}
+            label={t("Email")}
+            addCSS=' border-b-2 placeholder:italic '
+          />
+          <TextInput
+            inputRef={addressRef}
+            type={"text"}
+            label={t("Adress")}
+            addCSS=' border-b-2 placeholder:italic '
+          />
+          <TextInput
+            inputRef={socialSecurityNumberRef}
             type={"text"}
             label={t("ID Number")}
-            addCSS="w-[400px] mr-20 border-b-2 placeholder:italic "
+            addCSS='border-b-2 placeholder:italic '
           />
         </div>
-        <div className="flex w-full items-start justify-start ">
-          <TextInput
-            //   inputRef={}
-            type={"text"}
-            label={t("DOB")}
-            addCSS="w-[400px] mr-20  border-b-2 placeholder:italic "
-          />
-          <TextInput
-            //   inputRef={}
-            type={"text"}
-            label={t("Gender")}
-            addCSS="w-[400px] mr-20 border-b-2 placeholder:italic "
-          />
-          <div class="flex h-full justify-center items-center pt-5 pl-5">
-            <input
-              id="default-checkbox"
-              type="checkbox"
-              value=""
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              for="default-checkbox"
-              class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        <div className='flex items-start justify-start '>
+          <div className='flex'>
+            <DatePicker onChange={onChangeDOB} value={DOB} />
+          </div>
+          <div className='flex justify-center bg-red-300'>
+            <select
+              className='bg-[#f9faff]'
+              name='gender'
+              id='gender'
+              ref={isMaleRef}
             >
-              {t("Permission")}
-            </label>
+              <option>Erkek</option>
+              <option>Kadın</option>
+            </select>
+          </div>
+          <div className='flex h-full justify-center items-center pt-5 pl-5'>
+            <input id='permit' type='checkbox' ref={legalPermitRef} />
+            <label className=''>{t("Permission")}</label>
           </div>
         </div>
       </div>
-      <div className="flex flex-col h-1/2 w-full">
-        <div className="flex h-16 mb-2 items-center drop-shadow-md font-bold text-3xl">
+      <div className='flex h-2/4  flex-col w-3/4'>
+        <div className='items-center drop-shadow-md font-bold text-3xl'>
           {t("Device Information")}
         </div>
-        <div className="flex h-full w-full">
-          <div className="w-1/2 ">
-            <div className="flex font-semibold mb-2 text-[#eb5656] text-xl">
+        <div className='flex justify-between ml-10'>
+          <div className='mt-10'>
+            <div className='flex font-semibold mb-2 text-[#eb5756] text-xl'>
               {t("Right")}
             </div>
             <TextInput
-              //   inputRef={}
+              inputRef={rightSerialNumberRef}
               type={"text"}
               label={t("Serial Number")}
-              addCSS="w-[400px] border-b-2 placeholder:italic "
+              addCSS=' border-b-2 placeholder:italic '
             />
             <TextInput
-              //   inputRef={}
+              inputRef={rightAidBrandRef}
               type={"text"}
               label={t("Device Name")}
-              addCSS="w-[400px] border-b-2 placeholder:italic "
+              addCSS='border-b-2 placeholder:italic '
             />
-            <div className="flex items-center">
-              <TextInput
-                //   inputRef={}
-                type={"text"}
-                label={t("Warranty Start Date")}
-                addCSS="w-[400px] mr-20  border-b-2 placeholder:italic "
-              />
-              <label className="font-semibold mr-5" for="duration">
+            <TextInput
+              inputRef={rightAidModelRef}
+              type={"text"}
+              label={t("Device Name")}
+              addCSS='border-b-2 placeholder:italic '
+            />
+            <div className='flex items-center'>
+              <div className='flex flex-col'>
+                {t("Warranty Start Date")}
+                <DatePicker
+                  onChange={onChangeRightWarrantyStart}
+                  value={rightWarrantyStart}
+                />
+              </div>
+              <label className='font-semibold mr-5'>
                 {t("Warranty Duration")}:
               </label>
-              <select className="bg-[#f9faff]" name="duration" id="duration">
+              <select
+                className='bg-[#f9faff]'
+                name='duration'
+                id='duration'
+                ref={rightWarrantyDurationRef}
+              >
                 <option>3 {t("Month")} </option>
                 <option>6 {t("Month")}</option>
                 <option>1 {t("Years")}</option>
@@ -107,33 +217,45 @@ const AddPatient = () => {
               </select>
             </div>
           </div>
-          <div className="w-1/2 ">
-            <div className="flex font-semibold mb-2 text-[#5c8cd9] text-xl">
+          <div className='mt-10'>
+            <div className='flex font-semibold mb-2 text-[#5c8cd9] text-xl'>
               {t("Left")}
             </div>
             <TextInput
-              //   inputRef={}
+              inputRef={leftSerialNumberRef}
               type={"text"}
               label={t("Serial Number")}
-              addCSS="w-[400px] border-b-2 placeholder:italic "
+              addCSS=' border-b-2 placeholder:italic '
             />
             <TextInput
-              //   inputRef={}
+              inputRef={leftAidBrandRef}
               type={"text"}
               label={t("Device Name")}
-              addCSS="w-[400px] border-b-2 placeholder:italic "
+              addCSS=' border-b-2 placeholder:italic '
             />
-            <div className="flex items-center">
-              <TextInput
-                //   inputRef={}
-                type={"text"}
-                label={t("Warranty Start Date")}
-                addCSS="w-[400px] mr-20  border-b-2 placeholder:italic "
-              />
-              <label className="font-semibold mr-5" for="duration">
+            <TextInput
+              inputRef={leftAidModelRef}
+              type={"text"}
+              label={t("Device Name")}
+              addCSS=' border-b-2 placeholder:italic '
+            />
+            <div className='flex items-center'>
+              <div className='flex flex-col'>
+                {t("Warranty Start Date")}
+                <DatePicker
+                  onChange={onChangeLeftWarrantyStart}
+                  value={leftWarrantyStart}
+                />
+              </div>
+              <label className='font-semibold ' for='duration'>
                 {t("Warranty Duration")}:
               </label>
-              <select className="bg-[#f9faff]" name="duration" id="duration">
+              <select
+                className='bg-[#f9faff]'
+                name='duration'
+                id='duration'
+                ref={leftWarrantyDurationRef}
+              >
                 <option>3 {t("Month")} </option>
                 <option>6 {t("Month")}</option>
                 <option>1 {t("Years")}</option>
@@ -143,8 +265,8 @@ const AddPatient = () => {
           </div>
         </div>
       </div>
-      <div className="flex h-[300px] justify-evenly items-center w-full">
-        <div className="w-[200px]">
+      <div className='flex h-1/4 justify-evenly items-center w-full'>
+        <div className='w-[120px]'>
           <Button
             label={t("Cancel")}
             onClick={handleCancelButtonPress}
@@ -153,10 +275,10 @@ const AddPatient = () => {
             }
           />
         </div>
-        <div className="w-[200px]">
+        <div className='w-[120px]'>
           <Button
             label={t("Save")}
-            // onClick={handleLoginButtonPress}
+            onClick={handleAddPatientButtonPress}
             addCSS={
               "flex items-center justify-center bg-green-500 hover:bg-[#273169]"
             }

@@ -17,6 +17,8 @@ import {
   getDocs,
   orderBy,
   limit,
+  startAt,
+  endAt,
 } from "firebase/firestore"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 
@@ -70,6 +72,8 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const logout = () => {
+    setUser({})
+    setUserData({})
     return signOut(auth)
   }
 
@@ -81,7 +85,6 @@ export const AuthContextProvider = ({ children }) => {
       getDownloadURL(ppRef).then((promise) => {
         const ppurl = promise
         setUserData({ ...data, ppurl: ppurl })
-        console.log(userData)
       })
     })
   }
@@ -96,7 +99,6 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const getPatients = async (customerid, usersClinic) => {
-    console.log(customerid)
     const patientsRef = collection(db, "customers/", customerid, "/patients")
     const q = query(patientsRef, where("assignedClinic", "==", usersClinic))
     const querySnapshotOfAssignedPatients = await getDocs(q)
@@ -106,6 +108,31 @@ export const AuthContextProvider = ({ children }) => {
     })
     return arr
   }
+
+  const searchResults = async (
+    customerid,
+    usersClinic,
+    searchText,
+    numberCheck
+  ) => {
+    const patientsRef = collection(db, "customers/", customerid, "/patients")
+    const orderDecider = numberCheck ? "phone" : "name"
+    const q = query(
+      patientsRef,
+      where("assignedClinic", "==", usersClinic),
+      orderBy(orderDecider),
+      limit(8),
+      startAt(searchText),
+      endAt(searchText + "\uf8ff")
+    )
+    const querySnapshotOfAssignedPatients = await getDocs(q)
+    let arr = []
+    querySnapshotOfAssignedPatients.forEach((doc) => {
+      arr.push(doc.data())
+    })
+    return arr
+  }
+
   const getAppointments = async (customerid, usersClinic, limitCount) => {
     const patientsRef = collection(
       db,
@@ -123,9 +150,9 @@ export const AuthContextProvider = ({ children }) => {
     })
     return arr
   }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(auth.currentUser.uid)
       try {
         setUser(currentUser)
         fetchUserData(auth.currentUser.uid)
@@ -150,7 +177,9 @@ export const AuthContextProvider = ({ children }) => {
         fetchUserData,
         userData,
         getPatients,
+        db,
         getAppointments,
+        searchResults,
       }}
     >
       {children}

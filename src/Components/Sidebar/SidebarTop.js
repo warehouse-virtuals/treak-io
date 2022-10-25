@@ -1,5 +1,4 @@
 const SidebarTop = (props) => {
-  console.log(props.userData.ppurl)
   return (
     <div className="flex justify-center items-center h-[100px] w-full">
       <div className="flex justify-left items-center space h-10 select-none  w-1/4 "></div>

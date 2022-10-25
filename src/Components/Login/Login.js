@@ -59,34 +59,34 @@ const Login = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-row bg-[#f9faff]">
-      <div className="w-full h-full lg:w-1/2 flex items-center content-center  flex-col">
-        <div className="flex items-center h-[80px] w-full pl-10 pt-5 select-none text-4xl font-normal">
-          <img alt="svg" className="w-[60px] mr-5" src={umboLogo} />
+    <div className='w-full h-full flex flex-row bg-[#f9faff]'>
+      <div className='w-full h-full lg:w-1/2 flex items-center content-center  flex-col'>
+        <div className='flex items-center h-[80px] w-full pl-10 pt-5 select-none text-4xl font-normal'>
+          <img alt='svg' className='w-[60px] mr-5' src={umboLogo} />
           Umbo
         </div>
-        <div className="w-full h-full flex items-center justify-center flex-col ">
-          <h6 className="dark:text-white text-slate-700 text-6xl mb-5 select-none ">
+        <div className='w-full h-full flex items-center justify-center flex-col '>
+          <h6 className='dark:text-white text-slate-700 text-6xl mb-5 select-none '>
             {welcomeMessage()}
           </h6>
-          <h6 className="dark:text-white text-slate-700 text-2xl mb-10 select-none font-thin">
+          <h6 className='dark:text-white text-slate-700 text-2xl mb-10 select-none font-thin'>
             Uygulamaya giriş yap
           </h6>
-          <div className="flex items-center justify-center flex-col">
+          <div className='flex items-center justify-center flex-col'>
             <TextInput
               onInput={null}
               inputRef={emailRef}
               type={"text"}
               label={t("E-Mail")}
               placeholder={t("E-Mail")}
-              addCSS="w-[400px] mb-5 placeholder:italic"
+              addCSS='w-[400px] mb-5 placeholder:italic'
             />
             <TextInput
               inputRef={passwordRef}
               type={"password"}
               label={t("Password")}
               placeholder={t("Password")}
-              addCSS="w-[400px] placeholder:italic "
+              addCSS='w-[400px] placeholder:italic '
             />
           </div>
           <Button
@@ -95,13 +95,13 @@ const Login = () => {
             addCSS={"bg-[#20295a] hover:bg-[#273169]"}
           />
         </div>
-        <div className="flex items-center h-16 text-slate-900 text-lg ">
-          <img alt="svg" className="w-[36px] " src={tesseractLogo} />
+        <div className='flex items-center h-16 text-slate-900 text-lg '>
+          <img alt='svg' className='w-[36px] ' src={tesseractLogo} />
           Warehouse, Inc.
         </div>
       </div>
-      <div className="hidden lg:flex w-1/2 justify-center select-none m-7 rounded-3xl bg-gradient-to-r from-[#20295a] to-[#6966c1] ">
-        <img alt="svg" className="w-1/2" src={LoginSvg} />
+      <div className='hidden lg:flex w-1/2 justify-center select-none m-7 rounded-3xl bg-gradient-to-r from-[#20295a] to-[#6966c1] '>
+        <img alt='svg' className='w-1/2' src={LoginSvg} />
       </div>
     </div>
   )

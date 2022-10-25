@@ -6,21 +6,15 @@ const AppointmentList = (props) => {
   const [appointments, setAppointments] = useState([])
   const { getAppointments, userData } = UserAuth()
 
+  const fetchAppointmentData = async () => {
+    return await getAppointments(userData.customerID, userData.clinicID, 5)
+  }
+
   useEffect(() => {
-    const fetchAppointmentData = async () => {
-      const data = await getAppointments(
-        userData.customerID,
-        userData.clinicID,
-        5
-      )
-      const stateSetter = (data) => {
-        setAppointments(data)
-      }
-      await stateSetter(data)
-    }
-    fetchAppointmentData()
+    fetchAppointmentData().then((data) => setAppointments(data))
+
     //eslint-disable-next-line
-  }, [])
+  }, [userData])
   console.log(appointments)
 
   const tbodyData = []
@@ -55,10 +49,10 @@ const AppointmentList = (props) => {
 
   const TableHeadItem = ({ item }) => {
     return (
-      <div className="pl-3 gap-10 grid grid-cols-5 mb-3 ">
+      <div className='pl-3 gap-10 grid grid-cols-5 mb-3 '>
         {item.map((h, index) => {
           return (
-            <div key={index} className="">
+            <div key={index} className=''>
               {h}
             </div>
           )
@@ -81,9 +75,9 @@ const AppointmentList = (props) => {
       <div
         className={`grid border-r-8 hover:bg-slate-100 ${statusColor} transition-all pl-5 gap-10 items-center grid-cols-5 text-sm mb-1 h-14 rounded-2xl drop-shadow-sm bg-white`}
       >
-        {data.items.map((item) => {
+        {data.items.map((item, index) => {
           return (
-            <div className="border-r-2 border-slate-100 " key={item}>
+            <div className='border-r-2 border-slate-100 ' key={index}>
               {item}
             </div>
           )
@@ -94,10 +88,10 @@ const AppointmentList = (props) => {
   const Table = ({ theadData, tbodyData, customClass }) => {
     return (
       <div className={customClass}>
-        <div className="text-[#c4c8d5] text-sm font-semibold">
+        <div className='text-[#c4c8d5] text-sm font-semibold'>
           <TableHeadItem item={theadData} />
         </div>
-        <div className="">
+        <div className=''>
           {tbodyData.map((item) => {
             return <TableRow key={item.id} data={item} />
           })}
@@ -107,11 +101,11 @@ const AppointmentList = (props) => {
   }
 
   return (
-    <div className="flex w-full">
+    <div className='flex w-full'>
       <Table
         theadData={theadData}
         tbodyData={tbodyData}
-        customClass="w-full font-normal "
+        customClass='w-full font-normal '
       />
     </div>
   )
