@@ -8,6 +8,7 @@ import { UserAuth } from "../../Context/AuthContext"
 
 const SearchField = (props) => {
   const [foundPatients, setFoundPatients] = useState([])
+
   const { userData, searchResults } = UserAuth()
   const searchTextRef = useRef("")
   const { t } = useTranslation("dashboard")
@@ -30,12 +31,12 @@ const SearchField = (props) => {
   }
 
   return (
-    <div className=''>
+    <div className={props.page === "appointment" ? "w-full" : "w-[400px]"}>
       <div
         className={
           foundPatients.length > 0
-            ? "bg-white rounded-t-3xl flex justify-center h-9 items-center w-[400px] "
-            : "bg-white rounded-3xl flex justify-center h-9 items-center w-[400px] "
+            ? "bg-white rounded-t-3xl flex justify-center h-9 items-center w-full "
+            : "bg-white rounded-3xl flex justify-center h-9 items-center w-full "
         }
       >
         <input
@@ -46,10 +47,13 @@ const SearchField = (props) => {
         />
         <FiSearch color='#1d2431' className='h-full mr-4' size={34} />
       </div>
-      <div className='absolute drop-shadow-md w-[400px]'>
+      <div className='absolute drop-shadow-md w-full'>
         {foundPatients.map((patient, i) => {
           return (
             <div
+              onClick={() => {
+                props.sendDataToParent(patient.name + " " + patient.surname)
+              }}
               key={i}
               className='flex hover:bg-slate-200  items-center text-slate-700 bg-white h-10 '
             >

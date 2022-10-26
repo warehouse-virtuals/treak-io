@@ -8,7 +8,7 @@ import Patients from "../Patients/Patients"
 import AddPatient from "../Patients/AddPatient"
 import Messages from "../Messages/Messages"
 import Analytics from "../Analytics/Analytics"
-import Appointments from "../Appointments/Appointments"
+import AddAppointments from "../UpcomingAppointments/AddAppointments"
 
 const MainRouter = () => {
   return (
@@ -19,7 +19,7 @@ const MainRouter = () => {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/patients' element={<Patients />} />
       <Route path='/addPatient' element={<AddPatient />} />
-      <Route path='/addAppointment' element={<Appointments />} />
+      <Route path='/addAppointment' element={<AddAppointments />} />
       <Route path='/agenda' element={<Agenda />} />
       <Route path='/repair' element={<Repair />} />
       <Route path='/messages' element={<Messages />} />
