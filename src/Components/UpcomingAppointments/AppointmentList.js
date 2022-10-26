@@ -62,11 +62,11 @@ const AppointmentList = (props) => {
   }
   const TableRow = ({ data }) => {
     const colorPicker = (appointmentStatus) => {
-      if (appointmentStatus === "closed") {
+      if (appointmentStatus === "Closed") {
         return "border-green-300"
-      } else if (appointmentStatus === "waiting") {
+      } else if (appointmentStatus === "Waiting") {
         return "border-orange-300"
-      } else if (appointmentStatus === "cancelled") {
+      } else if (appointmentStatus === "Cancelled") {
         return "border-red-300"
       }
     }
