@@ -1,12 +1,12 @@
 import React, { Component } from "react"
 import { Calendar, momentLocalizer } from "react-big-calendar"
 import moment from "moment"
+import "moment/locale/tr"
 import TopBar from "../TopBar/TopBar"
 
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop"
+import "./Agenda.css"
 
-import "react-big-calendar/lib/addons/dragAndDrop/styles.css"
-import "react-big-calendar/lib/css/react-big-calendar.css"
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop"
 
 const localizer = momentLocalizer(moment)
 const DnDCalendar = withDragAndDrop(Calendar)
@@ -16,8 +16,8 @@ class Agenda extends Component {
     events: [
       {
         start: moment().toDate(),
-        end: moment().add(1, "days").toDate(),
-        title: "Some title",
+        end: moment().add(2, "hours").toDate(),
+        title: "Aylık Kontrol",
       },
     ],
   }
@@ -43,14 +43,16 @@ class Agenda extends Component {
         <TopBar />
         <div className='flex rounded-tl-3xl  bg-[#f9faff] items-center justify-center h-full w-full'>
           <DnDCalendar
+            min={moment("8:00 AM", "h:mm A")}
+            max={moment("21:00 pM", "h:mm A")}
             defaultDate={moment().toDate()}
-            defaultView='month'
+            defaultView='week'
             events={this.state.events}
             localizer={localizer}
             onEventDrop={this.onEventDrop}
             onEventResize={this.onEventResize}
             resizable
-            style={{ height: "50vh", width: "50vw" }}
+            style={{ height: "80vh", width: "80vw" }}
           />
         </div>
       </div>

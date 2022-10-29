@@ -8,7 +8,7 @@ import Patients from "../Patients/Patients"
 import AddPatient from "../Patients/AddPatient"
 import Messages from "../Messages/Messages"
 import Analytics from "../Analytics/Analytics"
-import AddAppointments from "../UpcomingAppointments/AddAppointments"
+import AddAppointments from "../Appointments/AddAppointments"
 
 const MainRouter = () => {
   return (
