@@ -15,7 +15,6 @@ const AppointmentList = (props) => {
 
     //eslint-disable-next-line
   }, [userData])
-  console.log(appointments)
 
   const tbodyData = []
 

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next"
 import HiMsg from "../HiMsg/HiMsg"
 
 import CardContainer from "../Card/CardContainer"
-import UpcomingAppointments from "../UpcomingAppointments/UpcomingAppointments"
+import UpcomingAppointments from "../Appointments/UpcomingAppointments"
 import TopBar from "../TopBar/TopBar"
 import Sidebar from "../Sidebar/Sidebar"
 
