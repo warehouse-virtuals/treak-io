@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
-import DatePicker from "react-date-picker"
+import DateTimePicker from "react-datetime-picker"
 
 import { collection, addDoc, Timestamp } from "firebase/firestore"
 
@@ -17,6 +17,7 @@ const AddAppointments = () => {
 
   const appointedToRef = useRef("")
   const [appointmentDate, onChangeAppointmentDate] = useState(new Date())
+
   const appointmentReasonRef = useRef("")
   const appointmentStatusRef = useRef("")
 
@@ -90,7 +91,7 @@ const AddAppointments = () => {
           <div className='flex items-start justify-start mt-10 '>
             <div className='flex flex-col mr-20'>
               <div className='font-semibold  text-slate-700'>{t("Date")}</div>
-              <DatePicker
+              <DateTimePicker
                 onChange={onChangeAppointmentDate}
                 value={appointmentDate}
               />

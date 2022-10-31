@@ -1,66 +1,99 @@
-import React, { Component } from "react"
-import { Calendar, momentLocalizer } from "react-big-calendar"
+import { useState, useEffect } from "react"
+import { UserAuth } from "../../Context/AuthContext"
+// import { useNavigate } from "react-router-dom"
+// import { useTranslation } from "react-i18next"
+// import { FiPlus } from "react-icons/fi"
+
+import { toDate } from "date-fns"
+import add from "date-fns/add"
+
+import { Scheduler } from "@aldabil/react-scheduler"
 
 import TopBar from "../TopBar/TopBar"
 
-import moment from "moment"
-import "moment/locale/tr"
+import tr from "date-fns/locale/tr"
 
-import "./Agenda.css"
+const Agenda = (props) => {
+  const [appointments, setAppointments] = useState([])
+  const { getAppointments, userData } = UserAuth()
+  // const navigate = useNavigate()
 
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop"
-import { defaultMessages } from "./defaultMessages"
+  // const { t } = useTranslation("dashboard")
 
-const localizer = momentLocalizer(moment)
-const DnDCalendar = withDragAndDrop(Calendar)
+  const fetchAppointmentData = async () => {
+    const appointments = await getAppointments(
+      userData.customerID,
+      userData.clinicID,
+      5
+    )
 
-class Agenda extends Component {
-  state = {
-    events: [
-      {
-        start: moment().toDate(),
-        end: moment().add(6, "hours").toDate(),
-        title: "Aylık Kontrol",
-      },
-    ],
-  }
+    const fixedList = appointments.map((appointment, i) => {
+      const date = toDate(appointment.date.seconds * 1000)
+      const obj = {
+        event_id: appointment.date.seconds,
+        title: appointment.reason,
+        start: date,
+        end: add(date, { hours: 2 }),
+      }
 
-  onEventResize = (data) => {
-    const { start, end } = data
-    this.setState((state) => {
-      state.events[0].start = start
-      state.events[0].end = end
-      return { events: [...state.events] }
+      return obj
     })
+    return await fixedList
   }
 
-  onEventDrop = ({ event, start, end, isAllDay }) => {
-    const updatedEvent = { ...event, start, end, isAllDay }
-    this.setState({ events: [updatedEvent] })
-  }
+  // const handleAddAppointmentButtonClick = async () => {
+  //   try {
+  //     navigate("/addAppointment")
+  //     console.log("Clicked Add Button")
+  //   } catch (error) {
+  //     console.log(error.message)
+  //   }
+  // }
 
-  render() {
-    return (
-      <div className='flex flex-col h-full w-full'>
-        <TopBar />
-        <div className='flex rounded-tl-3xl  bg-[#f9faff] items-center justify-center h-full w-full'>
-          <DnDCalendar
-            min={moment("8:00 AM", "h:mm A")}
-            max={moment("21:00 pM", "h:mm A")}
-            messages={defaultMessages}
-            defaultDate={moment().toDate()}
-            defaultView='week'
-            events={this.state.events}
-            localizer={localizer}
-            onEventDrop={this.onEventDrop}
-            onEventResize={this.onEventResize}
-            resizable
-            style={{ height: "80vh", width: "80vw" }}
+  useEffect(() => {
+    fetchAppointmentData().then((data) => {
+      setAppointments(data)
+    })
+
+    //eslint-disable-next-line
+  }, [userData])
+
+  return (
+    <div className='flex flex-col h-full w-full'>
+      <TopBar />
+      <div className='flex rounded-tl-3xl  bg-[#f9faff] items-center justify-center h-full w-full'>
+        <div className='justify-center items-center w-5/6'>
+          <Scheduler
+            locale={tr}
+            height={700}
+            view='week'
+            week={{
+              weekDays: [0, 1, 2, 3, 4, 5],
+              weekStartOn: 6,
+              startHour: 9,
+              endHour: 20,
+              step: 60,
+            }}
+            month={{
+              weekDays: [0, 1, 2, 3, 4, 5, 6],
+              weekStartOn: 1,
+              startHour: 9,
+              endHour: 20,
+            }}
+            events={appointments}
           />
         </div>
+        {/* <div className='flex h-full w-1/4 bg-green-300  '>
+          <div
+            onClick={handleAddAppointmentButtonClick}
+            className='flex items-center justify-center h-12 w-12 rounded-l-2xl rounded-tr-2xl bg-[#59e2f7] mb-5 hover:bg-[#48c3d6]  '
+          >
+            <FiPlus size={22} className=' text-white ' />
+          </div>
+        </div> */}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Agenda
