@@ -11,8 +11,6 @@ import { useTranslation } from "react-i18next"
 import SearchField from "../SearchField/SearchField"
 import Button from "../../UITools/Button"
 
-import TopBar from "../TopBar/TopBar"
-
 const AddAppointments = () => {
   const [carers, setCarers] = useState([])
   const [selectedPatient, setSelectedPatient] = useState(null)
@@ -77,7 +75,6 @@ const AddAppointments = () => {
 
   return (
     <div className='flex flex-col h-full w-full'>
-      <TopBar />
       <div className='flex w-full h-full items-center bg-[#f9faff] text-slate-700  flex-col '>
         <div className='flex mt-10  h-1/4 flex-col w-3/4'>
           <div className='items-center drop-shadow-md font-bold text-3xl'>
@@ -106,8 +103,9 @@ const AddAppointments = () => {
                 id='gender'
                 ref={appointmentStatusRef}
               >
-                <option>{t("Waiting")}</option>
-                <option>{t("Closed")}</option>
+                <option>{t("Pending")}</option>
+                <option>{t("Scheduled")}</option>
+                <option>{t("Completed")}</option>
                 <option>{t("Cancelled")}</option>
               </select>
             </div>

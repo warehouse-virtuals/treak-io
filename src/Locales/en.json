@@ -77,6 +77,8 @@
     "Save": "Save",
     "Cancel": "Cancel"
   },
+  "agenda": { "Today": "Today", "Previous": "Previous", "Next": "Next" },
+
   "addAppointment": {
     "Add Appointment": "Add Appointment",
     "Name": "Name",

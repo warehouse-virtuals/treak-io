@@ -76,6 +76,7 @@
     "Save": "Kaydet",
     "Cancel": "Vazgeç"
   },
+  "agenda": { "Today": "Bugün", "Previous": "Önceki", "Next": "Sonraki" },
   "addAppointment": {
     "Add Appointment": "Randevu Ekle",
     "Name": "İsim",

@@ -1,8 +1,12 @@
 @charset "UTF-8";
 
 /* Bugün */
-.rbc-today {
-  background-color: #b7d7ef;
+.rbc-today .rbc-button-link{padding: 3px;
+  background-color: #59e3f7;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color:white
 }
 
 /* Önceki ve sonraki aylar, off range, limit dışı */
@@ -26,14 +30,13 @@
   text-align: center;
   vertical-align: middle;
   font-weight: bold;
-  font-size: 90%;
-  min-height: 0;
-  border-bottom: 1px solid #ddd;
+  font-size: 100%;
+  min-height: 30px;
  
 }
 /* Headerdaki ilk item hariç diğerleri */
 .rbc-header + .rbc-header {
-  border-left: 1px solid #ddd;
+
 }
 
 /* Toolbar kısmısı */
@@ -49,7 +52,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   font-size: 16px;
 }
 
@@ -60,21 +63,26 @@
   flex-grow: 1;
   padding: 0 10px;
   text-align: center;
-  /* font-size:  20px */
+  font-size:  22px;
+  color:#1e2434;
+  font-weight:500;
+  font-style: italic;
+  /* border: 1px solid rgb(0, 0, 0); */
+  width: 10%;
 }
 
 /* Toolbar butonları genel */
 .rbc-toolbar button {
-  color: #373a3c;
+  color: #000000;
   display: inline-block;
   margin: 0;
   text-align: center;
   vertical-align: middle;
   background: none;
   background-image: none;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   padding: 0.375rem 1rem;
-  border-radius: 4px;
+  border-radius: 15px;
   line-height: normal;
   white-space: nowrap;
 }
@@ -143,10 +151,8 @@
   -webkit-box-shadow: none;
   box-shadow: none;
   margin: 0;
-  padding: 2px 5px;
-  background-color: #438fd1;
-  border-radius: 5px;
-  color: #fff;
+  padding: 10px 10px;
+  background-color: #e7fbff;
   cursor: pointer;
   width: 100%;
   text-align: left;
@@ -160,7 +166,7 @@
 /* Etkinlik seçildiğinde focus oluyor, focus cssi*/
 .rbc-event:focus,
 .rbc-day-slot .rbc-background-event:focus {
-  outline: 5px auto #3b99fc;
+  outline: 5px auto #305276;
 }
 
 /* 2 event üst üste geldiğinde */
@@ -186,13 +192,14 @@
   border-top-right-radius: 0;
 }
 .rbc-event-continues-later {
-  border-bottom-left-radius: 10;
+  border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 /* Eventın containerı diyebilirim */
 .rbc-row-segment {
   padding: 0 1px 1px 1px;
+
 }
 
 /* Seçili hücre diyor ama bulamadım */
@@ -250,6 +257,7 @@
   min-width: 0;
   padding-right: 5px;
   text-align: right;
+  
 }
 
 /* Tekil günün headerı */
@@ -262,11 +270,14 @@
   -webkit-box-flex: 1;
   -ms-flex: 1 0 0%;
   flex: 1 0 0%;
+  
+  
 }
 
 /* Günlerin ilk item dışındakileri, eventi etkilemiyor */
 .rbc-day-bg + .rbc-day-bg {
   border-left: 1px solid #ddd;
+  min-height: 0;
 }
 
 /* Agenda sayfası */
@@ -343,6 +354,7 @@
 /* Agenda sayfası event body rowları */
 .rbc-agenda-event-cell {
   width: 100%;
+
 }
 
 /* Agenda sayfası date ve time body rowları */
@@ -362,8 +374,7 @@
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
-  width: 100%;
-  border-top: 2px solid #ddd;
+  width: 100%;  
   overflow-y: auto;
   position: relative;
 }
@@ -378,6 +389,9 @@
   -ms-flex-direction: column;
   flex-direction: column;
   min-height: 100%;
+  
+
+  
 }
 
 /* Week ve Day sayfaları saat rowları */
@@ -385,12 +399,12 @@
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+ 
 }
 
 /* Week ve Day sayfaları saat rowları ilk item hariç*/
 .rbc-timeslot-group {
-  border-bottom: 1px solid #ddd;
-  min-height: 40px;
+  min-height: 150px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -398,6 +412,9 @@
   -webkit-box-direction: normal;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
+  border-bottom: 1px solid #ddd;
+ 
+  
 }
 
 /* Week ve Day sayfaları gün slotları*/
@@ -411,19 +428,48 @@
   left: 0;
   position: absolute;
   right: 0;
-  margin-right: 10px;
+  margin-right: 0px;
   top: 0;
+ 
+}
+.rbc-time-content{
+  
+  background: white;
+}
+.rbc-time-content:-webkit-scrollbar-track
+{
+	border: 1px solid rgb(206, 14, 14);
+	background-color: #F5F5F5;
+}
+.rbc-time-content::-webkit-scrollbar
+{
+	width: 10px;
+  border-radius: 10px;
+	background-color: #d6dff4;
+}
+
+.rbc-time-content::-webkit-scrollbar-thumb
+{
+	
+	border-radius: 10px;
+	background-color:#20295a
+}
+
+
+.rbc-time-gutter{
+  background: #f9faff;
+  border: none;
 }
 
 /* Eventin özellikleri */
 .rbc-day-slot .rbc-event,
 .rbc-day-slot .rbc-background-event {
-  border: 1px solid #265985;
+ 
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   max-height: 100%;
-  min-height: 20px;
+  min-height: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-flow: column wrap;
@@ -433,8 +479,14 @@
   align-items: flex-start;
   overflow: hidden;
   position: absolute;
+  border-right: 10px solid #5ae2f7;
+  border-radius: 10px ;
 }
-
+.rbc-event {
+  font-size: large;
+  font-weight:600;
+  color: #1e2533;
+}
 /* Eventin headerı, saat kısmı */
 .rbc-day-slot .rbc-event-label {
   -webkit-box-flex: 0;
@@ -457,7 +509,8 @@
 
 /* 30 dakika çizgileri */
 .rbc-day-slot .rbc-time-slot {
-  border-top: 1px solid #f7f7f7;
+  border-top: 1px dashed #f3f3f3;
+ 
 }
 
 /* Weekde all day containerı */
@@ -466,9 +519,14 @@
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
   width: 100%;
-  height: 100%;
+  height: 30%;
   position: relative;
+
 }
+.rbc-time-header-cell{
+  height: 60px;
+}
+
 
 /* Week ve Day sayfaları header container*/
 .rbc-time-header-content {
@@ -483,12 +541,15 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  border-left: 1px solid #ddd;
+ 
+}
+.rbc-row{
+ 
 }
 .rbc-time-view .rbc-row {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  min-height: 20px;
+  min-height: 0;
 }
 
 /* Drag n Dropta eventin bulunduğu kısım  */
@@ -499,6 +560,7 @@
 /*--------Aşağıdakileri anlamadım .s -------------*/
 .rbc-time-slot.rbc-now {
   font-weight: bold;
+ 
 }
 .rbc-day-header {
   text-align: center;
@@ -510,15 +572,20 @@
   -webkit-box-flex: 1;
   -ms-flex: 1 0 0px;
   flex: 1 0 0;
+
 }
 .rbc-time-gutter,
 .rbc-header-gutter {
   -webkit-box-flex: 0;
   -ms-flex: none;
   flex: none;
+  
 }
 .rbc-label {
+  color: #c5c7d7;
   padding: 0 5px;
+  font-size:small;
+
 }
 .rbc-slot-selection {
   z-index: 10;
@@ -543,6 +610,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+
 }
 /* ---------------ama önemli gibi--------------- */
 
@@ -635,6 +703,8 @@ button.rbc-input::-moz-focus-inner {
   user-select: none;
   -webkit-user-select: none;
   z-index: 4;
+  min-height: 0px;
+ 
 }
 .rbc-row-content-scrollable {
   display: -webkit-box;
@@ -686,7 +756,7 @@ button.rbc-input::-moz-focus-inner {
   pointer-events: none;
 }
 .rbc-event-label {
-  font-size: 10%;
+  font-size: 60%;
 }
 .rbc-row {
   display: -webkit-box;
@@ -718,6 +788,7 @@ button.rbc-input::-moz-focus-inner {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+ 
 }
 .rbc-month-row {
   display: -webkit-box;
@@ -735,6 +806,7 @@ button.rbc-input::-moz-focus-inner {
   flex-basis: 0px;
   overflow: hidden;
   height: 100%;
+  
 }
 .rbc-date-cell > a,
 .rbc-date-cell > a:active,
@@ -775,7 +847,7 @@ button.rbc-input::-moz-focus-inner {
 .rbc-time-view-resources .rbc-time-header-gutter {
   position: sticky;
   left: 0;
-  background-color: white;
+  
   border-right: 1px solid #ddd;
   z-index: 10;
   margin-right: -1px;
@@ -794,9 +866,11 @@ button.rbc-input::-moz-focus-inner {
 }
 .rbc-time-view-resources .rbc-time-header-cell-single-day {
   display: none;
+
 }
 .rbc-time-view-resources .rbc-day-slot {
   min-width: 140px;
+
 }
 .rbc-time-view-resources .rbc-header,
 .rbc-time-view-resources .rbc-day-bg {
@@ -822,16 +896,15 @@ button.rbc-input::-moz-focus-inner {
   -ms-flex: 1;
   flex: 1;
   width: 100%;
-  border: 1px solid #ddd;
   min-height: 0;
-
 }
 .rbc-time-view .rbc-time-gutter {
   white-space: nowrap;
   text-align: right;
 }
+
 .rbc-time-view .rbc-allday-cell + .rbc-allday-cell {
-  border-left: 1px solid #ddd;
+  /* border-left: 1px solid #ddd; */
 
 }
 .rbc-time-view .rbc-allday-events {
@@ -840,7 +913,7 @@ button.rbc-input::-moz-focus-inner {
 
 }
 .rbc-time-header.rbc-overflowing {
-  border-right: 1px solid #ddd;
+
 }
 .rbc-rtl .rbc-time-header.rbc-overflowing {
   border-right-width: 0;
@@ -854,6 +927,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .rbc-time-header-cell-single-day {
   display: none;
+  
 }
 .rbc-rtl .rbc-time-header-content {
   border-left-width: 0;
@@ -869,14 +943,18 @@ button.rbc-input::-moz-focus-inner {
   -webkit-box-flex: 0;
   -ms-flex: none;
   flex: none;
+  
+  
 }
 .rbc-time-content > * + * > * {
   border-left: 1px solid #ddd;
+  
   
 }
 .rbc-rtl .rbc-time-content > * + * > * {
   border-left-width: 0;
   border-right: 1px solid #ddd;
+  
 }
 .rbc-time-content > .rbc-day-slot {
   width: 100%;

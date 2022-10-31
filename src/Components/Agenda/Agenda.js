@@ -1,12 +1,15 @@
 import React, { Component } from "react"
 import { Calendar, momentLocalizer } from "react-big-calendar"
+
+import TopBar from "../TopBar/TopBar"
+
 import moment from "moment"
 import "moment/locale/tr"
-import TopBar from "../TopBar/TopBar"
 
 import "./Agenda.css"
 
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop"
+import { defaultMessages } from "./defaultMessages"
 
 const localizer = momentLocalizer(moment)
 const DnDCalendar = withDragAndDrop(Calendar)
@@ -16,7 +19,7 @@ class Agenda extends Component {
     events: [
       {
         start: moment().toDate(),
-        end: moment().add(2, "hours").toDate(),
+        end: moment().add(6, "hours").toDate(),
         title: "Aylık Kontrol",
       },
     ],
@@ -24,7 +27,6 @@ class Agenda extends Component {
 
   onEventResize = (data) => {
     const { start, end } = data
-
     this.setState((state) => {
       state.events[0].start = start
       state.events[0].end = end
@@ -45,6 +47,7 @@ class Agenda extends Component {
           <DnDCalendar
             min={moment("8:00 AM", "h:mm A")}
             max={moment("21:00 pM", "h:mm A")}
+            messages={defaultMessages}
             defaultDate={moment().toDate()}
             defaultView='week'
             events={this.state.events}
