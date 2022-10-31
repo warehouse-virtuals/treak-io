@@ -12,13 +12,13 @@ const AppointmentList = (props) => {
 
   useEffect(() => {
     fetchAppointmentData().then((data) => setAppointments(data))
-
     //eslint-disable-next-line
   }, [userData])
 
   const tbodyData = []
 
   appointments.forEach((appointment, i) => {
+    console.log("test")
     const date = toDate(appointment.date.seconds * 1000).toLocaleDateString()
     const time = toDate(appointment.date.seconds * 1000).toLocaleTimeString({
       hourCycle: "hour12",
