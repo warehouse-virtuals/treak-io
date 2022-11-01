@@ -104,8 +104,7 @@ const AddAppointments = () => {
                 id='gender'
                 ref={appointmentStatusRef}
               >
-                <option>{t("Pending")}</option>
-                <option>{t("Scheduled")}</option>
+                <option>{t("Waiting")}</option>
                 <option>{t("Completed")}</option>
                 <option>{t("Cancelled")}</option>
               </select>

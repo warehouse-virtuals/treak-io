@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
 // import { useNavigate } from "react-router-dom"
-// import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 // import { FiPlus } from "react-icons/fi"
+import "./Agenda.css"
 
 import { toDate } from "date-fns"
 import add from "date-fns/add"
@@ -18,22 +19,53 @@ const Agenda = (props) => {
   const { getAppointments, userData } = UserAuth()
   // const navigate = useNavigate()
 
-  // const { t } = useTranslation("dashboard")
+  const { t } = useTranslation("agenda")
+
+  const translations = {
+    navigation: {
+      month: t("Month"),
+      week: t("Week"),
+      day: t("Day"),
+      today: t("Today"),
+    },
+    form: {
+      addTitle: t("Add Event"),
+      editTitle: t("Edit Event"),
+      confirm: t("Confirm"),
+      delete: t("Delete"),
+      cancel: t("Cancel"),
+    },
+    event: {
+      title: t("Title"),
+      start: t("Start"),
+      end: t("End"),
+    },
+    moreEvents: t("More..."),
+  }
 
   const fetchAppointmentData = async () => {
     const appointments = await getAppointments(
       userData.customerID,
-      userData.clinicID,
-      5
+      userData.clinicID
     )
 
     const fixedList = appointments.map((appointment, i) => {
+      console.log(appointment)
       const date = toDate(appointment.date.seconds * 1000)
+      let eventColor
+      if (appointment.status === "Waiting") {
+        eventColor = "#5ae2f7"
+      } else if (appointment.status === "Completed") {
+        eventColor = "#51caa1"
+      } else if (appointment.status === "Cancelled") {
+        eventColor = "#f3698b"
+      }
       const obj = {
         event_id: appointment.date.seconds,
         title: appointment.reason,
         start: date,
         end: add(date, { hours: 2 }),
+        color: eventColor,
       }
 
       return obj
@@ -62,26 +94,29 @@ const Agenda = (props) => {
     <div className='flex flex-col h-full w-full'>
       <TopBar />
       <div className='flex rounded-tl-3xl  bg-[#f9faff] items-center justify-center h-full w-full'>
-        <div className='justify-center items-center w-5/6'>
-          <Scheduler
-            locale={tr}
-            height={700}
-            view='week'
-            week={{
-              weekDays: [0, 1, 2, 3, 4, 5],
-              weekStartOn: 6,
-              startHour: 9,
-              endHour: 20,
-              step: 60,
-            }}
-            month={{
-              weekDays: [0, 1, 2, 3, 4, 5, 6],
-              weekStartOn: 1,
-              startHour: 9,
-              endHour: 20,
-            }}
-            events={appointments}
-          />
+        <div className='justify-center bg-white items-center w-5/6 text-black'>
+          <div className='w-full h-full bg-[#f9faff]'>
+            <Scheduler
+              translations={translations}
+              locale={tr}
+              height={700}
+              view='week'
+              week={{
+                weekDays: [0, 1, 2, 3, 4, 5, 6],
+                weekStartOn: 1,
+                startHour: 9,
+                endHour: 20,
+                step: 60,
+              }}
+              month={{
+                weekDays: [0, 1, 2, 3, 4, 5, 6],
+                weekStartOn: 1,
+                startHour: 9,
+                endHour: 20,
+              }}
+              events={appointments}
+            />
+          </div>
         </div>
         {/* <div className='flex h-full w-1/4 bg-green-300  '>
           <div
