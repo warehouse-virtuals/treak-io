@@ -77,8 +77,21 @@
     "Save": "Save",
     "Cancel": "Cancel"
   },
-  "agenda": { "Today": "Today", "Previous": "Previous", "Next": "Next" },
-
+  "agenda": {
+    "Month": "Month",
+    "Week": "Week",
+    "Day": "Day",
+    "Today": "Today",
+    "Add Event": "Add Event",
+    "Edit Event": "Edit Event",
+    "Confirm": "Confirm",
+    "Delete": "Delete",
+    "Cancel": "Cancel",
+    "Title": "Title",
+    "Start": "Start",
+    "End": "End",
+    "More...": "More..."
+  },
   "addAppointment": {
     "Add Appointment": "Add Appointment",
     "Name": "Name",
@@ -87,9 +100,8 @@
     "Reason": "Reason",
     "Carer": "Carer",
     "Status": "Status",
-    "Open": "Open",
     "Waiting": "Waiting",
-    "Closed": "Closed",
+    "Completed": "Completed",
     "Cancelled": "Cancelled",
     "Aid Experience": "Aid Experience",
     "Monthly Control 1": "Monthly Control 1",
