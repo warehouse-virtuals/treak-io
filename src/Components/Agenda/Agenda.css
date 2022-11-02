@@ -74,6 +74,10 @@
   border-width: 0px 0px 0px 0px !important;
 }
 
+.css-fpqwey {
+  font-family: "Gilroy", sans-serif !important;
+  font-weight: 600 !important;
+}
 .css-1ypfif-MuiTypography-root {
   font-family: "Gilroy", sans-serif !important;
   font-weight: 600 !important;
@@ -89,18 +93,29 @@
 /* Month sekmesi saatler */
 .rs__time {
   align-items: start !important;
-  border-width: 1px 0px 0px 0px !important;
+  border-width: 0px 0px 0px 0px !important;
   background: #f9faff !important;
 }
 
+.css-16em9np .rs__cell.rs__header > :first-of-type {
+  font-weight: 600;
+}
+
+.css-fpqwey .rs__cell.rs__header > :first-of-type {
+  font-weight: 600;
+}
 /* Month sekmesi saatler renk font falan */
 .MuiPickersCalendarHeader-switchHeader,
 .MuiTypography-caption {
-  color: #20295a;
+  color: #cbccdb;
   font-size: small !important;
+
   font-family: "Gilroy", sans-serif !important;
 }
-
+.css-1ujsas3,
+.css-1ujsas3 {
+  font-weight: 600 !important;
+}
 .MuiTypography-body1 {
   font-family: "Gilroy", sans-serif !important;
 }

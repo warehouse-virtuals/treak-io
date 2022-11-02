@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next"
 import SearchField from "../SearchField/SearchField"
 import Button from "../../UITools/Button"
 
-const AddAppointments = () => {
+const AddAppointments = (props) => {
   const [carers, setCarers] = useState([])
   const [selectedPatient, setSelectedPatient] = useState(null)
 
@@ -56,13 +56,13 @@ const AddAppointments = () => {
       ),
       appointmentInfo
     )
-    navigate("/dashboard")
+    navigate("/agenda")
     console.log("Document written with ID: ", appointmentsRef.id)
   }
 
   const handleCancelButtonPress = async () => {
     try {
-      navigate("/patients")
+      navigate("/dashboard")
     } catch (error) {
       console.log(error.message)
     }
