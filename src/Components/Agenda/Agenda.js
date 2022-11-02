@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
-// import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-// import { FiPlus } from "react-icons/fi"
-import "./Agenda.css"
-
+import { Scheduler } from "@aldabil/react-scheduler"
 import { toDate } from "date-fns"
 import add from "date-fns/add"
+import tr from "date-fns/locale/tr"
 
-import { Scheduler } from "@aldabil/react-scheduler"
+import AddAppointments from "../Appointments/AddAppointments"
+
+import "./Agenda.css"
 
 import TopBar from "../TopBar/TopBar"
-
-import tr from "date-fns/locale/tr"
 
 const Agenda = (props) => {
   const [appointments, setAppointments] = useState([])
@@ -50,7 +48,6 @@ const Agenda = (props) => {
     )
 
     const fixedList = appointments.map((appointment, i) => {
-      console.log(appointment)
       const date = toDate(appointment.date.seconds * 1000)
       let eventColor
       if (appointment.status === "Waiting") {
@@ -94,8 +91,8 @@ const Agenda = (props) => {
     <div className='flex flex-col h-full w-full'>
       <TopBar />
       <div className='flex rounded-tl-3xl  bg-[#f9faff] items-center justify-center h-full w-full'>
-        <div className='justify-center bg-white items-center w-5/6 text-black'>
-          <div className='w-full h-full bg-[#f9faff]'>
+        <div className='justify-start bg-red-300 items-start w-5/6 text-black'>
+          <div className='flex flex-col w-full h-full bg-[#f9faff]'>
             <Scheduler
               translations={translations}
               locale={tr}
@@ -114,7 +111,28 @@ const Agenda = (props) => {
                 startHour: 9,
                 endHour: 20,
               }}
+              day={{
+                startHour: 9,
+                endHour: 20,
+                step: 60,
+              }}
               events={appointments}
+              hourFormat='24'
+              customEditor={(scheduler) => (
+                <AddAppointments scheduler={scheduler} />
+              )}
+
+              // {
+              //   name: "anotherdate",
+              //   type: "date",
+              //   config: {
+              //     label: "Other Date",
+              //     md: 6,
+              //     modalVariant: "dialog",
+              //     type: "datetime",
+              //   },
+              // },
+              // ]}
             />
           </div>
         </div>
