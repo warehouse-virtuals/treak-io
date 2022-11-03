@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 
 import DateTimePicker from "react-datetime-picker"
 
-import { collection, addDoc, Timestamp } from "firebase/firestore"
+import { collection, addDoc, Timestamp, updateDoc } from "firebase/firestore"
 
 import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
@@ -14,13 +14,16 @@ import Button from "../../UITools/Button"
 const AddAppointments = (props) => {
   const [carers, setCarers] = useState([])
   const [selectedPatient, setSelectedPatient] = useState(null)
-
+  const [addedAppointment, setAddedApointment] = useState("")
   const appointedToRef = useRef("")
-  const [appointmentDate, onChangeAppointmentDate] = useState(new Date())
+  const [appointmentDate, onChangeAppointmentDate] = useState(
+    new Date(props.scheduler.state.start.value)
+  )
 
   const appointmentReasonRef = useRef("")
   const appointmentStatusRef = useRef("")
 
+  const location = useLocation()
   // const { state } = useLocation()
   // const { patient } = state
   const navigate = useNavigate()
@@ -36,33 +39,48 @@ const AddAppointments = (props) => {
   }
 
   const handleAddAppointmentButtonPress = async () => {
-    const appointmentInfo = {
-      appointedPerson: selectedPatient,
-      appointedTo: appointedToRef.current.value,
-      date: appointmentDate,
-      reason: appointmentReasonRef.current.value,
-      status: t(appointmentStatusRef.current.value),
-      createdAt: Timestamp.now(),
-    }
+    try {
+      const appointmentInfo = {
+        appointedPerson: selectedPatient,
+        appointedTo: appointedToRef.current.value,
+        date: appointmentDate,
+        reason: appointmentReasonRef.current.value,
+        status: t(appointmentStatusRef.current.value),
+        createdAt: Timestamp.now(),
+      }
 
-    const appointmentsRef = await addDoc(
-      collection(
+      const appointmentsRef = collection(
         db,
         "customers/",
         userData.customerID,
         "/clinics/",
         userData.clinicID,
         "/appointments"
-      ),
-      appointmentInfo
-    )
-    navigate("/agenda")
-    console.log("Document written with ID: ", appointmentsRef.id)
+      )
+
+      const newAppointmentRef = await addDoc(appointmentsRef, appointmentInfo)
+      await updateDoc(newAppointmentRef, { id: newAppointmentRef.id })
+      setAddedApointment(newAppointmentRef.id)
+
+      if (location.pathname === "/addAppointment") {
+        navigate("/dashboard")
+      } else {
+        console.log(newAppointmentRef)
+        console.log(addedAppointment)
+        props.scheduler.close()
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleCancelButtonPress = async () => {
     try {
-      navigate("/dashboard")
+      if (location.pathname === "/addAppointment") {
+        navigate("/dashboard")
+      } else {
+        props.scheduler.close()
+      }
     } catch (error) {
       console.log(error.message)
     }
@@ -70,9 +88,9 @@ const AddAppointments = (props) => {
 
   useEffect(() => {
     fetchEmployeesOfClinic().then((data) => setCarers(data))
-    console.log(carers)
+
     //eslint-disable-next-line
-  }, [userData])
+  }, [userData, addedAppointment])
 
   return (
     <div className='flex flex-col h-full w-full'>
