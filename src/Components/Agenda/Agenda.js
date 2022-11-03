@@ -14,7 +14,8 @@ import TopBar from "../TopBar/TopBar"
 
 const Agenda = (props) => {
   const [appointments, setAppointments] = useState([])
-  const { getAppointments, userData } = UserAuth()
+  const [updatedDate, setUpdatedDate] = useState("")
+  const { getAppointments, updateAppointment, userData } = UserAuth()
   // const navigate = useNavigate()
 
   const { t } = useTranslation("agenda")
@@ -58,7 +59,7 @@ const Agenda = (props) => {
         eventColor = "#f3698b"
       }
       const obj = {
-        event_id: appointment.date.seconds,
+        event_id: appointment.id,
         title: appointment.reason,
         start: date,
         end: add(date, { hours: 2 }),
@@ -68,6 +69,16 @@ const Agenda = (props) => {
       return obj
     })
     return await fixedList
+  }
+
+  const updateAppointmentDateAndTime = async (
+    customerid,
+    usersClinic,
+    appointmentId,
+    updatedDate
+  ) => {
+    await updateAppointment(customerid, usersClinic, appointmentId, updatedDate)
+    setUpdatedDate(updatedDate)
   }
 
   // const handleAddAppointmentButtonClick = async () => {
@@ -85,7 +96,7 @@ const Agenda = (props) => {
     })
 
     //eslint-disable-next-line
-  }, [userData])
+  }, [userData, updatedDate])
 
   return (
     <div className='flex flex-col h-full w-full'>
@@ -121,7 +132,15 @@ const Agenda = (props) => {
               customEditor={(scheduler) => (
                 <AddAppointments scheduler={scheduler} />
               )}
-
+              onEventDrop={async (date, updatedEvent, originalEvent) => {
+                console.log(date, updatedEvent, originalEvent)
+                await updateAppointmentDateAndTime(
+                  userData.customerID,
+                  userData.clinicID,
+                  originalEvent.event_id,
+                  date
+                )
+              }}
               // {
               //   name: "anotherdate",
               //   type: "date",

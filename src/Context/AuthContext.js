@@ -13,6 +13,7 @@ import {
   where,
   setDoc,
   doc,
+  updateDoc,
   getDoc,
   getDocs,
   orderBy,
@@ -163,6 +164,25 @@ export const AuthContextProvider = ({ children }) => {
     return arr
   }
 
+  const updateAppointment = async (
+    customerid,
+    usersClinic,
+    appointmentId,
+    updatedDate
+  ) => {
+    const appointmentRef = doc(
+      db,
+      "customers/",
+      customerid,
+      "/clinics/",
+      usersClinic,
+      "/appointments/",
+      appointmentId
+    )
+
+    await updateDoc(appointmentRef, { date: updatedDate })
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       try {
@@ -193,6 +213,7 @@ export const AuthContextProvider = ({ children }) => {
         getAppointments,
         searchResults,
         getEmployeesOfClinic,
+        updateAppointment,
       }}
     >
       {children}
