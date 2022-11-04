@@ -14,7 +14,7 @@ import TopBar from "../TopBar/TopBar"
 
 const Agenda = (props) => {
   const [appointments, setAppointments] = useState([])
-  const [updatedDate, setUpdatedDate] = useState("")
+  const [updatedData, setUpdatedData] = useState("")
   const { getAppointments, updateAppointment, userData } = UserAuth()
   // const navigate = useNavigate()
 
@@ -75,10 +75,10 @@ const Agenda = (props) => {
     customerid,
     usersClinic,
     appointmentId,
-    updatedDate
+    updatedData
   ) => {
-    await updateAppointment(customerid, usersClinic, appointmentId, updatedDate)
-    setUpdatedDate(updatedDate)
+    await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
+    setUpdatedData(updatedData)
   }
 
   // const handleAddAppointmentButtonClick = async () => {
@@ -96,7 +96,7 @@ const Agenda = (props) => {
     })
 
     //eslint-disable-next-line
-  }, [userData, updatedDate])
+  }, [userData, updatedData])
 
   return (
     <div className='flex flex-col h-full w-full'>
@@ -130,7 +130,12 @@ const Agenda = (props) => {
               events={appointments}
               hourFormat='24'
               customEditor={(scheduler) => (
-                <AddAppointments scheduler={scheduler} />
+                <AddAppointments
+                  scheduler={scheduler}
+                  parentCallback={(childData) => {
+                    setUpdatedData(childData)
+                  }}
+                />
               )}
               onEventDrop={async (date, updatedEvent, originalEvent) => {
                 console.log(date, updatedEvent, originalEvent)
