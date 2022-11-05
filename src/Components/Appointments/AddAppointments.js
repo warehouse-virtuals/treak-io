@@ -61,6 +61,7 @@ const AddAppointments = (props) => {
       const newAppointmentRef = await addDoc(appointmentsRef, appointmentInfo)
       await updateDoc(newAppointmentRef, { id: newAppointmentRef.id })
       setAddedApointment(newAppointmentRef.id)
+      props.parentCallback(newAppointmentRef.id)
 
       if (location.pathname === "/addAppointment") {
         navigate("/dashboard")
