@@ -1,6 +1,7 @@
 import { toDate } from "date-fns"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
+import app from "../../firebase"
 
 const AppointmentList = (props) => {
   const [appointments, setAppointments] = useState([])
@@ -11,22 +12,26 @@ const AppointmentList = (props) => {
   }
 
   useEffect(() => {
-    fetchAppointmentData().then((data) => setAppointments(data))
-
+    fetchAppointmentData().then((data) => {
+      setAppointments(data)
+    })
     //eslint-disable-next-line
   }, [userData])
-  console.log(appointments)
 
   const tbodyData = []
 
   appointments.forEach((appointment, i) => {
-    const date = toDate(appointment.date.seconds * 1000).toLocaleDateString()
-    const time = toDate(appointment.date.seconds * 1000).toLocaleTimeString({
-      hourCycle: "hour12",
-    })
-
+    console.log(appointment)
+    const date = toDate(appointment.date.seconds * 1000).toLocaleDateString(
+      "tr",
+      { day: "2-digit", month: "long", year: "numeric" }
+    )
+    const time = toDate(appointment.date.seconds * 1000).toLocaleTimeString(
+      [],
+      { hourCycle: "h24", hour: "2-digit", minute: "2-digit" }
+    )
     const obj = {
-      id: i,
+      id: appointment.id,
       items: [
         appointment.appointedPerson,
         date,
@@ -62,11 +67,11 @@ const AppointmentList = (props) => {
   }
   const TableRow = ({ data }) => {
     const colorPicker = (appointmentStatus) => {
-      if (appointmentStatus === "closed") {
+      if (appointmentStatus === "Completed") {
         return "border-green-300"
-      } else if (appointmentStatus === "waiting") {
+      } else if (appointmentStatus === "Waiting") {
         return "border-orange-300"
-      } else if (appointmentStatus === "cancelled") {
+      } else if (appointmentStatus === "Cancelled") {
         return "border-red-300"
       }
     }
@@ -101,7 +106,7 @@ const AppointmentList = (props) => {
   }
 
   return (
-    <div className='flex w-full'>
+    <div className='flex w-full h-full'>
       <Table
         theadData={theadData}
         tbodyData={tbodyData}

@@ -1,9 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
 import { FiLogOut } from "react-icons/fi"
-// import { GiHealthNormal } from "react-icons/gi"
+import { GiHealthNormal } from "react-icons/gi"
 import { useTranslation } from "react-i18next"
-import umboLogo from "../../Assets/umbo-logo-white.svg"
 
 import NavbarButtons from "./NavbarButtons"
 // import whlogo from "../../Assets/logobw.svg"
@@ -24,17 +23,16 @@ const Navbar = () => {
   }
 
   return (
-    <div className="w-28 h-full bg-[#20295a] flex flex-col justify-center items-center">
-      <img className="w-16 mt-10" src={umboLogo} alt="React Logo" />
-      {/* <GiHealthNormal size={50} color="#FFFFFF" className="mt-10" /> */}
+    <div className='w-28 h-full bg-[#20295a] flex flex-col justify-center items-center'>
+      <GiHealthNormal size={50} color='#FFFFFF' className='mt-10' />
       {/* <img className="mt-10 w-1/2 " alt="logo" src={whlogo} /> */}
-      <div className="flex w-full h-5/6 items-center">
-        <div className="w-full">
+      <div className='flex w-full h-5/6 items-center'>
+        <div className='w-full'>
           {NavbarButtons.map((button, index) => {
             return (
               <div
                 key={button.pathname}
-                className=" w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white text-sm  transition-all cursor-default ease-out select-none"
+                className=' w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white text-sm  transition-all cursor-default ease-out select-none'
                 onClick={() => navigate(button.pathname)}
               >
                 <div
@@ -45,19 +43,19 @@ const Navbar = () => {
                   {button.icon}
                 </div>
 
-                <div className="">{t(button.name)}</div>
+                <div className=''>{t(button.name)}</div>
               </div>
             )
           })}
         </div>
       </div>
-      <div className="w-full h-1/6 flex flex-col justify-end">
+      <div className='w-full h-1/6 flex flex-col justify-end'>
         <div
           onClick={handleNavbarLogoutButtonClick}
-          className="w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white  transition-all cursor-default ease-out select-none"
+          className='w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white  transition-all cursor-default ease-out select-none'
         >
-          <FiLogOut color="#F9FAFE" size={22} className=" mb-1" />
-          <div className="">{t("Logout")}</div>
+          <FiLogOut color='#F9FAFE' size={22} className=' mb-1' />
+          <div className=''>{t("Logout")}</div>
           {/* <div className="text-white text-sm">{"Logout"}</div> */}
         </div>
       </div>

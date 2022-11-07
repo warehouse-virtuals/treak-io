@@ -13,6 +13,8 @@ import {
   where,
   setDoc,
   doc,
+  updateDoc,
+  deleteDoc,
   getDoc,
   getDocs,
   orderBy,
@@ -108,6 +110,18 @@ export const AuthContextProvider = ({ children }) => {
     })
     return arr
   }
+  const getEmployeesOfClinic = async (usersClinic) => {
+    const q = query(
+      collection(db, "users/"),
+      where("clinicID", "==", usersClinic)
+    )
+    const querySnapshotOfEmployees = await getDocs(q)
+    let arr = []
+    querySnapshotOfEmployees.forEach((doc) => {
+      arr.push(doc.data())
+    })
+    return arr
+  }
 
   const searchResults = async (
     customerid,
@@ -134,7 +148,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const getAppointments = async (customerid, usersClinic, limitCount) => {
-    const patientsRef = collection(
+    const appointmentsRef = collection(
       db,
       "customers/",
       customerid,
@@ -142,13 +156,44 @@ export const AuthContextProvider = ({ children }) => {
       usersClinic,
       "/appointments"
     )
-    const q = query(patientsRef, orderBy("date"), limit(limitCount))
+    const q = query(appointmentsRef, orderBy("date"), limit(limitCount))
     const querySnapshotOfAssignedPatients = await getDocs(q)
     let arr = []
     querySnapshotOfAssignedPatients.forEach((doc) => {
       arr.push(doc.data())
     })
     return arr
+  }
+
+  const updateAppointment = async (
+    customerid,
+    usersClinic,
+    appointmentId,
+    updatedDate
+  ) => {
+    const appointmentRef = doc(
+      db,
+      "customers/",
+      customerid,
+      "/clinics/",
+      usersClinic,
+      "/appointments/",
+      appointmentId
+    )
+
+    await updateDoc(appointmentRef, { date: updatedDate })
+  }
+
+  const deletePatient = async (customerid, patientid) => {
+    console.log(customerid, patientid)
+    const patientToBeDeletedRef = doc(
+      db,
+      "customers/",
+      customerid,
+      "/patients/",
+      patientid
+    )
+    await deleteDoc(patientToBeDeletedRef)
   }
 
   useEffect(() => {
@@ -180,6 +225,9 @@ export const AuthContextProvider = ({ children }) => {
         db,
         getAppointments,
         searchResults,
+        getEmployeesOfClinic,
+        updateAppointment,
+        deletePatient,
       }}
     >
       {children}

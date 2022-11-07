@@ -1,0 +1,188 @@
+@import url("../../Assets/fonts/Gilroy/Gilroy.css");
+
+/* Toolbar kısımısı koyu renkliler renkliler*/
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  color: #20295a !important;
+  font-family: "Gilroy", sans-serif !important;
+  background: #f9faff !important;
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  color: #20295a !important;
+  font-weight: 600 !important;
+  font-size: medium !important;
+}
+
+.css-1y942vo-MuiButtonBase-root-MuiButton-root {
+  font-size: medium !important;
+  color: #20295a !important;
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.css-1v994a0,
+.css-1v994a0,
+.css-ub1r1,
+.css-m1gykc,
+.css-1umqo6f {
+  font-family: "Gilroy", sans-serif !important;
+}
+.css-68o8xu {
+  color: #20295a !important;
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.css-1ujsas3 {
+  color: #20295a !important;
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.css-1x5jdmq {
+  color: #20295a !important;
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.css-yvbg89,
+.css-b7766g,
+.css-62dh81 {
+  color: #20295a !important;
+  font-family: "Gilroy", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: small !important;
+}
+
+.css-llvhl4-MuiTypography-root {
+  color: #20295a !important;
+  font-family: "Gilroy", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: small !important;
+}
+
+/* Toolbarın altı */
+.css-1edlcpn {
+  margin-top: 30px !important;
+  background-color: white !important;
+}
+
+/* Toolbarın altının bir altı kajsdhş */
+.css-16em9np:first-of-type {
+  border-width: 0px 0px 0px 0px !important;
+}
+
+/* Month sekmesi, Tablonun ilk hücresi, görünmez yaptım */
+.rs__cell:first-child {
+  background: #f9faff !important;
+  border-width: 0px 0px 0px 0px !important;
+}
+
+.css-fpqwey {
+  font-family: "Gilroy", sans-serif !important;
+  font-weight: 600 !important;
+}
+.css-1ypfif-MuiTypography-root {
+  font-family: "Gilroy", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: medium !important;
+}
+
+/* Üst kısımda haftanın günleri kısmı */
+.rs__header {
+  border-width: 0px 0px 0px 0px !important;
+  background: #f9faff !important;
+}
+
+/* Month sekmesi saatler */
+.rs__time {
+  align-items: start !important;
+  border-width: 0px 0px 0px 0px !important;
+  background: #f9faff !important;
+}
+
+.css-16em9np .rs__cell.rs__header > :first-of-type {
+  font-weight: 600;
+}
+
+.css-fpqwey .rs__cell.rs__header > :first-of-type {
+  font-weight: 600;
+}
+/* Month sekmesi saatler renk font falan */
+.MuiPickersCalendarHeader-switchHeader,
+.MuiTypography-caption {
+  color: #cbccdb;
+  font-size: small !important;
+
+  font-family: "Gilroy", sans-serif !important;
+}
+.css-1ujsas3,
+.css-1ujsas3 {
+  font-weight: 600 !important;
+}
+.MuiTypography-body1 {
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.MuiTypography-subtitle1,
+.MuiTypography-h4,
+.MuiTypography-h3,
+.MuiTypography-h6 {
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.MuiPickersDay-daySelected,
+.MuiPickersClockPointer-pointer,
+.MuiPickersClock-pin,
+.MuiPickersClockPointer-thumb,
+.MuiPickersClockNumber-clockNumberSelected {
+  background-color: #3a2416;
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.MuiPickersCalendarHeader-iconButton {
+  background-color: #3a2416;
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.MuiOutlinedInput-inputAdornedEnd,
+.MuiFormLabel-filled {
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.MuiTypography-noWrap,
+._2mqV6nb5wT63-eyCtNsXhI {
+  color: black !important;
+}
+
+._2fDFJ9JSJQ3pH1lK4KAPXZ,
+._1X-ObWNBLkVJe2XZ1LpxUK,
+.MuiPaper-elevation8,
+._2MRGbqe3OI-tqpCZx3pyVv {
+  background-color: #3a2416;
+}
+
+.MuiButtonBase-root {
+  background-color: #3a2416;
+}
+
+.MuiTypography-noWrap {
+  color: #f59120;
+}
+
+._1X-ObWNBLkVJe2XZ1LpxUK {
+  padding: 0px;
+}
+
+._2fDFJ9JSJQ3pH1lK4KAPXZ {
+  padding: 8px;
+}
+
+.MuiSvgIcon-root,
+.MuiTypography-noWrap {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: #eee7da;
+}
+
+.ZQyBVDyNG8FDStkDQkNXd:hover {
+  background-color: #eee7da;
+}
