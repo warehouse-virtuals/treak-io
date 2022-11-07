@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { UserAuth } from "../../Context/AuthContext"
 import {
   FiUser,
   FiEdit,
@@ -9,7 +10,13 @@ import {
 } from "react-icons/fi"
 
 const PatientOverview = (props) => {
+  const { deletePatient, userData } = UserAuth()
   const navigate = useNavigate()
+
+  const handleDeleteOnClick = async (patientID) => {
+    await deletePatient(userData.customerID, patientID)
+    props.patientDeleted("confirm")
+  }
 
   let person = props.focusedPatientData
   let hearingAids = person.hearingAids
@@ -78,7 +85,13 @@ const PatientOverview = (props) => {
         </div>
         <div className='flex mt-10 justify-around items-center '>
           <div>
-            <FiTrash size={24} color='red' />
+            <FiTrash
+              size={24}
+              color='red'
+              onClick={() => {
+                handleDeleteOnClick(person.id).then(() => {})
+              }}
+            />
           </div>
           <div
             onClick={() =>
