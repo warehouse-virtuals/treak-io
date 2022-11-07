@@ -14,6 +14,7 @@ import {
   setDoc,
   doc,
   updateDoc,
+  deleteDoc,
   getDoc,
   getDocs,
   orderBy,
@@ -183,6 +184,18 @@ export const AuthContextProvider = ({ children }) => {
     await updateDoc(appointmentRef, { date: updatedDate })
   }
 
+  const deletePatient = async (customerid, patientid) => {
+    console.log(customerid, patientid)
+    const patientToBeDeletedRef = doc(
+      db,
+      "customers/",
+      customerid,
+      "/patients/",
+      patientid
+    )
+    await deleteDoc(patientToBeDeletedRef)
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       try {
@@ -214,6 +227,7 @@ export const AuthContextProvider = ({ children }) => {
         searchResults,
         getEmployeesOfClinic,
         updateAppointment,
+        deletePatient,
       }}
     >
       {children}

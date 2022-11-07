@@ -4,10 +4,11 @@ import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
 
 import LoginSvg from "../../Assets/login-i.svg"
-import umboLogo from "../../Assets/umbo-logo-black.svg"
+
 import tesseractLogo from "../../Assets/tesseract-logo-black.svg"
 
 import { FiChevronRight } from "react-icons/fi"
+import { GiHealthNormal } from "react-icons/gi"
 
 import TextInput from "../../UITools/TextInput"
 import Button from "../../UITools/Button"
@@ -61,9 +62,9 @@ const Login = () => {
   return (
     <div className='w-full h-full flex flex-row bg-[#f9faff]'>
       <div className='w-full h-full lg:w-1/2 flex items-center content-center  flex-col'>
-        <div className='flex items-center h-[80px] w-full pl-10 pt-5 select-none text-4xl font-normal'>
-          <img alt='svg' className='w-[60px] mr-5' src={umboLogo} />
-          Umbo
+        <div className='flex items-center h-[80px] w-full pl-10 font-bold  select-none text-4xl'>
+          <GiHealthNormal size={40} color='black' className='mr-5' />
+          umbo
         </div>
         <div className='w-full h-full flex items-center justify-center flex-col '>
           <h6 className='dark:text-white text-slate-700 text-6xl mb-5 select-none '>

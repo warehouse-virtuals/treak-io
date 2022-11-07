@@ -1,6 +1,7 @@
 import { toDate } from "date-fns"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
+import app from "../../firebase"
 
 const AppointmentList = (props) => {
   const [appointments, setAppointments] = useState([])
@@ -20,6 +21,7 @@ const AppointmentList = (props) => {
   const tbodyData = []
 
   appointments.forEach((appointment, i) => {
+    console.log(appointment)
     const date = toDate(appointment.date.seconds * 1000).toLocaleDateString(
       "tr",
       { day: "2-digit", month: "long", year: "numeric" }
@@ -29,7 +31,7 @@ const AppointmentList = (props) => {
       { hourCycle: "h24", hour: "2-digit", minute: "2-digit" }
     )
     const obj = {
-      id: i,
+      id: appointment.id,
       items: [
         appointment.appointedPerson,
         date,
@@ -65,7 +67,7 @@ const AppointmentList = (props) => {
   }
   const TableRow = ({ data }) => {
     const colorPicker = (appointmentStatus) => {
-      if (appointmentStatus === "Closed") {
+      if (appointmentStatus === "Completed") {
         return "border-green-300"
       } else if (appointmentStatus === "Waiting") {
         return "border-orange-300"
@@ -104,7 +106,7 @@ const AppointmentList = (props) => {
   }
 
   return (
-    <div className='flex w-full'>
+    <div className='flex w-full h-full'>
       <Table
         theadData={theadData}
         tbodyData={tbodyData}

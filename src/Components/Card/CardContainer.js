@@ -7,11 +7,11 @@ import CardNewPatients from "./CardNewPatients"
 
 const CardContainer = (props) => {
   return (
-    <div className="flex flex-col px-10 mt-10">
-      <div className="font-bold text-2xl text-slate-700 pb-3">
+    <div className='flex flex-col '>
+      <div className='font-bold text-2xl mt-10 text-slate-700 pb-3'>
         {props.t("Monthly Reports")}
       </div>
-      <div className="flex select-none justify-between cursor-default h-50 w-full">
+      <div className='flex select-none justify-between cursor-default h-50 w-full'>
         <Card
           icon={CardIcons.FiCalendar}
           title={props.t("Today's Appointments")}

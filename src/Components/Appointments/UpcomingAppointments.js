@@ -17,7 +17,7 @@ const UpcomingAppointments = () => {
   }
 
   return (
-    <div className='flex px-10 mt-10 flex-col h-full w-full font-bold text-2xl text-slate-700'>
+    <div className='flex flex-col mt-10 w-full font-bold text-2xl text-slate-700'>
       <div className='flex justify-between'>
         {t("Upcoming Appointments")}
         <div
@@ -27,7 +27,7 @@ const UpcomingAppointments = () => {
           <FiPlus size={22} className=' text-white ' />
         </div>
       </div>
-      <div className='flex w-full bg-[#f9faff] mt-5 text-[#20295a]'>
+      <div className='flex w-full bg-[#f9faff] text-[#20295a]'>
         <AppointmentList t={t} />
       </div>
     </div>

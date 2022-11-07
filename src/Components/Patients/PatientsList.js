@@ -17,13 +17,13 @@ const PatientsList = () => {
   useEffect(() => {
     fetchPatientData().then((data) => setPatients(data))
     //eslint-disable-next-line
-  }, [])
+  }, [focusedPatient])
 
   const tbodyData = []
   patients.forEach((patient, i) => {
     const dateOfBirth = toDate(patient.DOB.seconds * 1000).toLocaleDateString()
     const obj = {
-      id: i,
+      id: patient.id,
       patientData: { ...patient, DOB: dateOfBirth },
       items: [
         patient.name + " " + patient.surname,
@@ -94,6 +94,7 @@ const PatientsList = () => {
     )
   }
 
+  console.log(focusedPatient)
   return (
     <div className='flex  justify-around w-full'>
       <div className='flex w-2/3'>
@@ -104,7 +105,12 @@ const PatientsList = () => {
         />
       </div>
       <div className='flex w-[400px]'>
-        <PatientOverview focusedPatientData={focusedPatient} />
+        <PatientOverview
+          focusedPatientData={focusedPatient}
+          patientDeleted={(confirm) => {
+            setFocusedPatient(confirm)
+          }}
+        />
       </div>
     </div>
   )

@@ -16,7 +16,7 @@ const Dashboard = () => {
     <div className='flex flex-col w-full h-full '>
       <TopBar placeholder={t("Search patients...")} />
       <div className='flex w-full h-full'>
-        <div className='w-full bg-[#f9faff] rounded-tl-3xl h-full flex flex-col'>
+        <div className='w-full px-10 bg-[#f9faff] rounded-tl-3xl h-full flex flex-col'>
           <Greetings
             userData={userData}
             primary={t("Hi")}

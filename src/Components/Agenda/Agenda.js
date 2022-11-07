@@ -90,11 +90,29 @@ const Agenda = (props) => {
   //   }
   // }
 
+  const handleConfirm = async (event, action) => {
+    console.log(event, action)
+    if (action === "edit") {
+      /** PUT event to remote DB */
+    } else if (action === "create") {
+      /**POST event to remote DB */
+    }
+    /**
+     * Make sure to return 4 mandatory fields:
+     * event_id: string|number
+     * title: string
+     * start: Date|string
+     * end: Date|string
+     * ....extra other fields depend on your custom fields/editor properties
+     */
+    // Simulate http request: return added/edited event
+  }
+
   useEffect(() => {
     fetchAppointmentData().then((data) => {
       setAppointments(data)
     })
-
+    console.log("Agenda Useffect loopta hemen durdur!")
     //eslint-disable-next-line
   }, [userData, updatedData])
 
@@ -146,6 +164,7 @@ const Agenda = (props) => {
                   date
                 )
               }}
+              onConfirm={handleConfirm}
               // {
               //   name: "anotherdate",
               //   type: "date",
