@@ -3,7 +3,6 @@ import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
 import { Scheduler } from "@aldabil/react-scheduler"
 import { toDate } from "date-fns"
-import add from "date-fns/add"
 import tr from "date-fns/locale/tr"
 
 import AddAppointments from "../Appointments/AddAppointments"
@@ -50,6 +49,10 @@ const Agenda = (props) => {
 
     const fixedList = appointments.map((appointment, i) => {
       const date = toDate(appointment.date.seconds * 1000)
+      const end = toDate(
+        appointment.date.seconds * 1000 + parseInt(appointment.duration)
+      )
+
       let eventColor
       if (appointment.status === "Waiting") {
         eventColor = "#5ae2f7"
@@ -62,7 +65,7 @@ const Agenda = (props) => {
         event_id: appointment.id,
         title: appointment.reason,
         start: date,
-        end: add(date, { hours: 2 }),
+        end: end,
         color: eventColor,
       }
 
@@ -165,6 +168,7 @@ const Agenda = (props) => {
                 )
               }}
               onConfirm={handleConfirm}
+
               // {
               //   name: "anotherdate",
               //   type: "date",

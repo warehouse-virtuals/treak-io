@@ -95,6 +95,8 @@
     "Add Appointment": "Randevu Ekle",
     "Name": "İsim",
     "Surname": "Soyisim",
+    "Start Date": "Başlangıç Tarihi",
+    "End Date": "Bitiş Tarihi",
     "Date": "Randevu Tarihi",
     "Reason": "Konu",
     "Carer": "İlgili",
