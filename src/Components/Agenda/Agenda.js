@@ -46,10 +46,11 @@ const Agenda = (props) => {
       userData.customerID,
       userData.clinicID
     )
+
     const fixedList = appointments.map((appointment, i) => {
       const date = toDate(appointment.date.seconds * 1000)
       const end = toDate(
-        (appointment.date.seconds + parseInt(appointment.duration)) * 1000
+        appointment.date.seconds * 1000 + parseInt(appointment.duration)
       )
 
       let eventColor
