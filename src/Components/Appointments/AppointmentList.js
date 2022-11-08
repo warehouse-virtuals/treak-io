@@ -1,7 +1,6 @@
 import { toDate } from "date-fns"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
-import app from "../../firebase"
 
 const AppointmentList = (props) => {
   const [appointments, setAppointments] = useState([])
