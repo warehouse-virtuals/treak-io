@@ -156,9 +156,11 @@ export const AuthContextProvider = ({ children }) => {
       usersClinic,
       "/appointments"
     )
+
     const q = query(appointmentsRef, orderBy("date"), limit(limitCount))
     const querySnapshotOfAssignedPatients = await getDocs(q)
     let arr = []
+
     querySnapshotOfAssignedPatients.forEach((doc) => {
       arr.push(doc.data())
     })
