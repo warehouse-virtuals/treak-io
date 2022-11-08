@@ -16,8 +16,12 @@ const AddAppointments = (props) => {
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [addedAppointment, setAddedApointment] = useState("")
   const appointedToRef = useRef("")
-  const [appointmentDate, onChangeAppointmentDate] = useState(
+  const [appointmentStartDate, onChangeAppointmentStartDate] = useState(
     new Date(props.scheduler.state.start.value)
+  )
+
+  const [appointmentEndDate, onChangeAppointmentEndDate] = useState(
+    new Date(props.scheduler.state.end.value)
   )
 
   const appointmentReasonRef = useRef("")
@@ -43,7 +47,8 @@ const AddAppointments = (props) => {
       const appointmentInfo = {
         appointedPerson: selectedPatient,
         appointedTo: appointedToRef.current.value,
-        date: appointmentDate,
+        date: appointmentStartDate,
+        duration: appointmentEndDate - appointmentStartDate,
         reason: appointmentReasonRef.current.value,
         status: t(appointmentStatusRef.current.value),
         createdAt: Timestamp.now(),
@@ -109,10 +114,19 @@ const AddAppointments = (props) => {
           </div>
           <div className='flex items-start justify-start mt-10 '>
             <div className='flex flex-col mr-20'>
-              <div className='font-semibold  text-slate-700'>{t("Date")}</div>
+              <div className='font-semibold  text-slate-700'>
+                {t("Start Date")}
+              </div>
               <DateTimePicker
-                onChange={onChangeAppointmentDate}
-                value={appointmentDate}
+                onChange={onChangeAppointmentStartDate}
+                value={appointmentStartDate}
+              />
+              <div className='font-semibold  text-slate-700'>
+                {t("End Date")}
+              </div>
+              <DateTimePicker
+                onChange={onChangeAppointmentEndDate}
+                value={appointmentEndDate}
               />
             </div>
             <div className='flex flex-col mr-20'>

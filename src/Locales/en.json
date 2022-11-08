@@ -96,6 +96,8 @@
     "Add Appointment": "Add Appointment",
     "Name": "Name",
     "Surname": "Surname",
+    "Start Date": "Start Date",
+    "End Date": "End Date",
     "Date": "Date",
     "Reason": "Reason",
     "Carer": "Carer",
