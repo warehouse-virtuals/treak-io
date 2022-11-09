@@ -151,9 +151,10 @@ const Agenda = (props) => {
                   date
                 )
               }}
-              onDelete={async (appointmenID) =>
-                await handleDeleteAppointment(appointmenID)
-              }
+              onDelete={async (appointmentID) => {
+                console.log(appointmentID)
+                await handleDeleteAppointment(appointmentID)
+              }}
             />
           </div>
         </div>

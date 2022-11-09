@@ -199,6 +199,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const deleteAppointment = async (customerid, clinicid, appointmentid) => {
+    console.log(customerid, clinicid, appointmentid)
     const appointmentToBeDeletedRef = doc(
       db,
       "customers/",

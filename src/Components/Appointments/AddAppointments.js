@@ -3,7 +3,13 @@ import { useNavigate, useLocation } from "react-router-dom"
 
 import DateTimePicker from "react-datetime-picker"
 
-import { collection, addDoc, Timestamp, updateDoc } from "firebase/firestore"
+import {
+  collection,
+  addDoc,
+  Timestamp,
+  updateDoc,
+  doc,
+} from "firebase/firestore"
 
 import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
@@ -78,6 +84,32 @@ const AddAppointments = (props) => {
     } catch (error) {
       console.log(error)
     }
+  }
+  const handleUpdateEditedAppointment = async () => {
+    const appointmentInfo = {
+      appointedPerson: selectedPatient,
+      appointedTo: appointedToRef.current.value,
+      date: appointmentStartDate,
+      duration: appointmentEndDate - appointmentStartDate,
+      reason: appointmentReasonRef.current.value,
+      status: t(appointmentStatusRef.current.value),
+      createdAt: Timestamp.now(),
+    }
+    console.log(appointmentInfo)
+    const appointmentsRef = doc(
+      db,
+      "customers/",
+      userData.customerID,
+      "/clinics/",
+      userData.clinicID,
+      "/appointments/",
+      props.scheduler.edited.event_id
+    )
+
+    await updateDoc(appointmentsRef, appointmentInfo)
+    setAddedApointment(props.scheduler.edited.event_id)
+    props.parentCallback(Date.now())
+    props.scheduler.close()
   }
 
   const handleCancelButtonPress = async () => {
@@ -186,7 +218,11 @@ const AddAppointments = (props) => {
           <div className='w-[120px]'>
             <Button
               label={t("Save")}
-              onClick={handleAddAppointmentButtonPress}
+              onClick={
+                props.scheduler.edited
+                  ? handleUpdateEditedAppointment
+                  : handleAddAppointmentButtonPress
+              }
               addCSS={
                 "flex items-center justify-center bg-green-500 hover:bg-[#273169]"
               }
