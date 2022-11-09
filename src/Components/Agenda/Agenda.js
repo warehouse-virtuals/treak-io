@@ -14,7 +14,8 @@ import TopBar from "../TopBar/TopBar"
 const Agenda = (props) => {
   const [appointments, setAppointments] = useState([])
   const [updatedData, setUpdatedData] = useState("")
-  const { getAppointments, updateAppointment, userData } = UserAuth()
+  const { getAppointments, updateAppointment, deleteAppointment, userData } =
+    UserAuth()
   // const navigate = useNavigate()
 
   const { t } = useTranslation("agenda")
@@ -67,6 +68,7 @@ const Agenda = (props) => {
         start: date,
         end: end,
         color: eventColor,
+        editable: true,
       }
 
       return obj
@@ -84,31 +86,13 @@ const Agenda = (props) => {
     setUpdatedData(updatedData)
   }
 
-  // const handleAddAppointmentButtonClick = async () => {
-  //   try {
-  //     navigate("/addAppointment")
-  //     console.log("Clicked Add Button")
-  //   } catch (error) {
-  //     console.log(error.message)
-  //   }
-  // }
-
-  const handleConfirm = async (event, action) => {
-    console.log(event, action)
-    if (action === "edit") {
-      /** PUT event to remote DB */
-    } else if (action === "create") {
-      /**POST event to remote DB */
-    }
-    /**
-     * Make sure to return 4 mandatory fields:
-     * event_id: string|number
-     * title: string
-     * start: Date|string
-     * end: Date|string
-     * ....extra other fields depend on your custom fields/editor properties
-     */
-    // Simulate http request: return added/edited event
+  const handleDeleteAppointment = async (appointmentid) => {
+    await deleteAppointment(
+      userData.customerID,
+      userData.clinicID,
+      appointmentid
+    )
+    setUpdatedData(appointmentid)
   }
 
   useEffect(() => {
@@ -167,30 +151,12 @@ const Agenda = (props) => {
                   date
                 )
               }}
-              onConfirm={handleConfirm}
-
-              // {
-              //   name: "anotherdate",
-              //   type: "date",
-              //   config: {
-              //     label: "Other Date",
-              //     md: 6,
-              //     modalVariant: "dialog",
-              //     type: "datetime",
-              //   },
-              // },
-              // ]}
+              onDelete={async (appointmenID) =>
+                await handleDeleteAppointment(appointmenID)
+              }
             />
           </div>
         </div>
-        {/* <div className='flex h-full w-1/4 bg-green-300  '>
-          <div
-            onClick={handleAddAppointmentButtonClick}
-            className='flex items-center justify-center h-12 w-12 rounded-l-2xl rounded-tr-2xl bg-[#59e2f7] mb-5 hover:bg-[#48c3d6]  '
-          >
-            <FiPlus size={22} className=' text-white ' />
-          </div>
-        </div> */}
       </div>
     </div>
   )

@@ -198,6 +198,19 @@ export const AuthContextProvider = ({ children }) => {
     await deleteDoc(patientToBeDeletedRef)
   }
 
+  const deleteAppointment = async (customerid, clinicid, appointmentid) => {
+    const appointmentToBeDeletedRef = doc(
+      db,
+      "customers/",
+      customerid,
+      "/clinics/",
+      clinicid,
+      "/appointments/",
+      appointmentid
+    )
+    await deleteDoc(appointmentToBeDeletedRef)
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       try {
@@ -230,6 +243,7 @@ export const AuthContextProvider = ({ children }) => {
         getEmployeesOfClinic,
         updateAppointment,
         deletePatient,
+        deleteAppointment,
       }}
     >
       {children}
