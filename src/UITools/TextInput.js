@@ -1,17 +1,23 @@
 import React from "react"
 
-const TextInput = ({ type, label, inputRef, placeholder, onInput, addCSS }) => {
+const TextInput = ({
+  type,
+  label,
+  inputRef,
+  onInput,
+  containerCSS,
+  labelCSS,
+  inputCSS,
+}) => {
   return (
-    <div className='flex w-full flex-col'>
-      <div className='text-md font-semibold  text-slate-700 dark:text-white'>
-        {label}
-      </div>
+    <div className={containerCSS}>
+      <div className={labelCSS}>{label}</div>
       <input
         onInput={onInput}
         ref={inputRef}
-        className={`${addCSS} h-[40px] mb-3 border-b-2 bg-[#f9faff] flex border-slate-200 px-5 text-slate-700`}
         type={type}
         placeholder={label}
+        className={inputCSS}
       />
     </div>
   )
