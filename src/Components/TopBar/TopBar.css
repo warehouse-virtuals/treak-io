@@ -1,0 +1,16 @@
+.topbar-container {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 56px;
+}
+
+.page-name {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+}
