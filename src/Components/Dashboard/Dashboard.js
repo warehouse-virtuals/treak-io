@@ -1,6 +1,7 @@
 import React from "react"
 import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
+import "./Dashboard.css"
 
 import Greetings from "../Greetings/Greetings"
 
@@ -13,22 +14,16 @@ const Dashboard = () => {
   const { t } = useTranslation("dashboard")
   const { userData } = UserAuth()
   return (
-    <div className='flex flex-col w-full h-full '>
+    <div className='dashboard-cointainer'>
       <TopBar placeholder={t("Search patients...")} />
-      <div className='flex w-full h-full'>
-        <div className='w-full px-10 bg-[#f9faff] rounded-tl-3xl h-full flex flex-col'>
-          <Greetings
-            userData={userData}
-            primary={t("Hi")}
-            secondary={t("Have a nice day at work!")}
-          />
-          <CardContainer t={t} />
-          <UpcomingAppointments t={t} />
-        </div>
-        <div className='flex w-[600px] h-full'>
-          <Sidebar userData={userData} />
-        </div>
-      </div>
+      {/* <Greetings
+        userData={userData}
+        primary={t("Hi")}
+        secondary={t("Have a nice day at work!")}
+      />
+      <CardContainer t={t} />
+      <UpcomingAppointments t={t} />
+      <Sidebar userData={userData} /> */}
     </div>
   )
 }

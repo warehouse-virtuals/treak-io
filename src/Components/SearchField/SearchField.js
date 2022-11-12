@@ -1,12 +1,15 @@
 import { useRef, useState } from "react"
 
-import { FiSearch } from "react-icons/fi"
+import "./SearchField.css"
+
+import { FiSearch, FiCalendar } from "react-icons/fi"
 
 import { useTranslation } from "react-i18next"
 
 import { UserAuth } from "../../Context/AuthContext"
 
-const SearchField = (props) => {
+const SearchField = () => {
+  const [searchSelectedPerson, setSearchSelectedPerson] = useState("")
   const [foundPatients, setFoundPatients] = useState([])
 
   const { userData, searchResults } = UserAuth()
@@ -30,34 +33,46 @@ const SearchField = (props) => {
     }
   }
 
+  const handleOnChangeSearchInput = () => {
+    findPatients().then((data) => setFoundPatients(data))
+  }
+
   return (
-    <div className={props.page === "appointment" ? "w-full" : "w-[400px]"}>
-      <div
-        className={
-          foundPatients.length > 0
-            ? "bg-white rounded-t-3xl flex justify-center h-9 items-center w-full "
-            : "bg-white rounded-3xl flex justify-center h-9 items-center w-full "
-        }
-      >
+    <div className='searchfield-container'>
+      <div className={foundPatients.length > 0 ? "search-bar" : "search-bar"}>
         <input
           ref={searchTextRef}
-          onChange={() => findPatients().then((data) => setFoundPatients(data))}
+          onClick={() => (searchTextRef.current.value = "")}
+          onChange={handleOnChangeSearchInput}
           placeholder={t("Search patients...")}
-          className='w-full h-9 italic focus:outline-none rounded-l-3xl px-5 text-[#1d2431]'
         />
-        <FiSearch color='#1d2431' className='h-full mr-4' size={34} />
+        <div className='search-icon'>
+          <FiSearch color='#20295a' className='' size={24} />
+        </div>
       </div>
-      <div className='absolute drop-shadow-md w-full'>
+      <div className='found-patient-container'>
         {foundPatients.map((patient, i) => {
           return (
             <div
+              className='found-patient'
               onClick={() => {
-                props.sendDataToParent(patient.name + " " + patient.surname)
+                setSearchSelectedPerson(patient.name + " " + patient.surname)
+                searchTextRef.current.value =
+                  patient.name + " " + patient.surname
+                setFoundPatients([])
               }}
               key={i}
-              className='flex hover:bg-slate-200  items-center text-slate-700 bg-white h-10 '
             >
+              {/* <div style={{ "margin-right": "30px" }}>{patient.SSN}</div> */}
               {patient.name + " " + patient.surname}
+              {/* <div style={{ "margin-left": "30px" }}>{patient.phone}</div> */}
+              <div className='make-appt-btn-container'>
+                <FiCalendar
+                  color='#20295a'
+                  className='make-appt-btn'
+                  size={24}
+                />
+              </div>
             </div>
           )
         })}
