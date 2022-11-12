@@ -1,9 +1,9 @@
 .topbar-container {
   display: flex;
   justify-content: space-between;
-
+  background: #20295a;
   width: 100%;
-  height: 56px;
+  height: 80px;
 }
 
 .page-name {
@@ -13,4 +13,31 @@
   font-size: 40px;
   font-weight: 600;
   color: #ffffff;
+  width: 30%;
+}
+
+.searchfield-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+
+.datentime-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+@media screen and (max-width: 900px) {
+  .searchfield-component {
+    width: 20%;
+  }
+  .datentime-component {
+    width: 40%;
+  }
+  .page-name {
+    width: 40%;
+  }
 }

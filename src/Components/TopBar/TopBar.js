@@ -10,8 +10,12 @@ const TopBar = (props) => {
   return (
     <div className='topbar-container'>
       <div className='page-name'>{t(location.pathname)}</div>
-      <SearchField />
-      <DateAndTime />
+      <div className='searchfield-component'>
+        <SearchField />
+      </div>
+      <div className='datentime-component'>
+        <DateAndTime />
+      </div>
     </div>
   )
 }

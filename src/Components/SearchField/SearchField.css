@@ -1,9 +1,10 @@
 .searchfield-container {
   display: flex;
   height: 100%;
-  width: 40%;
+  width: 100%;
   align-items: center;
   position: relative;
+  color: #5f6b7d;
 }
 
 .search-bar {
@@ -27,9 +28,6 @@
   font-family: inherit;
   flex: 1;
 }
-.search-bar input:focus {
-  border: 1px solid red !important;
-}
 
 .search-icon {
   display: flex;
@@ -37,7 +35,6 @@
   align-items: center;
   width: 64px;
   height: 100%;
-
   border-radius: 0 40px 40px 0;
   background: #fff;
 }
@@ -45,9 +42,10 @@
 .found-patient-container {
   position: absolute;
   width: 100%;
-  top: 55px;
+  top: 60px;
   background: #fff;
   border-radius: 10px;
+  box-shadow: 1px 1px 20px #858585;
 }
 .found-patient {
   display: flex;
@@ -58,6 +56,17 @@
   font-weight: 600;
   border: 1px #eee7da;
 }
+.found-patient:hover {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 45px;
+  padding-left: 5px;
+  font-weight: 600;
+  background: #daddec;
+  border: 1px #eee7da;
+  border-radius: 10px;
+}
 
 .make-appt-btn-container {
   display: flex;
@@ -66,4 +75,20 @@
   height: inherit;
   width: 50px;
   height: inherit;
+}
+
+@media screen and (max-width: 900px) {
+  .search-bar input {
+    visibility: hidden;
+  }
+  .search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 100%;
+    border-radius: 40px;
+    background: #fff;
+    margin-right: 40%;
+  }
 }

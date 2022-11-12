@@ -68,7 +68,7 @@ const SearchField = () => {
               {/* <div style={{ "margin-left": "30px" }}>{patient.phone}</div> */}
               <div className='make-appt-btn-container'>
                 <FiCalendar
-                  color='#20295a'
+                  color='#64748b'
                   className='make-appt-btn'
                   size={24}
                 />

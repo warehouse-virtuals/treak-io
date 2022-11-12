@@ -1,6 +1,12 @@
 .dashboard-cointainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
   width: 100%;
+}
+
+.dashboard-body {
+  height: 100%;
+  background: #f9faff;
+  border-top-left-radius: 10px;
 }
