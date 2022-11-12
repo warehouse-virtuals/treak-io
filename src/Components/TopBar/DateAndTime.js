@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import "./DateAndTime.css"
 import {
   FiSun,
   //  FiMoon,
@@ -12,22 +13,22 @@ const DateAndTime = (props) => {
   }, [])
 
   return (
-    <div className="flex h-full mr-10 items-center  ">
-      <div className="flex mr-10">
-        <FiSun size={26} color="white" className="mr-3" />
-        <div className="flex items-center w-[60px]">
+    <div className='datentime-container'>
+      <div className='datentime'>
+        <FiSun size={26} color='white' className='datentime-icons' />
+        <div className='datentime-content'>
           {dateState.toLocaleString("tr", {
             day: "numeric",
             month: "long",
           })}
         </div>
       </div>
-      <div className="flex">
-        <FiClock size={26} color="white" className="mr-3" />
-        <div className="flex items-center w-[60px]">
-          {("0" + dateState.getHours()).slice(-2)} <span>:</span>
-          {("0" + dateState.getMinutes()).slice(-2)}
-          <span>:</span> {("0" + dateState.getSeconds()).slice(-2)}
+      <div className='datentime'>
+        <FiClock size={26} color='white' className='datentime-icons' />
+        <div className='datentime-content'>
+          {("0" + dateState.getHours()).slice(-2)}:
+          {("0" + dateState.getMinutes()).slice(-2)}:
+          {("0" + dateState.getSeconds()).slice(-2)}
         </div>
       </div>
     </div>

@@ -16,14 +16,16 @@ const Dashboard = () => {
   return (
     <div className='dashboard-cointainer'>
       <TopBar placeholder={t("Search patients...")} />
-      {/* <Greetings
-        userData={userData}
-        primary={t("Hi")}
-        secondary={t("Have a nice day at work!")}
-      />
-      <CardContainer t={t} />
+      <div className='dashboard-body'>
+        {/* <Greetings
+          userData={userData}
+          primary={t("Hi")}
+          secondary={t("Have a nice day at work!")}
+        /> */}
+        {/* <CardContainer t={t} />
       <UpcomingAppointments t={t} />
       <Sidebar userData={userData} /> */}
+      </div>
     </div>
   )
 }
