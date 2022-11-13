@@ -8,7 +8,7 @@ import Greetings from "../Greetings/Greetings"
 import CardContainer from "../Cards/Cards"
 import UpcomingAppointments from "../Appointments/UpcomingAppointments"
 import TopBar from "../TopBar/TopBar"
-import Sidebar from "../Sidebar/Sidebar"
+// import Sidebar from "../Sidebar/Sidebar"
 
 const Dashboard = () => {
   const { t } = useTranslation("dashboard")
@@ -30,8 +30,8 @@ const Dashboard = () => {
         <div className='dashboard-upcoming'>
           <UpcomingAppointments t={t} />
         </div>
-        {/* 
-      <Sidebar userData={userData} /> */}
+
+        {/* <Sidebar userData={userData} /> */}
       </div>
     </div>
   )

@@ -11,7 +11,7 @@ const UpcomingAppointments = () => {
 
   const handleAddAppointmentButtonClick = async () => {
     try {
-      navigate("/addAppointment")
+      navigate("/Agenda")
       console.log("Clicked Add Button")
     } catch (error) {
       console.log(error.message)
@@ -27,6 +27,7 @@ const UpcomingAppointments = () => {
           className='upcoming-add-btn'
         >
           <FiPlus size={22} stroke='green' className='' />
+          Randevu ekle
         </div>
       </div>
       <div className='upcoming-list-container'>

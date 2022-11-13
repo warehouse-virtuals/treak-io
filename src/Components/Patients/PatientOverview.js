@@ -1,3 +1,4 @@
+import "./PatientOverview.css"
 import { useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
 import {
@@ -25,83 +26,104 @@ const PatientOverview = (props) => {
     return null
   } else {
     return (
-      <div className='w-full flex h-full box-border flex-col rounded-3xl p-4 bg-[#fff] drop-shadow-xl '>
-        <div className='flex w-full items-center drop-shadow-md mt-10 justify-center  '>
-          <FiUser size={120} color='#c6c9d7' />
+      <div className='patient-overview-container'>
+        <div className='patient-overview-icon-container'>
+          <FiUser size={70} className='patient-overview-icon' />
         </div>
-        <div className='flex justify-center mt-10 font-medium text-2xl '>
+        <div className='patient-overview-name'>
           {person.name}&nbsp;{person.surname}
         </div>
-        <div className='flex justify-center font-medium text-m '>
-          {person.SSN}
-        </div>
-        <div className='flex justify-between pl-5 pr-5 mt-10 font-medium text-m  '>
+        <div className='patient-overview-ssn'>{person.SSN}</div>
+        <div className='patient-overview-hearingaid-container'>
           {hearingAids
             ? hearingAids.map((hearingAid, index) => {
                 if (hearingAid.isRightSide) {
                   return (
-                    <div key={index} className='flex w-1/2 flex-col '>
-                      <div className='text-[#eb5656] font-semibold'>Sağ</div>
-                      <div className='font-normal'>
-                        {hearingAid.aidBrand}
-                        {hearingAid.aidModel}
+                    <div
+                      key={index}
+                      className='patient-overview-hearingaid-right'
+                    >
+                      <div className='patient-overview-hearingaid-right-title'>
+                        Sağ
                       </div>
-                      <div className='font-normal '>{hearingAid.aidSN}</div>
+                      <div className='patient-overview-hearingaid-brand'>
+                        <div>{hearingAid.aidBrand}</div>
+                        <div className='patient-overview-hearingaid-modal'>
+                          <div>{hearingAid.aidModel}</div>
+                        </div>
+                      </div>
+                      <div className='patient-overview-hearingaid-sn'>
+                        {hearingAid.aidSN}
+                      </div>
                     </div>
                   )
                 } else {
                   return (
-                    <div key={index} className='flex items-end w-1/2 flex-col '>
-                      <div className='text-[#5c8cd9] font-semibold'>Sol</div>
-                      <div className='font-normal'>
-                        {hearingAid.aidBrand}
-                        {hearingAid.aidModel}
+                    <div
+                      key={index}
+                      className='patient-overview-hearingaid-left'
+                    >
+                      <div className='patient-overview-hearingaid-left-title'>
+                        Sol
                       </div>
-                      <div className='font-normal '>{hearingAid.aidSN}</div>
+                      <div className='patient-overview-hearingaid-brand'>
+                        <div>{hearingAid.aidBrand}</div>
+                        <div className='patient-overview-hearingaid-modal'>
+                          <div>{hearingAid.aidModel}</div>
+                        </div>
+                      </div>
+                      <div className='patient-overview-hearingaid-sn'>
+                        {hearingAid.aidSN}
+                      </div>
                     </div>
                   )
                 }
               })
             : null}
         </div>
-        <div className='flex flex-col pl-5 pr-5  font-medium text-m '>
-          <div className='flex mb-5 text-lg font-semibold '>Detaylar</div>
-          <div className='flex justify-between w-full  '>
-            <div className='flex w-1/2'>Adres:</div>
-            <div className='flex w-1/2 font-light'>{person.address}</div>
-          </div>
-          <div className='flex justify-between w-full '>
-            <div>Telefon:</div>
-            <div className='flex w-1/2 font-light'>{person.phone}</div>
-          </div>
-          <div className='flex justify-between w-full'>
-            <div>Doğum Tarihi:</div>
-            <div className='flex w-1/2 font-light'>{person.DOB}</div>
-          </div>
-          <div className='flex justify-between w-full '>
-            <div>Kaydedildiği Klinik</div>
-            <div className='flex w-1/2 font-light'>Muratpaşa</div>
+        <div className='patient-overview-details-container'>
+          <div className='patient-overview-details-title'>Detaylar</div>
+          <div className='patient-overview-content-container'>
+            <div className='patient-overview-content'>
+              <div className='patient-overview-content-key'>Adres:</div>
+              <div className='patient-overview-content-value'>
+                {person.address}
+              </div>
+            </div>
+            <div className='patient-overview-content'>
+              <div className='patient-overview-content-key'>Telefon:</div>
+              <div className='patient-overview-content-value'>
+                {person.phone}
+              </div>
+            </div>
+            <div className='patient-overview-content'>
+              <div className='patient-overview-content-key'>Doğum Tarihi:</div>
+              <div className='patient-overview-content-value'>{person.DOB}</div>
+            </div>
+            <div className='patient-overview-content'>
+              <div className='patient-overview-content-key'>Klinik:</div>
+              <div className='patient-overview-content-value'>Muratpaşa</div>
+            </div>
           </div>
         </div>
-        <div className='flex mt-10 justify-around items-center '>
-          <div>
+        <div className='patient-overview-footer'>
+          <div className='patient-overview-footer-btn'>
+            <FiEdit size={24} color='#3d99dc' />
+          </div>
+          <div
+            className='patient-overview-footer-btn'
+            onClick={() => navigate("/agenda", { state: { patient: person } })}
+          >
+            <FiCalendar size={24} color='#b25483' />
+          </div>
+          <div className='patient-overview-footer-btn'>
             <FiTrash
               size={24}
-              color='red'
+              color='#ff6962'
               onClick={() => {
                 handleDeleteOnClick(person.id).then(() => {})
               }}
             />
-          </div>
-          <div
-            onClick={() =>
-              navigate("/addAppointment", { state: { patient: person } })
-            }
-          >
-            <FiCalendar size={24} color='blue' />
-          </div>
-          <div>
-            <FiEdit size={24} color='gray' />
           </div>
         </div>
       </div>

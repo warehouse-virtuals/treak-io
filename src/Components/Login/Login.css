@@ -111,7 +111,7 @@
   font-size: 16px;
   font-weight: 400;
   border: 0px;
-  background: rgb(251, 251, 254);
+  background: #f1f3fe;
   border-bottom: 2px solid #e5e7eb;
   text-indent: 15px;
   font-family: inherit;
@@ -136,7 +136,7 @@
   transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
 }
 .login-textinput-button:hover {
-  background: #eef0ff;
+  background: #f7f9ff;
 }
 
 .company {
@@ -154,8 +154,8 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  box-shadow: 0 0 0 30px white inset !important;
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px #f7f9ff inset !important;
+  -webkit-box-shadow: 0 0 0 30px #f7f9ff inset !important;
 }
 
 @media screen and (min-width: 1530px) {

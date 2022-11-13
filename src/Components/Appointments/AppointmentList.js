@@ -69,11 +69,11 @@ const AppointmentList = (props) => {
   const TableRow = ({ data }) => {
     const colorPicker = (appointmentStatus) => {
       if (appointmentStatus === "Completed") {
-        return "3px solid green"
+        return "4px solid #51caa1"
       } else if (appointmentStatus === "Waiting") {
-        return " 3px solid #e59f3c"
+        return "4px solid #5be2f7"
       } else if (appointmentStatus === "Cancelled") {
-        return "3px solid #ff6962"
+        return "4px solid #f3698b"
       }
     }
     const statusColor = colorPicker(data.status)
@@ -82,7 +82,7 @@ const AppointmentList = (props) => {
       <div className='table-row-item' style={{ borderRight: statusColor }}>
         {data.items.map((item, index) => {
           return (
-            <div className='border-r-2 border-slate-100 ' key={index}>
+            <div className='table-row-item-content' key={index}>
               {item}
             </div>
           )
