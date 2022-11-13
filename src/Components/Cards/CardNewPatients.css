@@ -1,0 +1,29 @@
+.card-new-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-new-header {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.card-new-new {
+  font-weight: 500;
+  font-size: 26px;
+  margin-right: 30%;
+}
+
+.card-todays-booked {
+}
+
+.card-new-compare {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 300;
+  color: green;
+}

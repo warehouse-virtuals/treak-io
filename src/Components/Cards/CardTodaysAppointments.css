@@ -1,0 +1,34 @@
+.card-todays-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-todays-header {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.card-todays-finished {
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.card-todays-booked {
+}
+.card-todays-cancelled {
+  color: #ff6962;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.card-todays-done {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 300;
+  color: green;
+  margin-left: 50%;
+}

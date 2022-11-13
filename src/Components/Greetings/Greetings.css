@@ -1,0 +1,16 @@
+.greetings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
+}
+
+.greetings-header {
+  display: flex;
+  font-size: 30px;
+  font-weight: 500;
+}
+.greetings-body {
+  font-style: italic;
+  color: #e59f3c;
+}

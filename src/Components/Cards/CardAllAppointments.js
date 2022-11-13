@@ -1,16 +1,20 @@
+import "./CardAllAppointments.css"
+
 const CardAllAppointments = (props) => {
   let calculated = Math.round(
     (100 * (props.currentMonth - props.lastMonth)) / props.lastMonth
   )
 
   return (
-    <div className="flex flex-col">
-      <div className="flex h-1/2 w-full items-center">
+    <div className='card-all-container'>
+      <div className='card-all-header'>
         {props.currentMonth + props.cancelled}
       </div>
-      <div className="flex h-1/2 w-full items-center text-sm text-green-300">
+      <div className='card-all-compare'>
         {"+" + calculated + "%"}
-        <div className="text-gray-400 ml-2">{props.t("vs last month")}</div>
+        <div className='' style={{ "margin-left": "5px" }}>
+          {props.t("vs last month")}
+        </div>
       </div>
     </div>
   )

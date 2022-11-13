@@ -47,7 +47,7 @@ const SearchField = () => {
           placeholder={t("Search patients...")}
         />
         <div className='search-icon'>
-          <FiSearch color='#20295a' className='' size={24} />
+          <FiSearch color='0083b0' className='' size={24} />
         </div>
       </div>
       <div className='found-patient-container'>
@@ -68,7 +68,7 @@ const SearchField = () => {
               {/* <div style={{ "margin-left": "30px" }}>{patient.phone}</div> */}
               <div className='make-appt-btn-container'>
                 <FiCalendar
-                  color='#64748b'
+                  color='0083b0'
                   className='make-appt-btn'
                   size={24}
                 />
