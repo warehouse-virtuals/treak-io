@@ -14,10 +14,10 @@
 .upcoming-add-btn {
   display: flex;
   align-items: center;
-  height: 30px;
-  width: 30px;
+  justify-content: space-around;
   margin-left: 70px;
-  justify-content: center;
+  height: 50px;
+  width: 200px;
   border-radius: 12px;
   box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
     7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
@@ -28,10 +28,5 @@
 
 .upcoming-list-container {
   display: flex;
-  background: #f1f3fe;
-  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
-  border-radius: 12px;
   color: #20295a;
 }

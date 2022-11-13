@@ -1,0 +1,77 @@
+.patients-table-container {
+  width: inherit;
+}
+.patient-list-container {
+  display: flex;
+}
+
+.patient-list-header-container {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: #64748b;
+  width: 100%;
+}
+
+.patients-overview-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 100%;
+}
+/* .table-head-container {
+  } */
+.patients-table-head-item {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  font-weight: 600;
+  margin-bottom: 10px;
+  gap: 40px;
+}
+
+.patients-table-row-item {
+  align-items: center;
+  display: grid;
+  height: 40px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 40px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 12px;
+
+  background: #f1f3fe;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001;
+  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
+  /* box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81); */
+}
+
+.patients-table-row-item-content:not(:last-child) {
+  border-right: 1px solid #a9b2c3;
+}
+
+.patients-add-patient-btn {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  width: 200px;
+  margin-bottom: 50px;
+  border-radius: 12px;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001;
+  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
+}
+.patients-add-patient-btn:hover {
+  background-color: #f7f9ff;
+}
