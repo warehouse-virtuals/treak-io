@@ -5,7 +5,7 @@ import "./Dashboard.css"
 
 import Greetings from "../Greetings/Greetings"
 
-import CardContainer from "../Card/CardContainer"
+import CardContainer from "../Cards/Cards"
 import UpcomingAppointments from "../Appointments/UpcomingAppointments"
 import TopBar from "../TopBar/TopBar"
 import Sidebar from "../Sidebar/Sidebar"
@@ -17,13 +17,20 @@ const Dashboard = () => {
     <div className='dashboard-cointainer'>
       <TopBar placeholder={t("Search patients...")} />
       <div className='dashboard-body'>
-        {/* <Greetings
-          userData={userData}
-          primary={t("Hi")}
-          secondary={t("Have a nice day at work!")}
-        /> */}
-        {/* <CardContainer t={t} />
-      <UpcomingAppointments t={t} />
+        <div className='dashboard-greetings'>
+          <Greetings
+            userData={userData}
+            primary={t("Hi")}
+            secondary={t("Have a nice day at work!")}
+          />
+        </div>
+        <div className='dashboard-cards'>
+          <CardContainer t={t} />
+        </div>
+        <div className='dashboard-upcoming'>
+          <UpcomingAppointments t={t} />
+        </div>
+        {/* 
       <Sidebar userData={userData} /> */}
       </div>
     </div>

@@ -1,0 +1,32 @@
+.appointment-list-container {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: #64748b;
+}
+
+.table-container {
+  width: inherit;
+}
+
+/* .table-head-container {
+} */
+
+.table-head-item {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 40px;
+  font-weight: 600;
+
+  margin-bottom: 10px;
+}
+
+.table-row-item {
+  align-items: center;
+  display: grid;
+  height: 40px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 40px;
+  margin-bottom: 10px;
+}

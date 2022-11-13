@@ -1,7 +1,6 @@
 .topbar-container {
   display: flex;
   justify-content: space-between;
-  background: #20295a;
   width: 100%;
   height: 80px;
 }
