@@ -115,7 +115,7 @@ const PatientsList = () => {
           onClick={handleAddPatientButtonClick}
           className='patients-add-patient-btn'
         >
-          <FiPlus size={30} stroke='#35d8ac' className='' /> Kullanıcı Ekle
+          <FiPlus size={30} stroke='#a3edd9' className='' /> Kullanıcı Ekle
         </div>
         <Table
           theadData={theadData}

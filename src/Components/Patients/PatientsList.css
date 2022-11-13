@@ -41,8 +41,8 @@
   margin-bottom: 10px;
   padding: 5px;
   border-radius: 12px;
-
-  background: #f1f3fe;
+  background: white;
+  /* background: #f1f3fe; */
   box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
     7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
     inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
@@ -56,6 +56,10 @@
 .patients-table-row-item-content:not(:last-child) {
   border-right: 1px solid #a9b2c3;
 }
+.patients-table-row-item:hover {
+  cursor: pointer;
+  background: #f1f3ff;
+}
 
 .patients-add-patient-btn {
   font-weight: 600;
@@ -66,6 +70,8 @@
   width: 200px;
   margin-bottom: 50px;
   border-radius: 12px;
+  background: #05beb6;
+  color: white;
   box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
     7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
     inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
@@ -73,5 +79,6 @@
   transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
 }
 .patients-add-patient-btn:hover {
-  background-color: #f7f9ff;
+  background-color: #04afa6;
+  cursor: pointer;
 }

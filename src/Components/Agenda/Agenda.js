@@ -104,11 +104,11 @@ const Agenda = (props) => {
   }, [userData, updatedData])
 
   return (
-    <div className='flex flex-col h-full w-full'>
+    <div className='agenda-container'>
       <TopBar />
-      <div className='flex rounded-tl-3xl  bg-[#f9faff] items-center justify-center h-full w-full'>
-        <div className='justify-start bg-red-300 items-start w-5/6 text-black'>
-          <div className='flex flex-col w-full h-full bg-[#f9faff]'>
+      <div className='agenda-body'>
+        <div className='agenda-scheduler-container'>
+          <div className='agenda-scheduler'>
             <Scheduler
               translations={translations}
               locale={tr}

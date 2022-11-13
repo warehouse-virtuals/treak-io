@@ -69,11 +69,11 @@ const AppointmentList = (props) => {
   const TableRow = ({ data }) => {
     const colorPicker = (appointmentStatus) => {
       if (appointmentStatus === "Completed") {
-        return "4px solid green"
+        return "4px solid #51caa1"
       } else if (appointmentStatus === "Waiting") {
-        return "4px solid #e59f3c"
+        return "4px solid #5be2f7"
       } else if (appointmentStatus === "Cancelled") {
-        return "4px solid #ff6962"
+        return "4px solid #f3698b"
       }
     }
     const statusColor = colorPicker(data.status)

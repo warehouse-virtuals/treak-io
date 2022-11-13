@@ -1,9 +1,11 @@
+import "./Analytics.css"
+
 import TopBar from "../TopBar/TopBar"
 const Analytics = () => {
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className='analytics-container'>
       <TopBar />
-      <div className="w-full h-full bg-[#f9faff] rounded-tl-3xl">Analytics</div>
+      <div className='analytics-body'>Analytics</div>
     </div>
   )
 }

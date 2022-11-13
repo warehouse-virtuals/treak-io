@@ -41,6 +41,7 @@
 
 .navbar-buttons:hover {
   color: #fff;
+  cursor: pointer;
 }
 
 .navbar-button-icon {
