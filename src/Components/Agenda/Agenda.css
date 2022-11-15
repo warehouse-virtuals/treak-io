@@ -12,7 +12,7 @@
   align-items: center;
   height: calc(100% - 80px);
   background: #f1f3fe;
-  color: #64748b;
+  color: #4a545d;
   border-top-left-radius: 12px;
 }
 .agenda-scheduler-container {
@@ -33,20 +33,20 @@
 
 /* Toolbar kısımısı koyu renkliler renkliler*/
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-  color: #64748b !important;
+  color: #4a545d !important;
   font-family: "Gilroy", sans-serif !important;
   background: #f1f3ff !important;
 }
 
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-  color: #64748b !important;
+  color: #4a545d !important;
   font-weight: 600 !important;
   font-size: medium !important;
 }
 
 .css-1y942vo-MuiButtonBase-root-MuiButton-root {
   font-size: medium !important;
-  color: #64748b !important;
+  color: #4a545d !important;
   font-family: "Gilroy", sans-serif !important;
 }
 
@@ -58,31 +58,31 @@
   font-family: "Gilroy", sans-serif !important;
 }
 .css-68o8xu {
-  color: #64748b !important;
+  color: #4a545d !important;
   font-family: "Gilroy", sans-serif !important;
 }
 
 .css-1ujsas3 {
-  color: #64748b !important;
+  color: #4a545d !important;
   font-family: "Gilroy", sans-serif !important;
 }
 
 .css-1x5jdmq {
-  color: #64748b !important;
+  color: #4a545d !important;
   font-family: "Gilroy", sans-serif !important;
 }
 
 .css-yvbg89,
 .css-b7766g,
 .css-62dh81 {
-  color: #64748b !important;
+  color: #4a545d !important;
   font-family: "Gilroy", sans-serif !important;
   font-weight: 600 !important;
   font-size: small !important;
 }
 
 .css-llvhl4-MuiTypography-root {
-  color: #64748b !important;
+  color: #4a545d !important;
   font-family: "Gilroy", sans-serif !important;
   font-weight: 600 !important;
   font-size: small !important;
@@ -138,7 +138,8 @@
 /* Month sekmesi saatler renk font falan */
 .MuiPickersCalendarHeader-switchHeader,
 .MuiTypography-caption {
-  color: #cbccdb;
+  color: #4a545d;
+
   font-size: small !important;
 
   font-family: "Gilroy", sans-serif !important;
@@ -179,7 +180,7 @@
 
 .MuiTypography-noWrap,
 ._2mqV6nb5wT63-eyCtNsXhI {
-  color: #323232 !important;
+  color: #2a3035 !important;
 }
 
 ._2fDFJ9JSJQ3pH1lK4KAPXZ,
