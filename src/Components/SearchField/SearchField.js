@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next"
 import { UserAuth } from "../../Context/AuthContext"
 
 const SearchField = () => {
+  // eslint-disable-next-line
   const [searchSelectedPerson, setSearchSelectedPerson] = useState("")
   const [foundPatients, setFoundPatients] = useState([])
 

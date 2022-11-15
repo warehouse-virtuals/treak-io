@@ -5,7 +5,7 @@ import { Scheduler } from "@aldabil/react-scheduler"
 import { toDate } from "date-fns"
 import tr from "date-fns/locale/tr"
 
-import AddAppointments from "../Appointments/AddAppointments"
+import AddAppointment from "../Appointments/AddAppointments"
 
 import "./Agenda.css"
 
@@ -135,7 +135,7 @@ const Agenda = (props) => {
               events={appointments}
               hourFormat='24'
               customEditor={(scheduler) => (
-                <AddAppointments
+                <AddAppointment
                   scheduler={scheduler}
                   parentCallback={(childData) => {
                     setUpdatedData(childData)
