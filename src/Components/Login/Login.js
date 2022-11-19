@@ -103,6 +103,7 @@ const Login = () => {
           Warehouse, Inc.
         </div>
       </div>
+
       <div className='login-right'>
         <div className='login-right-body'>
           {/* <img alt='svg' className='' src={LoginSvg} /> */}

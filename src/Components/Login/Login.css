@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .login-container {
   display: flex;
   height: 100vh;
@@ -8,6 +12,7 @@
   display: flex;
   flex-direction: column;
   width: 40vw;
+  height: 100vh;
   background-color: #f0f3fd;
 }
 .login-left-header {
@@ -62,6 +67,15 @@
     #0083b0,
     #00beb6
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.login-right-header {
+  display: flex;
+  align-items: center;
+  height: 30%;
+  font-weight: 600;
+  font-size: 80px;
+  color: #ffffff;
+  margin-left: 10%;
 }
 
 .login-right-body {
@@ -156,36 +170,4 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px #f7f9ff inset !important;
   -webkit-box-shadow: 0 0 0 30px #f7f9ff inset !important;
-}
-
-@media screen and (min-width: 1530px) {
-  .login-right-header {
-    display: flex;
-    align-items: center;
-    height: 30%;
-    font-weight: 600;
-    font-size: 80px;
-    color: #ffffff;
-    margin-left: 10%;
-  }
-}
-@media screen and (min-width: 770px) and (max-width: 1530px) {
-  .login-right-header {
-    display: flex;
-    align-items: center;
-    height: 30%;
-    font-weight: 600;
-    font-size: 55px;
-    color: #ffffff;
-    margin-left: 10%;
-  }
-}
-
-@media screen and (min-width: 0px) and (max-width: 1100px) {
-  .login-left {
-    width: 100vw;
-  }
-  .login-right {
-    width: 0vw;
-  }
 }
