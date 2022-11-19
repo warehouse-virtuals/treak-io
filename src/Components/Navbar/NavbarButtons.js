@@ -43,7 +43,7 @@ const NavbarButtons = [
     icon: <FiMail color={color} size={size} className='' />,
     pathname: "/messages",
     alt: "messages",
-    desc: "Get in touch with your colleagues and patients",
+    desc: "Get in touch with your colleagues",
   },
   {
     name: "Analytics",

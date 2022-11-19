@@ -16,8 +16,7 @@ import useWindowSize from "./Hooks/useWindowSize"
 
 const App = () => {
   const { pathname } = useLocation()
-  const [width, height] = useWindowSize()
-  console.log(width, height)
+  const [width] = useWindowSize()
 
   if (width < 960) {
     return <div>Hadi bakalım</div>
