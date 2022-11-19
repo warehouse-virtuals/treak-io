@@ -89,6 +89,7 @@ export const AuthContextProvider = ({ children }) => {
         setUserData({ ...data, ppurl: ppurl })
       })
     })
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
   const getCustomers = async () => {
@@ -98,6 +99,7 @@ export const AuthContextProvider = ({ children }) => {
         customers.forEach((customer) => customer.id)
       })
       .catch((err) => console.error(err))
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
   const getPatients = async (customerid, usersClinic) => {
@@ -108,6 +110,7 @@ export const AuthContextProvider = ({ children }) => {
     querySnapshotOfAssignedPatients.forEach((doc) => {
       arr.push(doc.data())
     })
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
     return arr
   }
   const getEmployeesOfClinic = async (usersClinic) => {
@@ -120,6 +123,7 @@ export const AuthContextProvider = ({ children }) => {
     querySnapshotOfEmployees.forEach((doc) => {
       arr.push(doc.data())
     })
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
     return arr
   }
 
@@ -144,6 +148,7 @@ export const AuthContextProvider = ({ children }) => {
     querySnapshotOfAssignedPatients.forEach((doc) => {
       arr.push(doc.data())
     })
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
     return arr
   }
 
@@ -164,6 +169,7 @@ export const AuthContextProvider = ({ children }) => {
     querySnapshotOfAssignedPatients.forEach((doc) => {
       arr.push(doc.data())
     })
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
     return arr
   }
 
@@ -184,6 +190,7 @@ export const AuthContextProvider = ({ children }) => {
     )
 
     await updateDoc(appointmentRef, { date: updatedDate })
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
   const deletePatient = async (customerid, patientid) => {
@@ -196,6 +203,7 @@ export const AuthContextProvider = ({ children }) => {
       patientid
     )
     await deleteDoc(patientToBeDeletedRef)
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
   const deleteAppointment = async (customerid, clinicid, appointmentid) => {
@@ -210,6 +218,7 @@ export const AuthContextProvider = ({ children }) => {
       appointmentid
     )
     await deleteDoc(appointmentToBeDeletedRef)
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
   useEffect(() => {

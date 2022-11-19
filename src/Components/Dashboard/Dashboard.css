@@ -6,6 +6,7 @@
 }
 
 .dashboard-body {
+  box-sizing: border-box;
   height: calc(100% - 80px);
   background: #f1f3fe;
   color: #4a545d;

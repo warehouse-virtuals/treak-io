@@ -22,7 +22,6 @@ const AppointmentList = (props) => {
   const tbodyData = []
 
   appointments.forEach((appointment, i) => {
-    console.log(appointment)
     const date = toDate(appointment.date.seconds * 1000).toLocaleDateString(
       "tr",
       { day: "2-digit", month: "long", year: "numeric" }
@@ -77,7 +76,7 @@ const AppointmentList = (props) => {
       }
     }
     const statusColor = colorPicker(data.status)
-    console.log(statusColor)
+
     return (
       <div className='table-row-item' style={{ borderRight: statusColor }}>
         {data.items.map((item, index) => {
@@ -97,7 +96,7 @@ const AppointmentList = (props) => {
           <TableHeadItem item={theadData} />
         </div>
         <div className=''>
-          {tbodyData.map((item) => {
+          {tbodyData.slice(0, props.limitRows).map((item) => {
             return <TableRow key={item.id} data={item} />
           })}
         </div>

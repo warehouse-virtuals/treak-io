@@ -112,7 +112,7 @@ const Agenda = (props) => {
             <Scheduler
               translations={translations}
               locale={tr}
-              height={700}
+              height={600}
               view='week'
               week={{
                 weekDays: [0, 1, 2, 3, 4, 5, 6],

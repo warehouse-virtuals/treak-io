@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { FiPlus } from "react-icons/fi"
 
-const UpcomingAppointments = () => {
+const UpcomingAppointments = (props) => {
   const navigate = useNavigate()
   const { t } = useTranslation("dashboard")
 
@@ -31,7 +31,7 @@ const UpcomingAppointments = () => {
         </div>
       </div>
       <div className='upcoming-list-container'>
-        <AppointmentList t={t} />
+        <AppointmentList t={t} limitRows={props.limitRows} />
       </div>
     </div>
   )

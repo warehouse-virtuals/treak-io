@@ -11,10 +11,6 @@ const Patients = () => {
       <TopBar pholder={t("Search patients...")} />
       <div className='patients-body'>
         <div className='patients-patients-list-container'>
-          <div className='a'>
-            <div>Randevular</div>
-            <div>Dökümanlar</div>
-          </div>
           <PatientsList />
         </div>
       </div>

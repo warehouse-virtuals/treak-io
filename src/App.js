@@ -16,25 +16,25 @@ import useWindowSize from "./Hooks/useWindowSize"
 
 const App = () => {
   const { pathname } = useLocation()
-  const [width] = useWindowSize()
+  const [width, height] = useWindowSize()
 
-  if (width < 960) {
+  if (width < 960 || height < 730) {
     return <div>Hadi bakalım</div>
   } else {
-    return (
-      <Suspense fallback={"loading"}>
-        <ToastContainer />
-        <div className='App'>
-          <AuthContextProvider>
-            <ThemeProvider>
-              {pathname === "/login" || pathname === "/" ? null : <Navbar />}
-              <MainRouter />
-            </ThemeProvider>
-          </AuthContextProvider>
-        </div>
-      </Suspense>
-    )
   }
+  return (
+    <Suspense fallback={"loading"}>
+      <ToastContainer />
+      <div className='App'>
+        <AuthContextProvider>
+          <ThemeProvider>
+            {pathname === "/login" || pathname === "/" ? null : <Navbar />}
+            <MainRouter />
+          </ThemeProvider>
+        </AuthContextProvider>
+      </div>
+    </Suspense>
+  )
 }
 
 export default App
