@@ -106,8 +106,11 @@ const Login = () => {
 
       <div className='login-right'>
         <div className='login-right-body'>
+          <div className='login-right-header'>
+            Improve your
+            <br /> workflow
+          </div>
           {/* <img alt='svg' className='' src={LoginSvg} /> */}
-          <div className='login-right-header'>Improve your workflow </div>
           {NavbarButtons.map((button, index) => {
             return (
               <div className='buttons-row'>
