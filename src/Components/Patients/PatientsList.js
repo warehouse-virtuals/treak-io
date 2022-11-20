@@ -117,11 +117,7 @@ const PatientsList = () => {
         >
           <FiPlus size={30} stroke='#a3edd9' className='' /> Kullanıcı Ekle
         </div>
-        <Table
-          theadData={theadData}
-          tbodyData={tbodyData}
-          customClass='w-full font-normal '
-        />
+        <Table theadData={theadData} tbodyData={tbodyData} />
       </div>
       <div className='patients-overview-container'>
         <PatientOverview
