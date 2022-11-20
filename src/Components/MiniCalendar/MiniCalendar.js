@@ -13,6 +13,8 @@ import {
 import { tr } from "date-fns/locale"
 import React from "react"
 
+import "./MiniCalendar.css"
+
 const MiniCalendar = () => {
   const today = startOfToday()
   // console.log(today)
@@ -31,41 +33,27 @@ const MiniCalendar = () => {
   // console.log(days)
 
   return (
-    <div className="flex rounded-lg flex-col justify-center items-center w-full mt-10 select-none bg-[#f9fafe] box-border p-3 ">
-      <div className="w-full text-[26px] font-bold ml-10 mt-2">
-        {format(today, "MMMM yyyy")}
-      </div>
-      <div className="grid w-full h-16  grid-cols-7 grid-rows-1 font-bold">
-        <div className="flex justify-center items-center text-center h-16">
-          Mon
-        </div>
-        <div className="flex justify-center items-center text-center h-16">
-          Tue
-        </div>
-        <div className="flex justify-center items-center text-center h-16">
-          Wed
-        </div>
-        <div className="flex justify-center items-center text-center h-16">
-          Thu
-        </div>
-        <div className="flex justify-center items-center text-center h-16">
-          Fri
-        </div>
-        <div className="flex justify-center items-center text-center h-16">
-          Sat
-        </div>
-        <div className="flex justify-center items-center text-center h-16">
-          Sun
-        </div>
+    <div className='mini-calendar-container'>
+      <div className='mini-calendar-today'>{format(today, "MMMM yyyy")}</div>
+      <div className='mini-calendar-months-grid'>
+        <div className='mini-calendar-months'>Mon</div>
+        <div className='mini-calendar-months'>Tue</div>
+        <div className='mini-calendar-months'>Wed</div>
+        <div className='mini-calendar-months'>Thu</div>
+        <div className='mini-calendar-months'>Fri</div>
+        <div className='mini-calendar-months'>Sat</div>
+        <div className='mini-calendar-months'>Sun</div>
       </div>
 
-      <div className="w-full h-[300px] grid grid-cols-7 grid-rows-6 row-auto ">
+      <div className='mini-calendar-days-grid'>
         {days.map((day, index) => {
           return (
             <time
-              className={`m-2 rounded-md box-border flex justify-center items-center text-center ${
-                isThisMonth(day) ? "" : "text-gray-400"
-              } ${isToday(day) ? "bg-[#605bff] text-white" : ""}`}
+              className='mini-calendar-days'
+              style={
+                (isThisMonth(day) ? null : { color: "red" },
+                isToday(day) ? { color: "white", background: "#605bff" } : null)
+              }
               key={index}
             >
               {format(day, "dd")}

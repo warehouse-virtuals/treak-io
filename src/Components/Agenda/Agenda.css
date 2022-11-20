@@ -10,25 +10,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100% - 80px);
+  height: calc(100% - 56px);
   background: #f1f3fe;
   color: #4a545d;
   border-top-left-radius: 12px;
 }
 .agenda-scheduler-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  height: 840px;
   width: 90%;
-  background: red;
 }
 .agenda-scheduler {
   background: #f1f3ff;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: inherit;
 }
 
 /* Toolbar kısımısı koyu renkliler renkliler*/
@@ -90,7 +89,7 @@
 
 /* Toolbarın altı */
 .css-1edlcpn {
-  margin-top: 30px !important;
+  margin-top: 10px !important;
   background-color: white !important;
 }
 
