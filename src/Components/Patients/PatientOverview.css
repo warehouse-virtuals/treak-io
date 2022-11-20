@@ -1,6 +1,8 @@
 .patient-overview-container {
-  height: 650px;
+  box-sizing: border-box;
+  height: 80%;
   display: flex;
+  justify-content: left;
   flex-direction: column;
   width: 80%;
   /* box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
@@ -22,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120px;
+  height: 100px;
 }
 
 .patient-overview-icon {
@@ -85,17 +87,19 @@
 .patient-overview-hearingaid-brand {
   display: flex;
   flex-direction: column;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .patient-overview-hearingaid-modal {
   display: flex;
   flex-direction: column;
   font-weight: 400;
+  font-size: 14px;
 }
 
 .patient-overview-hearingaid-sn {
   font-style: italic;
+  font-size: 14px;
 }
 
 .patient-overview-details-container {
@@ -151,4 +155,125 @@
 
 .patient-overview-footer-btn :hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1180px) {
+  .patient-overview-hearingaid-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+  .patient-overview-name {
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .patient-overview-ssn {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .patient-overview-details-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .patient-overview-content-key {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .patient-overview-content-value {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .patient-overview-hearingaid-right-title {
+    font-weight: 600;
+    color: #ff6962;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .patient-overview-hearingaid-left-title {
+    font-weight: 600;
+    color: #3d99dc;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .patient-overview-hearingaid-brand {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .patient-overview-hearingaid-modal {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .patient-overview-hearingaid-sn {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 1366px) and (min-width: 1181px) {
+  .patient-overview-hearingaid-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+  .patient-overview-name {
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .patient-overview-ssn {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .patient-overview-details-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .patient-overview-content-key {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .patient-overview-content-value {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .patient-overview-hearingaid-right-title {
+    font-weight: 600;
+    color: #ff6962;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .patient-overview-hearingaid-left-title {
+    font-weight: 600;
+    color: #3d99dc;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .patient-overview-hearingaid-brand {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .patient-overview-hearingaid-modal {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .patient-overview-hearingaid-sn {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 1367px) {
 }
