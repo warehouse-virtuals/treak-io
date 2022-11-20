@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 20px;
   background: red;
-  width: 150px;
+  width: 200px;
   border-radius: 12px;
   background: #f1f3fe;
   box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
@@ -37,4 +37,24 @@
 .card-body {
   display: flex;
   align-items: center;
+}
+
+@media only screen and (max-width: 1180px) {
+  .card-container {
+    width: 160px;
+  }
+  .card-title {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 1181px) {
+  .card-container {
+    width: 180px;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .card-container {
+    width: 200px;
+  }
 }

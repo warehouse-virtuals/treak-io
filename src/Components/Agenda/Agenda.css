@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100%);
+  height: calc(100% - 56px);
   background: #f1f3fe;
   color: #4a545d;
   border-top-left-radius: 12px;

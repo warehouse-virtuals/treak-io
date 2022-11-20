@@ -16,8 +16,8 @@
   font-size: 26px;
 }
 
-.card-todays-booked {
-}
+/* .card-todays-booked {
+} */
 .card-todays-cancelled {
   color: #ff6962;
   font-size: 14px;
@@ -31,4 +31,10 @@
   font-weight: 300;
   color: green;
   margin-left: 50%;
+}
+
+@media only screen and (max-width: 1180px) {
+  .card-todays-done {
+    font-size: 11px;
+  }
 }

@@ -8,7 +8,7 @@ import Greetings from "../Greetings/Greetings"
 import CardContainer from "../Cards/Cards"
 import UpcomingAppointments from "../Appointments/UpcomingAppointments"
 import TopBar from "../TopBar/TopBar"
-// import Sidebar from "../Sidebar/Sidebar"
+import Sidebar from "../Sidebar/Sidebar"
 
 import useWindowSize from "../../Hooks/useWindowSize"
 
@@ -22,20 +22,24 @@ const Dashboard = () => {
     <div className='dashboard-cointainer'>
       <TopBar placeholder={t("Search patients...")} />
       <div className='dashboard-body'>
-        <div className='dashboard-greetings'>
-          <Greetings
-            userData={userData}
-            primary={t("Hi")}
-            secondary={t("Have a nice day at work!")}
-          />
+        <div className='dashboard-content'>
+          <div className='dashboard-greetings'>
+            <Greetings
+              userData={userData}
+              primary={t("Hi")}
+              secondary={t("Have a nice day at work!")}
+            />
+          </div>
+          <div className='dashboard-cards'>
+            <CardContainer t={t} />
+          </div>
+          {/* <div className='dashboard-upcoming'>
+            <UpcomingAppointments t={t} limitRows={height < 830 ? 3 : 5} />
+          </div> */}
         </div>
-        <div className='dashboard-cards'>
-          <CardContainer t={t} />
+        <div className='dashboard-sidebar-container'>
+          <Sidebar userData={userData} />
         </div>
-        <div className='dashboard-upcoming'>
-          <UpcomingAppointments t={t} limitRows={height < 830 ? 3 : 5} />
-        </div>
-        {/* <Sidebar userData={userData} /> */}
       </div>
     </div>
   )

@@ -6,11 +6,16 @@
 }
 
 .dashboard-body {
+  display: flex;
   box-sizing: border-box;
-  height: calc(100% - 80px);
+
+  height: calc(100% - 56px);
   background: #f1f3fe;
   color: #4a545d;
   border-top-left-radius: 12px;
+}
+.dashboard-content {
+  width: 70%;
 }
 
 .dashboard-greetings {
@@ -33,7 +38,16 @@
 }
 
 .dashboard-upcoming {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   margin: 30px;
+}
+
+.dashboard-sidebar-container {
+  width: 30%;
+  background: #ffffff;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
 }

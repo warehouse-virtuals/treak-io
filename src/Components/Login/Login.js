@@ -110,7 +110,6 @@ const Login = () => {
             Improve your
             <br /> workflow
           </div>
-          {/* <img alt='svg' className='' src={LoginSvg} /> */}
           {NavbarButtons.map((button, index) => {
             return (
               <div className='buttons-row'>

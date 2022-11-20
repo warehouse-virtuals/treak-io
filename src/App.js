@@ -12,16 +12,30 @@ import Navbar from "./Components/Navbar/Navbar"
 import "./App.css"
 import "react-toastify/dist/ReactToastify.min.css"
 
-import useWindowSize from "./Hooks/useWindowSize"
+// import useWindowSize from "./Hooks/useWindowSize"
 
 const App = () => {
   const { pathname } = useLocation()
-  const [width, height] = useWindowSize()
+  // const [width, height] = useWindowSize()
 
-  if (width < 960 || height < 730) {
-    return <div>Hadi bakalım</div>
-  } else {
-  }
+  // if (width < 960 || height < 730) {
+  //   return <div>Hadi bakalım</div>
+  // } else {
+  //   return (
+  //     <Suspense fallback={"loading"}>
+  //       <ToastContainer />
+  //       <div className='App'>
+  //         <AuthContextProvider>
+  //           <ThemeProvider>
+  //             {pathname === "/login" || pathname === "/" ? null : <Navbar />}
+  //             <MainRouter />
+  //           </ThemeProvider>
+  //         </AuthContextProvider>
+  //       </div>
+  //     </Suspense>
+  //   )
+  // }
+
   return (
     <Suspense fallback={"loading"}>
       <ToastContainer />

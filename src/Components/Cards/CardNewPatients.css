@@ -27,3 +27,8 @@
   font-weight: 300;
   color: green;
 }
+@media only screen and (max-width: 1180px) {
+  .card-new-compare {
+    font-size: 11px;
+  }
+}
