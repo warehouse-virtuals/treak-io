@@ -1,16 +1,16 @@
-import { FiUploadCloud, FiPlus } from "react-icons/fi"
+import { FiUploadCloud, FiPlus, FiXCircle } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
-import { useNavigate } from "react-router-dom"
+
 import TextInput from "../../UITools/TextInput"
+
 import "./RepairForm.css"
 
-function RepairForm() {
+function RepairForm(props) {
   const { t } = useTranslation("repair")
-  const navigate = useNavigate()
 
   const handleAddPatientButtonClick = async () => {
     try {
-      navigate("/repair")
+      props.buttonClick()
       console.log("Clicked Add Button")
     } catch (error) {
       console.log(error.message)
@@ -20,12 +20,18 @@ function RepairForm() {
   return (
     <div className='repair-form-container'>
       <div className='repair-form-body'>
+        <div
+          onClick={handleAddPatientButtonClick}
+          className='repair-cancel-repairform-btn'
+        >
+          <FiXCircle size={26} stroke='#f1f3ff' className='' />
+        </div>
         <div className='repair-form-header'>{t("Repair/Maintenance Form")}</div>
         <div className='repair-upload-container'>
-          <FiUploadCloud className='mb-3' color='#82878f' size={50} />
+          <FiUploadCloud className='mb-3' color='#82878f' size={24} />
           {t("Upload Images")}
         </div>
-        <div className='repair-form-first-row'>
+        <div className='repair-form-row'>
           <TextInput
             onInput={null}
             inputRef={null}
@@ -45,18 +51,6 @@ function RepairForm() {
             labelCSS='login-textinput-label'
             inputCSS='login-textinput-input'
           />
-        </div>
-        <div className='repair-form-first-row '>
-          <TextInput
-            onInput={null}
-            inputRef={null}
-            type={"text"}
-            label={t("Device Serial No")}
-            containerCSS='repair-textinput-container'
-            labelCSS='login-textinput-label'
-            inputCSS='login-textinput-input'
-          />
-
           <TextInput
             onInput={null}
             inputRef={null}
@@ -67,7 +61,36 @@ function RepairForm() {
             inputCSS='login-textinput-input'
           />
         </div>
-        <div className='repair-form-first-row'>
+        <div className='repair-form-row '>
+          <TextInput
+            onInput={null}
+            inputRef={null}
+            type={"text"}
+            label={t("Device Serial No")}
+            containerCSS='repair-textinput-container'
+            labelCSS='login-textinput-label'
+            inputCSS='login-textinput-input'
+          />{" "}
+          <TextInput
+            onInput={null}
+            inputRef={null}
+            type={"text"}
+            label={t("Device Brand")}
+            containerCSS='repair-textinput-container'
+            labelCSS='login-textinput-label'
+            inputCSS='login-textinput-input'
+          />{" "}
+          <TextInput
+            onInput={null}
+            inputRef={null}
+            type={"text"}
+            label={t("Device Modal")}
+            containerCSS='repair-textinput-container'
+            labelCSS='login-textinput-label'
+            inputCSS='login-textinput-input'
+          />
+        </div>
+        <div className='repair-form-row'>
           <TextInput
             onInput={null}
             inputRef={null}
@@ -86,17 +109,6 @@ function RepairForm() {
             labelCSS='login-textinput-label'
             inputCSS='login-textinput-input'
           />
-        </div>
-        <div className='repair-form-first-row'>
-          <TextInput
-            onInput={null}
-            inputRef={null}
-            type={"text"}
-            label={t("Device Name")}
-            containerCSS='repair-textinput-container'
-            labelCSS='login-textinput-label'
-            inputCSS='login-textinput-input'
-          />
           <TextInput
             onInput={null}
             inputRef={null}
@@ -107,6 +119,7 @@ function RepairForm() {
             inputCSS='login-textinput-input'
           />
         </div>
+
         <div className='repair-form-complaint'>
           <TextInput
             onInput={null}

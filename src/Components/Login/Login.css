@@ -79,6 +79,7 @@
   color: #ffffff;
   margin-left: 10%;
   margin-right: 16px;
+
   /* background: red; */
 }
 
@@ -176,9 +177,14 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #f7f9ff inset !important;
 }
 
+@media only screen and (max-width: 1180px) {
+}
+@media only screen and (max-width: 1366px) and (min-width: 1181px) {
+}
+
 @media only screen and (min-width: 1367px) {
   .login-right-body {
-    padding-top: 50px;
+    padding-top: 90px;
     padding-left: 100px;
   }
 }

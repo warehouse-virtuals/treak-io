@@ -1,16 +1,20 @@
-import "./Repair.css"
+import { useState } from "react"
+
 import { useTranslation } from "react-i18next"
 import { FiPlus } from "react-icons/fi"
-import { useNavigate } from "react-router-dom"
+
 import TopBar from "../TopBar/TopBar"
+import RepairForm from "./RepairForm"
+
+import "./Repair.css"
 
 const Repair = (props) => {
+  const [repairForm, setRepairForm] = useState(false)
   const { t } = useTranslation("repair")
-  const navigate = useNavigate()
 
   const handleAddPatientButtonClick = async () => {
     try {
-      navigate("/repairForm")
+      setRepairForm(true)
       console.log("Clicked Add Button")
     } catch (error) {
       console.log(error.message)
@@ -29,6 +33,15 @@ const Repair = (props) => {
           </div>
         </div>
       </div>
+      {repairForm ? (
+        <div className='repairform-container'>
+          <RepairForm
+            buttonClick={() => {
+              setRepairForm(false)
+            }}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
