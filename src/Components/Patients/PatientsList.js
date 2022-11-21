@@ -1,19 +1,16 @@
 import "./PatientsList.css"
-import { FiPlus } from "react-icons/fi"
+
 import { toDate } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
 
 import { useNavigate } from "react-router-dom"
-import PatientOverview from "./PatientOverview"
 
-const PatientsList = () => {
+const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
-  const [focusedPatient, setFocusedPatient] = useState({})
   const { getPatients, userData } = UserAuth()
   const { t } = useTranslation("patients")
-  const navigate = useNavigate()
 
   const fetchPatientData = async () => {
     return await getPatients(userData.customerID, userData.clinicID)
@@ -22,7 +19,7 @@ const PatientsList = () => {
   useEffect(() => {
     fetchPatientData().then((data) => setPatients(data))
     //eslint-disable-next-line
-  }, [focusedPatient])
+  }, [])
 
   const tbodyData = []
   patients.forEach((patient, i) => {
@@ -48,14 +45,6 @@ const PatientsList = () => {
     `${t("DOB")}`,
     `${t("GENDER")}`,
   ]
-  const handleAddPatientButtonClick = async () => {
-    try {
-      navigate("/addPatient")
-      console.log("Clicked Add Button")
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
 
   const TableHeadItem = ({ item }) => {
     return (
@@ -74,7 +63,9 @@ const PatientsList = () => {
     return (
       <div
         className='patients-table-row-item'
-        onClick={() => setFocusedPatient(patient)}
+        onClick={() => {
+          props.focusedPatient(patient)
+        }}
       >
         {data.map((item, index) => {
           return (
@@ -86,7 +77,7 @@ const PatientsList = () => {
       </div>
     )
   }
-  const Table = ({ theadData, tbodyData, customClass }) => {
+  const Table = ({ theadData, tbodyData }) => {
     return (
       <div className='patients-table-container'>
         <div className='patients-table-head-container'>
@@ -107,25 +98,10 @@ const PatientsList = () => {
     )
   }
 
-  console.log(focusedPatient)
   return (
     <div className='patient-list-container'>
       <div className='patient-list-header-container'>
-        <div
-          onClick={handleAddPatientButtonClick}
-          className='patients-add-patient-btn'
-        >
-          <FiPlus size={30} stroke='#a3edd9' className='' /> Kullanıcı Ekle
-        </div>
         <Table theadData={theadData} tbodyData={tbodyData} />
-      </div>
-      <div className='patients-overview-container'>
-        <PatientOverview
-          focusedPatientData={focusedPatient}
-          patientDeleted={(confirm) => {
-            setFocusedPatient(confirm)
-          }}
-        />
       </div>
     </div>
   )

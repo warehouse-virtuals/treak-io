@@ -11,6 +11,7 @@ import {
 } from "react-icons/fi"
 
 const PatientOverview = (props) => {
+  console.log(props)
   const { deletePatient, userData } = UserAuth()
   const navigate = useNavigate()
 
@@ -37,6 +38,7 @@ const PatientOverview = (props) => {
         <div className='patient-overview-hearingaid-container'>
           {hearingAids
             ? hearingAids.map((hearingAid, index) => {
+                console.log(hearingAid)
                 if (hearingAid.isRightSide) {
                   return (
                     <div
