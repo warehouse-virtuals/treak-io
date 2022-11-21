@@ -1,12 +1,17 @@
 import SidebarTop from "./SidebarTop"
-// import MiniCalender from "./MiniCalendar"
+import MiniCalender from "../MiniCalendar/MiniCalendar"
 // import SidebarMonthlyReports from "./SidebarMonthlyReports"
+
+import "./Sidebar.css"
 
 const Sidebar = (props) => {
   return (
-    <div className="w-full flex drop-shadow-xl h-full  box-border flex-col bg-white">
+    <div className='sidebar-container'>
       <SidebarTop userData={props.userData} />
-      {/* <MiniCalender /> */}
+      <div className='sidebar-minicalendar-container'>
+        <MiniCalender />
+      </div>
+
       {/* <SidebarMonthlyReports /> */}
     </div>
   )

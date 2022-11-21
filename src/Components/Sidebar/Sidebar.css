@@ -1,0 +1,29 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar-minicalendar-container {
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 1180px) {
+  .sidebar-minicalendar-container {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 1366px) and (min-width: 1181px) {
+  .sidebar-minicalendar-container {
+    width: 65%;
+  }
+}
+
+@media only screen and (min-width: 1367px) {
+  .sidebar-minicalendar-container {
+    width: 50%;
+  }
+}

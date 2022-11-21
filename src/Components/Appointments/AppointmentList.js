@@ -1,3 +1,5 @@
+import "./AppointmentList.css"
+
 import { toDate } from "date-fns"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
@@ -20,7 +22,6 @@ const AppointmentList = (props) => {
   const tbodyData = []
 
   appointments.forEach((appointment, i) => {
-    console.log(appointment)
     const date = toDate(appointment.date.seconds * 1000).toLocaleDateString(
       "tr",
       { day: "2-digit", month: "long", year: "numeric" }
@@ -53,7 +54,7 @@ const AppointmentList = (props) => {
 
   const TableHeadItem = ({ item }) => {
     return (
-      <div className='pl-3 gap-10 grid grid-cols-5 mb-3 '>
+      <div className='table-head-item'>
         {item.map((h, index) => {
           return (
             <div key={index} className=''>
@@ -67,21 +68,20 @@ const AppointmentList = (props) => {
   const TableRow = ({ data }) => {
     const colorPicker = (appointmentStatus) => {
       if (appointmentStatus === "Completed") {
-        return "border-green-300"
+        return "4px solid #51caa1"
       } else if (appointmentStatus === "Waiting") {
-        return "border-orange-300"
+        return "4px solid #5be2f7"
       } else if (appointmentStatus === "Cancelled") {
-        return "border-red-300"
+        return "4px solid #f3698b"
       }
     }
     const statusColor = colorPicker(data.status)
+
     return (
-      <div
-        className={`grid border-r-8 hover:bg-slate-100 ${statusColor} transition-all pl-5 gap-10 items-center grid-cols-5 text-sm mb-1 h-14 rounded-2xl drop-shadow-sm bg-white`}
-      >
+      <div className='table-row-item' style={{ borderRight: statusColor }}>
         {data.items.map((item, index) => {
           return (
-            <div className='border-r-2 border-slate-100 ' key={index}>
+            <div className='table-row-item-content' key={index}>
               {item}
             </div>
           )
@@ -89,14 +89,14 @@ const AppointmentList = (props) => {
       </div>
     )
   }
-  const Table = ({ theadData, tbodyData, customClass }) => {
+  const Table = ({ theadData, tbodyData }) => {
     return (
-      <div className={customClass}>
-        <div className='text-[#c4c8d5] text-sm font-semibold'>
+      <div className='table-container'>
+        <div className='table-head-container'>
           <TableHeadItem item={theadData} />
         </div>
         <div className=''>
-          {tbodyData.map((item) => {
+          {tbodyData.slice(0, props.limitRows).map((item) => {
             return <TableRow key={item.id} data={item} />
           })}
         </div>
@@ -105,12 +105,8 @@ const AppointmentList = (props) => {
   }
 
   return (
-    <div className='flex w-full h-full'>
-      <Table
-        theadData={theadData}
-        tbodyData={tbodyData}
-        customClass='w-full font-normal '
-      />
+    <div className='appointment-list-container'>
+      <Table theadData={theadData} tbodyData={tbodyData} />
     </div>
   )
 }

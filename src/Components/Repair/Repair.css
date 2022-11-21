@@ -1,0 +1,54 @@
+.repair-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.repair-body {
+  display: flex;
+  height: calc(100% - 56px);
+  background: #f1f3fe;
+  color: #64748b;
+  border-top-left-radius: 12px;
+}
+.repair-header {
+  margin: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.repair-add-repairform-btn {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  width: 200px;
+  margin-bottom: 50px;
+  border-radius: 12px;
+  background: #05beb6;
+  color: white;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001;
+  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
+}
+.repair-add-repairform-btn:hover {
+  background-color: #05aba4;
+  cursor: pointer;
+}
+
+.repairform-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.504);
+}

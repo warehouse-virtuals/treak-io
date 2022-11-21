@@ -1,0 +1,13 @@
+.analytics-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.analytics-body {
+  display: flex;
+  height: calc(100% - 56px);
+  background: #f1f3fe;
+  color: #64748b;
+  border-top-left-radius: 12px;
+}

@@ -1,15 +1,17 @@
+import "./UpcomingAppointments.css"
+
 import AppointmentList from "./AppointmentList"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { FiPlus } from "react-icons/fi"
 
-const UpcomingAppointments = () => {
+const UpcomingAppointments = (props) => {
   const navigate = useNavigate()
   const { t } = useTranslation("dashboard")
 
   const handleAddAppointmentButtonClick = async () => {
     try {
-      navigate("/addAppointment")
+      navigate("/Agenda")
       console.log("Clicked Add Button")
     } catch (error) {
       console.log(error.message)
@@ -17,18 +19,19 @@ const UpcomingAppointments = () => {
   }
 
   return (
-    <div className='flex flex-col mt-10 w-full font-bold text-2xl text-slate-700'>
-      <div className='flex justify-between'>
+    <div className='upcoming-container'>
+      <div className='upcoming-header'>
         {t("Upcoming Appointments")}
         <div
           onClick={handleAddAppointmentButtonClick}
-          className='flex items-center justify-center h-12 w-12 rounded-l-2xl rounded-tr-2xl bg-[#59e2f7] mb-5 hover:bg-[#48c3d6]  '
+          className='upcoming-add-btn'
         >
-          <FiPlus size={22} className=' text-white ' />
+          <FiPlus size={22} stroke='green' className='' />
+          Randevu ekle
         </div>
       </div>
-      <div className='flex w-full bg-[#f9faff] text-[#20295a]'>
-        <AppointmentList t={t} />
+      <div className='upcoming-list-container'>
+        <AppointmentList t={t} limitRows={props.limitRows} />
       </div>
     </div>
   )

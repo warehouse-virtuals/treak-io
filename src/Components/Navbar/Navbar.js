@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next"
 import NavbarButtons from "./NavbarButtons"
 // import whlogo from "../../Assets/logobw.svg"
 
+import "./Navbar.css"
+
 const Navbar = () => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -23,40 +25,42 @@ const Navbar = () => {
   }
 
   return (
-    <div className='w-28 h-full bg-[#20295a] flex flex-col justify-center items-center'>
-      <GiHealthNormal size={50} color='#FFFFFF' className='mt-10' />
-      {/* <img className="mt-10 w-1/2 " alt="logo" src={whlogo} /> */}
-      <div className='flex w-full h-5/6 items-center'>
-        <div className='w-full'>
-          {NavbarButtons.map((button, index) => {
-            return (
-              <div
-                key={button.pathname}
-                className=' w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white text-sm  transition-all cursor-default ease-out select-none'
-                onClick={() => navigate(button.pathname)}
-              >
-                <div
-                  className={`p-3 mb-1 ${
-                    location.pathname === button.pathname ? "bg-[#59e2f7]" : ""
-                  }  rounded-2xl`}
-                >
-                  {button.icon}
-                </div>
-
-                <div className=''>{t(button.name)}</div>
-              </div>
-            )
-          })}
-        </div>
+    <div className='navbar-container'>
+      <div className='navbar-logo-container'>
+        <GiHealthNormal size={40} color='#FFFFFF' />
       </div>
-      <div className='w-full h-1/6 flex flex-col justify-end'>
-        <div
-          onClick={handleNavbarLogoutButtonClick}
-          className='w-full h-24 flex flex-col justify-center items-center text-[#20295a] hover:text-white  transition-all cursor-default ease-out select-none'
-        >
-          <FiLogOut color='#F9FAFE' size={22} className=' mb-1' />
+      {/* <img className="mt-10 w-1/2 " alt="logo" src={whlogo} /> */}
+      <div className='navbar-buttons-container'>
+        {NavbarButtons.map((button, index) => {
+          return (
+            <div
+              key={button.pathname}
+              className='navbar-buttons'
+              onClick={() => navigate(button.pathname)}
+            >
+              <div
+                className={
+                  location.pathname === button.pathname
+                    ? "navbar-button-icon"
+                    : "navbar-button-icon-focused"
+                }
+              >
+                {button.icon}
+              </div>
+
+              <div className=''>{t(button.name)}</div>
+            </div>
+          )
+        })}
+      </div>
+
+      <div
+        onClick={handleNavbarLogoutButtonClick}
+        className='navbar-button-logout-container'
+      >
+        <div className='navbar-button-logout'>
+          <FiLogOut color='#F9FAFE' size={22} className='navbar-logout-icon' />
           <div className=''>{t("Logout")}</div>
-          {/* <div className="text-white text-sm">{"Logout"}</div> */}
         </div>
       </div>
     </div>

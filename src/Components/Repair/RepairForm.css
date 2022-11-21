@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+.repair-form-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  width: 70%;
+  background: #f1f3fe;
+  color: #64748b;
+  border-radius: 12px;
+}
+.repair-form-body {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.repair-form-header {
+  font-weight: 800;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.repair-upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  border: 2px dashed #d2d5db;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.repair-form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.repair-textinput-container {
+  width: 20%;
+}
+.login-textinput-label {
+  font-size: 14px;
+}
+.login-textinput-input {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.repair-form-complaint {
+}
+.repair-form-findings {
+}
+.repair-form-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+.repair-form-carer-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.repair-form-carer {
+  margin-left: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #e69f3c;
+}
+.repair-form-submit-container {
+}
+.repair-form-carer-title {
+}
+
+.repair-add-repairform-btn {
+  margin: 0px !important;
+}
+.repair-cancel-repairform-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  width: 46px;
+  position: absolute;
+  background: #ff6963;
+  color: white;
+  top: -40px;
+  right: -40px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px 1px #ff6963;
+}
+.repair-cancel-repairform-btn:hover {
+  background: #e65f59;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1180px) {
+  .repair-form-container {
+    height: 600px;
+  }
+  .login-textinput-label {
+    font-size: 12px;
+  }
+  .login-textinput-input {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .repair-upload-container {
+    font-size: 12px;
+  }
+  .repair-form-footer {
+    margin-top: 10px;
+  }
+}
+@media only screen and (max-width: 1366px) and (min-width: 1181px) {
+  .repair-form-container {
+    height: 600px;
+  }
+  .login-textinput-label {
+    font-size: 12px;
+  }
+  .login-textinput-input {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .repair-upload-container {
+    font-size: 12px;
+  }
+  .repair-form-footer {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 1367px) {
+}

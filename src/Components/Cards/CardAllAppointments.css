@@ -1,0 +1,29 @@
+.card-all-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-all-header {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+.card-all-compare {
+  display: flex;
+  align-items: center;
+
+  font-size: 12px;
+  font-weight: 300;
+  color: green;
+}
+
+@media only screen and (max-width: 1180px) {
+  .card-all-compare {
+    font-size: 11px;
+  }
+}

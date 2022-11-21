@@ -1,0 +1,40 @@
+.card-goal-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-goal-header {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.card-goal-sold {
+  font-weight: 500;
+  font-size: 26px;
+}
+
+/* .card-todays-booked {
+} */
+.card-todays-cancelled {
+  color: #ff6962;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.card-goal-done {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 300;
+  color: green;
+  margin-left: 50%;
+}
+
+@media only screen and (max-width: 1180px) {
+  .card-goal-done {
+    font-size: 11px;
+  }
+}

@@ -1,9 +1,20 @@
 import React, { useState, useEffect, useRef } from "react"
+import "./AddAppointment.css"
 import { useNavigate, useLocation } from "react-router-dom"
 
 import DateTimePicker from "react-datetime-picker"
+// import DateTimePicker from "react-datetime-picker/dist/entry.nostyle"
+// import "./DateTimePicker.css"
+// import "./Calendar.css"
+// import "./Clock.css"
 
-import { collection, addDoc, Timestamp, updateDoc } from "firebase/firestore"
+import {
+  collection,
+  addDoc,
+  Timestamp,
+  updateDoc,
+  doc,
+} from "firebase/firestore"
 
 import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
@@ -11,7 +22,7 @@ import { useTranslation } from "react-i18next"
 import SearchField from "../SearchField/SearchField"
 import Button from "../../UITools/Button"
 
-const AddAppointments = (props) => {
+const AddAppointment = (props) => {
   const [carers, setCarers] = useState([])
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [addedAppointment, setAddedApointment] = useState("")
@@ -79,6 +90,32 @@ const AddAppointments = (props) => {
       console.log(error)
     }
   }
+  const handleUpdateEditedAppointment = async () => {
+    const appointmentInfo = {
+      appointedPerson: selectedPatient,
+      appointedTo: appointedToRef.current.value,
+      date: appointmentStartDate,
+      duration: appointmentEndDate - appointmentStartDate,
+      reason: appointmentReasonRef.current.value,
+      status: t(appointmentStatusRef.current.value),
+      createdAt: Timestamp.now(),
+    }
+    console.log(appointmentInfo)
+    const appointmentsRef = doc(
+      db,
+      "customers/",
+      userData.customerID,
+      "/clinics/",
+      userData.clinicID,
+      "/appointments/",
+      props.scheduler.edited.event_id
+    )
+
+    await updateDoc(appointmentsRef, appointmentInfo)
+    setAddedApointment(props.scheduler.edited.event_id)
+    props.parentCallback(Date.now())
+    props.scheduler.close()
+  }
 
   const handleCancelButtonPress = async () => {
     try {
@@ -99,37 +136,36 @@ const AddAppointments = (props) => {
   }, [userData, addedAppointment])
 
   return (
-    <div className='flex flex-col h-full w-full'>
-      <div className='flex w-full h-full items-center bg-[#f9faff] text-slate-700  flex-col '>
-        <div className='flex mt-10  h-1/4 flex-col w-3/4'>
-          <div className='items-center drop-shadow-md font-bold text-3xl'>
-            {t("Add Appointment")}
-          </div>
-          <div className='w-full flex flex-col'>
+    <div className='add-appt-container'>
+      <div className='add-appt'>
+        <div className='add-appt-title'>{t("Add Appointment")}</div>
+        <div className='add-appt-body'>
+          <div className='add-appt-search-container'>
+            Kullanıcı:
             <SearchField
               page='appointment'
               sendDataToParent={sendDataToParent}
               pHolder={selectedPatient}
             />
           </div>
-          <div className='flex items-start justify-start mt-10 '>
-            <div className='flex flex-col mr-20'>
-              <div className='font-semibold  text-slate-700'>
-                {t("Start Date")}
-              </div>
+          <div className='add-appt-date-container'>
+            <div className='add-appt-dates'>
+              {t("Start")}
               <DateTimePicker
                 onChange={onChangeAppointmentStartDate}
                 value={appointmentStartDate}
               />
-              <div className='font-semibold  text-slate-700'>
-                {t("End Date")}
-              </div>
+            </div>
+            <div className='add-appt-dates'>
+              {t("End")}
               <DateTimePicker
                 onChange={onChangeAppointmentEndDate}
                 value={appointmentEndDate}
               />
             </div>
-            <div className='flex flex-col mr-20'>
+          </div>
+          <div className='add-appt-sns-container'>
+            <div className='add-appt-sns'>
               <div className='font-semibold  text-slate-700'>{t("Status")}</div>
               <select
                 className='bg-[#f9faff]'
@@ -142,8 +178,8 @@ const AddAppointments = (props) => {
                 <option>{t("Cancelled")}</option>
               </select>
             </div>
-            <div className='flex flex-col mr-20'>
-              <div className='font-semibold  text-slate-700'>{t("Reason")}</div>
+            <div className='add-appt-sns'>
+              <div className=''>{t("Reason")}</div>
               <select
                 className='bg-[#f9faff]'
                 name='gender'
@@ -156,37 +192,45 @@ const AddAppointments = (props) => {
                 <option>{t("Hearing Test")}</option>
               </select>
             </div>
-            <div className='flex flex-col mr-20'>
-              <div className='font-semibold  text-slate-700'>{t("Carer")}</div>
-              <select
-                className='bg-[#f9faff]'
-                name='gender'
-                id='gender'
-                ref={appointedToRef}
-              >
-                {carers.map((carer, i) => {
-                  return (
-                    <option key={i}>{carer.name + " " + carer.surname}</option>
-                  )
-                })}
-              </select>
-            </div>
+          </div>
+          <div className='add-appt-carer'>
+            <div className=''>{t("Carer")}</div>
+            <select
+              className='bg-[#f9faff]'
+              name='gender'
+              id='gender'
+              ref={appointedToRef}
+            >
+              {carers.map((carer, i) => {
+                return (
+                  <option key={i}>{carer.name + " " + carer.surname}</option>
+                )
+              })}
+            </select>
           </div>
         </div>
-        <div className='flex h-1/4 justify-evenly mt-10 items-center w-full'>
-          <div className='w-[120px]'>
+        <div className='add-appt-footer'>
+          <div
+            className='add-appt-btn-container-cancel'
+            onClick={handleCancelButtonPress}
+          >
             <Button
               label={t("Cancel")}
-              onClick={handleCancelButtonPress}
               addCSS={
                 "flex justify-center items-center bg-[#eb5656] hover:bg-[#eb5656]"
               }
             />
           </div>
-          <div className='w-[120px]'>
+          <div
+            className='add-appt-btn-container-submit'
+            onClick={
+              props.scheduler.edited
+                ? handleUpdateEditedAppointment
+                : handleAddAppointmentButtonPress
+            }
+          >
             <Button
               label={t("Save")}
-              onClick={handleAddAppointmentButtonPress}
               addCSS={
                 "flex items-center justify-center bg-green-500 hover:bg-[#273169]"
               }
@@ -198,4 +242,4 @@ const AddAppointments = (props) => {
   )
 }
 
-export default AddAppointments
+export default AddAppointment

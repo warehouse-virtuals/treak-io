@@ -1,14 +1,17 @@
 import React, { useRef } from "react"
+import "./Login.css"
+
 import { useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
 
-import LoginSvg from "../../Assets/login-i.svg"
+// import LoginSvg from "../../Assets/login-i.svg"
 
 import tesseractLogo from "../../Assets/tesseract-logo-black.svg"
 
 import { FiChevronRight } from "react-icons/fi"
 import { GiHealthNormal } from "react-icons/gi"
+import NavbarButtons from "../Navbar/NavbarButtons"
 
 import TextInput from "../../UITools/TextInput"
 import Button from "../../UITools/Button"
@@ -60,49 +63,62 @@ const Login = () => {
   }
 
   return (
-    <div className='w-full h-full flex flex-row bg-[#f9faff]'>
-      <div className='w-full h-full lg:w-1/2 flex items-center content-center  flex-col'>
-        <div className='flex items-center h-[80px] w-full pl-10 font-bold  select-none text-4xl'>
-          <GiHealthNormal size={40} color='black' className='mr-5' />
-          umbo
+    <div className='login-container'>
+      <div className='login-left'>
+        <div className='login-left-header'>
+          <GiHealthNormal size={40} color='black' className='health-svg' />
+          treat
         </div>
-        <div className='w-full h-full flex items-center justify-center flex-col '>
-          <h6 className='dark:text-white text-slate-700 text-6xl mb-5 select-none '>
-            {welcomeMessage()}
-          </h6>
-          <h6 className='dark:text-white text-slate-700 text-2xl mb-10 select-none font-thin'>
-            Uygulamaya giriş yap
-          </h6>
-          <div className='flex items-center justify-center flex-col'>
-            <TextInput
-              onInput={null}
-              inputRef={emailRef}
-              type={"text"}
-              label={t("E-Mail")}
-              placeholder={t("E-Mail")}
-              addCSS='w-[400px] mb-5 placeholder:italic'
-            />
-            <TextInput
-              inputRef={passwordRef}
-              type={"password"}
-              label={t("Password")}
-              placeholder={t("Password")}
-              addCSS='w-[400px] placeholder:italic '
-            />
-          </div>
+        <div className='welcome-message'>{welcomeMessage()}</div>
+        <div className='login-message'>Uygulamaya giriş yap</div>
+        <div className='login-left-body'>
+          <TextInput
+            onInput={null}
+            inputRef={emailRef}
+            type={"text"}
+            label={t("E-Mail")}
+            placeholder={t("E-Mail")}
+            containerCSS='login-textinput-container'
+            labelCSS='login-textinput-label'
+            inputCSS='login-textinput-input'
+          />
+          <TextInput
+            inputRef={passwordRef}
+            type={"password"}
+            label={t("Password")}
+            placeholder={t("Password")}
+            containerCSS='login-textinput-container'
+            labelCSS='login-textinput-label'
+            inputCSS='login-textinput-input'
+          />
           <Button
-            label={<FiChevronRight size={22} />}
+            label={<FiChevronRight size={24} />}
             onClick={handleLoginButtonPress}
-            addCSS={"bg-[#20295a] hover:bg-[#273169]"}
+            buttonCSS='login-textinput-button'
           />
         </div>
-        <div className='flex items-center h-16 text-slate-900 text-lg '>
-          <img alt='svg' className='w-[36px] ' src={tesseractLogo} />
+
+        <div className='company'>
+          <img alt='svg' className='company-logo' src={tesseractLogo} />
           Warehouse, Inc.
         </div>
       </div>
-      <div className='hidden lg:flex w-1/2 justify-center select-none m-7 rounded-3xl bg-gradient-to-r from-[#20295a] to-[#6966c1] '>
-        <img alt='svg' className='w-1/2' src={LoginSvg} />
+
+      <div className='login-right'>
+        <div className='login-right-body'>
+          <div className='login-right-header'>
+            Improve your
+            <br /> workflow
+          </div>
+          {NavbarButtons.map((button, index) => {
+            return (
+              <div className='buttons-row'>
+                <div className='button-icon'>{button.icon}</div>
+                <div className='button-desc'>{button.desc}</div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

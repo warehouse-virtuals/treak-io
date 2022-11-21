@@ -1,11 +1,10 @@
+import "./Messages.css"
 import TopBar from "../TopBar/TopBar"
 const Messages = () => {
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className='messages-container'>
       <TopBar />
-      <div className="w-full h-full flex rounded-tl-3xl  bg-[#f9faff] flex-row">
-        Messages
-      </div>
+      <div className='messages-body'>Messages</div>
     </div>
   )
 }
