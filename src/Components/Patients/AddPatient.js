@@ -1,14 +1,15 @@
 import React, { useState, useRef } from "react"
 
-import { FiPlus, FiXCircle } from "react-icons/fi"
-import DatePicker from "react-date-picker"
+import { FiPlus, FiXCircle, FiCalendar } from "react-icons/fi"
+import DatePicker from "react-datepicker"
+
+import "react-datepicker/dist/react-datepicker.css"
 
 import "./AddPatient.css"
 
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore"
 import { UserAuth } from "../../Context/AuthContext"
 
-import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 
 import TextInput from "../../UITools/TextInput"
@@ -35,8 +36,6 @@ const AddPatient = (props) => {
   const leftSerialNumberRef = useRef("")
   const [leftWarrantyStart, onChangeLeftWarrantyStart] = useState(new Date())
   const leftWarrantyDurationRef = useRef()
-
-  const navigate = useNavigate()
 
   const { t } = useTranslation("addPatient")
 
@@ -135,8 +134,24 @@ const AddPatient = (props) => {
                 labelCSS='add-patient-textinput-label'
                 inputCSS='add-patient-textinput-input'
               />
+              <TextInput
+                inputRef={addressRef}
+                type={"text"}
+                label={t("Adress")}
+                containerCSS='add-patient-textinput-container'
+                labelCSS='add-patient-textinput-label'
+                inputCSS='add-patient-textinput-input'
+              />
             </div>
             <div className='add-patient-text-input-cols'>
+              <TextInput
+                inputRef={socialSecurityNumberRef}
+                type={"text"}
+                label={t("ID Number")}
+                containerCSS='add-patient-textinput-container'
+                labelCSS='add-patient-textinput-label'
+                inputCSS='add-patient-textinput-input'
+              />
               <TextInput
                 inputRef={patientPhoneRef}
                 type={"text"}
@@ -155,43 +170,34 @@ const AddPatient = (props) => {
               />
             </div>
             <div className='add-patient-text-input-cols'>
-              <TextInput
-                inputRef={socialSecurityNumberRef}
-                type={"text"}
-                label={t("ID Number")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
-              />
               <div className='add-patient-permit-container'>
                 <input id='permit' type='checkbox' ref={legalPermitRef} />
-                <label className=''>{t("Permission")}</label>
+                <label className='add-patient-permit-title'>
+                  {t("Permission")}
+                </label>
               </div>
-            </div>
-          </div>
-          <TextInput
-            inputRef={addressRef}
-            type={"text"}
-            label={t("Adress")}
-            containerCSS='add-patient-textinput-container'
-            labelCSS='add-patient-textinput-label'
-            inputCSS='add-patient-textinput-input'
-          />
-          <div className='add-patient-personal-footer-container'>
-            <div className='add-patient-dob'>
-              <div className=''>{t("DOB")}</div>
-              <DatePicker onChange={onChangeDOB} value={DOB} />
-            </div>
-            <div className='flex justify-center bg-red-300'>
-              <select
-                className='bg-[#f9faff]'
-                name='gender'
-                id='gender'
-                ref={isMaleRef}
-              >
-                <option>Erkek</option>
-                <option>Kadın</option>
-              </select>
+              <div className='add-patient-dob-container'>
+                <div className=''>{t("DOB")}</div>
+                <div>
+                  <DatePicker
+                    className='add-patient-date-picker'
+                    onChange={onChangeDOB}
+                    selected={DOB}
+                  />
+                </div>
+              </div>
+              <div className='add-patient-dropdown-container'>
+                {t("Gender")}
+                <select
+                  className='add-patient-dropdown-menu'
+                  name='gender'
+                  id='gender'
+                  ref={isMaleRef}
+                >
+                  <option>Erkek</option>
+                  <option>Kadın</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -204,119 +210,143 @@ const AddPatient = (props) => {
               <div className='add-patient-devices-right-title'>
                 {t("Right")}
               </div>
-              <TextInput
-                inputRef={rightSerialNumberRef}
-                type={"text"}
-                label={t("Serial Number")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
-              />
-              <TextInput
-                inputRef={rightAidBrandRef}
-                type={"text"}
-                label={t("Device Name")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
-              />
-              <TextInput
-                inputRef={rightAidModelRef}
-                type={"text"}
-                label={t("Device Name")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
-              />
-              <div className='add-patient-warranty-container'>
-                <div className='add-patient-warranty-start'>
-                  <div>{t("Warranty Start Date")}</div>
-                  <DatePicker
-                    onChange={onChangeRightWarrantyStart}
-                    value={rightWarrantyStart}
+              <div className='add-patient-devices-body'>
+                <div className='add-patient-devices-info'>
+                  <TextInput
+                    inputRef={rightSerialNumberRef}
+                    type={"text"}
+                    label={t("Serial Number")}
+                    containerCSS='add-patient-textinput-container'
+                    labelCSS='add-patient-textinput-label'
+                    inputCSS='add-patient-textinput-input'
+                  />
+                  <TextInput
+                    inputRef={rightAidBrandRef}
+                    type={"text"}
+                    label={t("Device Name")}
+                    containerCSS='add-patient-textinput-container'
+                    labelCSS='add-patient-textinput-label'
+                    inputCSS='add-patient-textinput-input'
+                  />
+                  <TextInput
+                    inputRef={rightAidModelRef}
+                    type={"text"}
+                    label={t("Device Name")}
+                    containerCSS='add-patient-textinput-container'
+                    labelCSS='add-patient-textinput-label'
+                    inputCSS='add-patient-textinput-input'
                   />
                 </div>
-                <div>
-                  <label className='add-patient-warranty-duration'>
-                    {t("Warranty Duration")}:
-                  </label>
-                  <select
-                    className='bg-[#f9faff]'
-                    name='duration'
-                    id='duration'
-                    ref={rightWarrantyDurationRef}
-                  >
-                    <option>3 {t("Month")} </option>
-                    <option>6 {t("Month")}</option>
-                    <option>1 {t("Years")}</option>
-                    <option>2 {t("Years")}</option>
-                  </select>
+                <div className='add-patient-warranty-container'>
+                  <div className='add-patient-warranty-start'>
+                    <div>{t("Warranty Start Date")}</div>
+                    <div className=''>
+                      <FiCalendar size={18} className='calendar-icon' />
+                      <DatePicker
+                        className='add-patient-date-picker'
+                        onChange={onChangeRightWarrantyStart}
+                        selected={rightWarrantyStart}
+                      />
+                    </div>
+                  </div>
+                  <div className='add-patient-dropdown-container'>
+                    <label className='add-patient-dropdown-title'>
+                      {t("Warranty Duration")}:
+                    </label>
+                    <select
+                      className='add-patient-dropdown-menu'
+                      name='duration'
+                      id='duration'
+                      ref={rightWarrantyDurationRef}
+                    >
+                      <option>3 {t("Month")} </option>
+                      <option>6 {t("Month")}</option>
+                      <option>1 {t("Years")}</option>
+                      <option>2 {t("Years")}</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
             <div className='add-patient-devices-left'>
               <div className='add-patient-devices-left-title'>{t("Left")}</div>
-              <TextInput
-                inputRef={leftSerialNumberRef}
-                type={"text"}
-                label={t("Serial Number")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
-              />
-              <TextInput
-                inputRef={leftAidBrandRef}
-                type={"text"}
-                label={t("Device Name")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
-              />
-              <TextInput
-                inputRef={leftAidModelRef}
-                type={"text"}
-                label={t("Device Name")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
-              />
-              <div className='add-patient-warranty-container'>
-                <div className='add-patient-warranty-start'>
-                  <div>{t("Warranty Start Date")}</div>
-                  <DatePicker
-                    onChange={onChangeLeftWarrantyStart}
-                    value={leftWarrantyStart}
+
+              <div className='add-patient-devices-body'>
+                <div className='add-patient-devices-info'>
+                  <TextInput
+                    inputRef={leftSerialNumberRef}
+                    type={"text"}
+                    label={t("Serial Number")}
+                    containerCSS='add-patient-textinput-container'
+                    labelCSS='add-patient-textinput-label'
+                    inputCSS='add-patient-textinput-input'
+                  />
+                  <TextInput
+                    inputRef={leftAidBrandRef}
+                    type={"text"}
+                    label={t("Device Name")}
+                    containerCSS='add-patient-textinput-container'
+                    labelCSS='add-patient-textinput-label'
+                    inputCSS='add-patient-textinput-input'
+                  />
+                  <TextInput
+                    inputRef={leftAidModelRef}
+                    type={"text"}
+                    label={t("Device Name")}
+                    containerCSS='add-patient-textinput-container'
+                    labelCSS='add-patient-textinput-label'
+                    inputCSS='add-patient-textinput-input'
                   />
                 </div>
-                <div>
-                  <label
-                    className='add-patient-warranty-duration'
-                    for='duration'
-                  >
-                    {t("Warranty Duration")}:
-                  </label>
-                  <select
-                    className='bg-[#f9faff]'
-                    name='duration'
-                    id='duration'
-                    ref={leftWarrantyDurationRef}
-                  >
-                    <option>3 {t("Month")} </option>
-                    <option>6 {t("Month")}</option>
-                    <option>1 {t("Years")}</option>
-                    <option>2 {t("Years")}</option>
-                  </select>
+                <div className='add-patient-warranty-container'>
+                  <div className='add-patient-warranty-start'>
+                    <div>{t("Warranty Start Date")}</div>
+                    <div>
+                      <DatePicker
+                        onChange={onChangeLeftWarrantyStart}
+                        selected={leftWarrantyStart}
+                        className='add-patient-date-picker'
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      className='add-patient-warranty-duration'
+                      for='duration'
+                    >
+                      {t("Warranty Duration")}:
+                    </label>
+                    <select
+                      className='add-patient-dropdown-menu'
+                      name='duration'
+                      id='duration'
+                      ref={leftWarrantyDurationRef}
+                    >
+                      <option>3 {t("Month")} </option>
+                      <option>6 {t("Month")}</option>
+                      <option>1 {t("Years")}</option>
+                      <option>2 {t("Years")}</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className='add-patient-buttons-container'>
+          <TextInput
+            inputRef={null}
+            type={"text"}
+            label={t("Notes")}
+            containerCSS='add-patient-notes'
+            labelCSS='add-patient-textinput-label'
+            inputCSS='add-patient-textinput-input'
+          />
           <div
             onClick={handleAddPatientButtonPress}
-            className='patients-add-patient-btn'
+            className='patients-add-patient-submit-btn'
           >
-            <FiPlus size={30} stroke='#a3edd9' className='' /> Kullanıcı Ekle
+            <FiPlus size={30} stroke='#a3edd9' className='' />
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import "./Dashboard.css"
 import Greetings from "../Greetings/Greetings"
 
 import CardContainer from "../Cards/Cards"
-import UpcomingAppointments from "../Appointments/UpcomingAppointments"
+// import UpcomingAppointments from "../Appointments/UpcomingAppointments"
 import TopBar from "../TopBar/TopBar"
 import Sidebar from "../Sidebar/Sidebar"
 
