@@ -5,14 +5,23 @@
 }
 .add-patient-container {
   box-sizing: border-box;
-  height: inherit;
-  width: inherit;
-  font-family: "Gilroy", sans-serif;
-  background: #f1f3ff;
-  color: #4a545d;
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  width: 70%;
+  background: #f1f3fe;
+  color: #64748b;
+  border-radius: 12px;
 }
 
-.add-patient {
+.add-patient-body {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
   height: 100%;
   padding: 30px;
 }
@@ -161,4 +170,31 @@
 }
 .add-patient-btn-container-submit:hover {
   background: #f7f9ff;
+}
+
+.add-patient-cancel-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  width: 46px;
+  position: absolute;
+  background: #ff6963;
+  color: white;
+  top: -40px;
+  right: -40px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px 1px #ff6963;
+}
+.repair-cancel-btn:hover {
+  background: #e65f59;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1180px) {
+}
+@media only screen and (max-width: 1366px) and (min-width: 1181px) {
+}
+
+@media only screen and (min-width: 1367px) {
 }

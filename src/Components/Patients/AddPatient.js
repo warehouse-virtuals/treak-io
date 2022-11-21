@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react"
+
+import { FiPlus, FiXCircle } from "react-icons/fi"
 import DatePicker from "react-date-picker"
 
 import "./AddPatient.css"
@@ -10,9 +12,8 @@ import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 
 import TextInput from "../../UITools/TextInput"
-import Button from "../../UITools/Button"
 
-const AddPatient = () => {
+const AddPatient = (props) => {
   const [DOB, onChangeDOB] = useState(new Date())
   const patientNameRef = useRef()
   const patientSurnameRef = useRef("")
@@ -91,21 +92,27 @@ const AddPatient = () => {
         id: data.id,
       })
       console.log(data)
-      navigate("/patients")
+      props.buttonClick()
     })
     console.log("Document written with ID: ", newPatientRef.id)
   }
 
   const handleCancelButtonPress = async () => {
     try {
-      navigate("/patients")
+      props.buttonClick()
     } catch (error) {
       console.log(error.message)
     }
   }
   return (
     <div className='add-patient-container'>
-      <div className='add-patient'>
+      <div className='add-patient-body'>
+        <div
+          onClick={handleCancelButtonPress}
+          className='add-patient-cancel-btn'
+        >
+          <FiXCircle size={26} stroke='#f1f3ff' className='' />
+        </div>
         <div className='add-patient-personal-container'>
           <div className='add-patient-personal-container-title'>
             {t("Personal Information")}
@@ -305,11 +312,11 @@ const AddPatient = () => {
           </div>
         </div>
         <div className='add-patient-buttons-container'>
-          <div className='add-patient-btn-container-cancel'>
-            <Button label={t("Cancel")} onClick={handleCancelButtonPress} />
-          </div>
-          <div className='add-appt-btn-container-submit'>
-            <Button label={t("Save")} onClick={handleAddPatientButtonPress} />
+          <div
+            onClick={handleAddPatientButtonPress}
+            className='patients-add-patient-btn'
+          >
+            <FiPlus size={30} stroke='#a3edd9' className='' /> Kullanıcı Ekle
           </div>
         </div>
       </div>
