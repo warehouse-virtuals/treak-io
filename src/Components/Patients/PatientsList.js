@@ -5,8 +5,6 @@ import { useTranslation } from "react-i18next"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
 
-import { useNavigate } from "react-router-dom"
-
 const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
   const { getPatients, userData } = UserAuth()

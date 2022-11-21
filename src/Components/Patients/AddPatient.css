@@ -7,7 +7,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 700px;
+  padding: 10px;
   width: 70%;
   background: #f1f3fe;
   color: #64748b;
@@ -19,22 +19,26 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
   height: 100%;
-  padding: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .add-patient-personal-container {
   display: flex;
   flex-direction: column;
   height: 40%;
+  border: 1px solid #cbccdb;
+  border-radius: 12px;
+  padding: 5px;
+  margin-bottom: 3px;
 }
 .add-patient-personal-container-title {
-  font-size: 30px;
   font-weight: 800;
-  margin-bottom: 30px;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 .add-patient-text-input-container {
   display: flex;
@@ -43,6 +47,7 @@
 .add-patient-text-input-cols {
   font-weight: 600;
   width: 30%;
+  font-size: 14px;
 }
 
 /* .add-patient-textinput-label {
@@ -51,7 +56,7 @@
 .add-patient-textinput-input {
   width: 100%;
   height: 30px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   border: 0px;
   background: #f1f3fe;
@@ -60,10 +65,10 @@
   font-family: inherit;
 }
 .add-patient-textinput-container {
-  margin-bottom: 10px;
   height: 60px;
   color: #4a545d;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .add-patient-permit-container {
@@ -71,71 +76,154 @@
   justify-content: center;
   align-items: center;
   height: 60px;
+  font-size: 14px;
+  color: #4a545d;
+}
+.add-patient-permit-title {
+  font-weight: 600;
+  font-size: 14px;
 }
 
-.add-patient-personal-footer-container {
+.add-patient-dob-container {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  height: 60px;
+  font-size: 14px;
+  color: #4a545d;
+}
+.add-patient-date-picker {
+  background: none;
+  border-radius: 12px;
+  font-size: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  height: 30px;
+  margin-top: 5px;
+  width: 120px;
+}
+.calendar-icon {
+  position: absolute;
+  top: 28px;
+  left: 20px;
+}
+.add-patient-dropdown-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
   height: 60px;
 }
-.add-patient-dob {
-  font-weight: 600;
+.add-patient-dropdown-menu {
+  width: 80px;
+  font-size: 14px;
+  background: none;
+  border-radius: 12px;
+  color: #4a545d;
+  margin-top: 5px;
 }
 
 .add-patient-devices-container {
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   height: 40%;
+  border: 1px solid #cbccdb;
+  border-radius: 12px;
+  padding: 5px;
 }
 .add-patient-devices-container-title {
-  font-size: 30px;
   font-weight: 800;
-  margin-bottom: 30px;
+  font-style: italic;
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .add-patient-devices {
   justify-content: space-between;
   display: flex;
   font-weight: 600;
+  font-size: 14px;
 }
 .add-patient-devices-right {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
 }
 .add-patient-devices-left {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
 }
 
 .add-patient-devices-right-title {
   color: #ff6963;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.add-patient-devices-left-title {
-  color: #3d99dc;
-  margin-bottom: 20px;
+.add-patient-devices-body {
+  display: flex;
+  margin-bottom: 5px;
+}
+.add-patient-devices-info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
-.add-patient-warranty-container {
-  display: flex;
-  justify-content: space-evenly;
+.add-patient-devices-left-title {
+  color: #3d99dc;
+  margin-bottom: 5px;
 }
 .add-patient-warranty-start {
-  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+.add-patient-warranty-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  font-size: 14px;
+  color: #4a545d;
+
+  width: 50%;
+}
+
 .add-patient-warranty-duration {
   display: flex;
   flex-direction: column;
 }
 
+.add-patient-notes {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  font-weight: 600;
+  color: #4a545d;
+  font-size: 14px;
+}
+
 .add-patient-buttons-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  height: 20%;
+}
+.patients-add-patient-submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #05beb6;
+  margin: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
 }
 
 .add-patient-btn-container-submit {
@@ -181,8 +269,8 @@
   position: absolute;
   background: #ff6963;
   color: white;
-  top: -40px;
-  right: -40px;
+  top: -30px;
+  right: -30px;
   border-radius: 50%;
   box-shadow: 2px 2px 10px 1px #ff6963;
 }
