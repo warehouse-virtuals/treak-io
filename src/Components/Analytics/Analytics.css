@@ -1,13 +1,31 @@
 .analytics-container {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
 }
 .analytics-body {
+  box-sizing: border-box;
   display: flex;
   height: calc(100% - 56px);
   background: #f1f3fe;
   color: #64748b;
   border-top-left-radius: 12px;
+  padding: 30px;
+}
+
+.portfolio {
+  width: 40%;
+}
+
+.entry {
+  color: green;
+  margin-top: 30px;
+}
+
+.exit {
+  color: tomato;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
