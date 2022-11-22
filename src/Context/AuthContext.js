@@ -206,6 +206,34 @@ export const AuthContextProvider = ({ children }) => {
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
+  const getPortfolio = async (customerid) => {
+    const portfolioRef = collection(db, "customers/", customerid, "/portfolio")
+    const q = query(portfolioRef)
+    const querySnapshotOfPortfolio = await getDocs(q)
+    let arr = []
+
+    querySnapshotOfPortfolio.forEach((doc) => {
+      arr.push(doc.data())
+    })
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
+    return arr
+  }
+
+  const getInventory = async (customerid, productSN) => {
+    const inventoryRef = collection(db, "customers/", customerid, "/inventory")
+    const q = query(inventoryRef, where("productSN", "==", productSN))
+    const querySnapshotOfInventory = await getDocs(q)
+
+    let arr = []
+
+    querySnapshotOfInventory.forEach((doc) => {
+      console.log(doc.data())
+      arr.push(doc.data())
+    })
+    console.log("LOOP'ta İSE ACİLEN DURDUR!")
+    return arr
+  }
+
   const deleteAppointment = async (customerid, clinicid, appointmentid) => {
     console.log(customerid, clinicid, appointmentid)
     const appointmentToBeDeletedRef = doc(
@@ -254,6 +282,8 @@ export const AuthContextProvider = ({ children }) => {
         updateAppointment,
         deletePatient,
         deleteAppointment,
+        getPortfolio,
+        getInventory,
       }}
     >
       {children}
