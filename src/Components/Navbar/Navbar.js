@@ -59,7 +59,7 @@ const Navbar = () => {
         className='navbar-button-logout-container'
       >
         <div className='navbar-button-logout'>
-          <FiLogOut color='#F9FAFE' size={22} className='navbar-logout-icon' />
+          <FiLogOut color='#F9FAFE' size={40} className='navbar-logout-icon' />
           <div className=''>{t("Logout")}</div>
         </div>
       </div>

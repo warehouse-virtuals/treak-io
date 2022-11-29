@@ -8,7 +8,6 @@ const TextInput = ({
   containerCSS,
   labelCSS,
   inputCSS,
-  hasLabel,
 }) => {
   return (
     <div className={containerCSS}>

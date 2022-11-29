@@ -2,7 +2,7 @@
   "navbar": {
     "Dashboard": "Dashboard",
     "Patients": "Patients",
-    "Calendar": "Calendar",
+    "Agenda": "Agenda",
     "Repair": "Repair",
     "Messages": "Messages",
     "Analytics": "Analytics",
@@ -12,7 +12,7 @@
     "Good Morning": "Good morning!",
     "Good Afternoon": "Good afternoon!",
     "Good Evening": "Good Evening!",
-    "Login Button": "Login",
+    "Login": "Login",
     "E-Mail": "Email",
     "Password": "Password"
   },

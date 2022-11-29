@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next"
 
 import tesseractLogo from "../../Assets/tesseract-logo-black.svg"
 
-import { FiChevronRight } from "react-icons/fi"
 import { GiHealthNormal } from "react-icons/gi"
 import NavbarButtons from "../Navbar/NavbarButtons"
 
@@ -91,8 +90,9 @@ const Login = () => {
             labelCSS='login-textinput-label'
             inputCSS='login-textinput-input'
           />
+
           <Button
-            label={<FiChevronRight size={24} />}
+            label={t("Login")}
             onClick={handleLoginButtonPress}
             buttonCSS='login-textinput-button'
           />

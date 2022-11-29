@@ -2,7 +2,7 @@
   "navbar": {
     "Dashboard": "Panel",
     "Patients": "Kullanıcılar",
-    "Calendar": "Ajanda",
+    "Agenda": "Ajanda",
     "Repair": "Tamir",
     "Messages": "Mesajlar",
     "Analytics": "Analitikler",
@@ -12,7 +12,7 @@
     "Good Morning": "Günaydın!",
     "Good Afternoon": "Tünaydın!",
     "Good Evening": "İyi Akşamlar!",
-    "Login Button": "Giriş yap",
+    "Login": "Giriş yap",
     "E-Mail": "E-Posta",
     "Password": "Parola"
   },
