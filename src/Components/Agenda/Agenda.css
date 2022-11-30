@@ -11,7 +11,6 @@
   justify-content: center;
   align-items: center;
   height: calc(100% - 56px);
-  background: #f1f3fe;
   color: #4a545d;
   border-top-left-radius: 12px;
 }
@@ -24,7 +23,6 @@
   width: 90%;
 }
 .agenda-scheduler {
-  background: #f1f3ff;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -34,7 +32,6 @@
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
   color: #4a545d !important;
   font-family: "Gilroy", sans-serif !important;
-  background: #f1f3ff !important;
 }
 
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
@@ -208,12 +205,4 @@
 .MuiSvgIcon-root,
 .MuiTypography-noWrap {
   font-family: "Gilroy", sans-serif;
-}
-
-body {
-  background-color: #f1f3ff;
-}
-
-.ZQyBVDyNG8FDStkDQkNXd:hover {
-  background-color: #f1f3ff;
 }

@@ -16,14 +16,7 @@
 .card-all-compare {
   display: flex;
   align-items: center;
-
   font-size: 12px;
   font-weight: 300;
   color: green;
-}
-
-@media only screen and (max-width: 1180px) {
-  .card-all-compare {
-    font-size: 11px;
-  }
 }

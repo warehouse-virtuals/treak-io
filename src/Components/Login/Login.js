@@ -14,6 +14,7 @@ import NavbarButtons from "../Navbar/NavbarButtons"
 
 import TextInput from "../../UITools/TextInput"
 import Button from "../../UITools/Button"
+import Checkbox from "../../UITools/Checkbox"
 
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
@@ -34,7 +35,7 @@ const Login = () => {
 
   const welcomeMessage = () => {
     const today = new Date()
-    const currentHour = today.getHours
+    const currentHour = today.getHours()
     if (currentHour < 12) {
       return t("Good Morning")
     } else if (currentHour < 18) {
@@ -65,52 +66,53 @@ const Login = () => {
     <div className='login-container'>
       <div className='login-left'>
         <div className='login-left-header'>
-          <GiHealthNormal size={40} color='black' className='health-svg' />
+          <GiHealthNormal size={40} color='#003446' className='health-svg' />
           treat
         </div>
-        <div className='welcome-message'>{welcomeMessage()}</div>
-        <div className='login-message'>Uygulamaya giriş yap</div>
-        <div className='login-left-body'>
-          <TextInput
-            onInput={null}
-            inputRef={emailRef}
-            type={"text"}
-            label={t("E-Mail")}
-            placeholder={t("E-Mail")}
-            containerCSS='login-textinput-container'
-            labelCSS='login-textinput-label'
-            inputCSS='login-textinput-input'
-          />
-          <TextInput
-            inputRef={passwordRef}
-            type={"password"}
-            label={t("Password")}
-            placeholder={t("Password")}
-            containerCSS='login-textinput-container'
-            labelCSS='login-textinput-label'
-            inputCSS='login-textinput-input'
-          />
-
-          <Button
-            label={t("Login")}
-            onClick={handleLoginButtonPress}
-            buttonCSS='login-textinput-button'
-          />
+        <div className='login-left-wrapper'>
+          <div className='login-left-body'>
+            <div className='welcome-message'>{welcomeMessage()}</div>
+            <div className='login-message'>Uygulamaya giriş yap</div>
+            <TextInput
+              onInput={null}
+              inputRef={emailRef}
+              type={"text"}
+              label={t("E-Mail")}
+              containerCSS='login-textinput-container'
+              labelCSS='login-textinput-label'
+              inputCSS='login-textinput-input'
+            />
+            <TextInput
+              inputRef={passwordRef}
+              type={"password"}
+              label={t("Password")}
+              containerCSS='login-textinput-container'
+              labelCSS='login-textinput-label'
+              inputCSS='login-textinput-input'
+            />
+            <div className='checkbox-container'>
+              <Checkbox label={t("Remember me")} />
+            </div>
+            <Button
+              label={t("Login")}
+              onClick={handleLoginButtonPress}
+              buttonCSS='login-textinput-button'
+            />
+          </div>
         </div>
-
         <div className='company'>
           <img alt='svg' className='company-logo' src={tesseractLogo} />
-          Warehouse, Inc.
+          Warehouse
         </div>
       </div>
 
-      <div className='login-right'>
+      <div className='login-right-wrapper'>
         <div className='login-right-body'>
           <div className='login-right-header'>
             Improve your
             <br /> workflow
           </div>
-          {NavbarButtons.map((button, index) => {
+          {NavbarButtons("#F9FAFE", "22").map((button, index) => {
             return (
               <div className='buttons-row'>
                 <div className='button-icon'>{button.icon}</div>

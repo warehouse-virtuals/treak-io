@@ -1,4 +1,5 @@
 import React from "react"
+import "./TextInput.css"
 
 const TextInput = ({
   type,
@@ -11,14 +12,14 @@ const TextInput = ({
 }) => {
   return (
     <div className={containerCSS}>
-      <div className={labelCSS}>{label}</div>
       <input
         onInput={onInput}
         ref={inputRef}
         type={type}
+        className='textinput-input'
         placeholder={label}
-        className={inputCSS}
       />
+      <div className='textinput-label'>{label}</div>
     </div>
   )
 }

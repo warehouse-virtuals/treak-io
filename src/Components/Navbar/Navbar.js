@@ -27,15 +27,24 @@ const Navbar = () => {
   return (
     <div className='navbar-container'>
       <div className='navbar-logo-container'>
-        <GiHealthNormal size={40} color='#FFFFFF' />
+        <GiHealthNormal
+          size={30}
+          color='#000234'
+          style={{ "margin-right": "10px" }}
+        />{" "}
+        treat
       </div>
       {/* <img className="mt-10 w-1/2 " alt="logo" src={whlogo} /> */}
       <div className='navbar-buttons-container'>
-        {NavbarButtons.map((button, index) => {
+        {NavbarButtons("black", "18").map((button, index) => {
           return (
             <div
               key={button.pathname}
-              className='navbar-buttons'
+              className={
+                location.pathname === button.pathname
+                  ? "navbar-buttons-focused"
+                  : "navbar-buttons"
+              }
               onClick={() => navigate(button.pathname)}
             >
               <div
@@ -48,7 +57,7 @@ const Navbar = () => {
                 {button.icon}
               </div>
 
-              <div className=''>{t(button.name)}</div>
+              <div className='navbar-button-name'>{t(button.name)}</div>
             </div>
           )
         })}
@@ -59,9 +68,9 @@ const Navbar = () => {
         className='navbar-button-logout-container'
       >
         <div className='navbar-button-logout'>
-          <FiLogOut color='#F9FAFE' size={40} className='navbar-logout-icon' />
-          <div className=''>{t("Logout")}</div>
+          <FiLogOut color='#767e98' size='16' className='navbar-logout-icon' />
         </div>
+        <div className=''>{t("Logout")}</div>
       </div>
     </div>
   )
