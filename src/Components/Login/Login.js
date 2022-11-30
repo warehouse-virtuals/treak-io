@@ -66,7 +66,7 @@ const Login = () => {
     <div className='login-container'>
       <div className='login-left'>
         <div className='login-left-header'>
-          <GiHealthNormal size={40} color='#003446' className='health-svg' />
+          <GiHealthNormal size={40} className='health-svg' />
           treat
         </div>
         <div className='login-left-wrapper'>

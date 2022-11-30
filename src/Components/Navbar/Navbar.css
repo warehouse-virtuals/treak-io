@@ -20,7 +20,7 @@
   font-weight: 600;
   font-size: 28px;
   height: 65px;
-  color: #000234;
+  color: #0e0e0e;
   width: 100%;
 }
 
@@ -47,7 +47,7 @@
   user-select: none;
 }
 .navbar-buttons-focused {
-  color: #000234;
+  color: #0e0e0e;
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -59,7 +59,6 @@
 }
 
 .navbar-buttons:hover {
-  color: #000234;
   cursor: pointer;
 }
 
@@ -70,6 +69,7 @@
   height: 40px;
   width: 40px;
   border-radius: 10px;
+  color: #0e0e0e;
 }
 
 .navbar-button-icon-focused {
@@ -80,6 +80,7 @@
   height: 40px;
   width: 40px;
   border-radius: 10px;
+  color: #767e98;
 }
 
 .navbar-button-logout-container {
@@ -93,6 +94,7 @@
   margin-top: auto;
   width: 100%;
   transition: all 0.3s;
+  color: #000234;
 }
 
 .navbar-button-logout {

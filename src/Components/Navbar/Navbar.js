@@ -29,14 +29,14 @@ const Navbar = () => {
       <div className='navbar-logo-container'>
         <GiHealthNormal
           size={30}
-          color='#000234'
+          color='#0e0e0e'
           style={{ "margin-right": "10px" }}
         />{" "}
         treat
       </div>
       {/* <img className="mt-10 w-1/2 " alt="logo" src={whlogo} /> */}
       <div className='navbar-buttons-container'>
-        {NavbarButtons("black", "18").map((button, index) => {
+        {NavbarButtons("", "18", "navbarbtn").map((button, index) => {
           return (
             <div
               key={button.pathname}
@@ -68,7 +68,7 @@ const Navbar = () => {
         className='navbar-button-logout-container'
       >
         <div className='navbar-button-logout'>
-          <FiLogOut color='#767e98' size='16' className='navbar-logout-icon' />
+          <FiLogOut color='#0e0e0e' size='16' className='navbar-logout-icon' />
         </div>
         <div className=''>{t("Logout")}</div>
       </div>
