@@ -1,11 +1,16 @@
 .repair-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   width: 100%;
 }
 .repair-body {
   display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 1680px;
   height: calc(100% - 56px);
   background: #f1f3fe;
   color: #64748b;

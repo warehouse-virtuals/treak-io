@@ -14,7 +14,15 @@
     "Good Evening": "Good Evening!",
     "Login": "Login",
     "E-Mail": "Email",
-    "Password": "Password"
+    "Password": "Password",
+    "Remember me": "Remember me",
+    "Improve your workflow": "Improve your workflow!",
+    "Glance at your workspace": "Glance at your workspace",
+    "Track your patient records": "Track your patient records",
+    "Arrange appointments": "Arrange appointments",
+    "Track ongoing repairments of aids": "Track ongoing repairments of aids",
+    "Get in touch with your colleagues": "Get in touch with your colleagues",
+    "Analyze your business statistics": "Analyze your business statistics"
   },
   "dashboard": {
     "Dashboard": "Dashboard",
@@ -38,7 +46,8 @@
     "cancelled ": "cancelled appointments",
     "vs last month": "geçen aya göre",
     "more to go": "daha",
-    "is done": "is done"
+    "is done": "is done",
+    "Details": "Details"
   },
   "topbar": {
     "/dashboard": "Dashboard",

@@ -2,17 +2,23 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 56px;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 65px;
 }
 
 .page-name {
   display: flex;
   height: 100%;
   align-items: center;
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 600;
   color: #0e0e0e;
   width: 30%;
+  padding-left: 30px;
 }
 
 .searchfield-component {
@@ -27,16 +33,5 @@
   align-items: center;
   justify-content: center;
   width: 30%;
-}
-
-@media screen and (max-width: 900px) {
-  .searchfield-component {
-    width: 20%;
-  }
-  .datentime-component {
-    width: 40%;
-  }
-  .page-name {
-    width: 40%;
-  }
+  padding-right: 30px;
 }

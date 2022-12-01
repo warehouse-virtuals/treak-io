@@ -15,7 +15,7 @@ const DateAndTime = (props) => {
   return (
     <div className='datentime-container'>
       <div className='datentime'>
-        <FiSun size={26} color='white' className='datentime-icons' />
+        <FiSun size={26} className='datentime-icons' />
         <div className='datentime-content'>
           {dateState.toLocaleString("tr", {
             day: "numeric",
@@ -24,7 +24,7 @@ const DateAndTime = (props) => {
         </div>
       </div>
       <div className='datentime'>
-        <FiClock size={26} color='white' className='datentime-icons' />
+        <FiClock size={26} className='datentime-icons' />
         <div className='datentime-content'>
           {("0" + dateState.getHours()).slice(-2)}:
           {("0" + dateState.getMinutes()).slice(-2)}:

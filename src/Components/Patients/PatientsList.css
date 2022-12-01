@@ -15,7 +15,7 @@
   width: 100%;
   margin-top: 20px;
   margin-left: 20px;
-  color: #64748b;
+  color: #767e98;
 }
 
 /* .table-head-container {
@@ -33,84 +33,17 @@
   display: grid;
   height: 40px;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 40px;
+  gap: 20px;
   margin-bottom: 10px;
-  padding: 5px;
+
   border-radius: 12px;
+  color: #0e0e0e;
 
   /* box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81); */
 }
 
-.patients-table-row-item-content:not(:last-child) {
-  border-right: 1px solid #a9b2c3;
-}
 .patients-table-row-item:hover {
   cursor: pointer;
-}
-
-.patients-add-patient-btn {
-  font-weight: 600;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 50px;
-  width: 200px;
-  margin-bottom: 50px;
-  border-radius: 12px;
-  background: #05beb6;
-  color: white;
-  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
-    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
-    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
-    inset 0px 0px 0px 0px #0001;
-  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
-}
-.patients-add-patient-btn:hover {
-  background-color: #04afa6;
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 1180px) {
-  .patients-overview-container {
-    width: 600px;
-    height: 600px;
-  }
-  .patients-table-head-item {
-    font-weight: 500;
-    margin-bottom: 10px;
-    font-size: 14px;
-  }
-  .patients-table-row-item-content {
-    font-weight: 400;
-    font-size: 14px;
-  }
-}
-@media only screen and (max-width: 1366px) and (min-width: 1181px) {
-  .patients-overview-container {
-    width: 600px;
-    height: 600px;
-  }
-  .patients-table-head-item {
-    font-weight: 500;
-    margin-bottom: 10px;
-    font-size: 14px;
-  }
-  .patients-table-row-item-content {
-    font-weight: 400;
-    font-size: 14px;
-  }
-}
-
-@media only screen and (min-width: 1367px) {
-  .patients-overview-container {
-    width: 600px;
-    height: 800px;
-  }
-  .patients-table-row-item {
-    font-weight: 400;
-    font-size: 14px;
-    padding: 10px;
-  }
 }

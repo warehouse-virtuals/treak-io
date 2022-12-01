@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import { useTranslation } from "react-i18next"
-import { FiPlus } from "react-icons/fi"
+import { FiUserPlus } from "react-icons/fi"
 
 import PatientsList from "./PatientsList"
 import TopBar from "../TopBar/TopBar"
@@ -27,7 +27,7 @@ const Patients = () => {
               }}
               className='patients-add-patient-btn'
             >
-              <FiPlus size={30} stroke='#a3edd9' className='' /> Kullanıcı Ekle
+              <FiUserPlus size={24} stroke='#fff' className='' /> Kullanıcı Ekle
             </div>
             <PatientsList
               focusedPatient={(patient) => {

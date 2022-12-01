@@ -91,7 +91,7 @@ const Login = () => {
               inputCSS='login-textinput-input'
             />
             <div className='checkbox-container'>
-              <Checkbox label={t("Remember me")} />
+              <Checkbox className='login-checkbox' label={t("Remember me")} />
             </div>
             <Button
               label={t("Login")}
@@ -106,17 +106,14 @@ const Login = () => {
         </div>
       </div>
 
-      <div className='login-right-wrapper'>
-        <div className='login-right-body'>
-          <div className='login-right-header'>
-            Improve your
-            <br /> workflow
-          </div>
-          {NavbarButtons("#F9FAFE", "22").map((button, index) => {
+      <div className='login-right'>
+        <div className='login-right-wrapper'>
+          <div className='login-right-header'>{t("Improve your workflow")}</div>
+          {NavbarButtons("22", "lgn-right-icons").map((button, index) => {
             return (
               <div className='buttons-row'>
                 <div className='button-icon'>{button.icon}</div>
-                <div className='button-desc'>{button.desc}</div>
+                <div className='button-desc'>{t(button.desc)}</div>
               </div>
             )
           })}

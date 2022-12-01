@@ -4,6 +4,8 @@ import { FiLogOut } from "react-icons/fi"
 import { GiHealthNormal } from "react-icons/gi"
 import { useTranslation } from "react-i18next"
 
+import UserInfo from "./UserInfo"
+
 import NavbarButtons from "./NavbarButtons"
 // import whlogo from "../../Assets/logobw.svg"
 
@@ -27,16 +29,23 @@ const Navbar = () => {
   return (
     <div className='navbar-container'>
       <div className='navbar-logo-container'>
-        <GiHealthNormal
-          size={30}
-          color='#0e0e0e'
-          style={{ "margin-right": "10px" }}
-        />{" "}
-        treat
+        <div className='navbar-logo'>
+          <GiHealthNormal
+            size={30}
+            color='#0e0e0e'
+            style={{ "margin-right": "10px" }}
+          />
+          treat
+        </div>
+      </div>
+      <div className='navbar-user-info-container'>
+        <div className='navbar-user-info'>
+          <UserInfo />
+        </div>
       </div>
       {/* <img className="mt-10 w-1/2 " alt="logo" src={whlogo} /> */}
       <div className='navbar-buttons-container'>
-        {NavbarButtons("", "18", "navbarbtn").map((button, index) => {
+        {NavbarButtons("18", "navbarbtn").map((button, index) => {
           return (
             <div
               key={button.pathname}
@@ -50,8 +59,8 @@ const Navbar = () => {
               <div
                 className={
                   location.pathname === button.pathname
-                    ? "navbar-button-icon"
-                    : "navbar-button-icon-focused"
+                    ? "navbar-button-icon-focused"
+                    : "navbar-button-icon"
                 }
               >
                 {button.icon}
@@ -62,15 +71,20 @@ const Navbar = () => {
           )
         })}
       </div>
-
-      <div
-        onClick={handleNavbarLogoutButtonClick}
-        className='navbar-button-logout-container'
-      >
-        <div className='navbar-button-logout'>
-          <FiLogOut color='#0e0e0e' size='16' className='navbar-logout-icon' />
+      <div className='navbar-footer'>
+        <div
+          className='navbar-button-logout-container'
+          onClick={handleNavbarLogoutButtonClick}
+        >
+          <div className='navbar-button-logout'>
+            <FiLogOut
+              color='#0e0e0e'
+              size='16'
+              className='navbar-logout-icon'
+            />
+          </div>
+          <div className=''>{t("Logout")}</div>
         </div>
-        <div className=''>{t("Logout")}</div>
       </div>
     </div>
   )

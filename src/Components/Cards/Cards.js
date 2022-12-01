@@ -13,6 +13,7 @@ const CardContainer = (props) => {
       <Card
         icon={CardIcons.FiCalendar}
         title={props.t("Today's Appointments")}
+        details={props.t("Details")}
         body={
           <CardTodaysAppointments
             finished={2}
@@ -26,6 +27,7 @@ const CardContainer = (props) => {
       <Card
         icon={CardIcons.FiFile}
         title={props.t("All Appointments")}
+        details={props.t("Details")}
         body={
           <CardAllAppointments
             currentMonth={72}
@@ -40,11 +42,13 @@ const CardContainer = (props) => {
       <Card
         icon={CardIcons.FiShoppingBag}
         title={props.t("Goal progress")}
+        details={props.t("Details")}
         body={<CardGoalProgress goal={8} sold={3} t={props.t} />}
       />
       <Card
         icon={CardIcons.FiUserPlus}
         title={props.t("New patients")}
+        details={props.t("Details")}
         body={
           <CardNewPatients
             totalPatients={142}

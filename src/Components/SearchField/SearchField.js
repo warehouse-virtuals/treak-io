@@ -34,7 +34,8 @@ const SearchField = () => {
     }
   }
 
-  const handleOnChangeSearchInput = () => {
+  const handleOnChangeSearchInput = (dnz) => {
+    console.log(dnz)
     findPatients().then((data) => setFoundPatients(data))
   }
 
@@ -42,13 +43,14 @@ const SearchField = () => {
     <div className='searchfield-container'>
       <div className={foundPatients.length > 0 ? "search-bar" : "search-bar"}>
         <input
+          className='searchfield-input'
           ref={searchTextRef}
           onClick={() => (searchTextRef.current.value = "")}
           onChange={handleOnChangeSearchInput}
           placeholder={t("Search patients...")}
         />
         <div className='search-icon'>
-          <FiSearch color='0083b0' className='' size={24} />
+          <FiSearch color='#000234' className='' size={22} />
         </div>
       </div>
       <div className='found-patient-container'>

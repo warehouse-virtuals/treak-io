@@ -9,12 +9,14 @@ const TopBar = (props) => {
   const { t } = useTranslation("topbar")
   return (
     <div className='topbar-container'>
-      <div className='page-name'>{t(location.pathname)}</div>
-      <div className='searchfield-component'>
-        <SearchField />
-      </div>
-      <div className='datentime-component'>
-        <DateAndTime />
+      <div className='topbar'>
+        <div className='page-name'>{t(location.pathname)}</div>
+        <div className='searchfield-component'>
+          <SearchField />
+        </div>
+        <div className='datentime-component'>
+          <DateAndTime />
+        </div>
       </div>
     </div>
   )

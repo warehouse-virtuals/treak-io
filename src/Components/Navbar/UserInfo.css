@@ -1,0 +1,46 @@
+.userinfo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  width: 100%;
+}
+
+.userinfo-pp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  height: 100%;
+
+  width: 40px;
+  height: 100%;
+}
+
+.userinfo-pp {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.userinfo-userinfo {
+  color: #0e0e0e;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+.userinfo-username {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  font-weight: 600;
+  width: 100%;
+}
+
+.userinfo-jobtitle {
+  font-size: 12px;
+  font-weight: 400;
+}

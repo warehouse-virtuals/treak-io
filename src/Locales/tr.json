@@ -14,7 +14,15 @@
     "Good Evening": "İyi Akşamlar!",
     "Login": "Giriş yap",
     "E-Mail": "E-Posta",
-    "Password": "Parola"
+    "Password": "Parola",
+    "Improve your workflow": "İş akışınızı geliştirin!",
+    "Remember me": "Beni hatırla",
+    "Glance at your workspace": "Çalışma alanınıza göz atın",
+    "Track your patient records": "Kullanıcı kayıtlarınızı takip edin",
+    "Arrange appointments": "Randevularınızı düzenleyin",
+    "Track ongoing repairments of aids": "Cihaz tamir ve bakımını takip edin",
+    "Get in touch with your colleagues": "Meslektaşlarınızla iletişim kurun",
+    "Analyze your business statistics": "İş istatistiklerinizi analiz edin"
   },
   "dashboard": {
     "Dashboard": "Genel Bakış",
@@ -38,7 +46,8 @@
     "cancelled": "iptal edilen",
     "vs last month": "geçen aya göre",
     "more to go": "daha",
-    "is done": "bitti"
+    "is done": "bitti",
+    "Details": "Detaylar"
   },
   "topbar": {
     "/dashboard": "Genel Bakış",
