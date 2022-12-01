@@ -1,106 +1,76 @@
 import "./PatientsList.css"
 
-import { toDate } from "date-fns"
+import { format } from "date-fns"
+import { tr } from "date-fns/locale"
 import { useTranslation } from "react-i18next"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
+import {
+  FiUser,
+  FiEdit,
+  // FiFolder,
+  FiCalendar,
+  // FiMessageSquare,
+  FiTrash,
+  FiDelete,
+} from "react-icons/fi"
 
 const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
   const { getPatients, userData } = UserAuth()
   const { t } = useTranslation("patients")
 
-  const fetchPatientData = async () => {
-    return await getPatients(userData.customerID, userData.clinicID)
-  }
-
   useEffect(() => {
-    fetchPatientData().then((data) => setPatients(data))
+    const fetchPatientData = async () => {
+      return await getPatients(userData.customerID, userData.clinicID)
+    }
+    fetchPatientData().then((data) => {
+      console.log(data)
+      setPatients(data)
+    })
     //eslint-disable-next-line
   }, [])
 
-  const tbodyData = []
-  patients.forEach((patient, i) => {
-    const dateOfBirth = toDate(patient.DOB.seconds * 1000).toLocaleDateString()
-    const obj = {
-      id: patient.id,
-      patientData: { ...patient, DOB: dateOfBirth },
-      items: [
-        patient.name + " " + patient.surname,
-        patient.SSN,
-        patient.phone,
-        dateOfBirth,
-        patient.isMale ? "Erkek" : "Kadın",
-      ],
-    }
-    tbodyData.push(obj)
-  })
-
-  const theadData = [
-    `${t("NAME")}`,
-    `${t("SSN")}`,
-    `${t("PHONE")}`,
-    `${t("DOB")}`,
-    `${t("GENDER")}`,
-  ]
-
-  const TableHeadItem = ({ item }) => {
-    return (
-      <div className='patients-table-head-item '>
-        {item.map((h, index) => {
-          return (
-            <div key={index} className=''>
-              {h}
-            </div>
-          )
-        })}
-      </div>
-    )
-  }
-  const TableRow = ({ data, patient }) => {
-    return (
-      <div
-        className='patients-table-row-item'
-        onClick={() => {
-          props.focusedPatient(patient)
-        }}
-      >
-        {data.map((item, index) => {
-          return (
-            <div className='patients-table-row-item-content' key={index}>
-              {item}
-            </div>
-          )
-        })}
-      </div>
-    )
-  }
-  const Table = ({ theadData, tbodyData }) => {
-    return (
-      <div className='patients-table-container'>
-        <div className='patients-table-head-container'>
-          <TableHeadItem item={theadData} />
-        </div>
-        <div className=''>
-          {tbodyData.map((item) => {
-            return (
-              <TableRow
-                key={item.id}
-                patient={item.patientData}
-                data={item.items}
-              />
-            )
-          })}
-        </div>
-      </div>
-    )
-  }
+  // const theadData = [
+  //   `${t("NAME")}`,
+  //   `${t("SSN")}`,
+  //   `${t("PHONE")}`,
+  //   `${t("DOB")}`,
+  //   `${t("GENDER")}`,
+  // ]
 
   return (
-    <div className='patient-list-container'>
-      <div className='patient-list-header-container'>
-        <Table theadData={theadData} tbodyData={tbodyData} />
-      </div>
+    <div className='patient-table-container'>
+      <table className='patient-table'>
+        <tr>
+          <th>#</th>
+          <th>{t("NAME")}</th>
+          <th>{t("PHONE")}</th>
+          <th>{t("GENDER")}</th>
+          <th>{t("SSN")}</th>
+          <th>{t("DOB")}</th>
+        </tr>
+        {patients.map((patient) => {
+          return (
+            <tr
+              onClick={() => {
+                props.focusedPatient(patient)
+              }}
+            >
+              <td>1</td>
+              <td>{`${patient.name} ${patient.surname}`}</td>
+              <td>{patient.phone}</td>
+              <td>{patient.isMale ? "Erkek" : "Kadın"}</td>
+              <td>{patient.SSN}</td>
+              <td>
+                {format(patient.DOB.toMillis(), "PP", {
+                  locale: tr,
+                })}
+              </td>
+            </tr>
+          )
+        })}
+      </table>
     </div>
   )
 }

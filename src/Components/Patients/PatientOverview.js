@@ -10,6 +10,9 @@ import {
   FiTrash,
 } from "react-icons/fi"
 
+import { format } from "date-fns"
+import { tr } from "date-fns/locale"
+
 const PatientOverview = (props) => {
   console.log(props)
   const { deletePatient, userData } = UserAuth()
@@ -100,7 +103,11 @@ const PatientOverview = (props) => {
             </div>
             <div className='patient-overview-content'>
               <div className='patient-overview-content-key'>Doğum Tarihi:</div>
-              <div className='patient-overview-content-value'>{person.DOB}</div>
+              <div className='patient-overview-content-value'>
+                {format(person.DOB.toMillis(), "PP", {
+                  locale: tr,
+                })}
+              </div>
             </div>
             <div className='patient-overview-content'>
               <div className='patient-overview-content-key'>Klinik:</div>

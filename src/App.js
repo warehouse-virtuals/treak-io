@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Suspense } from "react"
+import { Suspense, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
@@ -8,6 +8,7 @@ import { ThemeProvider } from "./Context/ThemeContext"
 
 import MainRouter from "./Components/MainRouter/MainRouter"
 import Navbar from "./Components/Navbar/Navbar"
+import useWindowSize from "./Hooks/useWindowSize"
 
 import "./App.css"
 import "react-toastify/dist/ReactToastify.min.css"
@@ -16,6 +17,9 @@ import "react-toastify/dist/ReactToastify.min.css"
 
 const App = () => {
   const { pathname } = useLocation()
+
+  const [width, height] = useWindowSize()
+  console.log(width, height)
   // const [width, height] = useWindowSize()
 
   // if (width < 960 || height < 730) {
