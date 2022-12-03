@@ -5,11 +5,9 @@ import { useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
 import { useTranslation } from "react-i18next"
 
-// import LoginSvg from "../../Assets/login-i.svg"
+import treatLogo from "../../Assets/treat-logos/treat-tp.svg"
+import tesseractLogo from "../../Assets/warehouse-logos/warehouse.svg"
 
-import tesseractLogo from "../../Assets/tesseract-logo-black.svg"
-
-import { GiHealthNormal } from "react-icons/gi"
 import NavbarButtons from "../Navbar/NavbarButtons"
 
 import TextInput from "../../UITools/TextInput"
@@ -66,8 +64,8 @@ const Login = () => {
     <div className='login-container'>
       <div className='login-left'>
         <div className='login-left-header'>
-          <GiHealthNormal size={40} className='health-svg' />
-          treat
+          <img className='login-treat-logo' alt='logo' src={treatLogo} />
+          <span>treat</span>
         </div>
         <div className='login-left-wrapper'>
           <div className='login-left-body'>
@@ -102,7 +100,7 @@ const Login = () => {
         </div>
         <div className='company'>
           <img alt='svg' className='company-logo' src={tesseractLogo} />
-          Warehouse
+          <div className='company-name'> warehouse</div>
         </div>
       </div>
 

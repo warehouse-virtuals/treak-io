@@ -22,6 +22,10 @@
   width: 200px;
 }
 
+.patient-table tr:nth-child(odd) td {
+  background: #fcfcfc;
+}
+
 .patient-table td {
   height: 48px;
   background: #fff;

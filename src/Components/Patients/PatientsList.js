@@ -43,7 +43,6 @@ const PatientsList = (props) => {
     <div className='patient-table-container'>
       <table className='patient-table'>
         <tr>
-          <th>#</th>
           <th>{t("NAME")}</th>
           <th>{t("PHONE")}</th>
           <th>{t("GENDER")}</th>
@@ -57,7 +56,6 @@ const PatientsList = (props) => {
                 props.focusedPatient(patient)
               }}
             >
-              <td>1</td>
               <td>{`${patient.name} ${patient.surname}`}</td>
               <td>{patient.phone}</td>
               <td>{patient.isMale ? "Erkek" : "Kadın"}</td>

@@ -3,17 +3,17 @@
   "name": "treat - Track your patients",
   "icons": [
     {
-      "src": "tesseract.ico",
+      "src": "treat-ico-whbg.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "tesseract.png",
+      "src": "treat-whbg.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "tesseract.png",
+      "src": "treat-whbg.png",
       "type": "image/png",
       "sizes": "512x512"
     }

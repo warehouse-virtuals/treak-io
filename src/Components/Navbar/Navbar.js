@@ -1,13 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/AuthContext"
 import { FiLogOut } from "react-icons/fi"
-import { GiHealthNormal } from "react-icons/gi"
 import { useTranslation } from "react-i18next"
 
-import UserInfo from "./UserInfo"
+import treatLogo from "../../Assets/treat-logos/treat-tp.svg"
 
+import UserInfo from "./UserInfo"
 import NavbarButtons from "./NavbarButtons"
-// import whlogo from "../../Assets/logobw.svg"
 
 import "./Navbar.css"
 
@@ -28,22 +27,18 @@ const Navbar = () => {
 
   return (
     <div className='navbar-container'>
-      <div className='navbar-logo-container'>
-        <div className='navbar-logo'>
-          <GiHealthNormal
-            size={30}
-            color='#0e0e0e'
-            style={{ "margin-right": "10px" }}
-          />
-          treat
-        </div>
+      <div
+        className='navbar-logo-container'
+        onClick={() => navigate("/dashboard")}
+      >
+        <img className='navbar-logo' alt='logo' src={treatLogo} />
+        <span>treat</span>
       </div>
       <div className='navbar-user-info-container'>
         <div className='navbar-user-info'>
           <UserInfo />
         </div>
       </div>
-      {/* <img className="mt-10 w-1/2 " alt="logo" src={whlogo} /> */}
       <div className='navbar-buttons-container'>
         {NavbarButtons("18", "navbarbtn").map((button, index) => {
           return (

@@ -17,9 +17,22 @@
   width: 100vw;
   height: 100vh;
   font-family: "Gilroy", sans-serif !important;
+  animation: app-reveal 0.8s ease-out 0.3s 1 both;
+}
+.app-suspense {
+  animation: app-reveal 0.8s ease-out 0.3s 1 both;
 }
 
-@media only screen and (max-width: 1179px), (max-height: 819px) {
+@keyframes app-reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 1179px), (max-height: 712px) {
   .App {
     background-color: black;
     height: 100%;
@@ -51,7 +64,7 @@
     height: 100%;
     float: left;
 
-    content: "\A\A"url(./Assets/mobile-resized-2.svg) "\A \A\A mobile app coming soon..";
+    content: "\A\A"url(./Assets/svg-illus/mobile-resized-2.svg) "\A \A\A mobile app coming soon..";
     white-space: pre-wrap;
     text-align: center;
   }
