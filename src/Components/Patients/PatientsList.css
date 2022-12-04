@@ -18,6 +18,14 @@
   text-align: left;
   padding-left: 8px;
 }
+
+.patient-table th:not(:first-child) {
+  text-align: center;
+}
+.patient-table tr:not(:first-child) td:not(:first-child) {
+  text-align: center;
+}
+
 .patient-table th:nth-child(2) {
   width: 200px;
 }

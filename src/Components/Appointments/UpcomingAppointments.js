@@ -26,8 +26,7 @@ const UpcomingAppointments = (props) => {
           onClick={handleAddAppointmentButtonClick}
           className='upcoming-add-btn'
         >
-          <FiPlus size={22} stroke='green' className='' />
-          Randevu ekle
+          <FiPlus size={22} stroke='#fff' className='' />
         </div>
       </div>
       <div className='upcoming-list-container'>

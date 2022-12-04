@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "treat-whbg.png",
+      "src": "treat-ico-whbg.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "treat-whbg.png",
+      "src": "treat-ico-whbg.png",
       "type": "image/png",
       "sizes": "512x512"
     }

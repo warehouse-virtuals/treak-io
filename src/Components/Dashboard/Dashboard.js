@@ -3,9 +3,10 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import "./Dashboard.css"
 
-import Cards from "../Cards/Cards"
-// import UpcomingAppointments from "../Appointments/UpcomingAppointments"
 import TopBar from "../TopBar/TopBar"
+import Cards from "../Cards/Cards"
+import Chart from "../Chart/Chart"
+import UpcomingAppointments from "../Appointments/UpcomingAppointments"
 
 const Dashboard = () => {
   const { t } = useTranslation("dashboard")
@@ -17,9 +18,13 @@ const Dashboard = () => {
         <div className='dashboard-cards'>
           <Cards t={t} />
         </div>
-        {/* <div className='dashboard-upcoming'>
-        <UpcomingAppointments t={t} limitRows={height < 830 ? 3 : 5} />
-      </div> */}
+        <div className='dashboard-chart'>
+          <Chart t={t} />
+        </div>
+
+        <div className='dashboard-upcoming'>
+          <UpcomingAppointments t={t} />
+        </div>
       </div>
     </div>
   )

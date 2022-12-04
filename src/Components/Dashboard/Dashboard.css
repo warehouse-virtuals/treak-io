@@ -10,16 +10,16 @@
 .dashboard-body {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
   max-width: 1680px;
   color: #0e0e0e;
+  padding: 30px 30px 20px 30px;
 }
 
 .dashboard-cards {
-  margin-top: 20px;
   width: 100%;
 }
-
-.dashboard-sidebar-container {
-  width: 30%;
+.dashboard-chart {
+  width: 500px;
 }

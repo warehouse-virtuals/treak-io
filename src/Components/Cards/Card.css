@@ -1,6 +1,7 @@
 .card-container {
   display: flex;
-  width: 220px;
+  width: 260px;
+  height: 130px;
   background: #f8f8f8;
   padding: 20px;
   border-radius: 12px;
@@ -9,7 +10,7 @@
 .card-left {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 90%;
 }
 
 .card-right {
@@ -17,7 +18,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  width: 30%;
+  width: 10%;
 }
 .card-icon {
   display: flex;
@@ -44,4 +45,10 @@
   display: flex;
   align-items: center;
   height: 100%;
+}
+
+@media screen and (max-width: 1366px) {
+  .card-container {
+    width: 215px;
+  }
 }

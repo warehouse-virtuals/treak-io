@@ -45,10 +45,6 @@ const AddAppointment = (props) => {
   const { t } = useTranslation("addAppointment")
   const { userData, getEmployeesOfClinic, db } = UserAuth()
 
-  const sendDataToParent = async (nameOfThePatient) => {
-    setSelectedPatient(nameOfThePatient)
-  }
-
   const fetchEmployeesOfClinic = async () => {
     return await getEmployeesOfClinic(userData.clinicID)
   }
@@ -75,6 +71,7 @@ const AddAppointment = (props) => {
       )
 
       const newAppointmentRef = await addDoc(appointmentsRef, appointmentInfo)
+      console.log("sa", selectedPatient)
       await updateDoc(newAppointmentRef, { id: newAppointmentRef.id })
       setAddedApointment(newAppointmentRef.id)
       props.parentCallback(newAppointmentRef.id)
@@ -144,7 +141,10 @@ const AddAppointment = (props) => {
             Kullanıcı:
             <SearchField
               page='appointment'
-              sendDataToParent={sendDataToParent}
+              selectedPatientName={(nameOfThePatient) => {
+                console.log(nameOfThePatient)
+                setSelectedPatient(nameOfThePatient)
+              }}
               pHolder={selectedPatient}
             />
           </div>

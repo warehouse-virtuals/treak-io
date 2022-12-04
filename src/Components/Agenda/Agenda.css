@@ -31,6 +31,25 @@
   width: 100%;
 }
 
+.css-169iwlq-MuiCalendarPicker-root {
+  color: #4a545d !important;
+  font-family: "Gilroy", sans-serif !important;
+}
+.css-dplwbx-MuiPickersCalendarHeader-label {
+  font-family: "Gilroy", sans-serif !important;
+}
+.css-bkrceb-MuiButtonBase-root-MuiPickersDay-root {
+  font-family: "Gilroy", sans-serif !important;
+}
+.css-15fehp8-MuiTypography-root-PrivatePickersMonth-root.Mui-selected {
+  background: #0a77f4 !important;
+}
+
+.css-bkrceb-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+  background: #0a77f4 !important;
+}
+.css-1sy1a1q-MuiTypography-root-PrivatePickersMonth-root {
+}
 /* Toolbar kısımısı koyu renkliler renkliler*/
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
   color: #4a545d !important;

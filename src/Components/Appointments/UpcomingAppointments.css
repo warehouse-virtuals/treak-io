@@ -1,30 +1,39 @@
 .upcoming-container {
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
 }
 
 .upcoming-header {
   display: flex;
-  height: 40px;
   align-items: center;
+  height: 40px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 .upcoming-add-btn {
   display: flex;
-  align-items: center;
   justify-content: space-around;
-  margin-left: 70px;
-  height: 50px;
-  width: 200px;
-  border-radius: 12px;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: 18;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+  background: #60cca9;
+  cursor: pointer;
+  outline: 2px solid #56b898;
+  outline-offset: 1px;
+  margin-left: auto;
 }
+
 .upcoming-add-btn:hover {
   cursor: pointer;
+  background: #56b898;
 }
 
 .upcoming-list-container {
   display: flex;
-  color: #20295a;
 }

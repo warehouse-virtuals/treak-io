@@ -5,15 +5,6 @@ import { tr } from "date-fns/locale"
 import { useTranslation } from "react-i18next"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
-import {
-  FiUser,
-  FiEdit,
-  // FiFolder,
-  FiCalendar,
-  // FiMessageSquare,
-  FiTrash,
-  FiDelete,
-} from "react-icons/fi"
 
 const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
@@ -25,19 +16,10 @@ const PatientsList = (props) => {
       return await getPatients(userData.customerID, userData.clinicID)
     }
     fetchPatientData().then((data) => {
-      console.log(data)
       setPatients(data)
     })
     //eslint-disable-next-line
   }, [])
-
-  // const theadData = [
-  //   `${t("NAME")}`,
-  //   `${t("SSN")}`,
-  //   `${t("PHONE")}`,
-  //   `${t("DOB")}`,
-  //   `${t("GENDER")}`,
-  // ]
 
   return (
     <div className='patient-table-container'>

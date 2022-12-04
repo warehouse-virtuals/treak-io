@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next"
 
 import { UserAuth } from "../../Context/AuthContext"
 
-const SearchField = () => {
+const SearchField = (props) => {
   // eslint-disable-next-line
   const [searchSelectedPerson, setSearchSelectedPerson] = useState("")
   const [foundPatients, setFoundPatients] = useState([])
@@ -59,16 +59,15 @@ const SearchField = () => {
             <div
               className='found-patient'
               onClick={() => {
-                setSearchSelectedPerson(patient.name + " " + patient.surname)
+                props.selectedPatientName(patient.name + " " + patient.surname)
                 searchTextRef.current.value =
                   patient.name + " " + patient.surname
                 setFoundPatients([])
               }}
               key={i}
             >
-              {/* <div style={{ "margin-right": "30px" }}>{patient.SSN}</div> */}
               {patient.name + " " + patient.surname}
-              {/* <div style={{ "margin-left": "30px" }}>{patient.phone}</div> */}
+
               <div className='make-appt-btn-container'>
                 <FiCalendar
                   color='0083b0'
