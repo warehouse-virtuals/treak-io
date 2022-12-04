@@ -19,19 +19,20 @@
   font-weight: 600;
   font-size: 46px;
   gap: 10px;
+  transition: font-size 0.7s;
 }
 .login-treat-logo {
   height: 100px;
   display: flex;
   align-items: center;
   font-weight: 600;
-  font-size: 46px;
+  transition: height 0.3s;
 }
 .login-left-wrapper {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  height: calc(100% - 150px);
   width: 100%;
 }
 .login-left-body {
@@ -88,7 +89,7 @@
   color: #ffffff;
   margin-bottom: 90px;
 
-  margin-top: 100px;
+  margin-top: 150px;
   margin-left: 120px;
 
   /* background: red; */
@@ -123,6 +124,7 @@
   margin-top: 20px;
 }
 .checkbox-container {
+  margin-top: 13px;
   font-weight: 600;
   font-size: 14px;
   width: 60%;
@@ -134,7 +136,7 @@
 }
 
 .login-textinput-button {
-  margin-top: 30px;
+  margin-top: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,4 +187,14 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px #fff inset !important;
   -webkit-box-shadow: 0 0 0 30px #fff inset !important;
   outline: 1px solid #0e0e0e;
+}
+
+@media screen and (max-width: 1366px) {
+  .login-left-header {
+    font-size: 30px;
+  }
+
+  .login-treat-logo {
+    height: 60px;
+  }
 }

@@ -21,9 +21,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-
   height: 840px;
   width: 90%;
+
+  transform: scale(0.99);
 }
 .agenda-scheduler {
   display: flex;
