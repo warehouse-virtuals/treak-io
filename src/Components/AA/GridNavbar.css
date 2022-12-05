@@ -1,0 +1,50 @@
+.grid-navbar-container {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 1s;
+}
+.grid-navbar-arrow-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+.grid-navbar-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  transition: all 0.2s ease-in-out;
+}
+.grid-navbar-arrow:hover {
+  background: #f7f7f7;
+  cursor: pointer;
+}
+.grid-navbar-arrow-title {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+
+.grid-navbar-button-containers {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.grid-navbar-button {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 40px;
+  width: 64px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.grid-navbar-button:hover {
+  background: #f7f7f7;
+  cursor: pointer;
+  border-radius: 20px;
+}

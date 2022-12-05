@@ -87,10 +87,10 @@
     "Cancel": "Vazgeç"
   },
   "agenda": {
-    "Month": "Ay",
-    "Week": "Hafta",
-    "Day": "Gün",
-    "Today": "Bugün",
+    "MONTH": "AY",
+    "WEEK": "HAFTA",
+    "DAY": "GÜN",
+    "TODAY": "BUGÜN",
     "Add Event": "Randevu Ekle",
     "Edit Event": "Düzenle",
     "Confirm": "Onayla",

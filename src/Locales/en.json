@@ -88,10 +88,10 @@
     "Cancel": "Cancel"
   },
   "agenda": {
-    "Month": "Month",
-    "Week": "Week",
-    "Day": "Day",
-    "Today": "Today",
+    "MONTH": "Month",
+    "WEEK": "Week",
+    "DAY": "Day",
+    "TODAY": "Today",
     "Add Event": "Add Event",
     "Edit Event": "Edit Event",
     "Confirm": "Confirm",

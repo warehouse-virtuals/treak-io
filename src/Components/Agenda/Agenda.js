@@ -7,7 +7,7 @@ import tr from "date-fns/locale/tr"
 
 import AddAppointment from "../Appointments/AddAppointments"
 
-import "./Agenda.css"
+// import "./Agenda.css"
 
 import TopBar from "../TopBar/TopBar"
 

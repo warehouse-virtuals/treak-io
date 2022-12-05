@@ -12,6 +12,8 @@ import Messages from "../Messages/Messages"
 import Analytics from "../Analytics/Analytics"
 import AddAppointments from "../Appointments/AddAppointments"
 
+import AA from "../AA/AA"
+
 const MainRouter = () => {
   return (
     <Routes>
@@ -21,7 +23,8 @@ const MainRouter = () => {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/patients' element={<Patients />} />
       <Route path='/addPatient' element={<AddPatient />} />
-      <Route path='/agenda' element={<Agenda />} />
+      {/* <Route path='/agenda' element={<Agenda />} /> */}
+      <Route path='/agenda' element={<AA />} />
       <Route path='/audiogram' element={<Audiogram />} />
       <Route path='/addAppointment' element={<AddAppointments />} />
       <Route path='/repair' element={<Repair />} />
