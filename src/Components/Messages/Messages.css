@@ -9,10 +9,9 @@
   padding: 20px;
   display: flex;
   justify-content: center;
+  height: calc(100% - 56px);
   width: 100%;
   max-width: 1680px;
-  height: calc(100% - 56px);
-  background: #f1f3fe;
-  color: #64748b;
+  color: #4a545d;
   border-top-left-radius: 12px;
 }

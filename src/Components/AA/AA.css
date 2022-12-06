@@ -37,23 +37,17 @@
 }
 
 .scheduler-grid-header {
+  width: calc(100% - 14px);
+  justify-content: flex-end;
   display: flex;
   height: 20px;
-  width: 100%;
 }
 .scheduler-grid-header-day-names {
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100% / 7);
-}
-.scheduler-grid-cell-container {
-  display: inline-grid;
-  grid-template-columns: repeat(7, calc(100% / 7));
-  grid-gap: 2px;
-  background-color: #f8f8f8;
-  border: 2px solid #f8f8f8;
+  width: calc(100% / 7 - 7px);
 }
 
 .grid-cell {
@@ -72,9 +66,6 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-}
-.grid-month-event {
-  border-radius: 4px;
 }
 
 .grid-cell:hover {

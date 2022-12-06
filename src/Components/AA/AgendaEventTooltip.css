@@ -1,0 +1,18 @@
+.agenda-event-tooltip-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+  background: #cccccc;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.agenda-event-tooltip-title {
+  height: 26px;
+  display: flex;
+}
+.agenda-event-tooltip-time {
+  display: flex;
+}

@@ -12,6 +12,8 @@ function GridHeader(props) {
               {format(day, "eee", { locale: tr })}
             </div>
           )
+        } else {
+          return null
         }
       })}
     </div>

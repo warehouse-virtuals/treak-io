@@ -1,0 +1,53 @@
+.scheduler-week-container {
+  box-sizing: border-box;
+  display: flex;
+  height: 600px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.week-time-cell-container {
+  flex-direction: column;
+  width: 50px;
+  font-weight: 600;
+}
+.week-time-cell {
+  height: 46px;
+
+  display: flex;
+  flex-direction: row;
+  margin-top: 1px;
+}
+
+.scheduler-week-grid-cell-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, calc(100% / 7));
+  background-color: #f8f8f8;
+  border: 2px solid #f8f8f8;
+  font-weight: 500;
+}
+
+.grid-week-event {
+  position: relative;
+  color: #0e0e0e;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 3px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.grid-week-event:hover {
+}
+
+.grid-week-event-overview {
+  position: absolute;
+  left: 50%;
+}
+
+.week-grid-col-item {
+  height: 46px;
+  margin: 1px;
+  background: #fff;
+}

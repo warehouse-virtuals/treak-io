@@ -4,6 +4,7 @@ import {
   endOfMonth,
   endOfWeek,
   format,
+  getWeek,
   parse,
   previousDay,
   startOfToday,
@@ -19,7 +20,6 @@ import GridHeader from "./GridHeader"
 import MonthView from "./MonthView"
 import WeekView from "./WeekView"
 import DayView from "./DayView"
-import TimeCol from "./TimeCol"
 
 import { useTranslation } from "react-i18next"
 import { UserAuth } from "../../Context/AuthContext"
@@ -28,8 +28,11 @@ import "./AA.css"
 
 function AA() {
   const [viewType, setViewType] = useState("month")
+
   const [days, setDays] = useState([new Date()])
   const [newMonth, setNewMonth] = useState(new Date())
+  const [newWeek, setNewWeek] = useState(new Date())
+
   const [appointments, setAppointments] = useState([])
   const [updatedData, setUpdatedData] = useState("")
   const { getAppointments, updateAppointment, deleteAppointment, userData } =
@@ -72,28 +75,33 @@ function AA() {
     return await fixedList
   }
 
-  const updateAppointmentDateAndTime = async (
-    customerid,
-    usersClinic,
-    appointmentId,
-    updatedData
-  ) => {
-    await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
-    setUpdatedData(updatedData)
+  // const updateAppointmentDateAndTime = async (
+  //   customerid,
+  //   usersClinic,
+  //   appointmentId,
+  //   updatedData
+  // ) => {
+  //   await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
+  //   setUpdatedData(updatedData)
+  // }
+
+  // const handleDeleteAppointment = async (appointmentid) => {
+  //   await deleteAppointment(
+  //     userData.customerID,
+  //     userData.clinicID,
+  //     appointmentid
+  //   )
+  //   setUpdatedData(appointmentid)
+  // }
+  const viewTypeSetter = (viewType) => {
+    setViewType(viewType)
   }
 
-  const handleDeleteAppointment = async (appointmentid) => {
-    await deleteAppointment(
-      userData.customerID,
-      userData.clinicID,
-      appointmentid
-    )
-    setUpdatedData(appointmentid)
+  const goToday = () => {
+    setInitalDays()
   }
 
-  console.log(appointments)
-
-  const setInitalDay = () => {
+  const setInitalDays = () => {
     const firstDayCurrentMonth = parse(
       format(startOfToday(), "MMM-yyyy"),
       "MMM-yyyy",
@@ -107,14 +115,6 @@ function AA() {
     })
     setNewMonth(new Date())
     setDays(formatedDates)
-  }
-
-  const viewTypeSetter = (viewType) => {
-    setViewType(viewType)
-  }
-
-  const goToday = () => {
-    setInitalDay()
   }
 
   const updateMonth = (newMonthStart) => {
@@ -134,7 +134,7 @@ function AA() {
   }
 
   useEffect(() => {
-    setInitalDay()
+    setInitalDays()
   }, [])
 
   useEffect(() => {
@@ -150,10 +150,10 @@ function AA() {
       <TopBar />
       <div className='agenda-body'>
         <div className='scheduler-container'>
-          {viewType !== "month" ? <TimeCol /> : null}
           <div className='scheduler-timeless-container'>
             <GridNavbar
               t={t}
+              viewType={viewType}
               viewTypeSetter={viewTypeSetter}
               goToday={goToday}
               days={days}
@@ -169,7 +169,16 @@ function AA() {
                 appointments={appointments}
               />
             ) : null}
-            {viewType === "week" ? <WeekView t={t} days={days} /> : null}
+            {viewType === "week" ? (
+              <WeekView
+                t={t}
+                newWeek={newWeek}
+                appointments={appointments}
+                startTime={0}
+                endTime={24}
+                intervals={30}
+              />
+            ) : null}
             {viewType === "day" ? <DayView t={t} days={days} /> : null}
           </div>
         </div>

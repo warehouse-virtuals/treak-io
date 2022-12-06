@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
+  font-size: 16px;
   font-weight: 600;
   transition: all 1s;
 }
@@ -41,10 +42,10 @@
   height: 40px;
   width: 64px;
   cursor: pointer;
+  border-radius: 18px;
   transition: all 0.2s ease-in-out;
 }
 .grid-navbar-button:hover {
   background: #f7f7f7;
   cursor: pointer;
-  border-radius: 20px;
 }

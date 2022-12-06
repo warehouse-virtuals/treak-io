@@ -23,8 +23,6 @@
   flex-direction: column;
   height: 840px;
   width: 90%;
-
-  transform: scale(0.99);
 }
 .agenda-scheduler {
   display: flex;
@@ -207,7 +205,7 @@
 }
 
 .MuiButtonBase-root {
-  background-color: #3a2416;
+  background-color: #fff;
 }
 
 .MuiTypography-noWrap {

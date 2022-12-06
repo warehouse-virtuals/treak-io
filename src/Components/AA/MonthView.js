@@ -1,8 +1,15 @@
+import { useState } from "react"
+import "./MonthView.css"
+
 import { format, isSameMonth, isToday } from "date-fns"
 
+import AgendaEventTooltip from "./AgendaEventTooltip"
+
 function MonthView({ days, newMonth, appointments }) {
+  const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
+
   return (
-    <div className='scheduler-grid-cell-container'>
+    <div className='scheduler-month-grid-cell-container'>
       {days.map((day, index) => {
         return (
           <div
@@ -24,18 +31,26 @@ function MonthView({ days, newMonth, appointments }) {
             </div>
             <div className='grid-body'>
               {appointments.map((appointment) => {
-                console.log(appointment.status)
                 const dateOfAppt = format(appointment.start, "dd MM yy")
                 const dateOfDay = format(day, "dd MM yy")
                 if (dateOfAppt === dateOfDay) {
                   return (
                     <div
+                      key={appointment.id}
+                      onMouseEnter={() => setFocusedAgendaEvent(appointment)}
+                      onMouseLeave={() => setFocusedAgendaEvent(null)}
                       style={{ backgroundColor: appointment.color }}
                       className='grid-month-event'
                     >
                       <div className='grid-month-event-title'>
                         {appointment.title}
                       </div>
+                      {focusedAgendaEvent &&
+                      focusedAgendaEvent.event_id === appointment.event_id ? (
+                        <div className='grid-month-event-overview'>
+                          <AgendaEventTooltip event={focusedAgendaEvent} />
+                        </div>
+                      ) : null}
                     </div>
                   )
                 } else {

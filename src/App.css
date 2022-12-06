@@ -32,7 +32,7 @@
   }
 }
 
-@media only screen and (max-width: 1179px), (max-height: 712px) {
+/* @media only screen and (max-width: 1179px), (max-height: 712px) {
   .App {
     background-color: black;
     height: 100%;
@@ -68,4 +68,4 @@
     white-space: pre-wrap;
     text-align: center;
   }
-}
+} */

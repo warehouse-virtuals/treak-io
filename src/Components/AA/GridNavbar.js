@@ -1,13 +1,12 @@
-import { addMonths, subMonths, format } from "date-fns"
+import { addMonths, subMonths, format, lastDayOfMonth } from "date-fns"
 import { tr } from "date-fns/locale"
 
 import "./GridNavbar.css"
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 import { useState } from "react"
 
-function GridNavbar({ t, days, viewTypeSetter, goToday, updateMonth }) {
+function GridNavbar({ t, viewTypeSetter, goToday, updateMonth, viewType }) {
   const [currentMonth, setCurrentMonth] = useState(new Date())
-  format(currentMonth, "LLLL", { locale: tr })
 
   return (
     <div className='grid-navbar-container'>
@@ -35,8 +34,8 @@ function GridNavbar({ t, days, viewTypeSetter, goToday, updateMonth }) {
         </div>
       </div>
       <div>
-        {format(days[0], "dd MMMM", { locale: tr })} -{" "}
-        {format(days[days.length - 1], "dd MMMM", { locale: tr })}
+        {format(currentMonth, "01 MMMM", { locale: tr })} -{" "}
+        {format(lastDayOfMonth(currentMonth), "dd MMMM", { locale: tr })}
       </div>
       <div className='grid-navbar-button-containers'>
         <div
@@ -49,18 +48,31 @@ function GridNavbar({ t, days, viewTypeSetter, goToday, updateMonth }) {
           {t("TODAY")}
         </div>
         <div
+          style={
+            viewType === "month"
+              ? { background: "#cccccc", color: "#fff" }
+              : null
+          }
           className='grid-navbar-button'
           onClick={() => viewTypeSetter("month")}
         >
           {t("MONTH")}
         </div>
         <div
+          style={
+            viewType === "week"
+              ? { background: "#cccccc", color: "#fff" }
+              : null
+          }
           className='grid-navbar-button'
           onClick={() => viewTypeSetter("week")}
         >
           {t("WEEK")}
         </div>
         <div
+          style={
+            viewType === "day" ? { background: "#cccccc", color: "#fff" } : null
+          }
           className='grid-navbar-button'
           onClick={() => viewTypeSetter("day")}
         >
