@@ -4,12 +4,15 @@
   height: 600px;
   width: 100%;
   overflow-y: scroll;
+  background-color: #f8f8f8;
+  border: 2px solid #f8f8f8;
 }
 
 .week-time-cell-container {
   flex-direction: column;
   width: 50px;
   font-weight: 600;
+  background: #fff;
 }
 .week-time-cell {
   height: 46px;
@@ -17,14 +20,14 @@
   display: flex;
   flex-direction: row;
   margin-top: 1px;
+  background: #fff;
 }
 
 .scheduler-week-grid-cell-container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
-  background-color: #f8f8f8;
-  border: 2px solid #f8f8f8;
+
   font-weight: 500;
 }
 

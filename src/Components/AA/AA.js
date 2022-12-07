@@ -176,7 +176,7 @@ function AA() {
                 appointments={appointments}
                 startTime={0}
                 endTime={24}
-                intervals={30}
+                intervals={60}
               />
             ) : null}
             {viewType === "day" ? <DayView t={t} days={days} /> : null}
