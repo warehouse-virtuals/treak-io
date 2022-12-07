@@ -3,24 +3,25 @@
   display: flex;
   height: 600px;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: #f8f8f8;
-  border: 2px solid #f8f8f8;
 }
 
 .week-time-cell-container {
+  height: fit-content;
+  background-size: contain;
   flex-direction: column;
+  background-color: #fff;
   width: 50px;
   font-weight: 600;
-  background: #fff;
+  border-bottom: 1px solid #fff;
 }
+
 .week-time-cell {
   height: 46px;
-
   display: flex;
   flex-direction: row;
   margin-top: 1px;
-  background: #fff;
 }
 
 .scheduler-week-grid-cell-container {
@@ -53,4 +54,20 @@
   height: 46px;
   margin: 1px;
   background: #fff;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  border-radius: 14px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #767e98;
+  border-radius: 14px;
 }

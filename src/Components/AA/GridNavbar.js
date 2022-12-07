@@ -1,21 +1,46 @@
-import { addMonths, subMonths, format, lastDayOfMonth } from "date-fns"
+import {
+  addMonths,
+  subMonths,
+  format,
+  lastDayOfMonth,
+  addWeeks,
+  subWeeks,
+} from "date-fns"
 import { tr } from "date-fns/locale"
 
 import "./GridNavbar.css"
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 import { useState } from "react"
 
-function GridNavbar({ t, viewTypeSetter, goToday, updateMonth, viewType }) {
+function GridNavbar({
+  t,
+  viewTypeSetter,
+  goToday,
+  updateMonth,
+  updateWeek,
+  viewType,
+}) {
   const [currentMonth, setCurrentMonth] = useState(new Date())
-
+  const [currentWeek, setCurrentWeek] = useState(new Date())
+  console.log(viewType)
   return (
     <div className='grid-navbar-container'>
       <div className='grid-navbar-arrow-container'>
         <div className='grid-navbar-arrow'>
           <FiChevronLeft
             onClick={() => {
-              setCurrentMonth(subMonths(currentMonth, 1))
-              updateMonth(subMonths(currentMonth, 1))
+              switch (viewType) {
+                case "month":
+                  setCurrentMonth(subMonths(currentMonth, 1))
+                  updateMonth(subMonths(currentMonth, 1))
+                  break
+                case "week":
+                  setCurrentWeek(subWeeks(currentWeek, 1))
+                  updateWeek(subWeeks(currentWeek, 1))
+                  break
+                default:
+                  break
+              }
             }}
             size={24}
           />
@@ -26,8 +51,18 @@ function GridNavbar({ t, viewTypeSetter, goToday, updateMonth, viewType }) {
         <div className='grid-navbar-arrow'>
           <FiChevronRight
             onClick={() => {
-              setCurrentMonth(addMonths(currentMonth, 1))
-              updateMonth(addMonths(currentMonth, 1))
+              switch (viewType) {
+                case "month":
+                  setCurrentMonth(addMonths(currentMonth, 1))
+                  updateMonth(addMonths(currentMonth, 1))
+                  break
+                case "week":
+                  setCurrentWeek(addWeeks(currentWeek, 1))
+                  updateWeek(addWeeks(currentWeek, 1))
+                  break
+                default:
+                  break
+              }
             }}
             size={24}
           />
@@ -41,8 +76,18 @@ function GridNavbar({ t, viewTypeSetter, goToday, updateMonth, viewType }) {
         <div
           className='grid-navbar-button'
           onClick={() => {
-            setCurrentMonth(new Date())
-            goToday("today")
+            switch (viewType) {
+              case "month":
+                setCurrentMonth(new Date())
+                goToday("today")
+                break
+              case "week":
+                setCurrentWeek(new Date())
+                goToday("today")
+                break
+              default:
+                break
+            }
           }}
         >
           {t("TODAY")}

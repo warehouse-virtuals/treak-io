@@ -20,6 +20,7 @@
 }
 
 .grid-month-event-overview {
+  z-index: 5000;
   position: absolute;
   left: 50%;
 }

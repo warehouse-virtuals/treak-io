@@ -8,11 +8,12 @@ import {
   isSameHour,
 } from "date-fns"
 import { tr } from "date-fns/locale"
-// import { useState } from "react"
 
+import AgendaEventTooltip from "./AgendaEventTooltip"
 import "./WeekView.css"
 
-function WeekView({ t, appointments, startTime, endTime, intervals, newWeek }) {
+function WeekView({ t, appointments, intervals, newWeek }) {
+  const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
   const nineAmRef = useRef()
 
   const formattedTimeIntervals = (dayOfWeek) => {
@@ -37,7 +38,10 @@ function WeekView({ t, appointments, startTime, endTime, intervals, newWeek }) {
   }
 
   useEffect(() => {
-    nineAmRef.current.scrollIntoView()
+    nineAmRef.current.scrollIntoView({
+      behavior: "smooth",
+      inline: "start",
+    })
   }, [intervals])
 
   useEffect(() => {}, [])
@@ -48,7 +52,7 @@ function WeekView({ t, appointments, startTime, endTime, intervals, newWeek }) {
         {formattedTimeIntervals(newWeek)[0].map((time, i) => {
           return (
             <div
-              ref={format(time, "HH:mm") === "09:00" ? nineAmRef : null}
+              ref={format(time, "HH:mm") === "07:00" ? nineAmRef : null}
               className='week-time-cell'
             >
               {format(time, "HH:mm")}
@@ -66,10 +70,34 @@ function WeekView({ t, appointments, startTime, endTime, intervals, newWeek }) {
                     {appointments.map((appointment) => {
                       if (isSameHour(appointment.start, weekDate)) {
                         return (
-                          format(weekDate, "dd/MM/yy") +
-                          "---" +
-                          format(weekDate, "HH:00")
+                          <div
+                            key={appointment.id}
+                            onMouseEnter={() =>
+                              setFocusedAgendaEvent(appointment)
+                            }
+                            onMouseLeave={() => setFocusedAgendaEvent(null)}
+                            style={{ backgroundColor: appointment.color }}
+                            className='grid-month-event'
+                          >
+                            <div className='grid-month-event-title'>
+                              {appointment.title}{" "}
+                              {format(weekDate, " dd MM HH:mm")}
+                            </div>
+                            {focusedAgendaEvent &&
+                            focusedAgendaEvent.event_id ===
+                              appointment.event_id ? (
+                              <div className='grid-month-event-overview'>
+                                <AgendaEventTooltip
+                                  event={focusedAgendaEvent}
+                                />
+                              </div>
+                            ) : null}
+                          </div>
                         )
+                      } else {
+                        {
+                          return format(weekDate, " dd MM HH:mm")
+                        }
                       }
                     })}
                   </div>

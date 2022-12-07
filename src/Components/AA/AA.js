@@ -7,6 +7,7 @@ import {
   getWeek,
   parse,
   previousDay,
+  set,
   startOfToday,
   startOfWeek,
   toDate,
@@ -98,6 +99,7 @@ function AA() {
   }
 
   const goToday = () => {
+    setNewWeek(new Date())
     setInitalDays()
   }
 
@@ -133,6 +135,11 @@ function AA() {
     setDays(formatedDates)
   }
 
+  const updateWeek = (newWeekStart) => {
+    console.log(newWeekStart)
+    setNewWeek(newWeekStart)
+  }
+
   useEffect(() => {
     setInitalDays()
   }, [])
@@ -158,6 +165,7 @@ function AA() {
               goToday={goToday}
               days={days}
               updateMonth={updateMonth}
+              updateWeek={updateWeek}
               currentMonth={newMonth}
             />
             <GridHeader t={t} days={days} viewType={viewType} />
@@ -173,6 +181,7 @@ function AA() {
               <WeekView
                 t={t}
                 newWeek={newWeek}
+                updateWeek={updateWeek}
                 appointments={appointments}
                 startTime={0}
                 endTime={24}

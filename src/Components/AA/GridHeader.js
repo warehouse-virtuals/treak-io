@@ -9,6 +9,7 @@ function GridHeader(props) {
         if (index < headerDayCount) {
           return (
             <div className='scheduler-grid-header-day-names '>
+              {format(day, "ee", { locale: tr })}{" "}
               {format(day, "eee", { locale: tr })}
             </div>
           )
