@@ -33,6 +33,7 @@ function AA() {
   const [days, setDays] = useState([new Date()])
   const [newMonth, setNewMonth] = useState(new Date())
   const [newWeek, setNewWeek] = useState(new Date())
+  const [newDay, setNewDay] = useState(new Date())
 
   const [appointments, setAppointments] = useState([])
   const [updatedData, setUpdatedData] = useState("")
@@ -100,6 +101,7 @@ function AA() {
 
   const goToday = () => {
     setNewWeek(new Date())
+    setNewDay(new Date())
     setInitalDays()
   }
 
@@ -136,8 +138,11 @@ function AA() {
   }
 
   const updateWeek = (newWeekStart) => {
-    console.log(newWeekStart)
     setNewWeek(newWeekStart)
+  }
+
+  const updateDay = (newDayStart) => {
+    setNewDay(newDayStart)
   }
 
   useEffect(() => {
@@ -149,7 +154,6 @@ function AA() {
       setAppointments(data)
     })
     console.log("Agenda Useffect loopta hemen durdur!")
-    //eslint-disable-next-line
   }, [userData, updatedData])
 
   return (
@@ -166,9 +170,17 @@ function AA() {
               days={days}
               updateMonth={updateMonth}
               updateWeek={updateWeek}
+              updateDay={updateDay}
               currentMonth={newMonth}
             />
-            <GridHeader t={t} days={days} viewType={viewType} />
+            {viewType === "week" ? (
+              <GridHeader
+                t={t}
+                days={days}
+                viewType={viewType}
+                newWeek={newWeek}
+              />
+            ) : null}
             {viewType === "month" ? (
               <MonthView
                 t={t}
@@ -183,12 +195,17 @@ function AA() {
                 newWeek={newWeek}
                 updateWeek={updateWeek}
                 appointments={appointments}
-                startTime={0}
-                endTime={24}
                 intervals={60}
               />
             ) : null}
-            {viewType === "day" ? <DayView t={t} days={days} /> : null}
+            {viewType === "day" ? (
+              <DayView
+                t={t}
+                newDay={newDay}
+                appointments={appointments}
+                intervals={60}
+              />
+            ) : null}
           </div>
         </div>
       </div>

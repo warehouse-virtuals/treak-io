@@ -14,7 +14,7 @@ import "./WeekView.css"
 
 function WeekView({ t, appointments, intervals, newWeek }) {
   const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
-  const nineAmRef = useRef()
+  const eightAmRef = useRef()
 
   const formattedTimeIntervals = (dayOfWeek) => {
     const result = startOfWeek(dayOfWeek.setHours(0, 0, 0, 0), {
@@ -38,13 +38,11 @@ function WeekView({ t, appointments, intervals, newWeek }) {
   }
 
   useEffect(() => {
-    nineAmRef.current.scrollIntoView({
+    eightAmRef.current.scrollIntoView({
       behavior: "smooth",
       inline: "start",
     })
   }, [intervals])
-
-  useEffect(() => {}, [])
 
   return (
     <div className='scheduler-week-container'>
@@ -52,7 +50,7 @@ function WeekView({ t, appointments, intervals, newWeek }) {
         {formattedTimeIntervals(newWeek)[0].map((time, i) => {
           return (
             <div
-              ref={format(time, "HH:mm") === "07:00" ? nineAmRef : null}
+              ref={format(time, "HH:mm") === "08:00" ? eightAmRef : null}
               className='week-time-cell'
             >
               {format(time, "HH:mm")}
@@ -95,9 +93,7 @@ function WeekView({ t, appointments, intervals, newWeek }) {
                           </div>
                         )
                       } else {
-                        {
-                          return format(weekDate, " dd MM HH:mm")
-                        }
+                        return null
                       }
                     })}
                   </div>

@@ -1,21 +1,28 @@
-import { format } from "date-fns"
+import { useState, useEffect } from "react"
+import { format, startOfWeek, endOfWeek, eachDayOfInterval } from "date-fns"
+
 import { tr } from "date-fns/locale"
 
-function GridHeader(props) {
+function GridHeader({ days, newWeek, viewType }) {
+  const [weekDays, setWeekDays] = useState([])
+
+  useEffect(() => {
+    setWeekDays(
+      eachDayOfInterval({
+        start: startOfWeek(newWeek, { locale: tr }),
+        end: endOfWeek(newWeek, { locale: tr }),
+      })
+    )
+  }, [newWeek])
+  console.log(weekDays)
   return (
     <div className='scheduler-grid-header'>
-      {props.days.map((day, index) => {
-        const headerDayCount = props.viewType !== "day" ? 7 : 1
-        if (index < headerDayCount) {
-          return (
-            <div className='scheduler-grid-header-day-names '>
-              {format(day, "ee", { locale: tr })}{" "}
-              {format(day, "eee", { locale: tr })}
-            </div>
-          )
-        } else {
-          return null
-        }
+      {weekDays.map((day, index) => {
+        return (
+          <div className='scheduler-grid-header-day-names '>
+            {format(day, " dd EE", { locale: tr })}
+          </div>
+        )
       })}
     </div>
   )
