@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
-import "./AddAppointment.css"
 import { useNavigate, useLocation } from "react-router-dom"
+import { FiCalendar, FiX } from "react-icons/fi"
 
 import DateTimePicker from "react-datetime-picker"
 // import DateTimePicker from "react-datetime-picker/dist/entry.nostyle"
-// import "./DateTimePicker.css"
+import "./AddAppointment.css"
+import "./DateTimePicker.css"
 // import "./Calendar.css"
 // import "./Clock.css"
 
@@ -22,17 +23,17 @@ import { useTranslation } from "react-i18next"
 import SearchField from "../SearchField/SearchField"
 import Button from "../../UITools/Button"
 
-const AddAppointment = (props) => {
+const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
   const [carers, setCarers] = useState([])
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [addedAppointment, setAddedApointment] = useState("")
   const appointedToRef = useRef("")
   const [appointmentStartDate, onChangeAppointmentStartDate] = useState(
-    new Date(props.scheduler.state.start.value)
+    new Date(newAppointmentDay)
   )
 
   const [appointmentEndDate, onChangeAppointmentEndDate] = useState(
-    new Date(props.scheduler.state.end.value)
+    new Date(newAppointmentDay)
   )
 
   const appointmentReasonRef = useRef("")
@@ -74,56 +75,46 @@ const AddAppointment = (props) => {
       console.log("sa", selectedPatient)
       await updateDoc(newAppointmentRef, { id: newAppointmentRef.id })
       setAddedApointment(newAppointmentRef.id)
-      props.parentCallback(newAppointmentRef.id)
+      parentCallback()
 
       if (location.pathname === "/addAppointment") {
         navigate("/dashboard")
+        console.log("close olması lazım ")
       } else {
-        console.log(newAppointmentRef)
-        console.log(addedAppointment)
-        props.scheduler.close()
       }
     } catch (error) {
       console.log(error)
     }
   }
-  const handleUpdateEditedAppointment = async () => {
-    const appointmentInfo = {
-      appointedPerson: selectedPatient,
-      appointedTo: appointedToRef.current.value,
-      date: appointmentStartDate,
-      duration: appointmentEndDate - appointmentStartDate,
-      reason: appointmentReasonRef.current.value,
-      status: t(appointmentStatusRef.current.value),
-      createdAt: Timestamp.now(),
-    }
-    console.log(appointmentInfo)
-    const appointmentsRef = doc(
-      db,
-      "customers/",
-      userData.customerID,
-      "/clinics/",
-      userData.clinicID,
-      "/appointments/",
-      props.scheduler.edited.event_id
-    )
+  // const handleUpdateEditedAppointment = async () => {
+  //   const appointmentInfo = {
+  //     appointedPerson: selectedPatient,
+  //     appointedTo: appointedToRef.current.value,
+  //     date: appointmentStartDate,
+  //     duration: appointmentEndDate - appointmentStartDate,
+  //     reason: appointmentReasonRef.current.value,
+  //     status: t(appointmentStatusRef.current.value),
+  //     createdAt: Timestamp.now(),
+  //   }
+  //   console.log(appointmentInfo)
+  //   const appointmentsRef = doc(
+  //     db,
+  //     "customers/",
+  //     userData.customerID,
+  //     "/clinics/",
+  //     userData.clinicID,
+  //     "/appointments/",
+  //     props.scheduler.edited.event_id
+  //   )
 
-    await updateDoc(appointmentsRef, appointmentInfo)
-    setAddedApointment(props.scheduler.edited.event_id)
-    props.parentCallback(Date.now())
-    props.scheduler.close()
-  }
+  //   await updateDoc(appointmentsRef, appointmentInfo)
+  //   setAddedApointment(props.scheduler.edited.event_id)
+  //   parentCallback(Date.now())
+  //   props.scheduler.close()
+  // }
 
   const handleCancelButtonPress = async () => {
-    try {
-      if (location.pathname === "/addAppointment") {
-        navigate("/dashboard")
-      } else {
-        props.scheduler.close()
-      }
-    } catch (error) {
-      console.log(error.message)
-    }
+    parentCallback()
   }
 
   useEffect(() => {
@@ -138,7 +129,7 @@ const AddAppointment = (props) => {
         <div className='add-appt-title'>{t("Add Appointment")}</div>
         <div className='add-appt-body'>
           <div className='add-appt-search-container'>
-            Kullanıcı:
+            <div className='add-appt-input-title'>Kullanıcı:</div>
             <SearchField
               page='appointment'
               selectedPatientName={(nameOfThePatient) => {
@@ -150,38 +141,31 @@ const AddAppointment = (props) => {
           </div>
           <div className='add-appt-date-container'>
             <div className='add-appt-dates'>
-              {t("Start")}
+              <div className='add-appt-input-title'>{t("Start")}</div>
               <DateTimePicker
                 onChange={onChangeAppointmentStartDate}
                 value={appointmentStartDate}
+                calendarIcon={<FiCalendar color='#ccc' />}
+                clearIcon={<FiX color='#ccc' />}
+                disableClock={true}
               />
             </div>
             <div className='add-appt-dates'>
-              {t("End")}
+              <div className='add-appt-input-title'>{t("End")}</div>
               <DateTimePicker
                 onChange={onChangeAppointmentEndDate}
                 value={appointmentEndDate}
+                calendarIcon={<FiCalendar color='#ccc' />}
+                clearIcon={<FiX color='#ccc' />}
+                disableClock={true}
               />
             </div>
           </div>
-          <div className='add-appt-sns-container'>
-            <div className='add-appt-sns'>
-              <div className='font-semibold  text-slate-700'>{t("Status")}</div>
+          <div className='add-appt-triplets-container'>
+            <div className='add-appt-triplets'>
+              <div className='add-appt-input-title'>{t("Reason")}</div>
               <select
-                className='bg-[#f9faff]'
-                name='gender'
-                id='gender'
-                ref={appointmentStatusRef}
-              >
-                <option>{t("Waiting")}</option>
-                <option>{t("Completed")}</option>
-                <option>{t("Cancelled")}</option>
-              </select>
-            </div>
-            <div className='add-appt-sns'>
-              <div className=''>{t("Reason")}</div>
-              <select
-                className='bg-[#f9faff]'
+                className='add-appt-dropdown'
                 name='gender'
                 id='gender'
                 ref={appointmentReasonRef}
@@ -192,21 +176,36 @@ const AddAppointment = (props) => {
                 <option>{t("Hearing Test")}</option>
               </select>
             </div>
-          </div>
-          <div className='add-appt-carer'>
-            <div className=''>{t("Carer")}</div>
-            <select
-              className='bg-[#f9faff]'
-              name='gender'
-              id='gender'
-              ref={appointedToRef}
-            >
-              {carers.map((carer, i) => {
-                return (
-                  <option key={i}>{carer.name + " " + carer.surname}</option>
-                )
-              })}
-            </select>
+            <div className='add-appt-triplets'>
+              <div className='add-appt-input-title'>{t("Status")}</div>
+              <select
+                className='add-appt-dropdown'
+                name='gender'
+                id='gender'
+                ref={appointmentStatusRef}
+              >
+                <option>{t("Waiting")}</option>
+                <option>{t("Completed")}</option>
+                <option>{t("Cancelled")}</option>
+              </select>
+            </div>
+
+            <div className='add-appt-triplets'>
+              <div className='add-appt-input-title'>{t("Carer")}</div>
+
+              <select
+                className='add-appt-dropdown'
+                name='gender'
+                id='gender'
+                ref={appointedToRef}
+              >
+                {carers.map((carer, i) => {
+                  return (
+                    <option key={i}>{carer.name + " " + carer.surname}</option>
+                  )
+                })}
+              </select>
+            </div>
           </div>
         </div>
         <div className='add-appt-footer'>
@@ -214,27 +213,13 @@ const AddAppointment = (props) => {
             className='add-appt-btn-container-cancel'
             onClick={handleCancelButtonPress}
           >
-            <Button
-              label={t("Cancel")}
-              addCSS={
-                "flex justify-center items-center bg-[#eb5656] hover:bg-[#eb5656]"
-              }
-            />
+            <Button label={t("Cancel")} />
           </div>
           <div
             className='add-appt-btn-container-submit'
-            onClick={
-              props.scheduler.edited
-                ? handleUpdateEditedAppointment
-                : handleAddAppointmentButtonPress
-            }
+            onClick={handleAddAppointmentButtonPress}
           >
-            <Button
-              label={t("Save")}
-              addCSS={
-                "flex items-center justify-center bg-green-500 hover:bg-[#273169]"
-              }
-            />
+            <Button label={t("Save")} />
           </div>
         </div>
       </div>

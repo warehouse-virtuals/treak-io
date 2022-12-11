@@ -5,7 +5,7 @@ import { format, isSameMonth, isToday } from "date-fns"
 
 import AgendaEventTooltip from "./AgendaEventTooltip"
 
-function MonthView({ days, newMonth, appointments }) {
+function MonthView({ days, newMonth, appointments, cellOnClickHandler }) {
   const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
 
   return (
@@ -14,6 +14,7 @@ function MonthView({ days, newMonth, appointments }) {
         return (
           <div
             className='grid-cell'
+            onClick={() => cellOnClickHandler(day)}
             style={
               isSameMonth(day, newMonth)
                 ? null
@@ -45,12 +46,6 @@ function MonthView({ days, newMonth, appointments }) {
                       <div className='grid-month-event-title'>
                         {appointment.title}
                       </div>
-                      {focusedAgendaEvent &&
-                      focusedAgendaEvent.event_id === appointment.event_id ? (
-                        <div className='grid-month-event-overview'>
-                          <AgendaEventTooltip event={focusedAgendaEvent} />
-                        </div>
-                      ) : null}
                     </div>
                   )
                 } else {

@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next"
 
 import { UserAuth } from "../../Context/AuthContext"
 
-const SearchField = (props) => {
+const SearchField = ({ selectedPatientName }) => {
   // eslint-disable-next-line
   const [searchSelectedPerson, setSearchSelectedPerson] = useState("")
   const [foundPatients, setFoundPatients] = useState([])
@@ -49,6 +49,7 @@ const SearchField = (props) => {
           onChange={handleOnChangeSearchInput}
           placeholder={t("Search patients...")}
         />
+        {}
         <div className='search-icon'>
           <FiSearch color='#000234' className='' size={22} />
         </div>
@@ -59,7 +60,7 @@ const SearchField = (props) => {
             <div
               className='found-patient'
               onClick={() => {
-                props.selectedPatientName(patient.name + " " + patient.surname)
+                selectedPatientName(patient.name + " " + patient.surname)
                 searchTextRef.current.value =
                   patient.name + " " + patient.surname
                 setFoundPatients([])

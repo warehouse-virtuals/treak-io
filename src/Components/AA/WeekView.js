@@ -12,7 +12,7 @@ import { tr } from "date-fns/locale"
 import AgendaEventTooltip from "./AgendaEventTooltip"
 import "./WeekView.css"
 
-function WeekView({ t, appointments, intervals, newWeek }) {
+function WeekView({ t, appointments, intervals, newWeek, cellOnClickHandler }) {
   const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
   const eightAmRef = useRef()
 
@@ -64,7 +64,12 @@ function WeekView({ t, appointments, intervals, newWeek }) {
             <div className='week-grid-col'>
               {weekDates.map((weekDate) => {
                 return (
-                  <div className='week-grid-col-item'>
+                  <div
+                    onClick={() => {
+                      cellOnClickHandler(weekDate)
+                    }}
+                    className='week-grid-col-item'
+                  >
                     {appointments.map((appointment) => {
                       if (isSameHour(appointment.start, weekDate)) {
                         return (

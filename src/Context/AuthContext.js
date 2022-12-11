@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react"
+import { startOfMonth } from "date-fns"
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -153,6 +154,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const getAppointments = async (customerid, usersClinic, limitCount) => {
+    var date = new Date()
     const appointmentsRef = collection(
       db,
       "customers/",
@@ -162,13 +164,19 @@ export const AuthContextProvider = ({ children }) => {
       "/appointments"
     )
 
-    const q = query(appointmentsRef, orderBy("date"), limit(limitCount))
+    const q = query(
+      appointmentsRef,
+      orderBy("date"),
+      where("date", ">=", startOfMonth(date)), //SANIRIM SADECE BU AYI ALDIM
+      limit(limitCount)
+    )
     const querySnapshotOfAssignedPatients = await getDocs(q)
     let arr = []
 
     querySnapshotOfAssignedPatients.forEach((doc) => {
       arr.push(doc.data())
     })
+    console.log(arr)
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
     return arr
   }

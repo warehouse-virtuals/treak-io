@@ -4,7 +4,7 @@ import { format, addDays, eachMinuteOfInterval, isSameHour } from "date-fns"
 import AgendaEventTooltip from "./AgendaEventTooltip"
 import "./DayView.css"
 
-function DayView({ t, appointments, intervals, newDay }) {
+function DayView({ t, appointments, intervals, newDay, cellOnClickHandler }) {
   console.log(newDay)
   const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
   const eightAmRef = useRef()
@@ -49,7 +49,12 @@ function DayView({ t, appointments, intervals, newDay }) {
           console.log(hours)
           return (
             <div className='day-grid-col'>
-              <div className='day-grid-col-item'>
+              <div
+                onClick={() => {
+                  cellOnClickHandler(hours)
+                }}
+                className='day-grid-col-item'
+              >
                 {appointments.map((appointment) => {
                   if (isSameHour(appointment.start, hours)) {
                     return (

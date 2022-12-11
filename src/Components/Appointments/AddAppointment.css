@@ -6,12 +6,13 @@
 }
 .add-appt-container {
   box-sizing: border-box;
-  height: 530px;
+  height: 400px;
   width: 480px;
-  font-weight: 600;
-  font-family: "Gilroy", sans-serif;
-
-  color: #4a545d;
+  font-weight: 500;
+  font-family: "Gilroy", sans-serif !important;
+  background: #ffffff;
+  color: #0e0e0e;
+  border-radius: 12px;
 }
 .add-appt {
   width: 100%;
@@ -23,9 +24,19 @@
   margin-bottom: 30px;
 }
 .add-appt-body {
-  padding-left: 10px;
   height: 75%;
 }
+
+.add-appt-dates {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-appt-input-title {
+  margin-bottom: 5px;
+}
+
 .add-appt-search-container {
 }
 
@@ -33,15 +44,27 @@
 }
 
 .add-appt-date-container {
-  display: flex;
-  margin-top: 20px;
-}
-.add-appt-sns-container {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
-.add-appt-sns {
+
+.add-appt-triplets-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.add-appt-triplets {
+}
+.add-appt-dropdown {
+  font-family: "Gilroy", sans-serif !important;
+  font-size: 12px;
+  padding-left: 5px;
+  border-radius: 12px;
+  height: 32px;
+  border: 1px solid #e3e2e5;
+  width: 125px;
 }
 
 .add-appt-carer {
@@ -54,28 +77,24 @@
 }
 
 .add-appt-btn-container-submit {
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 36px;
   width: 120px;
-
   border-radius: 12px;
-  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
-    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
-    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
-    inset 0px 0px 0px 0px #0001;
-  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
   cursor: pointer;
+  background: #60cca9;
 }
 
 .add-appt-btn-container-cancel {
+  color: #fd5868;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 36px;
   width: 120px;
-  font-weight: 400;
   border-radius: 12px;
   cursor: pointer;
 }
@@ -85,4 +104,21 @@
 }
 .add-appt-btn-container-submit:hover {
   /* background */
+}
+
+.add-appt-dropdown {
+  padding-right: 10px;
+}
+
+.add-appt-dropdown {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Custom arrow */
+.add-appt-dropdown {
+  background-image: url("../../Assets/dropdown.svg");
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 2px);
 }

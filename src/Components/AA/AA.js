@@ -22,6 +22,8 @@ import MonthView from "./MonthView"
 import WeekView from "./WeekView"
 import DayView from "./DayView"
 
+import AddAppointment from "../Appointments/AddAppointments"
+
 import { useTranslation } from "react-i18next"
 import { UserAuth } from "../../Context/AuthContext"
 
@@ -37,6 +39,9 @@ function AA() {
 
   const [appointments, setAppointments] = useState([])
   const [updatedData, setUpdatedData] = useState("")
+
+  const [newAppointmentDay, setNewAppointmentDay] = useState("")
+
   const { getAppointments, updateAppointment, deleteAppointment, userData } =
     UserAuth()
   // const navigate = useNavigate()
@@ -145,6 +150,10 @@ function AA() {
     setNewDay(newDayStart)
   }
 
+  const cellOnClickHandler = (appointmentDay) => {
+    setNewAppointmentDay(appointmentDay)
+  }
+
   useEffect(() => {
     setInitalDays()
   }, [])
@@ -187,6 +196,7 @@ function AA() {
                 days={days}
                 newMonth={newMonth}
                 appointments={appointments}
+                cellOnClickHandler={cellOnClickHandler}
               />
             ) : null}
             {viewType === "week" ? (
@@ -196,6 +206,7 @@ function AA() {
                 updateWeek={updateWeek}
                 appointments={appointments}
                 intervals={60}
+                cellOnClickHandler={cellOnClickHandler}
               />
             ) : null}
             {viewType === "day" ? (
@@ -204,11 +215,23 @@ function AA() {
                 newDay={newDay}
                 appointments={appointments}
                 intervals={60}
+                cellOnClickHandler={cellOnClickHandler}
               />
             ) : null}
           </div>
         </div>
       </div>
+      {newAppointmentDay ? (
+        <div className='repairform-container'>
+          <AddAppointment
+            newAppointmentDay={newAppointmentDay}
+            parentCallback={() => {
+              setNewAppointmentDay("")
+              setUpdatedData(new Date())
+            }}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
