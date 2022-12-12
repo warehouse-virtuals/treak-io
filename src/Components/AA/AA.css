@@ -1,5 +1,5 @@
 .agenda-container {
-  color: #262626;
+  color: #252525;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   height: 40px;
-  color: #262626;
+  color: #252525;
 }
 .scheduler-container {
   display: flex;

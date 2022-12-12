@@ -40,8 +40,12 @@ function AA() {
 
   const [newAppointmentDay, setNewAppointmentDay] = useState("")
 
-  const { getAppointments, updateAppointment, deleteAppointment, userData } =
-    UserAuth()
+  const {
+    getAppointments,
+    updateAppointment,
+    //  deleteAppointment,
+    userData,
+  } = UserAuth()
   // const navigate = useNavigate()
 
   const { t } = useTranslation("agenda")
@@ -53,8 +57,6 @@ function AA() {
     )
 
     const fixedList = appointments.map((appointment, i) => {
-      const startDate = appointment.date.toDate()
-
       let eventColor
       if (appointment.status === "Waiting") {
         eventColor = "#5ae2f7"
@@ -84,6 +86,7 @@ function AA() {
     appointmentId,
     updatedData
   ) => {
+    console.log(customerid, usersClinic, appointmentId, updatedData)
     await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
     setUpdatedData(updatedData)
   }
@@ -159,6 +162,7 @@ function AA() {
       setAppointments(data)
     })
     console.log("Agenda Useffect loopta hemen durdur!")
+    // eslint-disable-next-line
   }, [userData, updatedData])
 
   return (
@@ -214,6 +218,7 @@ function AA() {
                 appointments={appointments}
                 intervals={60}
                 cellOnClickHandler={cellOnClickHandler}
+                updateAppointmentDay={updateAppointmentDay}
               />
             ) : null}
           </div>

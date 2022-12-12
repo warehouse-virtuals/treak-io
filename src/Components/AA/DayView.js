@@ -1,18 +1,28 @@
 import { useRef, useState, useEffect } from "react"
+import { UserAuth } from "../../Context/AuthContext"
+
 import { format, addDays, eachMinuteOfInterval, isSameHour } from "date-fns"
 
 import AgendaEventTooltip from "./AgendaEventTooltip"
 import "./DayView.css"
 
-function DayView({ t, appointments, intervals, newDay, cellOnClickHandler }) {
-  console.log(newDay)
-  const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
+function DayView({
+  appointments,
+  intervals,
+  newDay,
+  cellOnClickHandler,
+  updateAppointmentDay,
+}) {
+  const dragEvent = useRef()
+  const dragOverSlot = useRef()
   const eightAmRef = useRef()
+
+  const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
+  const { userData } = UserAuth()
 
   const formattedTimeIntervals = (currentDay) => {
     const result = newDay.setHours(0, 0, 0, 0)
 
-    const days = []
     return eachMinuteOfInterval(
       {
         start: result,
@@ -20,7 +30,24 @@ function DayView({ t, appointments, intervals, newDay, cellOnClickHandler }) {
       },
       { step: intervals }
     )
-    // return days
+  }
+
+  const dragStart = (e, position) => {
+    dragEvent.current = position
+  }
+  const dragEnter = (e) => {
+    dragOverSlot.current = e.target
+  }
+
+  const drop = async (e) => {
+    await updateAppointmentDay(
+      userData.customerID,
+      userData.clinicID,
+      e.target.id,
+      new Date(dragOverSlot.current.id)
+    )
+    dragEvent.current = null
+    dragOverSlot.current = null
   }
 
   useEffect(() => {
@@ -45,26 +72,30 @@ function DayView({ t, appointments, intervals, newDay, cellOnClickHandler }) {
         })}
       </div>
       <div className='scheduler-day-grid-cell-container'>
-        {formattedTimeIntervals(newDay).map((hours) => {
-          console.log(hours)
+        {formattedTimeIntervals(newDay).map((hours, index) => {
           return (
-            <div className='day-grid-col'>
+            <div key={index} className='day-grid-col'>
               <div
+                id={hours}
+                className='day-grid-col-item'
                 onClick={() => {
                   cellOnClickHandler(hours)
                 }}
-                className='day-grid-col-item'
+                onDragEnter={(e) => dragEnter(e, index)}
+                onDragEnd={drop}
               >
                 {appointments.map((appointment) => {
-                  console.log(appointment)
                   if (isSameHour(appointment.start, hours)) {
                     return (
                       <div
                         key={appointment.id}
+                        id={appointment.event_id}
                         onMouseEnter={() => setFocusedAgendaEvent(appointment)}
                         onMouseLeave={() => setFocusedAgendaEvent(null)}
                         style={{ backgroundColor: appointment.color }}
                         className='grid-day-event'
+                        onDragStart={(e) => dragStart(e, index)}
+                        draggable
                       >
                         <div>
                           <div className='grid-day-event-title'>

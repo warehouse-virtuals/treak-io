@@ -150,31 +150,21 @@ function GridNavbar({
           {t("TODAY")}
         </div>
         <div
-          style={
-            viewType === "month"
-              ? { background: "#cccccc", color: "#fff" }
-              : null
-          }
+          style={viewType === "month" ? { background: "#f7f7f7" } : null}
           className='grid-navbar-button'
           onClick={() => viewTypeSetter("month")}
         >
           {t("MONTH")}
         </div>
         <div
-          style={
-            viewType === "week"
-              ? { background: "#cccccc", color: "#fff" }
-              : null
-          }
+          style={viewType === "week" ? { background: "#f7f7f7" } : null}
           className='grid-navbar-button'
           onClick={() => viewTypeSetter("week")}
         >
           {t("WEEK")}
         </div>
         <div
-          style={
-            viewType === "day" ? { background: "#cccccc", color: "#fff" } : null
-          }
+          style={viewType === "day" ? { background: "#f7f7f7" } : null}
           className='grid-navbar-button'
           onClick={() => viewTypeSetter("day")}
         >
