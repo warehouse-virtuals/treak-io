@@ -29,9 +29,6 @@ function GridNavbar({
   const [currentWeek, setCurrentWeek] = useState(new Date())
   const [currentDay, setCurrentDay] = useState(new Date())
 
-  console.log(startOfWeek(currentWeek, { locale: tr }))
-  console.log(endOfWeek(currentWeek, { locale: tr }))
-
   const navbarTitleMonth = () => {
     return (
       <div>
@@ -91,7 +88,15 @@ function GridNavbar({
           />
         </div>
         <div className='grid-navbar-arrow-title'>
-          {format(currentMonth, "LLLL yy", { locale: tr })}
+          {viewType === "month"
+            ? format(currentMonth, "LLLL yy", { locale: tr })
+            : null}
+          {viewType === "week"
+            ? format(currentWeek, "LLLL yy", { locale: tr })
+            : null}
+          {viewType === "day"
+            ? format(currentDay, "LLLL yy", { locale: tr })
+            : null}
         </div>
         <div className='grid-navbar-arrow'>
           <FiChevronRight

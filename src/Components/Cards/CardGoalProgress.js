@@ -10,7 +10,7 @@ const CardGoalProgress = (props) => {
       </div>
       <div className='card-goal-done'>
         {calculated + "%"}
-        <div className='' style={{ "margin-left": "5px" }}>
+        <div className='' style={{ marginLeft: "5px" }}>
           {props.t("is done")}!
         </div>
       </div>

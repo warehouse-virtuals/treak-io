@@ -56,6 +56,7 @@ function DayView({ t, appointments, intervals, newDay, cellOnClickHandler }) {
                 className='day-grid-col-item'
               >
                 {appointments.map((appointment) => {
+                  console.log(appointment)
                   if (isSameHour(appointment.start, hours)) {
                     return (
                       <div
@@ -65,8 +66,11 @@ function DayView({ t, appointments, intervals, newDay, cellOnClickHandler }) {
                         style={{ backgroundColor: appointment.color }}
                         className='grid-day-event'
                       >
-                        <div className='grid-day-event-title'>
-                          {appointment.title} {format(hours, " dd MM HH:mm")}
+                        <div>
+                          <div className='grid-day-event-title'>
+                            {appointment.title} {format(hours, " dd MM HH:mm")}
+                          </div>
+                          sa
                         </div>
                         {focusedAgendaEvent &&
                         focusedAgendaEvent.event_id === appointment.event_id ? (

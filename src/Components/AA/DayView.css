@@ -40,7 +40,9 @@
   display: flex;
   align-items: center;
 }
-.grid-day-event:hover {
+.day-grid-col-item:hover {
+  background: #f7f7f7;
+  cursor: pointer;
 }
 
 .grid-day-event-overview {

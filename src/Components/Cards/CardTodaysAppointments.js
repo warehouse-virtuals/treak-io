@@ -17,7 +17,7 @@ const CardTodaysAppointments = (props) => {
       </div>
       <div className='card-todays-done'>
         {calculated + "%"}
-        <div className='' style={{ "margin-left": "5px" }}>
+        <div className='' style={{ marginLeft: "5px" }}>
           {props.t("is done")}!
         </div>
       </div>

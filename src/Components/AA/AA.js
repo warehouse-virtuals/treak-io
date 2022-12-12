@@ -4,13 +4,11 @@ import {
   endOfMonth,
   endOfWeek,
   format,
-  getWeek,
+  addMilliseconds,
   parse,
   previousDay,
-  set,
   startOfToday,
   startOfWeek,
-  toDate,
 } from "date-fns"
 import { tr } from "date-fns/locale"
 
@@ -55,10 +53,7 @@ function AA() {
     )
 
     const fixedList = appointments.map((appointment, i) => {
-      const date = toDate(appointment.date.seconds * 1000)
-      const end = toDate(
-        appointment.date.seconds * 1000 + parseInt(appointment.duration)
-      )
+      const startDate = appointment.date.toDate()
 
       let eventColor
       if (appointment.status === "Waiting") {
@@ -71,8 +66,9 @@ function AA() {
       const obj = {
         event_id: appointment.id,
         title: appointment.reason,
-        start: date,
-        end: end,
+        appointedPerson: appointment.appointedPerson,
+        start: appointment.date.toDate(),
+        end: addMilliseconds(appointment.date.toDate(), appointment.duration),
         color: eventColor,
         editable: true,
       }
@@ -82,15 +78,15 @@ function AA() {
     return await fixedList
   }
 
-  // const updateAppointmentDateAndTime = async (
-  //   customerid,
-  //   usersClinic,
-  //   appointmentId,
-  //   updatedData
-  // ) => {
-  //   await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
-  //   setUpdatedData(updatedData)
-  // }
+  const updateAppointmentDay = async (
+    customerid,
+    usersClinic,
+    appointmentId,
+    updatedData
+  ) => {
+    await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
+    setUpdatedData(updatedData)
+  }
 
   // const handleDeleteAppointment = async (appointmentid) => {
   //   await deleteAppointment(
@@ -197,6 +193,7 @@ function AA() {
                 newMonth={newMonth}
                 appointments={appointments}
                 cellOnClickHandler={cellOnClickHandler}
+                updateAppointmentDay={updateAppointmentDay}
               />
             ) : null}
             {viewType === "week" ? (
@@ -207,6 +204,7 @@ function AA() {
                 appointments={appointments}
                 intervals={60}
                 cellOnClickHandler={cellOnClickHandler}
+                updateAppointmentDay={updateAppointmentDay}
               />
             ) : null}
             {viewType === "day" ? (

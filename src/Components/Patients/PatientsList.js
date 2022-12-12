@@ -16,8 +16,10 @@ const PatientsList = (props) => {
       return await getPatients(userData.customerID, userData.clinicID)
     }
     fetchPatientData().then((data) => {
+      console.log(data)
       setPatients(data)
     })
+
     //eslint-disable-next-line
   }, [])
 
@@ -31,9 +33,10 @@ const PatientsList = (props) => {
           <th>{t("SSN")}</th>
           <th>{t("DOB")}</th>
         </tr>
-        {patients.map((patient) => {
+        {patients.map((patient, i) => {
           return (
             <tr
+              key={i}
               onClick={() => {
                 props.focusedPatient(patient)
               }}

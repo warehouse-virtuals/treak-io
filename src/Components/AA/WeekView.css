@@ -42,7 +42,9 @@
   display: flex;
   align-items: center;
 }
-.grid-week-event:hover {
+.week-grid-col-item:hover {
+  background: #f7f7f7;
+  cursor: pointer;
 }
 
 .grid-week-event-overview {

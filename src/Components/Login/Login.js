@@ -109,7 +109,7 @@ const Login = () => {
           <div className='login-right-header'>{t("Improve your workflow")}</div>
           {NavbarButtons("22", "lgn-right-icons").map((button, index) => {
             return (
-              <div className='buttons-row'>
+              <div className='buttons-row' key={index}>
                 <div className='button-icon'>{button.icon}</div>
                 <div className='button-desc'>{t(button.desc)}</div>
               </div>

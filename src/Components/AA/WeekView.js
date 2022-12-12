@@ -1,20 +1,52 @@
 import { useRef, useState, useEffect } from "react"
+import { UserAuth } from "../../Context/AuthContext"
+
 import {
   format,
   addDays,
   eachMinuteOfInterval,
   startOfWeek,
-  // addWeeks,
   isSameHour,
 } from "date-fns"
+
 import { tr } from "date-fns/locale"
 
 import AgendaEventTooltip from "./AgendaEventTooltip"
 import "./WeekView.css"
 
-function WeekView({ t, appointments, intervals, newWeek, cellOnClickHandler }) {
-  const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
+function WeekView({
+  appointments,
+  intervals,
+  newWeek,
+  cellOnClickHandler,
+  updateAppointmentDay,
+}) {
+  const dragEvent = useRef()
+  const dragOverSlot = useRef()
   const eightAmRef = useRef()
+
+  const [focusedAgendaEvent, setFocusedAgendaEvent] = useState(null)
+
+  const { userData } = UserAuth()
+
+  const dragStart = (e, position) => {
+    dragEvent.current = position
+  }
+  const dragEnter = (e) => {
+    dragOverSlot.current = e.target
+  }
+
+  const drop = async (e) => {
+    console.log(dragOverSlot.current.id)
+    await updateAppointmentDay(
+      userData.customerID,
+      userData.clinicID,
+      e.target.id,
+      new Date(dragOverSlot.current.id)
+    )
+    dragEvent.current = null
+    dragOverSlot.current = null
+  }
 
   const formattedTimeIntervals = (dayOfWeek) => {
     const result = startOfWeek(dayOfWeek.setHours(0, 0, 0, 0), {
@@ -62,25 +94,31 @@ function WeekView({ t, appointments, intervals, newWeek, cellOnClickHandler }) {
         {formattedTimeIntervals(newWeek).map((weekDates) => {
           return (
             <div className='week-grid-col'>
-              {weekDates.map((weekDate) => {
+              {weekDates.map((weekDate, index) => {
                 return (
                   <div
+                    id={weekDate}
                     onClick={() => {
                       cellOnClickHandler(weekDate)
                     }}
                     className='week-grid-col-item'
+                    onDragEnter={(e) => dragEnter(e, index)}
+                    onDragEnd={drop}
                   >
                     {appointments.map((appointment) => {
                       if (isSameHour(appointment.start, weekDate)) {
                         return (
                           <div
+                            id={appointment.event_id}
+                            className='grid-month-event'
                             key={appointment.id}
+                            style={{ backgroundColor: appointment.color }}
                             onMouseEnter={() =>
                               setFocusedAgendaEvent(appointment)
                             }
                             onMouseLeave={() => setFocusedAgendaEvent(null)}
-                            style={{ backgroundColor: appointment.color }}
-                            className='grid-month-event'
+                            onDragStart={(e) => dragStart(e, index)}
+                            draggable
                           >
                             <div className='grid-month-event-title'>
                               {appointment.title}{" "}

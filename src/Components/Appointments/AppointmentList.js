@@ -16,10 +16,12 @@ const AppointmentList = (props) => {
   }
 
   useEffect(() => {
-    fetchAppointmentData().then((data) => {
-      console.log(data)
-      setAppointments(data)
-    })
+    if (userData.customerID) {
+      fetchAppointmentData().then((data) => {
+        setAppointments(data)
+      })
+    }
+
     //eslint-disable-next-line
   }, [userData])
 
@@ -36,38 +38,43 @@ const AppointmentList = (props) => {
   return (
     <div className='appointment-table-container'>
       <table className='appointment-table'>
-        <tr>
-          <th>{t("NAME")}</th>
-          <th>{t("PHONE")}</th>
-          <th>{t("GENDER")}</th>
-          <th>{t("SSN")}</th>
-          <th>{t("DOB")}</th>
-        </tr>
-        {appointments.map((appointment) => {
-          return (
-            <tr
-              onClick={() => {
-                props.focusedPatient(appointment)
-              }}
-            >
-              <td>{appointment.appointedPerson}</td>
-              <td>
-                {format(appointment.date.toMillis(), "PP", {
-                  locale: tr,
-                })}
-              </td>
-              <td>{appointment.reason}</td>
-              <td>{appointment.appointedTo}</td>
-              <td
-                style={{
-                  borderRight: `10px solid ${colorPicker(appointment.status)}`,
+        <tbody>
+          <tr>
+            <th>{t("NAME")}</th>
+            <th>{t("PHONE")}</th>
+            <th>{t("GENDER")}</th>
+            <th>{t("SSN")}</th>
+            <th>{t("DOB")}</th>
+          </tr>
+          {appointments.map((appointment, i) => {
+            return (
+              <tr
+                key={i}
+                onClick={() => {
+                  props.focusedPatient(appointment)
                 }}
               >
-                {appointment.status}
-              </td>
-            </tr>
-          )
-        })}
+                <td>{appointment.appointedPerson}</td>
+                <td>
+                  {format(appointment.date.toMillis(), "PP", {
+                    locale: tr,
+                  })}
+                </td>
+                <td>{appointment.reason}</td>
+                <td>{appointment.appointedTo}</td>
+                <td
+                  style={{
+                    borderRight: `10px solid ${colorPicker(
+                      appointment.status
+                    )}`,
+                  }}
+                >
+                  {appointment.status}
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
       </table>
     </div>
   )

@@ -14,7 +14,7 @@ function GridHeader({ days, newWeek, viewType }) {
       })
     )
   }, [newWeek])
-  console.log(weekDays)
+
   return (
     <div className='scheduler-grid-header'>
       {weekDays.map((day, index) => {

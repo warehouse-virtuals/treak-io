@@ -17,6 +17,7 @@
   align-items: center;
 }
 .grid-month-event:hover {
+  cursor: pointer;
 }
 
 .grid-month-event-overview {

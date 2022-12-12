@@ -12,7 +12,7 @@ const CardAllAppointments = (props) => {
       </div>
       <div className='card-all-compare'>
         {"+" + calculated + "%"}
-        <div className='' style={{ "margin-left": "5px" }}>
+        <div className='' style={{ marginLeft: "5px" }}>
           {props.t("vs last month")}
         </div>
       </div>

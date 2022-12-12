@@ -176,7 +176,7 @@ export const AuthContextProvider = ({ children }) => {
     querySnapshotOfAssignedPatients.forEach((doc) => {
       arr.push(doc.data())
     })
-    console.log(arr)
+
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
     return arr
   }
@@ -259,11 +259,13 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      try {
-        setUser(currentUser)
-        fetchUserData(auth.currentUser.uid)
-      } catch (error) {
-        console.log("Error: " + error)
+      if (currentUser) {
+        try {
+          setUser(currentUser)
+          fetchUserData(auth.currentUser.uid)
+        } catch (error) {
+          console.log("Error: " + error)
+        }
       }
     })
     return () => {
