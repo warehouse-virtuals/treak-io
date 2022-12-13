@@ -6,25 +6,33 @@ import { useTranslation } from "react-i18next"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
 
+import Spinner from "../Spinner/Spinner"
+
 const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
+  const [spinner, setSpinner] = useState(true)
+
   const { getPatients, userData } = UserAuth()
   const { t } = useTranslation("patients")
 
+  const fetchPatientData = async () => {
+    return await getPatients(userData.customerID, userData.clinicID)
+  }
+
   useEffect(() => {
-    const fetchPatientData = async () => {
-      return await getPatients(userData.customerID, userData.clinicID)
+    if (userData.customerID) {
+      fetchPatientData().then((data) => {
+        setPatients(data)
+        setSpinner(false)
+      })
     }
-    fetchPatientData().then((data) => {
-      console.log(data)
-      setPatients(data)
-    })
 
     //eslint-disable-next-line
   }, [])
 
   return (
     <div className='patient-table-container'>
+      {spinner ? <Spinner /> : null}
       <table className='patient-table'>
         <tr>
           <th>{t("NAME")}</th>
@@ -33,6 +41,7 @@ const PatientsList = (props) => {
           <th>{t("SSN")}</th>
           <th>{t("DOB")}</th>
         </tr>
+
         {patients.map((patient, i) => {
           return (
             <tr

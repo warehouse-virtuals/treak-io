@@ -3,10 +3,10 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { FiUserPlus } from "react-icons/fi"
 
-import PatientsList from "./PatientsList"
-import TopBar from "../TopBar/TopBar"
-import AddPatient from "./AddPatient"
 import PatientOverview from "./PatientOverview"
+import PatientsList from "./PatientsList"
+import AddPatient from "./AddPatient"
+import TopBar from "../TopBar/TopBar"
 
 import "./Patients.css"
 
@@ -29,6 +29,7 @@ const Patients = () => {
             >
               <FiUserPlus size={24} stroke='#fff' className='' /> Kullanıcı Ekle
             </div>
+
             <PatientsList
               focusedPatient={(patient) => {
                 setFocusedPatient(patient)

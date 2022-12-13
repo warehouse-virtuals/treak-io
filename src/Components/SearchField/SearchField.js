@@ -1,8 +1,14 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 
 import "./SearchField.css"
 
-import { FiSearch, FiCalendar } from "react-icons/fi"
+import {
+  FiSearch,
+  FiUsers,
+  FiCalendar,
+  FiEdit,
+  FiMessageCircle,
+} from "react-icons/fi"
 
 import { useTranslation } from "react-i18next"
 
@@ -11,6 +17,7 @@ import { UserAuth } from "../../Context/AuthContext"
 const SearchField = ({ selectedPatientName }) => {
   // eslint-disable-next-line
   const [searchSelectedPerson, setSearchSelectedPerson] = useState("")
+  const [timer, setTimer] = useState(null)
   const [foundPatients, setFoundPatients] = useState([])
 
   const { userData, searchResults } = UserAuth()
@@ -34,52 +41,93 @@ const SearchField = ({ selectedPatientName }) => {
     }
   }
 
-  const handleOnChangeSearchInput = (dnz) => {
-    console.log(dnz)
+  const handleOnChangeSearchInput = () => {
     findPatients().then((data) => setFoundPatients(data))
+  }
+
+  const handleOnClickOutside = (event) => {
+    if (
+      "found-patient" !== event.target.className &&
+      foundPatients.length > 0
+    ) {
+      setFoundPatients([])
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", handleOnClickOutside, true)
+    return () => {
+      document.removeEventListener("click", handleOnClickOutside, true)
+    }
+    // eslint-disable-next-line
+  }, [foundPatients])
+
+  const changeDelay = (change) => {
+    if (timer) {
+      clearTimeout(timer)
+      setTimer(null)
+    }
+    setTimer(
+      setTimeout(() => {
+        console.log("bekledik 400ms")
+        handleOnChangeSearchInput()
+      }, 400)
+    )
   }
 
   return (
     <div className='searchfield-container'>
-      <div className={foundPatients.length > 0 ? "search-bar" : "search-bar"}>
+      <div className='search-bar'>
         <input
           className='searchfield-input'
           ref={searchTextRef}
           onClick={() => (searchTextRef.current.value = "")}
-          onChange={handleOnChangeSearchInput}
+          onChange={(e) => changeDelay(e.target.value)}
           placeholder={t("Search patients...")}
         />
-        {}
+
         <div className='search-icon'>
-          <FiSearch color='#000234' className='' size={22} />
+          <FiSearch className='' size={22} />
         </div>
       </div>
-      <div className='found-patient-container'>
-        {foundPatients.map((patient, i) => {
-          return (
-            <div
-              className='found-patient'
-              onClick={() => {
-                selectedPatientName(patient.name + " " + patient.surname)
-                searchTextRef.current.value =
-                  patient.name + " " + patient.surname
-                setFoundPatients([])
-              }}
-              key={i}
-            >
-              {patient.name + " " + patient.surname}
-
-              <div className='make-appt-btn-container'>
-                <FiCalendar
-                  color='0083b0'
-                  className='make-appt-btn'
-                  size={24}
-                />
+      {foundPatients.length > 0 ? (
+        <div className='found-patient-container'>
+          {foundPatients.map((patient, i) => {
+            return (
+              <div
+                className='found-patient'
+                onClick={() => {
+                  selectedPatientName(patient.name + " " + patient.surname)
+                  searchTextRef.current.value =
+                    patient.name + " " + patient.surname
+                  setFoundPatients([])
+                }}
+                key={i}
+              >
+                <div className='found-patient-name-container'>
+                  <div className='make-appt-btn-container'>
+                    <FiUsers className='make-appt-btn' size={16} />
+                  </div>
+                  <div className='found-patient-name'>
+                    {patient.name + " " + patient.surname}
+                  </div>
+                </div>
+                <div className='found-patient-btns-container'>
+                  <div className='found-patient-make-appt-btn'>
+                    <FiCalendar className='make-appt-btn' size={16} />
+                  </div>
+                  <div className='found-patient-msg-btn'>
+                    <FiMessageCircle className='make-msg-btn' size={16} />
+                  </div>
+                  <div className='found-patient-edit-btn'>
+                    <FiEdit className='make-edit-btn' size={16} />
+                  </div>
+                </div>
               </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      ) : null}
     </div>
   )
 }

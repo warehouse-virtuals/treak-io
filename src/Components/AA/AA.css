@@ -31,6 +31,7 @@
   margin-top: 20px;
 }
 .scheduler-timeless-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;

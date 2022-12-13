@@ -1,0 +1,41 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  flex-direction: column;
+  position: absolute;
+  background: #f8f8f8;
+  height: calc(100% + 20px);
+  width: calc(100% + 20px);
+  opacity: 0.8;
+  z-index: 1;
+  border-radius: 12px;
+}
+
+.spinner-logo {
+  width: 50px;
+  animation: spin 0.7s infinite;
+}
+
+.error-message {
+  animation: error-reveal 1s ease-in;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes error-reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

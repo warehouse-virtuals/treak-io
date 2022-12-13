@@ -13,6 +13,7 @@ import {
 import { tr } from "date-fns/locale"
 
 import TopBar from "../TopBar/TopBar"
+import Spinner from "../Spinner/Spinner"
 
 import GridNavbar from "./GridNavbar"
 import GridHeader from "./GridHeader"
@@ -35,6 +36,8 @@ function AA() {
   const [newWeek, setNewWeek] = useState(new Date())
   const [newDay, setNewDay] = useState(new Date())
 
+  const [spinner, setSpinner] = useState(true)
+
   const [appointments, setAppointments] = useState([])
   const [updatedData, setUpdatedData] = useState("")
 
@@ -51,6 +54,7 @@ function AA() {
   const { t } = useTranslation("agenda")
 
   const fetchAppointmentData = async () => {
+    setSpinner(true)
     const appointments = await getAppointments(
       userData.customerID,
       userData.clinicID
@@ -77,6 +81,7 @@ function AA() {
 
       return obj
     })
+    setSpinner(false)
     return await fixedList
   }
 
@@ -86,8 +91,9 @@ function AA() {
     appointmentId,
     updatedData
   ) => {
-    console.log(customerid, usersClinic, appointmentId, updatedData)
+    setSpinner(true)
     await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
+    setSpinner(false)
     setUpdatedData(updatedData)
   }
 
@@ -182,6 +188,8 @@ function AA() {
               updateDay={updateDay}
               currentMonth={newMonth}
             />
+            {spinner ? <Spinner /> : null}
+
             {viewType === "week" ? (
               <GridHeader
                 t={t}

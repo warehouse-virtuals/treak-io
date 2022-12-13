@@ -6,9 +6,13 @@ import { format } from "date-fns"
 import { useState, useEffect } from "react"
 import { UserAuth } from "../../Context/AuthContext"
 
+import Spinner from "../Spinner/Spinner"
+
 const AppointmentList = (props) => {
   const [appointments, setAppointments] = useState([])
+  const [spinner, setSpinner] = useState(true)
   const { getAppointments, userData } = UserAuth()
+
   const { t } = useTranslation("dashboard")
 
   const fetchAppointmentData = async () => {
@@ -19,6 +23,7 @@ const AppointmentList = (props) => {
     if (userData.customerID) {
       fetchAppointmentData().then((data) => {
         setAppointments(data)
+        setSpinner(false)
       })
     }
 
@@ -37,6 +42,7 @@ const AppointmentList = (props) => {
 
   return (
     <div className='appointment-table-container'>
+      {spinner ? <Spinner /> : null}
       <table className='appointment-table'>
         <tbody>
           <tr>

@@ -149,7 +149,7 @@ export const AuthContextProvider = ({ children }) => {
     querySnapshotOfAssignedPatients.forEach((doc) => {
       arr.push(doc.data())
     })
-    console.log("LOOP'ta İSE ACİLEN DURDUR!")
+
     return arr
   }
 

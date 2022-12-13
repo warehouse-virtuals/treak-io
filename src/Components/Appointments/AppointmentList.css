@@ -1,9 +1,12 @@
 .appointment-table-container {
+  position: relative;
   width: 100%;
   font-size: 14px;
 }
 
 .appointment-table {
+  height: 50%;
+  position: relative;
   width: 100%;
   border-spacing: 0;
   background: #f8f8f8;
