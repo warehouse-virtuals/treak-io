@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import "./AddPatient.css"
 
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 
 import { useTranslation } from "react-i18next"
 

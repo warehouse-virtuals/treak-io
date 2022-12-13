@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import "./Login.css"
 
 import { useNavigate } from "react-router-dom"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 import { useTranslation } from "react-i18next"
 
 import treatLogo from "../../Assets/treat-logos/treat-tp.svg"

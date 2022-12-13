@@ -29,7 +29,7 @@ import { auth, db } from "../firebase"
 
 const UserContext = createContext()
 
-export const AuthContextProvider = ({ children }) => {
+export const FirebaseContextProvider = ({ children }) => {
   const storage = getStorage()
   const [user, setUser] = useState({})
   const [userData, setUserData] = useState({})

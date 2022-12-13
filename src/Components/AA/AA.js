@@ -24,7 +24,7 @@ import DayView from "./DayView"
 import AddAppointment from "../Appointments/AddAppointments"
 
 import { useTranslation } from "react-i18next"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 
 import "./AA.css"
 

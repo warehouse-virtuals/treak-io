@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import { tr } from "date-fns/locale"
 import { format } from "date-fns"
 import { useState, useEffect } from "react"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 
 import Spinner from "../Spinner/Spinner"
 

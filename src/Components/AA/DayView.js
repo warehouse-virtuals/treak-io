@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 
 import { format, addDays, eachMinuteOfInterval, isSameHour } from "date-fns"
 

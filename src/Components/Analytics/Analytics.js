@@ -1,5 +1,5 @@
 import "./Analytics.css"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 import { toDate } from "date-fns"
 
 import TopBar from "../TopBar/TopBar"

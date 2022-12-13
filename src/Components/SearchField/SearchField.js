@@ -12,7 +12,7 @@ import {
 
 import { useTranslation } from "react-i18next"
 
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 
 const SearchField = ({ selectedPatientName }) => {
   // eslint-disable-next-line

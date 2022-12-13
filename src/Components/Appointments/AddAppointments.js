@@ -9,15 +9,9 @@ import "./DateTimePicker.css"
 // import "./Calendar.css"
 // import "./Clock.css"
 
-import {
-  collection,
-  addDoc,
-  Timestamp,
-  updateDoc,
-  doc,
-} from "firebase/firestore"
+import { collection, addDoc, Timestamp, updateDoc } from "firebase/firestore"
 
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 import { useTranslation } from "react-i18next"
 
 import SearchField from "../SearchField/SearchField"

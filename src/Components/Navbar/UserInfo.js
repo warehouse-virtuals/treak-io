@@ -1,4 +1,4 @@
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 
 import "./UserInfo.css"
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 import { useTranslation } from "react-i18next"
 import { Scheduler } from "@aldabil/react-scheduler"
 import { toDate } from "date-fns"

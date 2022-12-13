@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 
 const Register = () => {
   const emailRef = useRef("")
@@ -25,25 +25,25 @@ const Register = () => {
   return (
     <div>
       <h1>Register</h1>
-      <label htmlFor="email-input">Email:</label>
+      <label htmlFor='email-input'>Email:</label>
       <input
         ref={emailRef}
-        type="email"
-        id="email-input"
-        name="email-input"
+        type='email'
+        id='email-input'
+        name='email-input'
       ></input>
       <br />
-      <label htmlFor="password-input">Password:</label>
+      <label htmlFor='password-input'>Password:</label>
       <input
         ref={passwordRef}
-        type="password"
-        id="password-input"
-        name="password-input"
+        type='password'
+        id='password-input'
+        name='password-input'
       ></input>
       <br />
       <button onClick={handleRegisterButtonPress}>Register</button>
       <h3>
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account? <Link to='/login'>Login</Link>
       </h3>
     </div>
   )

@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import { UserAuth } from "../../Context/AuthContext"
+import { UserAuth } from "../../Context/FirebaseContext"
 import { FiLogOut } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
 
