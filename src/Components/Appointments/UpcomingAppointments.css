@@ -16,24 +16,24 @@
 
 .upcoming-add-btn {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  height: 40px;
+  padding: 10px;
+  width: 170px;
+
   font-size: 18;
-  border-radius: 50%;
-  color: #fff;
+  border-radius: 12px;
   font-weight: 600;
-  background: #60cca9;
+  background: #c5caff;
   cursor: pointer;
-  outline: 2px solid #56b898;
   outline-offset: 1px;
   margin-left: auto;
 }
 
 .upcoming-add-btn:hover {
   cursor: pointer;
-  background: #56b898;
+  background: #cbcfff;
 }
 
 .upcoming-list-container {

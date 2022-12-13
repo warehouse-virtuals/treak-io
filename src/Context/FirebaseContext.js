@@ -112,6 +112,7 @@ export const FirebaseContextProvider = ({ children }) => {
       arr.push(doc.data())
     })
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
+    console.log(arr)
     return arr
   }
   const getEmployeesOfClinic = async (usersClinic) => {
@@ -178,6 +179,7 @@ export const FirebaseContextProvider = ({ children }) => {
     })
 
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
+    console.log(arr)
     return arr
   }
 

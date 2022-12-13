@@ -28,40 +28,41 @@ const PatientsList = (props) => {
     }
 
     //eslint-disable-next-line
-  }, [])
+  }, [userData])
 
   return (
     <div className='patient-table-container'>
       {spinner ? <Spinner /> : null}
       <table className='patient-table'>
-        <tr>
-          <th>{t("NAME")}</th>
-          <th>{t("PHONE")}</th>
-          <th>{t("GENDER")}</th>
-          <th>{t("SSN")}</th>
-          <th>{t("DOB")}</th>
-        </tr>
-
-        {patients.map((patient, i) => {
-          return (
-            <tr
-              key={i}
-              onClick={() => {
-                props.focusedPatient(patient)
-              }}
-            >
-              <td>{`${patient.name} ${patient.surname}`}</td>
-              <td>{patient.phone}</td>
-              <td>{patient.isMale ? "Erkek" : "Kadın"}</td>
-              <td>{patient.SSN}</td>
-              <td>
-                {format(patient.DOB.toMillis(), "PP", {
-                  locale: tr,
-                })}
-              </td>
-            </tr>
-          )
-        })}
+        <tbody>
+          <tr>
+            <th>{t("NAME")}</th>
+            <th>{t("PHONE")}</th>
+            <th>{t("GENDER")}</th>
+            <th>{t("SSN")}</th>
+            <th>{t("DOB")}</th>
+          </tr>
+          {patients.map((patient, i) => {
+            return (
+              <tr
+                key={i}
+                onClick={() => {
+                  props.focusedPatient(patient)
+                }}
+              >
+                <td>{`${patient.name} ${patient.surname}`}</td>
+                <td>{patient.phone}</td>
+                <td>{patient.isMale ? "Erkek" : "Kadın"}</td>
+                <td>{patient.SSN}</td>
+                <td>
+                  {format(patient.DOB.toMillis(), "PP", {
+                    locale: tr,
+                  })}
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
       </table>
     </div>
   )

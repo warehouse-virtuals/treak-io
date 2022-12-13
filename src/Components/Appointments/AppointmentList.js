@@ -70,9 +70,7 @@ const AppointmentList = (props) => {
                 <td>{appointment.appointedTo}</td>
                 <td
                   style={{
-                    borderRight: `10px solid ${colorPicker(
-                      appointment.status
-                    )}`,
+                    borderRight: `3px solid ${colorPicker(appointment.status)}`,
                   }}
                 >
                   {appointment.status}
