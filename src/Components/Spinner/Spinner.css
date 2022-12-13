@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   flex-direction: column;
   position: absolute;
@@ -15,12 +15,20 @@
 }
 
 .spinner-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
-  animation: spin 0.7s infinite;
+  animation: spin 0.7s infinite ease-in-out;
 }
 
-.error-message {
+.error-message-visible {
+  margin-top: 20px;
   animation: error-reveal 1s ease-in;
+}
+.error-message-invisible {
+  margin-top: 20px;
+  opacity: 0;
 }
 
 @keyframes spin {

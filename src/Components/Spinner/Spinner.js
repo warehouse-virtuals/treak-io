@@ -16,9 +16,12 @@ function Spinner() {
       <div className='spinner-logo'>
         <img alt='spinner' src={WarehouseLogo} />
       </div>
-      {wrong ? (
-        <div className='error-message'>Something is not right! </div>
-      ) : null}
+
+      <div
+        className={wrong ? "error-message-visible" : "error-message-invisible"}
+      >
+        Something is not right!
+      </div>
     </div>
   )
 }
