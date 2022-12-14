@@ -9,6 +9,7 @@ import {
 } from "firebase/auth"
 
 import {
+  onSnapshot,
   collection,
   query,
   where,
@@ -33,6 +34,7 @@ export const FirebaseContextProvider = ({ children }) => {
   const storage = getStorage()
   const [user, setUser] = useState({})
   const [userData, setUserData] = useState({})
+  const [currentPatients, setCurrentPatients] = useState([])
 
   const createUser = (email, password) => {
     const newUser = {
@@ -103,17 +105,18 @@ export const FirebaseContextProvider = ({ children }) => {
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
-  const getPatients = async (customerid, usersClinic) => {
+  const patientsSnapShot = async (customerid, usersClinic) => {
     const patientsRef = collection(db, "customers/", customerid, "/patients")
     const q = query(patientsRef, where("assignedClinic", "==", usersClinic))
-    const querySnapshotOfAssignedPatients = await getDocs(q)
-    let arr = []
-    querySnapshotOfAssignedPatients.forEach((doc) => {
-      arr.push(doc.data())
+    onSnapshot(q, (snapshot) => {
+      setCurrentPatients(
+        snapshot.docs.map((doc) => {
+          const source = snapshot.metadata.fromCache ? "local cache" : "server"
+          console.log("Data came from " + source)
+          return doc.data()
+        })
+      )
     })
-    console.log("LOOP'ta İSE ACİLEN DURDUR!")
-    console.log(arr)
-    return arr
   }
   const getEmployeesOfClinic = async (usersClinic) => {
     const q = query(
@@ -276,6 +279,10 @@ export const FirebaseContextProvider = ({ children }) => {
     //eslint-disable-next-line
   }, [])
 
+  useEffect(() => {
+    patientsSnapShot(userData.customerID, userData.clinicID)
+  }, [userData])
+
   return (
     <UserContext.Provider
       value={{
@@ -286,7 +293,7 @@ export const FirebaseContextProvider = ({ children }) => {
         getCustomers,
         fetchUserData,
         userData,
-        getPatients,
+        currentPatients,
         db,
         getAppointments,
         searchResults,

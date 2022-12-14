@@ -12,23 +12,15 @@ const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
   const [spinner, setSpinner] = useState(true)
 
-  const { getPatients, userData } = UserAuth()
+  const { currentPatients, userData } = UserAuth()
   const { t } = useTranslation("patients")
 
-  const fetchPatientData = async () => {
-    return await getPatients(userData.customerID, userData.clinicID)
-  }
-
   useEffect(() => {
-    if (userData.customerID) {
-      fetchPatientData().then((data) => {
-        setPatients(data)
-        setSpinner(false)
-      })
-    }
-
+    setPatients(currentPatients)
+    setSpinner(false)
+    console.log(currentPatients)
     //eslint-disable-next-line
-  }, [userData])
+  }, [userData, currentPatients])
 
   return (
     <div className='patient-table-container'>
