@@ -11,24 +11,18 @@ import Spinner from "../Spinner/Spinner"
 const AppointmentList = (props) => {
   const [appointments, setAppointments] = useState([])
   const [spinner, setSpinner] = useState(true)
-  const { getAppointments, userData } = UserAuth()
+
+  const { currentAppointments } = UserAuth()
 
   const { t } = useTranslation("dashboard")
 
-  const fetchAppointmentData = async () => {
-    return await getAppointments(userData.customerID, userData.clinicID, 5)
-  }
-
   useEffect(() => {
-    if (userData.customerID) {
-      fetchAppointmentData().then((data) => {
-        setAppointments(data)
-        setSpinner(false)
-      })
-    }
+    console.log(currentAppointments)
+    setAppointments(currentAppointments)
+    setSpinner(false)
 
     //eslint-disable-next-line
-  }, [userData])
+  }, [currentAppointments])
 
   const colorPicker = (appointmentStatus) => {
     if (appointmentStatus === "Completed") {

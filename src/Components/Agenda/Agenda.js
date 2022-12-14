@@ -1,59 +1,136 @@
 import { useState, useEffect } from "react"
-import { UserAuth } from "../../Context/FirebaseContext"
-import { useTranslation } from "react-i18next"
-import { Scheduler } from "@aldabil/react-scheduler"
-import { toDate } from "date-fns"
-import tr from "date-fns/locale/tr"
+import {
+  eachDayOfInterval,
+  endOfMonth,
+  endOfWeek,
+  format,
+  addMilliseconds,
+  parse,
+  previousDay,
+  startOfToday,
+  startOfWeek,
+} from "date-fns"
+import { tr } from "date-fns/locale"
+
+import TopBar from "../TopBar/TopBar"
+import Spinner from "../Spinner/Spinner"
+
+import GridNavbar from "./GridNavbar"
+import GridHeader from "./GridHeader"
+import MonthView from "./MonthView"
+import WeekView from "./WeekView"
+import DayView from "./DayView"
 
 import AddAppointment from "../Appointments/AddAppointments"
 
-// import "./Agenda.css"
+import { useTranslation } from "react-i18next"
+import { UserAuth } from "../../Context/FirebaseContext"
 
-import TopBar from "../TopBar/TopBar"
+import "./Agenda.css"
 
-const Agenda = (props) => {
+function AA() {
+  const [viewType, setViewType] = useState("month")
+
+  const [days, setDays] = useState([new Date()])
+  const [newMonth, setNewMonth] = useState(new Date())
+  const [newWeek, setNewWeek] = useState(new Date())
+  const [newDay, setNewDay] = useState(new Date())
+
+  const [spinner, setSpinner] = useState(true)
+
   const [appointments, setAppointments] = useState([])
   const [updatedData, setUpdatedData] = useState("")
-  const { getAppointments, updateAppointment, deleteAppointment, userData } =
-    UserAuth()
-  // const navigate = useNavigate()
+
+  const [newAppointmentDay, setNewAppointmentDay] = useState("")
+
+  const {
+    currentAppointments,
+    updateAppointment,
+    //  deleteAppointment,
+  } = UserAuth()
 
   const { t } = useTranslation("agenda")
 
-  const translations = {
-    navigation: {
-      month: t("Month"),
-      week: t("Week"),
-      day: t("Day"),
-      today: t("Today"),
-    },
-    form: {
-      addTitle: t("Add Event"),
-      editTitle: t("Edit Event"),
-      confirm: t("Confirm"),
-      delete: t("Delete"),
-      cancel: t("Cancel"),
-    },
-    event: {
-      title: t("Title"),
-      start: t("Start"),
-      end: t("End"),
-    },
-    moreEvents: t("More..."),
+  const updateAppointmentDay = async (
+    customerid,
+    usersClinic,
+    appointmentId,
+    updatedData
+  ) => {
+    setSpinner(true)
+    await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
+    setSpinner(false)
+    setUpdatedData(updatedData)
   }
 
-  const fetchAppointmentData = async () => {
-    const appointments = await getAppointments(
-      userData.customerID,
-      userData.clinicID
+  // const handleDeleteAppointment = async (appointmentid) => {
+  //   await deleteAppointment(
+  //     userData.customerID,
+  //     userData.clinicID,
+  //     appointmentid
+  //   )
+  //   setUpdatedData(appointmentid)
+  // }
+  const viewTypeSetter = (viewType) => {
+    setViewType(viewType)
+  }
+
+  const goToday = () => {
+    setNewWeek(new Date())
+    setNewDay(new Date())
+    setInitalDays()
+  }
+
+  const setInitalDays = () => {
+    const firstDayCurrentMonth = parse(
+      format(startOfToday(), "MMM-yyyy"),
+      "MMM-yyyy",
+      new Date()
     )
+    const formatedDates = eachDayOfInterval({
+      start: startOfWeek(previousDay(firstDayCurrentMonth, 1), {
+        locale: tr,
+      }),
+      end: endOfWeek(endOfMonth(firstDayCurrentMonth), { locale: tr }),
+    })
+    setNewMonth(new Date())
+    setDays(formatedDates)
+  }
 
-    const fixedList = appointments.map((appointment, i) => {
-      const date = toDate(appointment.date.seconds * 1000)
-      const end = toDate(
-        appointment.date.seconds * 1000 + parseInt(appointment.duration)
-      )
+  const updateMonth = (newMonthStart) => {
+    const firstDayCurrentMonth = parse(
+      format(newMonthStart, "MMM-yyyy"),
+      "MMM-yyyy",
+      new Date(newMonthStart)
+    )
+    const formatedDates = eachDayOfInterval({
+      start: startOfWeek(previousDay(firstDayCurrentMonth, 1), {
+        locale: tr,
+      }),
+      end: endOfWeek(endOfMonth(firstDayCurrentMonth), { locale: tr }),
+    })
+    setNewMonth(newMonthStart)
+    setDays(formatedDates)
+  }
 
+  const updateWeek = (newWeekStart) => {
+    setNewWeek(newWeekStart)
+  }
+
+  const updateDay = (newDayStart) => {
+    setNewDay(newDayStart)
+  }
+
+  const cellOnClickHandler = (appointmentDay) => {
+    setNewAppointmentDay(appointmentDay)
+  }
+
+  useEffect(() => {
+    setInitalDays()
+  }, [])
+
+  useEffect(() => {
+    const fixedList = currentAppointments.map((appointment, i) => {
       let eventColor
       if (appointment.status === "Waiting") {
         eventColor = "#5ae2f7"
@@ -65,102 +142,95 @@ const Agenda = (props) => {
       const obj = {
         event_id: appointment.id,
         title: appointment.reason,
-        start: date,
-        end: end,
+        appointedPerson: appointment.appointedPerson,
+        start: appointment.date.toDate(),
+        end: addMilliseconds(appointment.date.toDate(), appointment.duration),
         color: eventColor,
         editable: true,
       }
-
       return obj
     })
-    return await fixedList
-  }
 
-  const updateAppointmentDateAndTime = async (
-    customerid,
-    usersClinic,
-    appointmentId,
-    updatedData
-  ) => {
-    await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
-    setUpdatedData(updatedData)
-  }
+    setAppointments(fixedList)
+    setSpinner(false)
 
-  const handleDeleteAppointment = async (appointmentid) => {
-    await deleteAppointment(
-      userData.customerID,
-      userData.clinicID,
-      appointmentid
-    )
-    setUpdatedData(appointmentid)
-  }
-
-  useEffect(() => {
-    fetchAppointmentData().then((data) => {
-      setAppointments(data)
-    })
-    console.log("Agenda Useffect loopta hemen durdur!")
     //eslint-disable-next-line
-  }, [userData, updatedData])
+  }, [currentAppointments])
 
   return (
     <div className='agenda-container'>
       <TopBar />
       <div className='agenda-body'>
-        <div className='agenda-scheduler-container'>
-          <div className='agenda-scheduler'>
-            <Scheduler
-              translations={translations}
-              locale={tr}
-              height='600'
-              view='week'
-              week={{
-                weekDays: [0, 1, 2, 3, 4, 5, 6],
-                weekStartOn: 1,
-                startHour: 9,
-                endHour: 20,
-                step: 60,
-              }}
-              month={{
-                weekDays: [0, 1, 2, 3, 4, 5, 6],
-                weekStartOn: 1,
-                startHour: 9,
-                endHour: 20,
-              }}
-              day={{
-                startHour: 9,
-                endHour: 20,
-                step: 60,
-              }}
-              events={appointments}
-              hourFormat='24'
-              customEditor={(scheduler) => (
-                <AddAppointment
-                  scheduler={scheduler}
-                  parentCallback={(childData) => {
-                    setUpdatedData(childData)
-                  }}
-                />
-              )}
-              onEventDrop={async (date, updatedEvent, originalEvent) => {
-                console.log(date, updatedEvent, originalEvent)
-                await updateAppointmentDateAndTime(
-                  userData.customerID,
-                  userData.clinicID,
-                  originalEvent.event_id,
-                  date
-                )
-              }}
-              onDelete={async (appointmentID) => {
-                console.log(appointmentID)
-                await handleDeleteAppointment(appointmentID)
-              }}
+        <div className='scheduler-container'>
+          <div className='scheduler-timeless-container'>
+            <GridNavbar
+              t={t}
+              viewType={viewType}
+              viewTypeSetter={viewTypeSetter}
+              goToday={goToday}
+              days={days}
+              updateMonth={updateMonth}
+              updateWeek={updateWeek}
+              updateDay={updateDay}
+              currentMonth={newMonth}
             />
+            {spinner ? <Spinner /> : null}
+
+            {viewType === "week" ? (
+              <GridHeader
+                t={t}
+                days={days}
+                viewType={viewType}
+                newWeek={newWeek}
+              />
+            ) : null}
+            {viewType === "month" ? (
+              <MonthView
+                t={t}
+                days={days}
+                newMonth={newMonth}
+                appointments={appointments}
+                cellOnClickHandler={cellOnClickHandler}
+                updateAppointmentDay={updateAppointmentDay}
+              />
+            ) : null}
+            {viewType === "week" ? (
+              <WeekView
+                t={t}
+                newWeek={newWeek}
+                updateWeek={updateWeek}
+                appointments={appointments}
+                intervals={60}
+                cellOnClickHandler={cellOnClickHandler}
+                updateAppointmentDay={updateAppointmentDay}
+              />
+            ) : null}
+            {viewType === "day" ? (
+              <DayView
+                t={t}
+                newDay={newDay}
+                appointments={appointments}
+                intervals={60}
+                cellOnClickHandler={cellOnClickHandler}
+                updateAppointmentDay={updateAppointmentDay}
+              />
+            ) : null}
           </div>
         </div>
       </div>
+      {newAppointmentDay ? (
+        <div className='repairform-container'>
+          <AddAppointment
+            newAppointmentDay={newAppointmentDay}
+            parentCallback={() => {
+              setNewAppointmentDay("")
+              setUpdatedData(new Date())
+            }}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
 
-export default Agenda
+export default AA

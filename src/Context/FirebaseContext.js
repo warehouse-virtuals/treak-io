@@ -35,6 +35,7 @@ export const FirebaseContextProvider = ({ children }) => {
   const [user, setUser] = useState({})
   const [userData, setUserData] = useState({})
   const [currentPatients, setCurrentPatients] = useState([])
+  const [currentAppointments, setCurrentAppointments] = useState([])
 
   const createUser = (email, password) => {
     const newUser = {
@@ -105,19 +106,6 @@ export const FirebaseContextProvider = ({ children }) => {
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
-  const patientsSnapShot = async (customerid, usersClinic) => {
-    const patientsRef = collection(db, "customers/", customerid, "/patients")
-    const q = query(patientsRef, where("assignedClinic", "==", usersClinic))
-    onSnapshot(q, (snapshot) => {
-      setCurrentPatients(
-        snapshot.docs.map((doc) => {
-          const source = snapshot.metadata.fromCache ? "local cache" : "server"
-          console.log("Data came from " + source)
-          return doc.data()
-        })
-      )
-    })
-  }
   const getEmployeesOfClinic = async (usersClinic) => {
     const q = query(
       collection(db, "users/"),
@@ -156,34 +144,55 @@ export const FirebaseContextProvider = ({ children }) => {
 
     return arr
   }
+  const patientsSnapShot = async (customerid, usersClinic) => {
+    if (customerid) {
+      const patientsRef = collection(db, "customers/", customerid, "/patients")
+      const q = query(patientsRef, where("assignedClinic", "==", usersClinic))
+      onSnapshot(q, (snapshot) => {
+        setCurrentPatients(
+          snapshot.docs.map((doc) => {
+            const source = snapshot.metadata.fromCache
+              ? "local cache"
+              : "server"
+            console.log("Data came from " + source)
+            return doc.data()
+          })
+        )
+      })
+    }
+  }
+  const appointmentsSnapshot = async (customerid, usersClinic, limitCount) => {
+    if (customerid) {
+      var date = new Date()
+      const appointmentsRef = collection(
+        db,
+        "customers/",
+        customerid,
+        "/clinics/",
+        usersClinic,
+        "/appointments"
+      )
 
-  const getAppointments = async (customerid, usersClinic, limitCount) => {
-    var date = new Date()
-    const appointmentsRef = collection(
-      db,
-      "customers/",
-      customerid,
-      "/clinics/",
-      usersClinic,
-      "/appointments"
-    )
+      const q = query(
+        appointmentsRef,
+        orderBy("date"),
+        where("date", ">=", startOfMonth(date)), //SANIRIM SADECE BU AYI ALDIM
+        limit(limitCount)
+      )
+      onSnapshot(q, (snapshot) => {
+        setCurrentAppointments(
+          snapshot.docs.map((doc) => {
+            const source = snapshot.metadata.fromCache
+              ? "local cache"
+              : "server"
+            console.log("Data came from " + source)
 
-    const q = query(
-      appointmentsRef,
-      orderBy("date"),
-      where("date", ">=", startOfMonth(date)), //SANIRIM SADECE BU AYI ALDIM
-      limit(limitCount)
-    )
-    const querySnapshotOfAssignedPatients = await getDocs(q)
-    let arr = []
-
-    querySnapshotOfAssignedPatients.forEach((doc) => {
-      arr.push(doc.data())
-    })
-
-    console.log("LOOP'ta İSE ACİLEN DURDUR!")
-    console.log(arr)
-    return arr
+            return doc.data()
+          })
+        )
+        console.log(currentAppointments)
+      })
+    }
   }
 
   const updateAppointment = async (
@@ -281,6 +290,7 @@ export const FirebaseContextProvider = ({ children }) => {
 
   useEffect(() => {
     patientsSnapShot(userData.customerID, userData.clinicID)
+    appointmentsSnapshot(userData.customerID, userData.clinicID)
   }, [userData])
 
   return (
@@ -294,8 +304,8 @@ export const FirebaseContextProvider = ({ children }) => {
         fetchUserData,
         userData,
         currentPatients,
+        currentAppointments,
         db,
-        getAppointments,
         searchResults,
         getEmployeesOfClinic,
         updateAppointment,

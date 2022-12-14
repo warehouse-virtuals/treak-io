@@ -12,15 +12,13 @@ const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
   const [spinner, setSpinner] = useState(true)
 
-  const { currentPatients, userData } = UserAuth()
+  const { currentPatients } = UserAuth()
   const { t } = useTranslation("patients")
 
   useEffect(() => {
     setPatients(currentPatients)
     setSpinner(false)
-    console.log(currentPatients)
-    //eslint-disable-next-line
-  }, [userData, currentPatients])
+  }, [currentPatients])
 
   return (
     <div className='patient-table-container'>

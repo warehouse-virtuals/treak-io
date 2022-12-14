@@ -15,6 +15,7 @@ const Patients = () => {
   const [focusedPatient, setFocusedPatient] = useState({})
 
   const { t } = useTranslation("dashboard")
+
   return (
     <div className='patients-cointainer'>
       <TopBar pholder={t("Search patients...")} />

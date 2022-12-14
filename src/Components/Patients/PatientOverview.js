@@ -12,10 +12,11 @@ import {
 
 import { format } from "date-fns"
 import { tr } from "date-fns/locale"
+import { useEffect, useState } from "react"
 
 const PatientOverview = (props) => {
-  console.log(props)
   const { deletePatient, userData } = UserAuth()
+  const [person, setPerson] = useState({})
   const navigate = useNavigate()
 
   const handleDeleteOnClick = async (patientID) => {
@@ -23,11 +24,13 @@ const PatientOverview = (props) => {
     props.patientDeleted("confirm")
   }
 
-  let person = props.focusedPatientData
-  let hearingAids = person.hearingAids
+  useEffect(() => {
+    console.log(props.focusedPatientData)
+    setPerson(props.focusedPatientData)
+  }, [props.focusedPatientData])
 
   if (!person.name) {
-    return null
+    return null //Buraya bir filler component lazım
   } else {
     return (
       <div className='patient-overview-container'>
@@ -39,9 +42,8 @@ const PatientOverview = (props) => {
         </div>
         <div className='patient-overview-ssn'>{person.SSN}</div>
         <div className='patient-overview-hearingaid-container'>
-          {hearingAids
-            ? hearingAids.map((hearingAid, index) => {
-                console.log(hearingAid)
+          {person.hearingAids
+            ? person.hearingAids.map((hearingAid, index) => {
                 if (hearingAid.isRightSide) {
                   return (
                     <div
