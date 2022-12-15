@@ -17,8 +17,7 @@ const AppointmentList = (props) => {
   const { t } = useTranslation("dashboard")
 
   useEffect(() => {
-    console.log(currentAppointments)
-    setAppointments(currentAppointments)
+    setAppointments(currentAppointments.slice(0, props.limitRows))
     setSpinner(false)
 
     //eslint-disable-next-line

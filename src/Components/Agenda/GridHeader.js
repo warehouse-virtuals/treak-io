@@ -19,7 +19,7 @@ function GridHeader({ days, newWeek, viewType }) {
     <div className='scheduler-grid-header'>
       {weekDays.map((day, index) => {
         return (
-          <div className='scheduler-grid-header-day-names '>
+          <div key={day} className='scheduler-grid-header-day-names '>
             {format(day, " dd EE", { locale: tr })}
           </div>
         )

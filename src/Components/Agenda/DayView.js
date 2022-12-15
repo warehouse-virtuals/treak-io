@@ -63,6 +63,7 @@ function DayView({
         {formattedTimeIntervals(newDay).map((time, i) => {
           return (
             <div
+              key={i}
               ref={format(time, "HH:mm") === "08:00" ? eightAmRef : null}
               className='day-time-cell'
             >
@@ -89,7 +90,7 @@ function DayView({
                     return (
                       <div
                         key={appointment.id}
-                        id={appointment.event_id}
+                        id={appointment.id}
                         onMouseEnter={() => setFocusedAgendaEvent(appointment)}
                         onMouseLeave={() => setFocusedAgendaEvent(null)}
                         style={{ backgroundColor: appointment.color }}

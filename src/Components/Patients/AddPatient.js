@@ -7,20 +7,14 @@ import "react-datepicker/dist/react-datepicker.css"
 
 import "./AddPatient.css"
 
-import {
-  collection,
-  addDoc,
-  updateDoc,
-  doc,
-  Timestamp,
-} from "firebase/firestore"
+import { collection, addDoc, updateDoc, Timestamp } from "firebase/firestore"
 import { UserAuth } from "../../Context/FirebaseContext"
 
 import { useTranslation } from "react-i18next"
 
 import TextInput from "../../UITools/TextInput"
 
-const AddPatient = (props) => {
+const AddPatient = ({ closeForm }) => {
   const [DOB, onChangeDOB] = useState(new Date())
   const patientNameRef = useRef()
   const patientSurnameRef = useRef("")
@@ -91,13 +85,12 @@ const AddPatient = (props) => {
       id: newPatientRef.id,
     })
 
-    props.buttonClick()
     console.log("Document written with ID: ", newPatientRef.id)
   }
 
   const handleCancelButtonPress = async () => {
     try {
-      props.buttonClick()
+      closeForm()
     } catch (error) {
       console.log(error.message)
     }
@@ -339,7 +332,10 @@ const AddPatient = (props) => {
             inputCSS='add-patient-textinput-input'
           />
           <div
-            onClick={handleAddPatientButtonPress}
+            onClick={async () => {
+              await handleAddPatientButtonPress()
+              closeForm()
+            }}
             className='patients-add-patient-submit-btn'
           >
             <FiPlus size={30} stroke='#a3edd9' className='' />

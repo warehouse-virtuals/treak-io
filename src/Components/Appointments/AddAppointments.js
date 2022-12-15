@@ -9,7 +9,7 @@ import "./DateTimePicker.css"
 // import "./Calendar.css"
 // import "./Clock.css"
 
-import { collection, addDoc, Timestamp, updateDoc } from "firebase/firestore"
+import { collection, addDoc, Timestamp } from "firebase/firestore"
 
 import { UserAuth } from "../../Context/FirebaseContext"
 import { useTranslation } from "react-i18next"
@@ -66,7 +66,6 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
       )
 
       const newAppointmentRef = await addDoc(appointmentsRef, appointmentInfo)
-      await updateDoc(newAppointmentRef, { id: newAppointmentRef.id })
       setAddedApointment(newAppointmentRef.id)
       parentCallback()
 

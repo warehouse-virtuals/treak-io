@@ -23,7 +23,7 @@ const Dashboard = () => {
         </div>
 
         <div className='dashboard-upcoming'>
-          <UpcomingAppointments t={t} />
+          <UpcomingAppointments t={t} limitRows={5} />
         </div>
       </div>
     </div>

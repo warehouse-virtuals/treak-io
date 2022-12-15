@@ -82,6 +82,7 @@ function WeekView({
         {formattedTimeIntervals(newWeek)[0].map((time, i) => {
           return (
             <div
+              key={i}
               ref={format(time, "HH:mm") === "08:00" ? eightAmRef : null}
               className='week-time-cell'
             >
@@ -91,12 +92,13 @@ function WeekView({
         })}
       </div>
       <div className='scheduler-week-grid-cell-container'>
-        {formattedTimeIntervals(newWeek).map((weekDates) => {
+        {formattedTimeIntervals(newWeek).map((weekDates, i) => {
           return (
-            <div className='week-grid-col'>
+            <div key={i} className='week-grid-col'>
               {weekDates.map((weekDate, index) => {
                 return (
                   <div
+                    key={index}
                     id={weekDate}
                     onClick={() => {
                       cellOnClickHandler(weekDate)
@@ -105,13 +107,13 @@ function WeekView({
                     onDragEnter={(e) => dragEnter(e, index)}
                     onDragEnd={drop}
                   >
-                    {appointments.map((appointment) => {
+                    {appointments.map((appointment, i) => {
                       if (isSameHour(appointment.start, weekDate)) {
                         return (
                           <div
-                            id={appointment.event_id}
-                            className='grid-month-event'
+                            id={appointment.id}
                             key={appointment.id}
+                            className='grid-month-event'
                             style={{ backgroundColor: appointment.color }}
                             onMouseEnter={() =>
                               setFocusedAgendaEvent(appointment)

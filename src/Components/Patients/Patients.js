@@ -50,7 +50,7 @@ const Patients = () => {
       {newPatientForm ? (
         <div className='add-patient-form-container'>
           <AddPatient
-            buttonClick={() => {
+            closeForm={() => {
               setNewPatientForm(false)
             }}
           />

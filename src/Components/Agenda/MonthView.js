@@ -72,7 +72,7 @@ function MonthView({
                   return (
                     <div
                       key={index}
-                      id={appointment.event_id}
+                      id={appointment.id}
                       className='grid-month-event'
                       onMouseEnter={() => setFocusedAgendaEvent(appointment)}
                       onMouseLeave={() => setFocusedAgendaEvent(null)}

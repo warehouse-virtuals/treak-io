@@ -38,7 +38,7 @@ function AA() {
 
   const [spinner, setSpinner] = useState(true)
 
-  const [appointments, setAppointments] = useState([])
+  const [appointments, setAppointments] = useState([]) // eslint-disable-next-line
   const [updatedData, setUpdatedData] = useState("")
 
   const [newAppointmentDay, setNewAppointmentDay] = useState("")
@@ -140,7 +140,7 @@ function AA() {
         eventColor = "#f3698b"
       }
       const obj = {
-        event_id: appointment.id,
+        id: appointment.id,
         title: appointment.reason,
         appointedPerson: appointment.appointedPerson,
         start: appointment.date.toDate(),
