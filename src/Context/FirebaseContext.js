@@ -151,7 +151,7 @@ export const FirebaseContextProvider = ({ children }) => {
       const patientsRef = collection(db, "customers/", customerid, "/patients")
       const q = query(
         patientsRef,
-        // orderBy("createdAt", "desc"),
+        orderBy("createdAt", "desc"),
         limit(10),
         where("assignedClinic", "==", usersClinic)
       )
@@ -163,7 +163,7 @@ export const FirebaseContextProvider = ({ children }) => {
               ? "local cache"
               : "server"
             console.log("Data came from " + source)
-
+            console.log(snapshot.size)
             return { ...doc.data(), id: doc.data().id }
           })
         )

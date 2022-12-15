@@ -94,17 +94,16 @@ const SearchField = ({ selectedPatientName }) => {
         <div className='found-patient-container'>
           {foundPatients.map((patient, i) => {
             return (
-              <div
-                className='found-patient'
-                onClick={() => {
-                  selectedPatientName(patient.name + " " + patient.surname)
-                  searchTextRef.current.value =
-                    patient.name + " " + patient.surname
-                  setFoundPatients([])
-                }}
-                key={i}
-              >
-                <div className='found-patient-name-container'>
+              <div className='found-patient' key={i}>
+                <div
+                  className='found-patient-name-container'
+                  onClick={() => {
+                    selectedPatientName(patient.name + " " + patient.surname)
+                    searchTextRef.current.value =
+                      patient.name + " " + patient.surname
+                    setFoundPatients([])
+                  }}
+                >
                   <div className='make-appt-btn-container'>
                     <FiUsers className='make-appt-btn' size={16} />
                   </div>

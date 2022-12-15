@@ -36,6 +36,11 @@
   height: 100%;
 }
 
+.patients-add-patient-btn-container {
+  width: 160px;
+  margin-left: auto;
+  margin-bottom: 30px;
+}
 .patients-add-patient-btn {
   display: flex;
   justify-content: space-around;
@@ -48,8 +53,7 @@
   font-weight: 600;
   background: #60cca9;
   border: 1px solid #4ec69f;
-  margin-left: auto;
-  margin-bottom: 30px;
+
   cursor: pointer;
 }
 

@@ -22,13 +22,16 @@ const Patients = () => {
       <div className='patients-body'>
         <div className='patients-body-patient-list'>
           <div className='patients-patients-list-container'>
-            <div
-              onClick={() => {
-                setNewPatientForm(true)
-              }}
-              className='patients-add-patient-btn'
-            >
-              <FiUserPlus size={24} stroke='#fff' className='' /> Kullanıcı Ekle
+            <div className='patients-add-patient-btn-container'>
+              <div
+                onClick={() => {
+                  setNewPatientForm(true)
+                }}
+                className='patients-add-patient-btn'
+              >
+                <FiUserPlus size={24} stroke='#fff' className='' /> Kullanıcı
+                Ekle
+              </div>
             </div>
 
             <PatientsList

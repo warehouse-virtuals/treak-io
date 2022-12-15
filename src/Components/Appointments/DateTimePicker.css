@@ -17,13 +17,13 @@
 .react-datetime-picker--disabled {
 }
 .react-datetime-picker__wrapper {
-  border-radius: 12px;
   display: flex;
   align-items: center;
   flex-grow: 1;
   flex-shrink: 0;
   padding: 2px;
-  border: 1px solid #e3e2e5;
+  border: none;
+  border-bottom: 2px solid #f8f8f8;
 }
 .react-datetime-picker__inputGroup {
   min-width: calc(4px + (4px * 3) + 0.54em * 6 + 0.217em * 2);
@@ -121,6 +121,11 @@
   color: inherit;
 }
 .react-calendar__month-view__days__day--neighboringMonth {
+  color: #ccc;
+  background: #f7f7f7;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  border-radius: 12px;
   color: #ccc;
   background: #f7f7f7;
 }
