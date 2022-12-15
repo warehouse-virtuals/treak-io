@@ -66,7 +66,6 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
       )
 
       const newAppointmentRef = await addDoc(appointmentsRef, appointmentInfo)
-      console.log("sa", selectedPatient)
       await updateDoc(newAppointmentRef, { id: newAppointmentRef.id })
       setAddedApointment(newAppointmentRef.id)
       parentCallback()

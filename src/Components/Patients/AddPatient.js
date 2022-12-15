@@ -7,7 +7,13 @@ import "react-datepicker/dist/react-datepicker.css"
 
 import "./AddPatient.css"
 
-import { collection, addDoc, updateDoc, doc } from "firebase/firestore"
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  doc,
+  Timestamp,
+} from "firebase/firestore"
 import { UserAuth } from "../../Context/FirebaseContext"
 
 import { useTranslation } from "react-i18next"
@@ -73,26 +79,19 @@ const AddPatient = (props) => {
       name: patientNameRef.current.value,
       phone: patientPhoneRef.current.value,
       surname: patientSurnameRef.current.value,
+      createdAt: Timestamp.now(),
     }
 
     const newPatientRef = await addDoc(
       collection(db, "customers/", userData.customerID, "/patients"),
       userInformation
-    ).then(async (data) => {
-      const patientRef = doc(
-        db,
-        "customers/",
-        userData.customerID,
-        "/patients",
-        data.id
-      )
-      console.log(data.id)
-      await updateDoc(patientRef, {
-        id: data.id,
-      })
-      console.log(data)
-      props.buttonClick()
+    )
+
+    await updateDoc(newPatientRef, {
+      id: newPatientRef.id,
     })
+
+    props.buttonClick()
     console.log("Document written with ID: ", newPatientRef.id)
   }
 
@@ -310,10 +309,7 @@ const AddPatient = (props) => {
                     </div>
                   </div>
                   <div>
-                    <label
-                      className='add-patient-warranty-duration'
-                      for='duration'
-                    >
+                    <label className='add-patient-warranty-duration'>
                       {t("Warranty Duration")}:
                     </label>
                     <select

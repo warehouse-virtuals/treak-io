@@ -34,7 +34,9 @@ export const FirebaseContextProvider = ({ children }) => {
   const storage = getStorage()
   const [user, setUser] = useState({})
   const [userData, setUserData] = useState({})
+
   const [currentPatients, setCurrentPatients] = useState([])
+
   const [currentAppointments, setCurrentAppointments] = useState([])
 
   const createUser = (email, password) => {
@@ -132,7 +134,7 @@ export const FirebaseContextProvider = ({ children }) => {
       patientsRef,
       where("assignedClinic", "==", usersClinic),
       orderBy(orderDecider),
-      limit(8),
+      limit(5),
       startAt(searchText),
       endAt(searchText + "\uf8ff")
     )
@@ -144,10 +146,16 @@ export const FirebaseContextProvider = ({ children }) => {
 
     return arr
   }
-  const patientsSnapShot = async (customerid, usersClinic) => {
+  const patientsSnapshotOnMount = async (customerid, usersClinic) => {
     if (customerid) {
       const patientsRef = collection(db, "customers/", customerid, "/patients")
-      const q = query(patientsRef, where("assignedClinic", "==", usersClinic))
+      const q = query(
+        patientsRef,
+        // orderBy("createdAt", "desc"),
+        // limit(10),
+        where("assignedClinic", "==", usersClinic)
+      )
+
       onSnapshot(q, (snapshot) => {
         setCurrentPatients(
           snapshot.docs.map((doc) => {
@@ -155,13 +163,15 @@ export const FirebaseContextProvider = ({ children }) => {
               ? "local cache"
               : "server"
             console.log("Data came from " + source)
+
             return doc.data()
           })
         )
       })
     }
   }
-  const appointmentsSnapshot = async (customerid, usersClinic, limitCount) => {
+
+  const appointmentsSnapshotOnMount = async (customerid, usersClinic) => {
     if (customerid) {
       var date = new Date()
       const appointmentsRef = collection(
@@ -176,8 +186,7 @@ export const FirebaseContextProvider = ({ children }) => {
       const q = query(
         appointmentsRef,
         orderBy("date"),
-        where("date", ">=", startOfMonth(date)), //SANIRIM SADECE BU AYI ALDIM
-        limit(limitCount)
+        where("date", ">=", startOfMonth(date)) //SANIRIM SADECE BU AYI ALDIM
       )
       onSnapshot(q, (snapshot) => {
         setCurrentAppointments(
@@ -190,7 +199,6 @@ export const FirebaseContextProvider = ({ children }) => {
             return doc.data()
           })
         )
-        console.log(currentAppointments)
       })
     }
   }
@@ -289,8 +297,9 @@ export const FirebaseContextProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    patientsSnapShot(userData.customerID, userData.clinicID)
-    appointmentsSnapshot(userData.customerID, userData.clinicID)
+    patientsSnapshotOnMount(userData.customerID, userData.clinicID)
+    appointmentsSnapshotOnMount(userData.customerID, userData.clinicID)
+    console.log("Firebase Context => LOOP'ta İSE ACİLEN DURDUR!")
   }, [userData])
 
   return (
