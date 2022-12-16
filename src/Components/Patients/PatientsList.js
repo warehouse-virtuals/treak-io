@@ -12,19 +12,30 @@ const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
   const [spinner, setSpinner] = useState(true)
 
-  const { currentPatients } = UserAuth()
+  const { currentPatients, getMorePatients, userData, isEndOfPatientList } =
+    UserAuth()
   const { t } = useTranslation("patients")
+
+  const handleScroll = (event) => {
+    const target = event.target
+    if (target.scrollHeight - target.scrollTop === target.clientHeight) {
+      isEndOfPatientList
+        ? console.log("Listenin sonu")
+        : getMorePatients(userData.customerID, userData.clinicID)
+    }
+  }
+  useEffect(() => {}, [])
 
   useEffect(() => {
     setPatients(currentPatients)
     setSpinner(false)
-  }, [currentPatients])
+  }, [currentPatients, isEndOfPatientList])
 
   return (
-    <div className='patient-table-container'>
+    <div className='patient-table-container' onScroll={handleScroll}>
       {spinner ? <Spinner /> : null}
       <table className='patient-table'>
-        <tbody>
+        <thead>
           <tr>
             <th>{t("NAME")}</th>
             <th>{t("PHONE")}</th>
@@ -32,6 +43,8 @@ const PatientsList = (props) => {
             <th>{t("SSN")}</th>
             <th>{t("DOB")}</th>
           </tr>
+        </thead>
+        <tbody>
           {patients.map((patient, i) => {
             return (
               <tr

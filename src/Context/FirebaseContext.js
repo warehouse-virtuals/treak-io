@@ -36,10 +36,15 @@ export const FirebaseContextProvider = ({ children }) => {
   const [userData, setUserData] = useState({})
 
   const [currentPatients, setCurrentPatients] = useState([])
+  const [patientsPaginationData, setPatientsPaginationData] = useState({
+    start: null,
+    end: null,
+  })
+  const [isEndOfPatientList, setIsEndOfPatientList] = useState(false)
 
   const [currentAppointments, setCurrentAppointments] = useState([])
 
-  const createUser = (email, password) => {
+  const createUser = async (email, password) => {
     const newUser = {
       name: "Hıdır",
       surname: "Hıdıroğlu",
@@ -152,18 +157,21 @@ export const FirebaseContextProvider = ({ children }) => {
       const q = query(
         patientsRef,
         orderBy("createdAt", "desc"),
-        limit(10),
+        limit(12),
         where("assignedClinic", "==", usersClinic)
       )
 
       onSnapshot(q, (snapshot) => {
+        setPatientsPaginationData({
+          ...patientsPaginationData,
+          start: snapshot.docs[snapshot.docs.length - 1],
+        })
         setCurrentPatients(
           snapshot.docs.map((doc) => {
             const source = snapshot.metadata.fromCache
               ? "local cache"
               : "server"
             console.log("Data came from " + source)
-            console.log(snapshot.size)
             return { ...doc.data(), id: doc.data().id }
           })
         )
@@ -171,6 +179,44 @@ export const FirebaseContextProvider = ({ children }) => {
     }
   }
 
+  const getMorePatients = async (customerid, usersClinic) => {
+    const patientsRef = collection(db, "customers/", customerid, "/patients")
+    const q = query(
+      patientsRef,
+      orderBy("createdAt", "desc"),
+      startAt(patientsPaginationData.start),
+      limit(12),
+      where("assignedClinic", "==", usersClinic)
+    )
+
+    onSnapshot(q, (snapshot) => {
+      if (
+        !(
+          currentPatients[currentPatients.length - 1].id ===
+          snapshot.docs[snapshot.docs.length - 1].data().id
+        )
+      ) {
+        setPatientsPaginationData({
+          ...patientsPaginationData,
+          start: snapshot.docs[snapshot.docs.length - 1],
+        })
+
+        setCurrentPatients([
+          ...currentPatients,
+          ...snapshot.docs.map((doc) => {
+            const source = snapshot.metadata.fromCache
+              ? "local cache"
+              : "server"
+            console.log("Data came from " + source)
+
+            return { ...doc.data(), id: doc.data().id }
+          }),
+        ])
+      } else {
+        setIsEndOfPatientList(true)
+      }
+    })
+  }
   const appointmentsSnapshotOnMount = async (customerid, usersClinic) => {
     if (customerid) {
       var date = new Date()
@@ -312,8 +358,11 @@ export const FirebaseContextProvider = ({ children }) => {
         fetchUserData,
         userData,
         currentPatients,
+        isEndOfPatientList,
+        getMorePatients,
         currentAppointments,
         db,
+        patientsPaginationData,
         searchResults,
         getEmployeesOfClinic,
         updateAppointment,

@@ -26,7 +26,6 @@ export const db = initializeFirestore(app, {
 })
 
 enableIndexedDbPersistence(db).catch((err) => {
-  console.log("sa")
   if (err.code === "failed-precondition") {
     console.log(err.code)
     // Multiple tabs open, persistence can only be enabled

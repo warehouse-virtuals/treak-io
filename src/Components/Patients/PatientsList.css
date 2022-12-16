@@ -1,18 +1,18 @@
 .patient-table-container {
-  position: relative;
+  height: 528px;
   width: 100%;
-
-  min-height: 90%;
   font-size: 14px;
+  overflow-y: scroll;
 }
 
 .patient-table {
   width: 100%;
   border-spacing: 0;
-  background: #f8f8f8;
 }
 
 .patient-table th {
+  position: sticky;
+  top: 0px;
   font-weight: 600;
   font-size: 16px;
   height: 34px;
@@ -25,25 +25,28 @@
 .patient-table th:not(:first-child) {
   text-align: center;
 }
-.patient-table tr:not(:first-child) td:not(:first-child) {
+.patient-table tr:not(:first-child) {
   text-align: center;
 }
 
-.patient-table th:nth-child(2) {
+.patient-table th:nth-child(1) {
   width: 200px;
 }
 
-.patient-table tr:nth-child(even) td {
+.patient-table tr:nth-child(odd) td {
   background: #fcfcfc;
 }
 
 .patient-table td {
   height: 48px;
   background: #fff;
-  text-align: left;
+  text-align: center;
   transition: background 0.2s ease-in-out;
   padding-left: 8px;
   border-bottom: 2px solid #f8f8f8;
+}
+.patient-table td:first-child {
+  text-align: left;
 }
 
 .patient-table tr:hover td {

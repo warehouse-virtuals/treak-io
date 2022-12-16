@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+
+import { UserAuth } from "../../Context/FirebaseContext"
 
 import { useTranslation } from "react-i18next"
 import { FiUserPlus } from "react-icons/fi"
@@ -13,8 +15,11 @@ import "./Patients.css"
 const Patients = () => {
   const [newPatientForm, setNewPatientForm] = useState(false)
   const [focusedPatient, setFocusedPatient] = useState({})
+  const { currentPatients } = UserAuth()
 
   const { t } = useTranslation("dashboard")
+
+  useEffect(() => {}, [currentPatients])
 
   return (
     <div className='patients-cointainer'>
@@ -33,12 +38,16 @@ const Patients = () => {
                 Ekle
               </div>
             </div>
-
-            <PatientsList
-              focusedPatient={(patient) => {
-                setFocusedPatient(patient)
-              }}
-            />
+            <div className='patients-patients-list'>
+              <PatientsList
+                focusedPatient={(patient) => {
+                  setFocusedPatient(patient)
+                }}
+              />
+            </div>
+          </div>
+          <div className='patients-patients-list-footer'>
+            Listelenen Kullanıcı Sayısı: {currentPatients.length}
           </div>
         </div>
         <div className='patients-body-overview'>
