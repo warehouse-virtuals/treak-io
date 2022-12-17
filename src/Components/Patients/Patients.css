@@ -11,19 +11,29 @@
   padding: 20px;
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   height: calc(100% - 56px);
   width: 100%;
   max-width: 1680px;
 }
+.patients-body-navbar {
+  height: 65px;
+
+  display: flex;
+}
+
 .patients-body-patient-list {
   width: 70%;
 }
+.patients-list-and-overview {
+  display: flex;
+  justify-content: space-between;
+}
 
 .patients-body-overview {
-  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-end;
   width: 30%;
   height: 100%;
 }
@@ -44,24 +54,25 @@
   height: 100px;
 }
 
+.patients-patients-list-footer {
+  width: 100%;
+}
+
 .patients-add-patient-btn-container {
-  width: 160px;
-  margin-left: auto;
-  margin-bottom: 30px;
 }
 .patients-add-patient-btn {
+  padding: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 160px;
-  height: 40px;
-  font-size: 18;
+  width: 175px;
+  height: 60px;
+  font-size: 13px;
   border-radius: 12px;
   color: #fff;
   font-weight: 600;
   background: #60cca9;
   border: 1px solid #4ec69f;
-
   cursor: pointer;
 }
 

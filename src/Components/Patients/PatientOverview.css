@@ -1,56 +1,54 @@
 .patient-overview-container {
   box-sizing: border-box;
-  height: 100%;
   display: flex;
-  justify-content: left;
   flex-direction: column;
-  width: 95%;
-  margin-left: auto;
-  background: #fff;
+  width: 80%;
+  height: 528px;
+  /* background: #fff; */
+  color: #252525;
   padding: 10px;
 }
 
 .patient-overview-icon-container {
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
-  height: 100px;
 }
 
 .patient-overview-icon {
-  padding: 10px;
+  height: 40px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
   border-radius: 50%;
 }
 
 .patient-overview-name {
+  height: 25px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .patient-overview-ssn {
+  height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  font-weight: 500;
 }
 
 .patient-overview-hearingaid-container {
+  padding-top: 15px;
+  height: 100px;
+
   display: flex;
   justify-content: space-between;
-  margin-top: 40px;
-  margin-bottom: 40px;
 }
 
 .patient-overview-hearingaid-right {
@@ -94,19 +92,25 @@
 }
 
 .patient-overview-details-container {
+  height: 250px;
   display: flex;
   flex-direction: column;
-}
-.patient-overview-details-title {
-  font-weight: 600;
-  margin-bottom: 10px;
 }
 
 .patient-overview-content-container {
   display: flex;
   flex-direction: column;
 }
+
+.patient-overview-content:first-child {
+  display: flex;
+  padding-top: 30px;
+
+  height: 100px;
+}
 .patient-overview-content {
+  height: 25px;
+
   display: flex;
   margin-bottom: 10px;
 }
@@ -124,7 +128,6 @@
 }
 .patient-overview-footer {
   align-items: flex-end;
-  margin-bottom: 20px;
   margin-top: auto;
   display: flex;
   justify-content: space-around;
@@ -137,15 +140,11 @@
   height: 50px;
   width: 50px;
   border-radius: 12px;
-  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
-    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
-    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
-    inset 0px 0px 0px 0px #0001;
-  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
 }
 
-.patient-overview-footer-btn :hover {
+.patient-overview-footer-btn:hover {
   cursor: pointer;
+  background: #f2f2f2;
 }
 
 @media only screen and (max-width: 1180px) {

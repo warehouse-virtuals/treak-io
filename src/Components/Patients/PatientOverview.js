@@ -35,7 +35,7 @@ const PatientOverview = (props) => {
     return (
       <div className='patient-overview-container'>
         <div className='patient-overview-icon-container'>
-          <FiUser size={70} className='patient-overview-icon' />
+          <FiUser className='patient-overview-icon' />
         </div>
         <div className='patient-overview-name'>
           {person.name}&nbsp;{person.surname}
@@ -89,7 +89,6 @@ const PatientOverview = (props) => {
             : null}
         </div>
         <div className='patient-overview-details-container'>
-          <div className='patient-overview-details-title'>Detaylar</div>
           <div className='patient-overview-content-container'>
             <div className='patient-overview-content'>
               <div className='patient-overview-content-key'>Adres:</div>

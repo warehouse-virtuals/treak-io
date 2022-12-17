@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: left;
   min-width: 1180px;
-  min-height: 713px;
+
   width: 100vw;
   height: 100vh;
   font-family: "Gilroy", sans-serif !important;
@@ -41,7 +41,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 2px;
   background-color: #f5f5f5;
 }
 
