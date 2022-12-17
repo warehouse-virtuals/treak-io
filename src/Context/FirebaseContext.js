@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import { startOfMonth } from "date-fns"
+import { startOfMonth, endOfMonth } from "date-fns"
+
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -43,6 +44,7 @@ export const FirebaseContextProvider = ({ children }) => {
   const [isEndOfPatientList, setIsEndOfPatientList] = useState(false)
 
   const [currentAppointments, setCurrentAppointments] = useState([])
+  const [monthsList, setMonthsList] = useState([])
 
   const createUser = async (email, password) => {
     const newUser = {
@@ -179,14 +181,19 @@ export const FirebaseContextProvider = ({ children }) => {
     }
   }
 
-  const getMorePatients = async (customerid, usersClinic) => {
-    const patientsRef = collection(db, "customers/", customerid, "/patients")
+  const getMorePatients = async () => {
+    const patientsRef = collection(
+      db,
+      "customers/",
+      userData.customerID,
+      "/patients"
+    )
     const q = query(
       patientsRef,
       orderBy("createdAt", "desc"),
       startAt(patientsPaginationData.start),
       limit(12),
-      where("assignedClinic", "==", usersClinic)
+      where("assignedClinic", "==", userData.clinicID)
     )
 
     onSnapshot(q, (snapshot) => {
@@ -232,8 +239,12 @@ export const FirebaseContextProvider = ({ children }) => {
       const q = query(
         appointmentsRef,
         orderBy("date"),
-        where("date", ">=", startOfMonth(date)) //SANIRIM SADECE BU AYI ALDIM
+        where("date", ">=", startOfMonth(date)),
+        where("date", "<", endOfMonth(date))
+        //SANIRIM SADECE BU AYI ALDIM
       )
+      setMonthsList([...monthsList, startOfMonth(date)])
+
       onSnapshot(q, (snapshot) => {
         setCurrentAppointments(
           snapshot.docs.map((doc) => {
@@ -245,6 +256,43 @@ export const FirebaseContextProvider = ({ children }) => {
           })
         )
       })
+    }
+  }
+
+  const getMoreAppointments = async (newDateForMonthsList) => {
+    if (userData.customerID) {
+      const appointmentsRef = collection(
+        db,
+        "customers/",
+        userData.customerID,
+        "/clinics/",
+        userData.clinicID,
+        "/appointments"
+      )
+      const q = query(
+        appointmentsRef,
+        orderBy("date"),
+        where("date", ">=", startOfMonth(newDateForMonthsList)),
+        where("date", "<", endOfMonth(newDateForMonthsList))
+      )
+      const dateInArray = (date, array) => array.some((d) => +d === +date)
+
+      if (!dateInArray(startOfMonth(newDateForMonthsList), monthsList)) {
+        setMonthsList([...monthsList, startOfMonth(newDateForMonthsList)])
+
+        onSnapshot(q, (snapshot) => {
+          setCurrentAppointments([
+            ...currentAppointments,
+            ...snapshot.docs.map((doc) => {
+              const source = snapshot.metadata.fromCache
+                ? "local cache"
+                : "server"
+              console.log("Data came from " + source)
+              return { ...doc.data(), id: doc.id }
+            }),
+          ])
+        })
+      }
     }
   }
 
@@ -345,6 +393,7 @@ export const FirebaseContextProvider = ({ children }) => {
     patientsSnapshotOnMount(userData.customerID, userData.clinicID)
     appointmentsSnapshotOnMount(userData.customerID, userData.clinicID)
     console.log("Firebase Context => LOOP'ta İSE ACİLEN DURDUR!")
+    // eslint-disable-next-line
   }, [userData])
 
   return (
@@ -361,6 +410,7 @@ export const FirebaseContextProvider = ({ children }) => {
         isEndOfPatientList,
         getMorePatients,
         currentAppointments,
+        getMoreAppointments,
         db,
         patientsPaginationData,
         searchResults,

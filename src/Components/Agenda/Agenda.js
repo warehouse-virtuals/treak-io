@@ -45,6 +45,7 @@ function AA() {
 
   const {
     currentAppointments,
+    getMoreAppointments,
     updateAppointment,
     //  deleteAppointment,
   } = UserAuth()
@@ -109,12 +110,14 @@ function AA() {
       }),
       end: endOfWeek(endOfMonth(firstDayCurrentMonth), { locale: tr }),
     })
+
     setNewMonth(newMonthStart)
     setDays(formatedDates)
   }
 
   const updateWeek = (newWeekStart) => {
     setNewWeek(newWeekStart)
+    getMoreAppointments(newWeekStart)
   }
 
   const updateDay = (newDayStart) => {
@@ -150,12 +153,16 @@ function AA() {
       }
       return obj
     })
-
     setAppointments(fixedList)
     setSpinner(false)
 
     //eslint-disable-next-line
   }, [currentAppointments])
+
+  useEffect(() => {
+    getMoreAppointments(newMonth)
+    // eslint-disable-next-line
+  }, [newMonth])
 
   return (
     <div className='agenda-container'>
