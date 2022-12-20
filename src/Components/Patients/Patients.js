@@ -27,7 +27,9 @@ const Patients = () => {
       <div className='patients-body'>
         <div className='patients-body-navbar'>
           <div className='patients-body-navbar-tabs'>
-            <div className='patients-body-navbar-tab'>İsim</div>
+            <div className='patients-body-navbar-tab'>Tab1</div>{" "}
+            <div className='patients-body-navbar-tab'>Tab2</div>{" "}
+            <div className='patients-body-navbar-tab'>Tab3</div>
           </div>
         </div>
         <div className='patients-list-and-overview'>

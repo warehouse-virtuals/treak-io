@@ -8,13 +8,13 @@ import {
 import { getStorage } from "firebase/storage"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDdDlQ9rrTMzakGCgWPw0VQ81oCrnmNe6c",
-  authDomain: "warehouse-io.firebaseapp.com",
-  projectId: "warehouse-io",
-  storageBucket: "warehouse-io.appspot.com",
-  messagingSenderId: "1031611310079",
-  appId: "1:1031611310079:web:1118bb2549d6fda7b1d1ca",
-  measurementId: "G-CJ11Z1TKRH",
+  apiKey: "AIzaSyAInT-boFBdPYOwyHk7bhoYGeX72A2p7oI",
+  authDomain: "treat-clinic.firebaseapp.com",
+  projectId: "treat-clinic",
+  storageBucket: "treat-clinic.appspot.com",
+  messagingSenderId: "411102056572",
+  appId: "1:411102056572:web:2f94617c0200889ff079f9",
+  measurementId: "G-7DSLFDFEBK",
 }
 
 // Initialize Firebase

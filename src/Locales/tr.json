@@ -4,7 +4,7 @@
     "Patients": "Kullanıcılar",
     "Agenda": "Ajanda",
     "Repair": "Tamir",
-    "Messages": "Mesajlar",
+    "Chat": "Sohbetler",
     "Analytics": "Analitikler",
     "Logout": "Çıkış"
   },
@@ -53,8 +53,8 @@
     "/dashboard": "Genel Bakış",
     "/patients": "Kullanıcılar",
     "/agenda": "Ajanda",
+    "/chat": "Sohbetler",
     "/repair": "Tamir ve Bakım",
-    "/messages": "Mesajlar",
     "/analytics": "Analitikler"
   },
   "patients": {

@@ -38,10 +38,10 @@ const NavbarButtons = (size, className) => {
       desc: "Track ongoing repairments of aids",
     },
     {
-      name: "Messages",
+      name: "Chat",
       icon: <FiMail size={size} className={className} />,
-      pathname: "/messages",
-      alt: "messages",
+      pathname: "/chat",
+      alt: "chat",
       desc: "Get in touch with your colleagues",
     },
     {

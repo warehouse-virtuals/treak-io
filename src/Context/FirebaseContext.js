@@ -25,6 +25,7 @@ import {
   startAt,
   endAt,
 } from "firebase/firestore"
+
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 
 import { auth, db } from "../firebase"
@@ -350,7 +351,6 @@ export const FirebaseContextProvider = ({ children }) => {
     let arr = []
 
     querySnapshotOfInventory.forEach((doc) => {
-      console.log(doc.data())
       arr.push(doc.data())
     })
     console.log("LOOP'ta İSE ACİLEN DURDUR!")

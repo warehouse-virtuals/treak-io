@@ -1,9 +1,9 @@
 {
-  "name": "warehouse-web-client",
+  "name": "treat-web-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/",
   "dependencies": {
-    "@aldabil/react-scheduler": "^2.2.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.2",
@@ -14,7 +14,6 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "add": "^2.0.6",
     "chart.js": "^4.0.1",
     "d3-ease": "^3.0.1",
     "date-fns": "^2.29.2",
@@ -26,10 +25,7 @@
     "i18next-browser-languagedetector": "^6.1.4",
     "react": "^18.2.0",
     "react-audiogram": "https://github.com/warehouse-io/react-audiogram.git",
-    "react-big-calendar": "^1.5.0",
     "react-chartjs-2": "^5.0.1",
-    "react-circle-progress-bar": "^0.1.4",
-    "react-circular-progressbar": "^2.1.0",
     "react-datepicker": "^4.8.0",
     "react-datetime-picker": "^4.0.1",
     "react-dom": "^18.2.0",
@@ -66,6 +62,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {}
+  }
 }

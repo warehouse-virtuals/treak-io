@@ -1,6 +1,7 @@
 {
   "projects": {
-    "staging": "warehouse-io"
+    "staging": "treat-clinic",
+    "default": "treat-clinic"
   },
   "targets": {},
   "etags": {}

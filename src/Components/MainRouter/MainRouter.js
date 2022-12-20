@@ -8,7 +8,7 @@ import Repair from "../Repair/Repair"
 import RepairForm from "../Repair/RepairForm"
 import Patients from "../Patients/Patients"
 import AddPatient from "../Patients/AddPatient"
-import Messages from "../Messages/Messages"
+import Chat from "../Chat/Chat"
 import Analytics from "../Analytics/Analytics"
 import AddAppointments from "../Appointments/AddAppointments"
 
@@ -26,7 +26,7 @@ const MainRouter = () => {
       <Route path='/addAppointment' element={<AddAppointments />} />
       <Route path='/repair' element={<Repair />} />
       <Route path='/repairform' element={<RepairForm />} />
-      <Route path='/messages' element={<Messages />} />
+      <Route path='/chat' element={<Chat />} />
       <Route path='/analytics' element={<Analytics />} />
     </Routes>
   )

@@ -21,6 +21,12 @@
 
   display: flex;
 }
+.patients-body-navbar-tabs {
+  width: 70%;
+  display: flex;
+
+  justify-content: space-between;
+}
 
 .patients-body-patient-list {
   width: 70%;
