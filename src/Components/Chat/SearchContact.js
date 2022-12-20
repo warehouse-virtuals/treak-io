@@ -6,7 +6,7 @@ function SearchContact() {
   return (
     <div className='search-contact-bar'>
       <input className='' placeholder='Sohbet ara falan' />
-      <div className='search-icon'>
+      <div className='search-contact-icon'>
         <FiSearch className='' size={22} />
       </div>
     </div>

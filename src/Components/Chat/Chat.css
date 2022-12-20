@@ -12,15 +12,15 @@
   max-width: 1680px;
 }
 
-.chat-inbox-container {
-  padding: 10px;
+.chat-inbox-wrapper {
   display: flex;
   flex-direction: column;
   width: 300px;
 }
 
-.chat-active-container {
+.chat-active-wrapper {
   display: flex;
   width: calc(100% - 300px);
-  background: red;
+
+  border-left: 2px solid #f8f8f8;
 }

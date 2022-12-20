@@ -8,10 +8,10 @@ const Chat = () => {
     <div className='chat-container'>
       <TopBar />
       <div className='chat-body'>
-        <div className='chat-inbox-container'>
+        <div className='chat-inbox-wrapper'>
           <ChatInbox />
         </div>
-        <div className='chat-active-container'>sa</div>
+        <div className='chat-active-wrapper'>sa</div>
       </div>
     </div>
   )
