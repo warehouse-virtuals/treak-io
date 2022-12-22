@@ -24,7 +24,6 @@ const PatientsList = (props) => {
         : getMorePatients(userData.customerID, userData.clinicID)
     }
   }
-  useEffect(() => {}, [])
 
   useEffect(() => {
     setPatients(currentPatients)

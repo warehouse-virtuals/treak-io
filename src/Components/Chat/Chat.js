@@ -20,7 +20,7 @@ const Chat = () => {
         setActiveChatMessages((oldState) => [...oldState, msg])
       }
     })
-  }, [activeChatID])
+  }, [activeChatID, messages])
 
   return (
     <div className='chat-container'>

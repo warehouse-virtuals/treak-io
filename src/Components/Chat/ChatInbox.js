@@ -15,6 +15,7 @@ const ChatInbox = ({ chatChannels, messages, setActiveChatID }) => {
           ? chatChannels.map((channel) => {
               return (
                 <Channel
+                  key={channel}
                   id={channel}
                   setActiveChatID={() => setActiveChatID(channel)}
                   sender={messages[messages.length - 1].senderHandle}

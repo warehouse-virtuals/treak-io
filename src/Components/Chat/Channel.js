@@ -5,6 +5,8 @@ import {
   FiChevronsRight,
 } from "react-icons/fi"
 
+import { UserAuth } from "../../Context/FirebaseContext"
+
 import "./Channel.css"
 
 const Channel = ({
@@ -18,7 +20,9 @@ const Channel = ({
   return (
     <div
       id={id}
-      onClick={() => setActiveChatID()}
+      onClick={() => {
+        setActiveChatID()
+      }}
       className='chat-channel-container'
     >
       <div className='chat-channel-icon'>

@@ -3,12 +3,13 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background: rgb(252, 212, 138);
 }
 
 .chat-active-message-container {
-  padding: 20px;
+  background: rgb(252, 212, 138);
+
   margin-top: auto;
+  overflow-y: scroll;
 }
 .chat-active-message {
   display: flex;

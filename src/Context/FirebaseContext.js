@@ -24,6 +24,7 @@ import {
   limit,
   startAt,
   endAt,
+  startAfter,
 } from "firebase/firestore"
 
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
@@ -42,6 +43,7 @@ export const FirebaseContextProvider = ({ children }) => {
     start: null,
     end: null,
   })
+
   const [isEndOfPatientList, setIsEndOfPatientList] = useState(false)
 
   const [currentAppointments, setCurrentAppointments] = useState([])
@@ -49,6 +51,10 @@ export const FirebaseContextProvider = ({ children }) => {
 
   const [chatChannels, setChatChannels] = useState([])
   const [messages, setMessages] = useState([])
+  const [messagesPaginationData, setMessagesPaginationData] = useState({
+    start: null,
+    end: null,
+  })
 
   const createUser = async (email, password) => {
     const newUser = {
@@ -177,7 +183,7 @@ export const FirebaseContextProvider = ({ children }) => {
             const source = snapshot.metadata.fromCache
               ? "local cache"
               : "server"
-            console.log("Data came from " + source)
+            console.log("Patients came from " + source)
             return { ...doc.data(), id: doc.data().id }
           })
         )
@@ -218,7 +224,7 @@ export const FirebaseContextProvider = ({ children }) => {
             const source = snapshot.metadata.fromCache
               ? "local cache"
               : "server"
-            console.log("Data came from " + source)
+            console.log("More patients came from " + source)
 
             return { ...doc.data(), id: doc.data().id }
           }),
@@ -255,7 +261,7 @@ export const FirebaseContextProvider = ({ children }) => {
             const source = snapshot.metadata.fromCache
               ? "local cache"
               : "server"
-            console.log("Data came from " + source)
+            console.log("Appointment came from " + source)
             return { ...doc.data(), id: doc.id }
           })
         )
@@ -291,7 +297,7 @@ export const FirebaseContextProvider = ({ children }) => {
               const source = snapshot.metadata.fromCache
                 ? "local cache"
                 : "server"
-              console.log("Data came from " + source)
+              console.log("More appointment came from " + source)
               return { ...doc.data(), id: doc.id }
             }),
           ])
@@ -373,7 +379,7 @@ export const FirebaseContextProvider = ({ children }) => {
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
-  const getChatChannels = async () => {
+  const chatChannelsSnapshotOnMount = async () => {
     if (userData.customerID) {
       const chatRef = collection(
         db,
@@ -386,17 +392,19 @@ export const FirebaseContextProvider = ({ children }) => {
       )
 
       onSnapshot(q, (snap) => {
-        snap.docs.forEach((doc) => {
-          setChatChannels([...chatChannels, doc.id])
-        })
+        setChatChannels(
+          snap.docs.map((doc) => {
+            return doc.id
+          })
+        )
       })
     }
   }
 
-  const getMessages = async () => {
+  const getMessagesSnapshotOnMount = async () => {
     if (userData.customerID) {
       chatChannels.forEach((chatChannel) => {
-        const messagesREf = collection(
+        const messagesRef = collection(
           db,
           "customers/" +
             userData.customerID +
@@ -404,13 +412,60 @@ export const FirebaseContextProvider = ({ children }) => {
             chatChannel +
             "/messages"
         )
-        onSnapshot(messagesREf, (snap) => {
-          snap.docs.forEach((doc) => {
-            setMessages((msgs) => [...msgs, { ...doc.data(), id: chatChannel }])
+
+        const q = query(messagesRef, orderBy("createdAt", "asc"), limit(10))
+        onSnapshot(q, (snap) => {
+          setMessagesPaginationData({
+            ...messagesPaginationData,
+            start: snap.docs[snap.docs.length - 1],
           })
+
+          setMessages(
+            snap.docs.map((doc) => {
+              const source = snap.metadata.fromCache ? "local cache" : "server"
+              console.log("Messages came from " + source)
+              return { ...doc.data(), id: chatChannel }
+            })
+          )
         })
       })
     }
+  }
+
+  const getMoreMessages = async () => {
+    chatChannels.forEach((chatChannel) => {
+      const messagesRef = collection(
+        db,
+        "customers/" +
+          userData.customerID +
+          "/chat/" +
+          chatChannel +
+          "/messages"
+      )
+
+      const q = query(
+        messagesRef,
+        orderBy("createdAt", "asc"),
+        startAfter(messagesPaginationData.start),
+        limit(10)
+      )
+
+      onSnapshot(q, (snap) => {
+        setMessagesPaginationData({
+          ...messagesPaginationData,
+          start: snap.docs[snap.docs.length - 1],
+        })
+
+        setMessages([
+          ...messages,
+          ...snap.docs.map((doc) => {
+            const source = snap.metadata.fromCache ? "local cache" : "server"
+            console.log("More messages came from " + source)
+            return { ...doc.data(), id: chatChannel }
+          }),
+        ])
+      })
+    })
   }
 
   useEffect(() => {
@@ -433,16 +488,18 @@ export const FirebaseContextProvider = ({ children }) => {
   useEffect(() => {
     patientsSnapshotOnMount(userData.customerID, userData.clinicID)
     appointmentsSnapshotOnMount(userData.customerID, userData.clinicID)
-
-    getChatChannels()
+    chatChannelsSnapshotOnMount()
     console.log("Firebase Context => LOOP'ta İSE ACİLEN DURDUR!")
     // eslint-disable-next-line
   }, [userData])
 
   useEffect(() => {
-    getMessages()
+    getMessagesSnapshotOnMount()
   }, [chatChannels])
 
+  useEffect(() => {
+    getMoreMessages()
+  }, [])
   return (
     <UserContext.Provider
       value={{
@@ -460,12 +517,14 @@ export const FirebaseContextProvider = ({ children }) => {
         searchResults,
         fetchUserData,
         currentPatients,
+        getMoreMessages,
         getMorePatients,
         deleteAppointment,
         updateAppointment,
         isEndOfPatientList,
         currentAppointments,
         getMoreAppointments,
+        messagesPaginationData,
         getEmployeesOfClinic,
         patientsPaginationData,
       }}
