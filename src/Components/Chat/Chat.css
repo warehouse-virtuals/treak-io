@@ -6,6 +6,7 @@
   width: 100%;
 }
 .chat-body {
+  box-sizing: border-box;
   display: flex;
   height: calc(100% - 56px);
   width: 100%;
@@ -19,8 +20,9 @@
 }
 
 .chat-active-wrapper {
+  box-sizing: border-box;
   display: flex;
-  width: calc(100% - 300px);
-
+  width: 100%;
+  height: 100%;
   border-left: 2px solid #f8f8f8;
 }

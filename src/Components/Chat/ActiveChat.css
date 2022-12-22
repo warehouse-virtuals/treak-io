@@ -1,0 +1,30 @@
+.chat-active-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: rgb(252, 212, 138);
+}
+
+.chat-active-message-container {
+  padding: 20px;
+  margin-top: auto;
+}
+.chat-active-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  background: red;
+}
+
+#me {
+  align-items: flex-end;
+  background: orange;
+}
+
+.chat-active-text-input {
+  height: 60px;
+  width: 100%;
+  background: #f2f2f2;
+}

@@ -47,6 +47,9 @@ export const FirebaseContextProvider = ({ children }) => {
   const [currentAppointments, setCurrentAppointments] = useState([])
   const [monthsList, setMonthsList] = useState([])
 
+  const [chatChannels, setChatChannels] = useState([])
+  const [messages, setMessages] = useState([])
+
   const createUser = async (email, password) => {
     const newUser = {
       name: "Hıdır",
@@ -106,15 +109,15 @@ export const FirebaseContextProvider = ({ children }) => {
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
-  const getCustomers = async () => {
-    const customersRef = collection(db, "customers")
-    getDocs(customersRef)
-      .then((customers) => {
-        customers.forEach((customer) => customer.id)
-      })
-      .catch((err) => console.error(err))
-    console.log("LOOP'ta İSE ACİLEN DURDUR!")
-  }
+  // const getCustomers = async () => {
+  //   const customersRef = collection(db, "customers")
+  //   getDocs(customersRef)
+  //     .then((customers) => {
+  //       customers.forEach((customer) => customer.id)
+  //     })
+  //     .catch((err) => console.error(err))
+  //   console.log("LOOP'ta İSE ACİLEN DURDUR!")
+  // }
 
   const getEmployeesOfClinic = async (usersClinic) => {
     const q = query(
@@ -318,7 +321,6 @@ export const FirebaseContextProvider = ({ children }) => {
   }
 
   const deletePatient = async (customerid, patientid) => {
-    console.log(customerid, patientid)
     const patientToBeDeletedRef = doc(
       db,
       "customers/",
@@ -358,7 +360,6 @@ export const FirebaseContextProvider = ({ children }) => {
   }
 
   const deleteAppointment = async (customerid, clinicid, appointmentid) => {
-    console.log(customerid, clinicid, appointmentid)
     const appointmentToBeDeletedRef = doc(
       db,
       "customers/",
@@ -370,6 +371,46 @@ export const FirebaseContextProvider = ({ children }) => {
     )
     await deleteDoc(appointmentToBeDeletedRef)
     console.log("LOOP'ta İSE ACİLEN DURDUR!")
+  }
+
+  const getChatChannels = async () => {
+    if (userData.customerID) {
+      const chatRef = collection(
+        db,
+        "customers/" + userData.customerID + "/chat"
+      )
+
+      const q = query(
+        chatRef,
+        where("participants", "array-contains", userData.uid)
+      )
+
+      onSnapshot(q, (snap) => {
+        snap.docs.forEach((doc) => {
+          setChatChannels([...chatChannels, doc.id])
+        })
+      })
+    }
+  }
+
+  const getMessages = async () => {
+    if (userData.customerID) {
+      chatChannels.forEach((chatChannel) => {
+        const messagesREf = collection(
+          db,
+          "customers/" +
+            userData.customerID +
+            "/chat/" +
+            chatChannel +
+            "/messages"
+        )
+        onSnapshot(messagesREf, (snap) => {
+          snap.docs.forEach((doc) => {
+            setMessages((msgs) => [...msgs, { ...doc.data(), id: chatChannel }])
+          })
+        })
+      })
+    }
   }
 
   useEffect(() => {
@@ -392,34 +433,41 @@ export const FirebaseContextProvider = ({ children }) => {
   useEffect(() => {
     patientsSnapshotOnMount(userData.customerID, userData.clinicID)
     appointmentsSnapshotOnMount(userData.customerID, userData.clinicID)
+
+    getChatChannels()
     console.log("Firebase Context => LOOP'ta İSE ACİLEN DURDUR!")
     // eslint-disable-next-line
   }, [userData])
 
+  useEffect(() => {
+    getMessages()
+  }, [chatChannels])
+
   return (
     <UserContext.Provider
       value={{
-        createUser,
+        db,
         user,
-        logout,
         login,
-        getCustomers,
-        fetchUserData,
+        logout,
+        messages,
         userData,
+        createUser,
+        chatChannels,
+        getInventory,
+        getPortfolio,
+        deletePatient,
+        searchResults,
+        fetchUserData,
         currentPatients,
-        isEndOfPatientList,
         getMorePatients,
+        deleteAppointment,
+        updateAppointment,
+        isEndOfPatientList,
         currentAppointments,
         getMoreAppointments,
-        db,
-        patientsPaginationData,
-        searchResults,
         getEmployeesOfClinic,
-        updateAppointment,
-        deletePatient,
-        deleteAppointment,
-        getPortfolio,
-        getInventory,
+        patientsPaginationData,
       }}
     >
       {children}

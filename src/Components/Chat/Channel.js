@@ -7,10 +7,20 @@ import {
 
 import "./Channel.css"
 
-const Channel = ({ sender, message, hasSeen, isGroup }) => {
-  console.log(sender)
+const Channel = ({
+  sender,
+  message,
+  hasSeen,
+  isGroup,
+  id,
+  setActiveChatID,
+}) => {
   return (
-    <div className='chat-channel-container'>
+    <div
+      id={id}
+      onClick={() => setActiveChatID()}
+      className='chat-channel-container'
+    >
       <div className='chat-channel-icon'>
         {isGroup ? <FiUser size={24} /> : <FiUsers size={24} />}
       </div>
