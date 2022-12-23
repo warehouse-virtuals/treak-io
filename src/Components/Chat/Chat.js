@@ -16,7 +16,7 @@ const Chat = () => {
 
   useEffect(() => {
     messages.forEach((msg) => {
-      if (msg.id === activeChatID) {
+      if (msg.channelid === activeChatID) {
         setActiveChatMessages((oldState) => [...oldState, msg])
       }
     })

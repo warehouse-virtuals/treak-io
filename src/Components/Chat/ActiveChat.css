@@ -1,4 +1,5 @@
 .chat-active-wrapper {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -6,26 +7,52 @@
 }
 
 .chat-active-message-container {
-  background: rgb(252, 212, 138);
-
+  height: calc(100% - 60px);
   margin-top: auto;
   overflow-y: scroll;
+  padding: 10px;
 }
 .chat-active-message {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100px;
-  background: red;
+  align-items: flex-start;
 }
 
 #me {
   align-items: flex-end;
-  background: orange;
 }
 
 .chat-active-text-input {
-  height: 60px;
+  height: 100px;
   width: 100%;
   background: #f2f2f2;
+}
+
+.chat-active-message-messages {
+  min-width: 200px;
+  padding: 8px 15px;
+  background: #f2f2f2;
+  border-radius: 20px;
+}
+
+.chat-active-message-messages-sender {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.chat-active-message-messages-text {
+  font-size: 15px;
+  margin-left: 10px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+.chat-active-message-messages-date {
+  color: #b3b5ba;
+  display: flex;
+  font-size: 12px;
+  font-weight: 600;
+  justify-content: flex-end;
+  margin-top: 5px;
 }

@@ -5,8 +5,6 @@ import {
   FiChevronsRight,
 } from "react-icons/fi"
 
-import { UserAuth } from "../../Context/FirebaseContext"
-
 import "./Channel.css"
 
 const Channel = ({

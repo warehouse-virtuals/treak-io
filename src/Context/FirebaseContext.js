@@ -43,7 +43,6 @@ export const FirebaseContextProvider = ({ children }) => {
     start: null,
     end: null,
   })
-
   const [isEndOfPatientList, setIsEndOfPatientList] = useState(false)
 
   const [currentAppointments, setCurrentAppointments] = useState([])
@@ -424,7 +423,12 @@ export const FirebaseContextProvider = ({ children }) => {
             snap.docs.map((doc) => {
               const source = snap.metadata.fromCache ? "local cache" : "server"
               console.log("Messages came from " + source)
-              return { ...doc.data(), id: chatChannel }
+              return {
+                ...doc.data(),
+                createdAt: doc.data().createdAt.toDate(),
+                messageid: doc.id,
+                channelid: chatChannel,
+              }
             })
           )
         })
@@ -451,6 +455,10 @@ export const FirebaseContextProvider = ({ children }) => {
       )
 
       onSnapshot(q, (snap) => {
+        //Mesajlar duplice oluyor; needs fix!------------------------------------------------------------------------------
+        // console.log(messages[messages.length - 1])
+        // console.log(snap.docs[snap.docs.length - 1].data())
+
         setMessagesPaginationData({
           ...messagesPaginationData,
           start: snap.docs[snap.docs.length - 1],
@@ -461,7 +469,12 @@ export const FirebaseContextProvider = ({ children }) => {
           ...snap.docs.map((doc) => {
             const source = snap.metadata.fromCache ? "local cache" : "server"
             console.log("More messages came from " + source)
-            return { ...doc.data(), id: chatChannel }
+            return {
+              ...doc.data(),
+              createdAt: doc.data().createdAt.toDate(),
+              messageid: doc.id,
+              channelid: chatChannel,
+            }
           }),
         ])
       })
@@ -524,8 +537,8 @@ export const FirebaseContextProvider = ({ children }) => {
         isEndOfPatientList,
         currentAppointments,
         getMoreAppointments,
-        messagesPaginationData,
         getEmployeesOfClinic,
+        messagesPaginationData,
         patientsPaginationData,
       }}
     >

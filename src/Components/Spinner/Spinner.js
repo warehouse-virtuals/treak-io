@@ -3,7 +3,7 @@ import WarehouseLogo from "../../Assets/treat-logos/treat-tp.svg"
 import "./Spinner.css"
 
 function Spinner() {
-  const [wrong, setWrong] = useState(false)
+  const [wrong, setWrong] = useState(true)
 
   useEffect(() => {
     setTimeout(() => {
