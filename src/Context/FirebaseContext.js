@@ -24,7 +24,6 @@ import {
   limit,
   startAt,
   endAt,
-  startAfter,
 } from "firebase/firestore"
 
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
@@ -54,6 +53,7 @@ export const FirebaseContextProvider = ({ children }) => {
     start: null,
     end: null,
   })
+  const [isEndOfActiveChat, setIsEndOfActiveChat] = useState(false)
 
   const createUser = async (email, password) => {
     const newUser = {
@@ -111,7 +111,6 @@ export const FirebaseContextProvider = ({ children }) => {
         setUserData({ ...data, ppurl: ppurl })
       })
     })
-    console.log("LOOP'ta İSE ACİLEN DURDUR!")
   }
 
   // const getCustomers = async () => {
@@ -412,7 +411,7 @@ export const FirebaseContextProvider = ({ children }) => {
             "/messages"
         )
 
-        const q = query(messagesRef, orderBy("createdAt", "asc"), limit(10))
+        const q = query(messagesRef, orderBy("createdAt", "desc"), limit(10))
         onSnapshot(q, (snap) => {
           setMessagesPaginationData({
             ...messagesPaginationData,
@@ -449,34 +448,41 @@ export const FirebaseContextProvider = ({ children }) => {
 
       const q = query(
         messagesRef,
-        orderBy("createdAt", "asc"),
-        startAfter(messagesPaginationData.start),
+        orderBy("createdAt", "desc"),
+        startAt(messagesPaginationData.start),
         limit(10)
       )
 
       onSnapshot(q, (snap) => {
         //Mesajlar duplice oluyor; needs fix!------------------------------------------------------------------------------
-        // console.log(messages[messages.length - 1])
-        // console.log(snap.docs[snap.docs.length - 1].data())
 
-        setMessagesPaginationData({
-          ...messagesPaginationData,
-          start: snap.docs[snap.docs.length - 1],
-        })
+        if (
+          !(
+            messages[messages.length - 1].messageid ===
+            snap.docs[snap.docs.length - 1].id
+          )
+        ) {
+          setMessagesPaginationData({
+            ...messagesPaginationData,
+            start: snap.docs[snap.docs.length - 1],
+          })
 
-        setMessages([
-          ...messages,
-          ...snap.docs.map((doc) => {
-            const source = snap.metadata.fromCache ? "local cache" : "server"
-            console.log("More messages came from " + source)
-            return {
-              ...doc.data(),
-              createdAt: doc.data().createdAt.toDate(),
-              messageid: doc.id,
-              channelid: chatChannel,
-            }
-          }),
-        ])
+          setMessages([
+            ...messages,
+            ...snap.docs.map((doc) => {
+              const source = snap.metadata.fromCache ? "local cache" : "server"
+              console.log("More messages came from " + source)
+              return {
+                ...doc.data(),
+                createdAt: doc.data().createdAt.toDate(),
+                messageid: doc.id,
+                channelid: chatChannel,
+              }
+            }),
+          ])
+        } else {
+          setIsEndOfActiveChat(true)
+        }
       })
     })
   }
@@ -508,11 +514,15 @@ export const FirebaseContextProvider = ({ children }) => {
 
   useEffect(() => {
     getMessagesSnapshotOnMount()
+    //eslint-disable-next-line
   }, [chatChannels])
 
   useEffect(() => {
     getMoreMessages()
+    console.log("burası sorun çıkarabilir bir ara bakarım")
+    //eslint-disable-next-line
   }, [])
+
   return (
     <UserContext.Provider
       value={{
@@ -534,10 +544,12 @@ export const FirebaseContextProvider = ({ children }) => {
         getMorePatients,
         deleteAppointment,
         updateAppointment,
+        isEndOfActiveChat,
         isEndOfPatientList,
         currentAppointments,
         getMoreAppointments,
         getEmployeesOfClinic,
+        setIsEndOfActiveChat,
         messagesPaginationData,
         patientsPaginationData,
       }}

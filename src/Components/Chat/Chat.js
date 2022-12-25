@@ -15,11 +15,19 @@ const Chat = () => {
   const { chatChannels, messages } = UserAuth()
 
   useEffect(() => {
-    messages.forEach((msg) => {
-      if (msg.channelid === activeChatID) {
-        setActiveChatMessages((oldState) => [...oldState, msg])
-      }
-    })
+    if (activeChatID) {
+      setActiveChatMessages(
+        messages
+          .map((msg) => {
+            if (msg.channelid === activeChatID) {
+              return msg
+            } else {
+              return null
+            }
+          })
+          .reverse()
+      )
+    }
   }, [activeChatID, messages])
 
   return (

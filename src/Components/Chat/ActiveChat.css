@@ -24,35 +24,48 @@
   align-items: flex-end;
 }
 
-.chat-active-text-input {
-  height: 100px;
-  width: 100%;
-  background: #f2f2f2;
+#me > .chat-active-message-messages {
+  justify-content: flex-end;
+  color: #fff;
+  background: #4285f4;
+  padding-right: 10px;
 }
 
-.chat-active-message-messages {
-  min-width: 200px;
-  padding: 8px 15px;
-  background: #f2f2f2;
-  border-radius: 20px;
+.chat-active-footer {
+  height: 60px;
+  width: 100%;
 }
 
 .chat-active-message-messages-sender {
   font-size: 16px;
   font-weight: 500;
+  margin-bottom: 5px;
 }
 
-.chat-active-message-messages-text {
-  font-size: 15px;
-  margin-left: 10px;
-  font-weight: 400;
-  margin-top: 5px;
+.chat-active-message-messages {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  background: #f2f2f2;
+  border-radius: 25px;
+  margin-bottom: 5px;
+  padding: 0px 10px;
 }
+
 .chat-active-message-messages-date {
   color: #b3b5ba;
   display: flex;
   font-size: 12px;
   font-weight: 600;
   justify-content: flex-end;
-  margin-top: 5px;
+}
+
+.chat-active-message-end {
+  font-weight: 600;
+  color: #b3b5ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 50px;
 }

@@ -5,21 +5,21 @@ import { tr } from "date-fns/locale"
 
 import { UserAuth } from "../../Context/FirebaseContext"
 
+import FooterActiveChat from "./FooterActiveChat.js"
+
 import "./ActiveChat.css"
 
-const ActiveChat = ({ activeChatMessages, messages }) => {
-  const { userData, getMoreMessages } = UserAuth()
+const ActiveChat = ({ activeChatMessages }) => {
+  const { userData, getMoreMessages, isEndOfActiveChat } = UserAuth()
   const lastMessageRef = useRef()
 
   useEffect(() => {
     if (lastMessageRef.current) {
       lastMessageRef.current.scrollIntoView({
-        behavior: "smooth",
+        behavior: "auto",
         inline: "start",
       })
     }
-
-    console.log(messages)
   }, [activeChatMessages])
 
   const handleScroll = (event) => {
@@ -32,9 +32,11 @@ const ActiveChat = ({ activeChatMessages, messages }) => {
   return (
     <div className='chat-active-wrapper'>
       <div className='chat-active-message-container' onScroll={handleScroll}>
+        {isEndOfActiveChat ? (
+          <div className='chat-active-message-end'>End of chat</div>
+        ) : null}
         {activeChatMessages
           ? activeChatMessages.map((message, i) => {
-              console.log(message)
               return (
                 <div
                   ref={
@@ -44,23 +46,25 @@ const ActiveChat = ({ activeChatMessages, messages }) => {
                   id={message.sender === userData.uid ? "me" : ""}
                   className='chat-active-message'
                 >
+                  <div className='chat-active-message-messages-sender'>
+                    {message.senderHandle}
+                  </div>
                   <div className='chat-active-message-messages'>
-                    <div className='chat-active-message-messages-sender'>
-                      {message.senderHandle}
-                    </div>
-                    <div className='chat-active-message-messages-text'>
-                      {message.text}
-                    </div>
-                    <div className='chat-active-message-messages-date'>
-                      {format(message.createdAt, "dd MMM p", { locale: tr })}
-                    </div>
+                    {message.text}
+                  </div>
+                  <div className='chat-active-message-messages-date'>
+                    {format(message.createdAt, "dd MMM p", { locale: tr })}
                   </div>
                 </div>
               )
             })
           : null}
       </div>
-      <div className='chat-active-text-input'>sa</div>
+      {activeChatMessages.length > 0 ? (
+        <div className='chat-active-footer'>
+          <FooterActiveChat />
+        </div>
+      ) : null}
     </div>
   )
 }

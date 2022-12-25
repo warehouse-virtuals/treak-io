@@ -22,7 +22,6 @@
 .chat-active-wrapper {
   box-sizing: border-box;
   display: flex;
-
   height: 100%;
   border-left: 2px solid #f8f8f8;
 }
