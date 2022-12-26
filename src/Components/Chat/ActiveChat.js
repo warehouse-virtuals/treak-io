@@ -1,16 +1,15 @@
 import { useEffect, useRef } from "react"
 
-import { format } from "date-fns"
-import { tr } from "date-fns/locale"
-
 import { UserAuth } from "../../Context/FirebaseContext"
 
-import FooterActiveChat from "./FooterActiveChat.js"
+import MessageBubble from "./MessageBubble"
+import FooterActiveChat from "./FooterActiveChat"
 
 import "./ActiveChat.css"
 
-const ActiveChat = ({ activeChatMessages }) => {
+const ActiveChat = ({ activeChatMessages, activeChat }) => {
   const { userData, getMoreMessages, isEndOfActiveChat } = UserAuth()
+
   const lastMessageRef = useRef()
 
   useEffect(() => {
@@ -38,31 +37,22 @@ const ActiveChat = ({ activeChatMessages }) => {
         {activeChatMessages
           ? activeChatMessages.map((message, i) => {
               return (
-                <div
+                <MessageBubble
+                  key={i}
+                  message={message}
+                  userData={userData}
+                  activeChatMessages={activeChatMessages}
                   ref={
                     activeChatMessages.length - 1 === i ? lastMessageRef : null
                   }
-                  key={i}
-                  id={message.sender === userData.uid ? "me" : ""}
-                  className='chat-active-message'
-                >
-                  <div className='chat-active-message-messages-sender'>
-                    {message.senderHandle}
-                  </div>
-                  <div className='chat-active-message-messages'>
-                    {message.text}
-                  </div>
-                  <div className='chat-active-message-messages-date'>
-                    {format(message.createdAt, "dd MMM p", { locale: tr })}
-                  </div>
-                </div>
+                />
               )
             })
           : null}
       </div>
       {activeChatMessages.length > 0 ? (
         <div className='chat-active-footer'>
-          <FooterActiveChat />
+          <FooterActiveChat activeChat={activeChat} />
         </div>
       ) : null}
     </div>

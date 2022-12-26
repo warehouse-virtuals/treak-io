@@ -1,10 +1,13 @@
-import SearchContact from "./SearchContact"
+import { UserAuth } from "../../Context/FirebaseContext"
 
-import Channel from "./Channel.js"
+import SearchContact from "./SearchContact"
+import Channel from "./Channel"
 
 import "./ChatInbox.css"
 
-const ChatInbox = ({ chatChannels, messages, setActiveChatID }) => {
+const ChatInbox = ({ chatChannels, messages, setActiveChat }) => {
+  const { userData } = UserAuth()
+
   return (
     <div className='chat-inbox-panel'>
       <div className='chat-search-contact-wrapper'>
@@ -17,9 +20,12 @@ const ChatInbox = ({ chatChannels, messages, setActiveChatID }) => {
                 <Channel
                   key={channel}
                   id={channel}
-                  setActiveChatID={() => setActiveChatID(channel)}
-                  sender={messages[messages.length - 1].senderHandle}
-                  message={messages[messages.length - 1].text}
+                  setActiveChat={() => setActiveChat(channel)}
+                  sender={
+                    messages.filter((msg) => msg.sender !== userData.uid)[0]
+                      .senderHandle
+                  }
+                  message={messages[0].text}
                   isGroup={false}
                   hasSeen={true}
                 />

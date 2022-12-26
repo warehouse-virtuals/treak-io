@@ -5,15 +5,12 @@ const TextInput = ({
   type,
   label,
   inputRef,
-  onInput,
+
   containerCSS,
-  labelCSS,
-  inputCSS,
 }) => {
   return (
     <div className={containerCSS}>
       <input
-        onInput={onInput}
         ref={inputRef}
         type={type}
         className='textinput-input'

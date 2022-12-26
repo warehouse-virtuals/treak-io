@@ -7,19 +7,12 @@ import {
 
 import "./Channel.css"
 
-const Channel = ({
-  sender,
-  message,
-  hasSeen,
-  isGroup,
-  id,
-  setActiveChatID,
-}) => {
+const Channel = ({ sender, message, hasSeen, isGroup, id, setActiveChat }) => {
   return (
     <div
       id={id}
       onClick={() => {
-        setActiveChatID()
+        setActiveChat()
       }}
       className='chat-channel-container'
     >

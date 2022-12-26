@@ -24,6 +24,7 @@ import {
   limit,
   startAt,
   endAt,
+  startAfter,
 } from "firebase/firestore"
 
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
@@ -167,7 +168,7 @@ export const FirebaseContextProvider = ({ children }) => {
       const q = query(
         patientsRef,
         orderBy("createdAt", "desc"),
-        limit(12),
+        limit(11),
         where("assignedClinic", "==", usersClinic)
       )
 
@@ -199,18 +200,13 @@ export const FirebaseContextProvider = ({ children }) => {
     const q = query(
       patientsRef,
       orderBy("createdAt", "desc"),
-      startAt(patientsPaginationData.start),
-      limit(12),
+      startAfter(patientsPaginationData.start),
+      limit(11),
       where("assignedClinic", "==", userData.clinicID)
     )
 
     onSnapshot(q, (snapshot) => {
-      if (
-        !(
-          currentPatients[currentPatients.length - 1].id ===
-          snapshot.docs[snapshot.docs.length - 1].data().id
-        )
-      ) {
+      if (snapshot.docs.length > 0) {
         setPatientsPaginationData({
           ...patientsPaginationData,
           start: snapshot.docs[snapshot.docs.length - 1],
@@ -392,7 +388,7 @@ export const FirebaseContextProvider = ({ children }) => {
       onSnapshot(q, (snap) => {
         setChatChannels(
           snap.docs.map((doc) => {
-            return doc.id
+            return { channelid: doc.id, participants: doc.data().participants }
           })
         )
       })
@@ -407,7 +403,7 @@ export const FirebaseContextProvider = ({ children }) => {
           "customers/" +
             userData.customerID +
             "/chat/" +
-            chatChannel +
+            chatChannel.channelid +
             "/messages"
         )
 
@@ -426,7 +422,7 @@ export const FirebaseContextProvider = ({ children }) => {
                 ...doc.data(),
                 createdAt: doc.data().createdAt.toDate(),
                 messageid: doc.id,
-                channelid: chatChannel,
+                channelid: chatChannel.channelid,
               }
             })
           )
@@ -442,26 +438,20 @@ export const FirebaseContextProvider = ({ children }) => {
         "customers/" +
           userData.customerID +
           "/chat/" +
-          chatChannel +
+          chatChannel.channelid +
           "/messages"
       )
 
       const q = query(
         messagesRef,
         orderBy("createdAt", "desc"),
-        startAt(messagesPaginationData.start),
+        startAfter(messagesPaginationData.start),
         limit(10)
       )
 
       onSnapshot(q, (snap) => {
         //Mesajlar duplice oluyor; needs fix!------------------------------------------------------------------------------
-
-        if (
-          !(
-            messages[messages.length - 1].messageid ===
-            snap.docs[snap.docs.length - 1].id
-          )
-        ) {
+        if (snap.docs.length > 0) {
           setMessagesPaginationData({
             ...messagesPaginationData,
             start: snap.docs[snap.docs.length - 1],
@@ -476,7 +466,7 @@ export const FirebaseContextProvider = ({ children }) => {
                 ...doc.data(),
                 createdAt: doc.data().createdAt.toDate(),
                 messageid: doc.id,
-                channelid: chatChannel,
+                channelid: chatChannel.channelid,
               }
             }),
           ])

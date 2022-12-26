@@ -9,17 +9,17 @@ import ChatInbox from "./ChatInbox"
 import ActiveChat from "./ActiveChat"
 
 const Chat = () => {
-  const [activeChatID, setActiveChatID] = useState("")
+  const [activeChat, setActiveChat] = useState("")
   const [activeChatMessages, setActiveChatMessages] = useState([])
 
   const { chatChannels, messages } = UserAuth()
 
   useEffect(() => {
-    if (activeChatID) {
+    if (activeChat.channelid) {
       setActiveChatMessages(
         messages
           .map((msg) => {
-            if (msg.channelid === activeChatID) {
+            if (msg.channelid === activeChat.channelid) {
               return msg
             } else {
               return null
@@ -28,7 +28,9 @@ const Chat = () => {
           .reverse()
       )
     }
-  }, [activeChatID, messages])
+
+    console.log(activeChat)
+  }, [activeChat, messages])
 
   return (
     <div className='chat-container'>
@@ -38,11 +40,15 @@ const Chat = () => {
           <ChatInbox
             chatChannels={chatChannels}
             messages={messages}
-            setActiveChatID={(id) => setActiveChatID(id)}
+            setActiveChat={(id) => setActiveChat(id)}
+            activeChat={activeChat}
           />
         </div>
         <div className='chat-active-wrapper'>
-          <ActiveChat activeChatMessages={activeChatMessages} />
+          <ActiveChat
+            activeChatMessages={activeChatMessages}
+            activeChat={activeChat}
+          />
         </div>
       </div>
     </div>
