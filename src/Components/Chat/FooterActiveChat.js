@@ -13,7 +13,6 @@ const FooterActiveChat = ({ activeChatID, activeChat }) => {
   const { userData, db } = UserAuth()
 
   const handleSendTextMessageButtonPress = async () => {
-    console.log("sa")
     const newMessageInfo = {
       createdAt: Timestamp.now(),
       sender: userData.uid,
@@ -21,14 +20,14 @@ const FooterActiveChat = ({ activeChatID, activeChat }) => {
       text: messageRef.current.value,
     }
     messageRef.current.value = ""
-    console.log(userData.customerID, activeChatID)
+
     const newMessageRef = await addDoc(
       collection(
         db,
         "customers/",
         userData.customerID,
         "/chat/",
-        activeChatID,
+        activeChat.channelid,
         "/messages"
       ),
       newMessageInfo
