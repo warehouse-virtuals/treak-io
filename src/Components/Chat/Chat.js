@@ -28,8 +28,6 @@ const Chat = () => {
           .reverse()
       )
     }
-
-    console.log(activeChat)
   }, [activeChat, messages])
 
   return (

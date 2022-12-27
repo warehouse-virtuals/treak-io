@@ -2,19 +2,21 @@ import { format } from "date-fns"
 import { tr } from "date-fns/locale"
 import { forwardRef } from "react"
 
+import "./MessageBubble.css"
+
 const MessageBubble = forwardRef(({ userData, message }, ref) => {
   return (
     <div
       ref={ref}
       id={message.sender === userData.uid ? "me" : ""}
-      className='chat-active-message'
+      className='messagebubble-container'
     >
-      <div className='chat-active-message-messages-sender'>
-        {message.senderHandle}
-      </div>
-      <div className='chat-active-message-messages'>{message.text}</div>
-      <div className='chat-active-message-messages-date'>
-        {format(message.createdAt, "dd MMM p", { locale: tr })}
+      <div className='messagebubble-sender'>{message.senderHandle}</div>
+      <div className='messagebubble-message'>
+        <div className='messagebubble-text'>{message.text}</div>
+        <div className='messagebubble-date'>
+          {format(message.createdAt, "dd MMM p", { locale: tr })}
+        </div>
       </div>
     </div>
   )

@@ -3,8 +3,18 @@
   height: 72px;
   display: flex;
   align-items: center;
+  padding: 0px 12px;
 }
 
+.chat-channel-icon {
+  color: #252525;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
 .chat-channel-sender {
   font-weight: 500;
   display: flex;
@@ -21,27 +31,32 @@
   font-size: 13px;
 }
 
-.chat-channel-icon {
-  color: #767e98;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.chat-channel-pp {
   width: 40px;
   height: 40px;
-  margin-left: 12px;
+  object-fit: cover;
+  border-radius: 50%;
 }
+
 .chat-channel-body {
   width: 160px;
 }
 
 .chat-channel-seen {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-
+  justify-content: space-around;
+  width: 40px;
+  height: 80%;
   margin-left: auto;
+}
+
+.chat-channel-date {
+  color: #b3b5ba;
+  display: flex;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .chat-channel-options-btn {
@@ -50,7 +65,7 @@
   align-items: center;
   justify-content: center;
   margin-left: auto;
-  border: 2px solid #f2f2f2;
+  border: 2px solid #f9f9f9;
   border-radius: 50%;
   height: 36px;
   width: 36px;
@@ -66,5 +81,5 @@
 }
 
 .chat-channel-options-btn:hover {
-  background: #f2f2f2;
+  background: #f9f9f9;
 }

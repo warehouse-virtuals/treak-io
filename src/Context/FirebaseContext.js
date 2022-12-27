@@ -49,6 +49,11 @@ export const FirebaseContextProvider = ({ children }) => {
   const [monthsList, setMonthsList] = useState([])
 
   const [chatChannels, setChatChannels] = useState([])
+  const [lastSender, setLastSender] = useState({
+    senderHandle: "",
+    senderImageURL: "",
+  })
+
   const [messages, setMessages] = useState([])
   const [messagesPaginationData, setMessagesPaginationData] = useState({
     start: null,
@@ -108,8 +113,8 @@ export const FirebaseContextProvider = ({ children }) => {
       const data = doc.data()
       const ppRef = ref(storage, data.ppURL)
       getDownloadURL(ppRef).then((promise) => {
-        const ppurl = promise
-        setUserData({ ...data, ppurl: ppurl })
+        const ppFromFirestore = promise
+        setUserData({ ...data, ppFromFirestore: ppFromFirestore })
       })
     })
   }
@@ -395,6 +400,29 @@ export const FirebaseContextProvider = ({ children }) => {
     }
   }
 
+  const channelInfo = async () => {
+    const participantsExceptMe = await chatChannels.map((channel) => {
+      return channel.participants.filter(
+        (participant) => participant !== userData.uid
+      )
+    })[0]
+    console.log(participantsExceptMe[0])
+
+    onSnapshot(doc(db, "users/", participantsExceptMe[0]), (doc) => {
+      const source = doc.metadata.fromCache ? "local cache" : "server"
+      console.log("Channel info came from " + source)
+      const data = doc.data()
+      const ppRef = ref(storage, data.ppURL)
+      getDownloadURL(ppRef).then((promise) => {
+        const ppFromFirestore = promise
+        setLastSender({
+          senderHandle: data.name + " " + data.surname,
+          senderImageURL: ppFromFirestore,
+        })
+      })
+    })
+  }
+
   const getMessagesSnapshotOnMount = async () => {
     if (userData.customerID) {
       chatChannels.forEach((chatChannel) => {
@@ -512,6 +540,9 @@ export const FirebaseContextProvider = ({ children }) => {
     console.log("burası sorun çıkarabilir bir ara bakarım")
     //eslint-disable-next-line
   }, [])
+  useEffect(() => {
+    channelInfo()
+  }, [chatChannels])
 
   return (
     <UserContext.Provider
@@ -523,6 +554,7 @@ export const FirebaseContextProvider = ({ children }) => {
         messages,
         userData,
         createUser,
+        lastSender,
         chatChannels,
         getInventory,
         getPortfolio,

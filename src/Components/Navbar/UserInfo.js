@@ -8,7 +8,7 @@ const UserInfo = () => {
     <div
       className='userinfo-container'
       style={{
-        opacity: userData.ppurl ? 1 : 0,
+        opacity: userData.ppFromFirestore ? 1 : 0,
       }}
     >
       <div className='userinfo-pp-container'>
@@ -16,7 +16,7 @@ const UserInfo = () => {
           alt='pp'
           loading='lazy'
           className='userinfo-pp'
-          src={userData.ppurl}
+          src={userData.ppFromFirestore}
         />
       </div>
       <div className='userinfo-userinfo'>

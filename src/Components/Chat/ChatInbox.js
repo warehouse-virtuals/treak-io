@@ -6,7 +6,7 @@ import Channel from "./Channel"
 import "./ChatInbox.css"
 
 const ChatInbox = ({ chatChannels, messages, setActiveChat }) => {
-  const { userData } = UserAuth()
+  const { lastSender } = UserAuth()
 
   return (
     <div className='chat-inbox-panel'>
@@ -21,11 +21,10 @@ const ChatInbox = ({ chatChannels, messages, setActiveChat }) => {
                   key={channel}
                   id={channel}
                   setActiveChat={() => setActiveChat(channel)}
-                  sender={
-                    messages.filter((msg) => msg.sender !== userData.uid)[0]
-                      .senderHandle
-                  }
+                  senderHandle={lastSender.senderHandle}
+                  senderImage={lastSender.senderImageURL}
                   message={messages[0].text}
+                  timestamp={messages[0].createdAt}
                   isGroup={false}
                   hasSeen={true}
                 />

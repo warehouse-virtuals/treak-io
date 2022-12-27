@@ -7,7 +7,7 @@
 }
 
 .search-contact-bar input {
-  background: #f2f2f2;
+  background: #f9f9f9;
   display: flex;
   width: 100%;
   height: 40px;
@@ -25,7 +25,7 @@
 }
 .search-contact-icon {
   border: none;
-  background: #f2f2f2;
+  background: #f9f9f9;
   color: #0e0e0e;
   display: flex;
   justify-content: center;
