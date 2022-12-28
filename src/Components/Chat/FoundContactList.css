@@ -1,0 +1,48 @@
+.found-contact-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: center;
+}
+
+.found-contact {
+  height: 72px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0px 12px;
+  transition: opacity 1s;
+  transition-delay: 0.4s;
+}
+
+.found-contact-icon {
+  color: #252525;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.found-contact-pp {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.found-contact-sender {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  height: 19px;
+  font-size: 15px;
+}
+
+.found-contact:hover {
+  height: 72px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  cursor: pointer;
+}

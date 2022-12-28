@@ -53,6 +53,7 @@ export const FirebaseContextProvider = ({ children }) => {
     senderHandle: "",
     senderImageURL: "",
   })
+  const [chatResults, setChatResults] = useState([])
 
   const [messages, setMessages] = useState([])
   const [messagesPaginationData, setMessagesPaginationData] = useState({
@@ -63,9 +64,9 @@ export const FirebaseContextProvider = ({ children }) => {
 
   const createUser = async (email, password) => {
     const newUser = {
-      name: "Hıdır",
-      surname: "Hıdıroğlu",
-      email: "hidir@hidir.com",
+      name: "anan",
+      surname: "baban",
+      email: "anan@anan.com",
       password: "123456",
       jobTitle: "İşitme Uzmanı",
       customerID: "Aw3Sv7wLX8YBYObNCFRk",
@@ -76,20 +77,26 @@ export const FirebaseContextProvider = ({ children }) => {
     console.log(newUser)
     return createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
       .then((data) => {
-        const additionalInfos = {
-          name: newUser.name,
-          surname: newUser.surname,
-          email: newUser.email,
-          jobTitle: newUser.jobTitle,
-          uid: data.user.uid,
-          customerID: newUser.customerID,
-          clinicID: newUser.clinicID,
-          ppURL: newUser.ppURL,
-        }
-        const docRef = doc(db, "users", data.user.uid)
-        setDoc(docRef, additionalInfos)
-        console.log("oldu")
+        const ppRef = ref(storage, newUser.ppURL)
+        getDownloadURL(ppRef).then((promise) => {
+          const ppURLFromStorage = promise
+          const additionalInfos = {
+            name: newUser.name,
+            surname: newUser.surname,
+            email: newUser.email,
+            jobTitle: newUser.jobTitle,
+            uid: data.user.uid,
+            customerID: newUser.customerID,
+            clinicID: newUser.clinicID,
+            ppURL: newUser.ppURL,
+            ppURLFromStorage: ppURLFromStorage,
+          }
+          const docRef = doc(db, "users", data.user.uid)
+          setDoc(docRef, additionalInfos)
+          console.log("oldu")
+        })
       })
+
       .catch((error) => {
         const errorCode = error.code
         const errorMessage = error.message
@@ -143,7 +150,7 @@ export const FirebaseContextProvider = ({ children }) => {
     return arr
   }
 
-  const searchResults = async (
+  const searchPatientsResult = async (
     customerid,
     usersClinic,
     searchText,
@@ -167,6 +174,35 @@ export const FirebaseContextProvider = ({ children }) => {
 
     return arr
   }
+
+  const searchChatResults = async (customerid, searchText, numberCheck) => {
+    const patientsRef = collection(db, "users/")
+    const orderDecider = numberCheck ? "phone" : "name"
+    const q = query(
+      patientsRef,
+      where("customerID", "==", customerid),
+      orderBy(orderDecider),
+      limit(5),
+      startAt(searchText),
+      endAt(searchText + "\uf8ff")
+    )
+
+    onSnapshot(q, (snapshot) => {
+      setChatResults(
+        snapshot.docs.map((doc) => {
+          const source = snapshot.metadata.fromCache ? "local cache" : "server"
+          console.log("Contact Results:  " + source)
+          const data = doc.data()
+          return {
+            clinicid: data.clinicID,
+            handle: data.name + " " + data.surname,
+            image: data.ppURLFromStorage,
+          }
+        })
+      )
+    })
+  }
+
   const patientsSnapshotOnMount = async (customerid, usersClinic) => {
     if (customerid) {
       const patientsRef = collection(db, "customers/", customerid, "/patients")
@@ -187,7 +223,7 @@ export const FirebaseContextProvider = ({ children }) => {
             const source = snapshot.metadata.fromCache
               ? "local cache"
               : "server"
-            console.log("Patients came from " + source)
+            console.log("Patients: " + source)
             return { ...doc.data(), id: doc.data().id }
           })
         )
@@ -223,7 +259,7 @@ export const FirebaseContextProvider = ({ children }) => {
             const source = snapshot.metadata.fromCache
               ? "local cache"
               : "server"
-            console.log("More patients came from " + source)
+            console.log("More patients: " + source)
 
             return { ...doc.data(), id: doc.data().id }
           }),
@@ -260,7 +296,7 @@ export const FirebaseContextProvider = ({ children }) => {
             const source = snapshot.metadata.fromCache
               ? "local cache"
               : "server"
-            console.log("Appointment came from " + source)
+            console.log("Appointments: " + source)
             return { ...doc.data(), id: doc.id }
           })
         )
@@ -296,7 +332,7 @@ export const FirebaseContextProvider = ({ children }) => {
               const source = snapshot.metadata.fromCache
                 ? "local cache"
                 : "server"
-              console.log("More appointment came from " + source)
+              console.log("More appointments: " + source)
               return { ...doc.data(), id: doc.id }
             }),
           ])
@@ -406,21 +442,21 @@ export const FirebaseContextProvider = ({ children }) => {
         (participant) => participant !== userData.uid
       )
     })[0]
-    console.log(participantsExceptMe[0])
-
-    onSnapshot(doc(db, "users/", participantsExceptMe[0]), (doc) => {
-      const source = doc.metadata.fromCache ? "local cache" : "server"
-      console.log("Channel info came from " + source)
-      const data = doc.data()
-      const ppRef = ref(storage, data.ppURL)
-      getDownloadURL(ppRef).then((promise) => {
-        const ppFromFirestore = promise
-        setLastSender({
-          senderHandle: data.name + " " + data.surname,
-          senderImageURL: ppFromFirestore,
+    if (participantsExceptMe) {
+      onSnapshot(doc(db, "users/", participantsExceptMe[0]), (doc) => {
+        const source = doc.metadata.fromCache ? "local cache" : "server"
+        console.log("Channel Info: " + source)
+        const data = doc.data()
+        const ppRef = ref(storage, data.ppURL)
+        getDownloadURL(ppRef).then((promise) => {
+          const ppFromFirestore = promise
+          setLastSender({
+            senderHandle: data.name + " " + data.surname,
+            senderImageURL: ppFromFirestore,
+          })
         })
       })
-    })
+    }
   }
 
   const getMessagesSnapshotOnMount = async () => {
@@ -445,7 +481,7 @@ export const FirebaseContextProvider = ({ children }) => {
           setMessages(
             snap.docs.map((doc) => {
               const source = snap.metadata.fromCache ? "local cache" : "server"
-              console.log("Messages came from " + source)
+              console.log("Messages: " + source)
               return {
                 ...doc.data(),
                 createdAt: doc.data().createdAt.toDate(),
@@ -489,7 +525,7 @@ export const FirebaseContextProvider = ({ children }) => {
             ...messages,
             ...snap.docs.map((doc) => {
               const source = snap.metadata.fromCache ? "local cache" : "server"
-              console.log("More messages came from " + source)
+              console.log("More Messages: " + source)
               return {
                 ...doc.data(),
                 createdAt: doc.data().createdAt.toDate(),
@@ -536,12 +572,9 @@ export const FirebaseContextProvider = ({ children }) => {
   }, [chatChannels])
 
   useEffect(() => {
-    getMoreMessages()
+    channelInfo()
     console.log("burası sorun çıkarabilir bir ara bakarım")
     //eslint-disable-next-line
-  }, [])
-  useEffect(() => {
-    channelInfo()
   }, [chatChannels])
 
   return (
@@ -555,21 +588,24 @@ export const FirebaseContextProvider = ({ children }) => {
         userData,
         createUser,
         lastSender,
+        chatResults,
         chatChannels,
         getInventory,
         getPortfolio,
         deletePatient,
-        searchResults,
         fetchUserData,
+        setChatResults,
         currentPatients,
         getMoreMessages,
         getMorePatients,
         deleteAppointment,
         updateAppointment,
+        searchChatResults,
         isEndOfActiveChat,
         isEndOfPatientList,
         currentAppointments,
         getMoreAppointments,
+        searchPatientsResult,
         getEmployeesOfClinic,
         setIsEndOfActiveChat,
         messagesPaginationData,

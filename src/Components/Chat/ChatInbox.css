@@ -14,5 +14,6 @@
 
 .chat-channels-wrapper {
   height: calc(100% - 80px);
+  width: 300px;
   padding-right: 10px;
 }

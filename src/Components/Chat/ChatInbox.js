@@ -1,12 +1,13 @@
 import { UserAuth } from "../../Context/FirebaseContext"
 
 import SearchContact from "./SearchContact"
+import FoundContactList from "./FoundContactList"
 import Channel from "./Channel"
 
 import "./ChatInbox.css"
 
 const ChatInbox = ({ chatChannels, messages, setActiveChat }) => {
-  const { lastSender } = UserAuth()
+  const { lastSender, chatResults } = UserAuth()
 
   return (
     <div className='chat-inbox-panel'>
@@ -14,7 +15,10 @@ const ChatInbox = ({ chatChannels, messages, setActiveChat }) => {
         <SearchContact />
       </div>
       <div className='chat-channels-wrapper'>
-        {messages.length > 0
+        {chatResults.length > 0 ? (
+          <FoundContactList chatResults={chatResults} />
+        ) : null}
+        {messages.length > 0 && chatResults.length <= 0
           ? chatChannels.map((channel) => {
               return (
                 <Channel

@@ -20,7 +20,7 @@ const SearchField = ({ selectedPatientName }) => {
   const [timer, setTimer] = useState(null)
   const [foundPatients, setFoundPatients] = useState([])
 
-  const { userData, searchResults } = UserAuth()
+  const { userData, searchPatientsResult } = UserAuth()
   const searchTextRef = useRef("")
   const { t } = useTranslation("dashboard")
 
@@ -29,7 +29,7 @@ const SearchField = ({ selectedPatientName }) => {
     const numberCheck = hasNumber.test(searchTextRef.current.value)
 
     if (searchTextRef.current.value.length > 0) {
-      const usersfound = await searchResults(
+      const usersfound = await searchPatientsResult(
         userData.customerID,
         userData.clinicID,
         searchTextRef.current.value,
