@@ -2,7 +2,9 @@ import { Suspense } from "react"
 import { useLocation } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
+import { UserContextProvider } from "./Context/UserContext"
 import { FirebaseContextProvider } from "./Context/FirebaseContext"
+
 import { ThemeProvider } from "./Context/ThemeContext"
 
 import MainRouter from "./Components/MainRouter/MainRouter"
@@ -18,12 +20,14 @@ const App = () => {
     <Suspense fallback={"loading"}>
       <ToastContainer />
       <div className='App'>
-        <FirebaseContextProvider>
-          <ThemeProvider>
-            {pathname === "/login" || pathname === "/" ? null : <Navbar />}
-            <MainRouter />
-          </ThemeProvider>
-        </FirebaseContextProvider>
+        <UserContextProvider>
+          <FirebaseContextProvider>
+            <ThemeProvider>
+              {pathname === "/login" || pathname === "/" ? null : <Navbar />}
+              <MainRouter />
+            </ThemeProvider>
+          </FirebaseContextProvider>
+        </UserContextProvider>
       </div>
     </Suspense>
   )

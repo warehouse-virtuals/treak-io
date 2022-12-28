@@ -24,7 +24,7 @@ import DayView from "./DayView"
 import AddAppointment from "../Appointments/AddAppointments"
 
 import { useTranslation } from "react-i18next"
-import { UserAuth } from "../../Context/FirebaseContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import "./Agenda.css"
 
@@ -48,7 +48,7 @@ function AA() {
     getMoreAppointments,
     updateAppointment,
     //  deleteAppointment,
-  } = UserAuth()
+  } = FirebaseActions()
 
   const { t } = useTranslation("agenda")
 

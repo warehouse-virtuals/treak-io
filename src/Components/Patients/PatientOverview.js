@@ -1,6 +1,9 @@
 import "./PatientOverview.css"
 import { useNavigate } from "react-router-dom"
-import { UserAuth } from "../../Context/FirebaseContext"
+
+import { UserAuth } from "../../Context/UserContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
+
 import {
   FiUser,
   FiEdit,
@@ -15,7 +18,9 @@ import { tr } from "date-fns/locale"
 import { useEffect, useState } from "react"
 
 const PatientOverview = (props) => {
-  const { deletePatient, userData } = UserAuth()
+  const { userData } = UserAuth()
+  const { deletePatient } = FirebaseActions()
+
   const [person, setPerson] = useState({})
   const navigate = useNavigate()
 

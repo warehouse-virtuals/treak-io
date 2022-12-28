@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import { UserAuth } from "../../Context/FirebaseContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import { useTranslation } from "react-i18next"
 import { FiUserPlus } from "react-icons/fi"
@@ -15,7 +15,7 @@ import "./Patients.css"
 const Patients = () => {
   const [newPatientForm, setNewPatientForm] = useState(false)
   const [focusedPatient, setFocusedPatient] = useState({})
-  const { currentPatients } = UserAuth()
+  const { currentPatients } = FirebaseActions()
 
   const { t } = useTranslation("dashboard")
 

@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { UserAuth } from "../../Context/FirebaseContext"
+import { UserAuth } from "../../Context/UserContext"
 
 const Register = () => {
   const emailRef = useRef("")

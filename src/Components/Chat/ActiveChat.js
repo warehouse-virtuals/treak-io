@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 
-import { UserAuth } from "../../Context/FirebaseContext"
+import { UserAuth } from "../../Context/UserContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import MessageBubble from "./MessageBubble"
 import FooterActiveChat from "./FooterActiveChat"
@@ -8,8 +9,8 @@ import FooterActiveChat from "./FooterActiveChat"
 import "./ActiveChat.css"
 
 const ActiveChat = ({ activeChatMessages, activeChat }) => {
-  const { userData, getMoreMessages, isEndOfActiveChat } = UserAuth()
-
+  const { userData } = UserAuth()
+  const { getMoreMessages, isEndOfActiveChat } = FirebaseActions()
   const lastMessageRef = useRef()
 
   useEffect(() => {

@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next"
 import { tr } from "date-fns/locale"
 import { format } from "date-fns"
 import { useState, useEffect } from "react"
-import { UserAuth } from "../../Context/FirebaseContext"
+
+import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import Spinner from "../Spinner/Spinner"
 
@@ -12,7 +13,7 @@ const AppointmentList = (props) => {
   const [appointments, setAppointments] = useState([])
   const [spinner, setSpinner] = useState(true)
 
-  const { currentAppointments } = UserAuth()
+  const { currentAppointments } = FirebaseActions()
 
   const { t } = useTranslation("dashboard")
 

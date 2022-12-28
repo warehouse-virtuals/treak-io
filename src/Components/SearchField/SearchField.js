@@ -12,7 +12,8 @@ import {
 
 import { useTranslation } from "react-i18next"
 
-import { UserAuth } from "../../Context/FirebaseContext"
+import { UserAuth } from "../../Context/UserContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
 
 const SearchField = ({ selectedPatientName }) => {
   // eslint-disable-next-line
@@ -20,7 +21,9 @@ const SearchField = ({ selectedPatientName }) => {
   const [timer, setTimer] = useState(null)
   const [foundPatients, setFoundPatients] = useState([])
 
-  const { userData, searchPatientsResult } = UserAuth()
+  const { userData } = UserAuth()
+  const { searchPatientsResult } = FirebaseActions()
+
   const searchTextRef = useRef("")
   const { t } = useTranslation("dashboard")
 

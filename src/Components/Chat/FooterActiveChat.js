@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { FiImage, FiFile, FiSend } from "react-icons/fi"
 
-import { UserAuth } from "../../Context/FirebaseContext"
+import { UserAuth } from "../../Context/UserContext"
 
 import { collection, addDoc, Timestamp } from "firebase/firestore"
 

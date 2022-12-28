@@ -1,5 +1,8 @@
 import "./Analytics.css"
-import { UserAuth } from "../../Context/FirebaseContext"
+
+import { UserAuth } from "../../Context/UserContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
+
 import { toDate } from "date-fns"
 
 import TopBar from "../TopBar/TopBar"
@@ -8,7 +11,8 @@ const Analytics = () => {
   const [portfolioItems, setPortfolioItems] = useState([])
   const [inventory, setInventory] = useState([])
 
-  const { userData, getPortfolio, getInventory } = UserAuth()
+  const { userData } = UserAuth()
+  const { getPortfolio, getInventory } = FirebaseActions()
 
   useEffect(() => {
     getPortfolio(userData.customerID).then((data) => {
@@ -90,7 +94,7 @@ const Analytics = () => {
                 })
               : null}
           </div>
-          <div style={{ "margin-bottom": "10px" }}>
+          <div style={{ marginBottom: "10px" }}>
             {inventory.inStock ? (
               <div>Envanterde</div>
             ) : (

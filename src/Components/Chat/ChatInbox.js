@@ -1,4 +1,4 @@
-import { UserAuth } from "../../Context/FirebaseContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import SearchContact from "./SearchContact"
 import FoundContactList from "./FoundContactList"
@@ -7,7 +7,7 @@ import Channel from "./Channel"
 import "./ChatInbox.css"
 
 const ChatInbox = ({ chatChannels, messages, setActiveChat }) => {
-  const { lastSender, chatResults } = UserAuth()
+  const { lastSender, chatResults } = FirebaseActions()
 
   return (
     <div className='chat-inbox-panel'>

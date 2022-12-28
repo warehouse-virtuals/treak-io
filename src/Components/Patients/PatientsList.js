@@ -1,19 +1,25 @@
-import "./PatientsList.css"
+import { useState, useEffect } from "react"
 
 import { format } from "date-fns"
 import { tr } from "date-fns/locale"
 import { useTranslation } from "react-i18next"
-import { useState, useEffect } from "react"
-import { UserAuth } from "../../Context/FirebaseContext"
+
+import { UserAuth } from "../../Context/UserContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import Spinner from "../Spinner/Spinner"
+
+import "./PatientsList.css"
 
 const PatientsList = (props) => {
   const [patients, setPatients] = useState([])
   const [spinner, setSpinner] = useState(true)
 
-  const { currentPatients, getMorePatients, userData, isEndOfPatientList } =
-    UserAuth()
+  const { userData } = UserAuth()
+
+  const { getMorePatients, currentPatients, isEndOfPatientList } =
+    FirebaseActions()
+
   const { t } = useTranslation("patients")
 
   const handleScroll = (event) => {

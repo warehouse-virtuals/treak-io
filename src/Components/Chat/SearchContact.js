@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react"
 
 import { FiSearch } from "react-icons/fi"
 
-import { UserAuth } from "../../Context/FirebaseContext"
+import { UserAuth } from "../../Context/UserContext"
 
 import "./SearchContact.css"
 

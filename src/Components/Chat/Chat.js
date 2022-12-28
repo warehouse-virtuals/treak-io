@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import { UserAuth } from "../../Context/FirebaseContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import "./Chat.css"
 
@@ -12,7 +12,7 @@ const Chat = () => {
   const [activeChat, setActiveChat] = useState("")
   const [activeChatMessages, setActiveChatMessages] = useState([])
 
-  const { chatChannels, messages } = UserAuth()
+  const { chatChannels, messages } = FirebaseActions()
 
   useEffect(() => {
     if (activeChat.channelid) {

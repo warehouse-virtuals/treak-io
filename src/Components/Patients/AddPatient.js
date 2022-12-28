@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import "./AddPatient.css"
 
 import { collection, addDoc, updateDoc, Timestamp } from "firebase/firestore"
-import { UserAuth } from "../../Context/FirebaseContext"
+import { UserAuth } from "../../Context/UserContext"
 
 import { useTranslation } from "react-i18next"
 
@@ -40,6 +40,7 @@ const AddPatient = ({ closeForm }) => {
   const { t } = useTranslation("addPatient")
 
   const { userData, db } = UserAuth()
+
   console.log(userData)
 
   const handleAddPatientButtonPress = async () => {

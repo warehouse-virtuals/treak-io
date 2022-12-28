@@ -11,7 +11,9 @@ import "./DateTimePicker.css"
 
 import { collection, addDoc, Timestamp } from "firebase/firestore"
 
-import { UserAuth } from "../../Context/FirebaseContext"
+import { UserAuth } from "../../Context/UserContext"
+import { FirebaseActions } from "../../Context/FirebaseContext"
+
 import { useTranslation } from "react-i18next"
 
 import SearchField from "../SearchField/SearchField"
@@ -38,7 +40,8 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
   // const { patient } = state
   const navigate = useNavigate()
   const { t } = useTranslation("addAppointment")
-  const { userData, getEmployeesOfClinic, db } = UserAuth()
+  const { userData, db } = UserAuth()
+  const { getEmployeesOfClinic } = FirebaseActions()
 
   const fetchEmployeesOfClinic = async () => {
     return await getEmployeesOfClinic(userData.clinicID)
