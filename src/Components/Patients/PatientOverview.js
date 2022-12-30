@@ -90,8 +90,15 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
                         <div className='patient-overview-hearingaid-right-title'>
                           Sağ
                         </div>
-                        <div className='patient-overview-hearingaid-brand'>
-                          <div>{hearingAid.aidBrand}</div>
+                        <div
+                          id='right-brand-modal'
+                          className='patient-overview-hearingaid-brand'
+                        >
+                          <div>
+                            {hearingAid.aidBrand
+                              ? hearingAid.aidBrand
+                              : "Cihazsız"}
+                          </div>
                           <div className='patient-overview-hearingaid-modal'>
                             <div>{hearingAid.aidModel}</div>
                           </div>
@@ -110,8 +117,15 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
                         <div className='patient-overview-hearingaid-left-title'>
                           Sol
                         </div>
-                        <div className='patient-overview-hearingaid-brand'>
-                          <div>{hearingAid.aidBrand}</div>
+                        <div
+                          id='left-brand-modal'
+                          className='patient-overview-hearingaid-brand'
+                        >
+                          <div>
+                            {hearingAid.aidBrand
+                              ? hearingAid.aidBrand
+                              : "Cihazsız"}
+                          </div>
                           <div className='patient-overview-hearingaid-modal'>
                             <div>{hearingAid.aidModel}</div>
                           </div>

@@ -33,11 +33,12 @@ const Patients = () => {
       <div className='patients-body' onKeyDown={handleKeyDown} tabIndex='0'>
         <div className='patients-body-navbar'>
           <div className='patients-body-navbar-tabs'>
-            <div className='patients-body-navbar-tab'>Tüm Kullanıcılar</div>
+            <div className='patients-body-navbar-tab-active'>
+              Tüm Kullanıcılar
+            </div>
             <div className='patients-body-navbar-tab'>Raporlar</div>
           </div>
         </div>
-
         <div className='patients-body-patient-list'>
           <div className='patients-patients-list-container'>
             <div className='patients-patients-list'>
