@@ -19,57 +19,68 @@ const Patients = () => {
 
   const { t } = useTranslation("dashboard")
 
-  useEffect(() => {}, [currentPatients])
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") {
+      setFocusedPatient("")
+    }
+  }
+
+  useEffect(() => {}, [focusedPatient, currentPatients])
 
   return (
     <div className='patients-cointainer'>
       <TopBar pholder={t("Search patients...")} />
-      <div className='patients-body'>
+      <div className='patients-body' onKeyDown={handleKeyDown} tabIndex='0'>
         <div className='patients-body-navbar'>
           <div className='patients-body-navbar-tabs'>
-            <div className='patients-body-navbar-tab'>Tab1</div>{" "}
-            <div className='patients-body-navbar-tab'>Tab2</div>{" "}
-            <div className='patients-body-navbar-tab'>Tab3</div>
+            <div className='patients-body-navbar-tab'>Tüm Kullanıcılar</div>
+            <div className='patients-body-navbar-tab'>Raporlar</div>
           </div>
         </div>
-        <div className='patients-list-and-overview'>
-          <div className='patients-body-patient-list'>
-            <div className='patients-patients-list-container'>
-              <div className='patients-patients-list'>
-                <PatientsList
-                  focusedPatient={(patient) => {
-                    setFocusedPatient(patient)
-                  }}
-                />
+
+        <div className='patients-body-patient-list'>
+          <div className='patients-patients-list-container'>
+            <div className='patients-patients-list'>
+              <PatientsList
+                focusedPatient={(patient) => {
+                  setFocusedPatient(patient)
+                }}
+              />
+            </div>
+          </div>
+          <div className='patients-patients-list-footer'>
+            <div className='patients-add-patient-btn-container'>
+              <div
+                onClick={() => {
+                  setNewPatientForm(true)
+                }}
+                className='patients-add-patient-btn'
+              >
+                <FiUserPlus size={22} stroke='#fff' className='' /> KULLANICI
+                EKLE
               </div>
             </div>
             <div className='patients-patients-list-footer'>
-              <div className='patients-add-patient-btn-container'>
-                <div
-                  onClick={() => {
-                    setNewPatientForm(true)
-                  }}
-                  className='patients-add-patient-btn'
-                >
-                  <FiUserPlus size={22} stroke='#fff' className='' /> KULLANICI
-                  EKLE
-                </div>
-              </div>
-              <div className='patients-patients-list-footer'>
-                Listelenen Kullanıcı Sayısı: {currentPatients.length}
-              </div>
+              Listelenen Kullanıcı Sayısı: {currentPatients.length}
             </div>
-          </div>
-          <div className='patients-body-overview'>
-            <PatientOverview
-              focusedPatientData={focusedPatient}
-              patientDeleted={(confirm) => {
-                setFocusedPatient(confirm)
-              }}
-            />
           </div>
         </div>
       </div>
+      {focusedPatient.name ? (
+        <div
+          className='patients-body-overview'
+          onKeyDown={handleKeyDown}
+          tabIndex='0'
+        >
+          <PatientOverview
+            focusedPatientData={focusedPatient}
+            close={() => setFocusedPatient("")}
+            patientDeleted={(confirm) => {
+              setFocusedPatient(confirm)
+            }}
+          />
+        </div>
+      ) : null}
       {newPatientForm ? (
         <div className='add-patient-form-container'>
           <AddPatient

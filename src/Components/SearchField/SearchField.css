@@ -5,7 +5,7 @@
 
   align-items: center;
   position: relative;
-  color: #767e98;
+  color: #3e3e3e;
 }
 
 .make-appt-btn-container {
@@ -51,7 +51,7 @@
 ::placeholder {
   font-size: 16px;
   font-weight: 400;
-  color: #767e98;
+  color: #3e3e3e;
 }
 
 .search-icon {
