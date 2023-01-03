@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/UserContext"
-import { FiLogOut } from "react-icons/fi"
+import { FiLogOut, FiMenu } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
 
 import treatLogo from "../../Assets/treat-logos/treat-tp.svg"
@@ -33,6 +33,9 @@ const Navbar = () => {
       >
         <img className='navbar-logo' alt='logo' src={treatLogo} />
         <span>treat</span>
+        {/* <div className='navbar-hamburger-container'>
+          <FiMenu />
+        </div> */}
       </div>
       <div className='navbar-user-info-container'>
         <div className='navbar-user-info'>

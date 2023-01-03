@@ -1,10 +1,12 @@
 .card-container {
   display: flex;
-  width: 260px;
+  width: 210px;
   height: 130px;
   background: #f8f8f8;
   padding: 20px;
   border-radius: 12px;
+  margin: 10px;
+  flex-shrink: 0;
 }
 
 .card-left {
@@ -24,21 +26,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  width: 40px;
+
   border-radius: 12px;
 }
 .card-details {
-  color: #767e98;
+  color: #b2b2b2;
   font-size: 12px;
   font-weight: 600;
   text-decoration: underline;
 }
 
 .card-title {
-  color: #767e98;
+  color: #b2b2b2;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .card-body {
@@ -49,6 +50,6 @@
 
 @media screen and (max-width: 1366px) {
   .card-container {
-    width: 215px;
+    width: 210px;
   }
 }

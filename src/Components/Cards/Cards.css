@@ -1,4 +1,15 @@
 .cards-container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  overflow-x: scroll;
+}
+.cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .cards-container {
+    padding: 10px 0px;
+  }
 }

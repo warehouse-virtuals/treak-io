@@ -171,30 +171,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.company {
-  background: red;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-
-  width: 100vw;
-
-  mix-blend-mode: difference;
-}
-.company-name {
-  font-weight: 600;
-  font-size: 16px;
-  margin-left: 8px;
-}
-.company-logo {
-  width: 50px;
-  filter: invert(1);
-}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -204,40 +180,28 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #fff inset !important;
   outline: 1px solid #0e0e0e;
 }
-/* 
-@media screen and (max-width: 1366px) {
-  .login-left-header {
-    font-size: 30px;
-  }
-
-  .login-treat-logo {
-    height: 60px;
-  }
-} */
-
-/* @media (max-width: 376px) {
-  .login-left {
-    font-size: 30px;
-  }
-
-  .login-treat-logo {
-    height: 60px;
-  }
-} */
 
 /* Small devices (landscape phones, less than 768px) */
-/* @media (min-width: 767.98px) {
-  .login-left-header {
-    font-size: 30px;
+@media (max-width: 767.98px) {
+  .login-left {
+    width: 100%;
+  }
+  .login-left-body {
+    height: 400px;
+    width: 100%;
+    padding: 20px;
+  }
+  .login-right {
+    display: none;
   }
 
   .login-treat-logo {
     height: 60px;
   }
-} */
+}
 
 /* Medium devices (tablets, less than 992px) */
-/* @media (min-width: 991.98px) {
+@media (min-width: 991.98px) {
   .login-left-header {
     font-size: 30px;
   }
@@ -246,9 +210,9 @@ input:-webkit-autofill:active {
     height: 60px;
   }
 }
- */
+
 /* Large devices (desktops, less than 1200px) */
-/* @media (min-width: 1199.98px) {
+@media (min-width: 1199.98px) {
   .login-left-header {
     font-size: 30px;
   }
@@ -256,4 +220,4 @@ input:-webkit-autofill:active {
   .login-treat-logo {
     height: 60px;
   }
-} */
+}

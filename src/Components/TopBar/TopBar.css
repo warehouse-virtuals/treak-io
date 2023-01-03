@@ -14,12 +14,12 @@
 .page-name {
   display: flex;
   height: 100%;
+  justify-content: center;
   align-items: center;
   font-size: 28px;
   font-weight: 600;
   color: #0e0e0e;
   width: 30%;
-  padding-left: 30px;
 }
 
 .searchfield-component {
@@ -35,4 +35,22 @@
   justify-content: center;
   width: 30%;
   padding-right: 30px;
+}
+
+@media (max-width: 767.98px) {
+  .datentime-component {
+    display: none;
+  }
+
+  .searchfield-component {
+    width: 60%;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-around;
+  }
+  .page-name {
+    font-size: 20px;
+  }
 }

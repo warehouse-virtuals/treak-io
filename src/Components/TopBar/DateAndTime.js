@@ -6,7 +6,7 @@ import {
   FiClock,
 } from "react-icons/fi"
 
-const DateAndTime = (props) => {
+const DateAndTime = () => {
   const [dateState, setDateState] = useState(new Date())
   useEffect(() => {
     setInterval(() => setDateState(new Date()), 1000)

@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
 }
+/* * {
+  background: rgba(255, 106, 0, 0.052);
+} */
 
 #root {
   width: 100vw;
@@ -34,7 +37,7 @@
   }
 }
 
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   background-color: #fff;
 }
 
@@ -45,8 +48,12 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 9999px;
   background-color: #252525;
+} */
+@media (max-width: 767.98px) {
+  .App {
+    min-width: 0px !important;
+  }
 }
-
 /* @media only screen and (max-width: 1179px), (max-height: 712px) {
   .App {
     background-color: black;
