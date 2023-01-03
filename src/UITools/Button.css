@@ -8,3 +8,8 @@
   background: #0e0e0e;
   border-radius: 10px;
 }
+
+.button-tool:hover {
+  cursor: pointer;
+  background: #262626;
+}
