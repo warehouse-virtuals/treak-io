@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
   // updateProfile,
 } from "firebase/auth"
 
@@ -33,7 +34,7 @@ export const UserContextProvider = ({ children }) => {
     const newUser = {
       name: "anan",
       surname: "baban",
-      email: "anan@anan.com",
+      email: "wingmanlol101@gmail.com",
       password: "123456",
       jobTitle: "İşitme Uzmanı",
       customerID: "Aw3Sv7wLX8YBYObNCFRk",
@@ -79,6 +80,16 @@ export const UserContextProvider = ({ children }) => {
     setUser({})
     setUserData({})
     return signOut(auth)
+  }
+
+  const resetPassword = async (email) => {
+    await sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log("gönderildi")
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   const fetchUserData = async (userID) => {
@@ -144,6 +155,7 @@ export const UserContextProvider = ({ children }) => {
         userData,
         createUser,
         fetchUserData,
+        resetPassword,
       }}
     >
       {children}

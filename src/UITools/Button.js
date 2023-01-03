@@ -1,8 +1,9 @@
 import React from "react"
+import "./Button.css"
 
 const Button = ({ label, onClick, buttonCSS }) => {
   return (
-    <div onClick={onClick} className={buttonCSS}>
+    <div onClick={onClick} className='button-tool'>
       {label}
     </div>
   )

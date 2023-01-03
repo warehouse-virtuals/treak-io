@@ -1,15 +1,9 @@
 import React from "react"
 import "./TextInput.css"
 
-const TextInput = ({
-  type,
-  label,
-  inputRef,
-
-  containerCSS,
-}) => {
+const TextInput = ({ type, label, required, inputRef, containerCSS }) => {
   return (
-    <div className={containerCSS}>
+    <div className='textinput-container'>
       <input
         ref={inputRef}
         type={type}

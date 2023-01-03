@@ -18,7 +18,17 @@ const App = () => {
 
   return (
     <Suspense fallback={"loading"}>
-      <ToastContainer />
+      <ToastContainer
+        position='bottom-left'
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme='dark'
+      />
       <div className='App'>
         <UserContextProvider>
           <FirebaseContextProvider>

@@ -1,3 +1,10 @@
+.textinput-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
 .textinput-label {
   position: absolute;
   padding: 2px;
