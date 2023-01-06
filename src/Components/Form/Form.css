@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding-left: 20px;
+  background: red;
+}
+
+.form:first-child {
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+}
+
+.form:nth-child(2) {
+  background: orange;
+}

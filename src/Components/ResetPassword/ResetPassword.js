@@ -46,9 +46,11 @@ const ResetPassword = ({ back }) => {
           </div>
         </div>
         <div className='reset-password-message-container'>
-          <div className='reset-password-message-header'>Forgot Password?</div>
+          <div className='reset-password-message-header'>
+            {t("Enter your email.")}
+          </div>
           <div className='reset-password-message-body'>
-            Enter your email and we send you a reset link.
+            {t("We'll send you a link to reset your password")}
           </div>
         </div>
         <div className='reset-password-input-and-button'>
@@ -58,11 +60,11 @@ const ResetPassword = ({ back }) => {
             type={"email"}
             label={t("E-Mail")}
           />
-          <Button label={t("Reset")} onClick={triggerResetEmail} />
+          <Button label={t("Send Reset Link")} onClick={triggerResetEmail} />
         </div>
 
         <div className='reset-password-back' onClick={back}>
-          <FiArrowLeft size={20} /> Back to login
+          <FiArrowLeft size={20} /> {t("Back to login")}
         </div>
       </div>
     </div>

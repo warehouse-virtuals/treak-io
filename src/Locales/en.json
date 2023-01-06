@@ -13,9 +13,16 @@
     "Good Afternoon": "Good afternoon!",
     "Good Evening": "Good Evening!",
     "Login": "Login",
+    "Login to app": "Login to app",
     "E-Mail": "Email",
     "Password": "Password",
-    "Remember me": "Remember me",
+    "Forgot Password?": "Forgot Password?",
+    "Enter your email.": "Enter your email.",
+    "We'll send you a link to reset your password": "We'll send you a link to reset your password",
+    "Dont have an account?": "Dont have an account?",
+    "Register": "Register",
+    "Send Reset Link": "Send Reset Link",
+    "Back to login": "Back to login",
     "Improve your workflow": "Improve your workflow!",
     "Glance at your workspace": "Glance at your workspace",
     "Track your patient records": "Track your patient records",
@@ -139,5 +146,11 @@
     "Findings": "Findings",
     "Carer": "Carer",
     "Submit": "Submit"
+  },
+  "notfound": {
+    "Login": "Login",
+    "Register": "Register",
+    "It seems like you've been lost...": "It seems like you've been lost...",
+    "Try login!": "Try login!"
   }
 }

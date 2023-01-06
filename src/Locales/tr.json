@@ -13,10 +13,17 @@
     "Good Afternoon": "Tünaydın!",
     "Good Evening": "İyi Akşamlar!",
     "Login": "Giriş yap",
+    "Login to app": "Uygulamaya giriş yap",
     "E-Mail": "E-Posta",
     "Password": "Parola",
     "Improve your workflow": "İş akışınızı geliştirin!",
-    "Remember me": "Beni hatırla",
+    "Forgot Password?": "Şifreni mi unuttun?",
+    "Enter your email.": "E-posta adresini gir",
+    "We'll send you a link to reset your password": "Şifreni sıfırlaman için sana bir bağlantı göndereceğiz",
+    "Dont have an account?": "Henüz hesabın yok mu?",
+    "Register": "Kaydol",
+    "Send Reset Link": "Gönder",
+    "Back to login": "Giriş ekranına dön",
     "Glance at your workspace": "Çalışma alanınıza göz atın",
     "Track your patient records": "Kullanıcı kayıtlarınızı takip edin",
     "Arrange appointments": "Randevularınızı düzenleyin",
@@ -24,6 +31,7 @@
     "Get in touch with your colleagues": "Meslektaşlarınızla iletişim kurun",
     "Analyze your business statistics": "İş istatistiklerinizi analiz edin"
   },
+
   "dashboard": {
     "Dashboard": "Genel Bakış",
     "Hi": "Merhaba",
@@ -141,5 +149,11 @@
     "Findings": "Bulgular",
     "Carer": "İlgilenen",
     "Submit": "Oluştur"
+  },
+  "notfound": {
+    "Login": "Giriş yap",
+    "Register": "Kaydol",
+    "It seems like you've been lost...": "Görünüşe göre kayboldun...",
+    "Try login!": "Giriş yapmayı dene!"
   }
 }

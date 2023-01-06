@@ -1,0 +1,33 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.register-header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.register-treat-logo {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: height 0.3s;
+  margin: 0px 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f2f2f2;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+}

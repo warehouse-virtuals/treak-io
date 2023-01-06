@@ -44,6 +44,10 @@ const Login = () => {
     }
   }
 
+  const goToRegister = () => {
+    navigate("/register")
+  }
+
   const handleLoginButtonPress = async () => {
     const email = emailRef.current.value
     const password = passwordRef.current.value
@@ -85,7 +89,7 @@ const Login = () => {
             </div>
             <div className='login-message-container'>
               <div className='welcome-message'>{welcomeMessage()}</div>
-              <div className='login-message'>Uygulamaya giriş yap</div>{" "}
+              <div className='login-message'>{t("Login to app")}</div>
             </div>
             <div className='login-input-and-button'>
               <TextInput
@@ -115,11 +119,16 @@ const Login = () => {
                 className='login-left-footer-forgot'
                 onClick={() => setIsForgot(true)}
               >
-                Forgot Password?
+                {t("Forgot Password?")}
               </div>
-              <div className='login-left-footer-register'>
-                Dont have an account? &nbsp;
-                <div className='login-left-footer-register-btn'>Register.</div>
+              <div
+                onClick={goToRegister}
+                className='login-left-footer-register'
+              >
+                {t("Dont have an account?")}&nbsp;
+                <div className='login-left-footer-register-btn'>
+                  {t("Register")}
+                </div>
               </div>
             </div>
           </div>
