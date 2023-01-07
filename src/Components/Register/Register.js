@@ -19,6 +19,8 @@ import "./Register.css"
 const Register = () => {
   const [businessType, setBusinessType] = useState(false)
   const [professionType, setProfessionType] = useState(false)
+  const [formsActive, setFormsActive] = useState(true)
+
   const navigate = useNavigate()
   // const emailRef = useRef("")
   // const passwordRef = useRef("")
@@ -39,12 +41,18 @@ const Register = () => {
   //   }
   // }
 
-  const handleBusinessTypePress = (type) => {
-    setBusinessType(type)
-  }
-
+  useEffect(() => {
+    console.log(businessType, professionType)
+  }, [businessType, professionType])
   return (
-    <div className='register-container'>
+    <div
+      className='register-container'
+      style={
+        businessType && professionType
+          ? { background: "rgba(14,17,17,.57)" }
+          : null
+      }
+    >
       <div className='register-header'>
         <img
           className='register-treat-logo'
@@ -61,7 +69,7 @@ const Register = () => {
         <div className='register-left'>
           <div className='register-options'>
             <div className='register-message-header'>
-              Tell us what's your business type.
+              Tell us what your business type.
             </div>
             <RegisterOptions
               icon={PersonWorking1}
@@ -83,17 +91,21 @@ const Register = () => {
         </div>
       </div>
       <div
-        className={businessType ? "register-message-container-show" : "hide"}
+        className={
+          businessType && !professionType
+            ? "register-message-container-show"
+            : "hide"
+        }
       >
         <div className='register-left'>
           <div className='register-options'>
             <div className='register-message-header'>
-              What is your profession?
+              What's your profession?
             </div>
             <RegisterOptions
               icon={Headphones1}
               desc='Audiologist'
-              onClick={() => handleBusinessTypePress("freelance")}
+              onClick={() => setProfessionType("audiologist")}
             />
             <div
               style={{
@@ -118,9 +130,18 @@ const Register = () => {
         className={
           businessType && professionType ? "form-container-show" : "hide"
         }
+        style={formsActive ? null : { height: "180px" }}
       >
-        <Form title={"Business Information"} isActive={false} />
-        <Form title={"General Information"} isActive={false} />
+        <Form
+          title={"Business Information"}
+          businessType={businessType}
+          isActive={true}
+        />
+        <Form
+          title={"General Information"}
+          professionType={professionType}
+          isActive={false}
+        />
         <Form title={"Clinic Information"} isActive={false} />
       </div>
     </div>
