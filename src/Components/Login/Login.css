@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: center;
   width: 50%;
+  animation: reveal-animation 0.5s linear;
 }
 
 .login-left-header {
@@ -19,11 +20,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 10px;
-  left: 30px;
+
   font-weight: 600;
-  font-size: 30px;
-  gap: 5px;
+  font-size: 24px;
+  gap: 10px;
 }
 .login-treat-logo {
   width: 50px;
@@ -31,6 +31,7 @@
   align-items: center;
   font-weight: 600;
   transition: height 0.3s;
+  margin-left: 10px;
 }
 .login-left-wrapper {
   height: 100vh;
@@ -217,7 +218,7 @@ input:-webkit-autofill:active {
 }
 
 /* Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) {
+@media (min-width: 991.98px) and (max-width: 1199.98px) {
   .login-right-wrapper {
     margin-left: 20px;
     width: auto;
@@ -227,5 +228,14 @@ input:-webkit-autofill:active {
     font-size: 40px;
 
     /* background: red; */
+  }
+}
+
+@keyframes reveal-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

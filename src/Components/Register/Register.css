@@ -1,13 +1,16 @@
+.hide {
+  display: none;
+}
 .register-container {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100vh;
 }
 
 .register-header {
   display: flex;
   align-items: center;
-  height: 60px;
   width: 100%;
   font-size: 24px;
   font-weight: 600;
@@ -23,11 +26,109 @@
   margin: 0px 10px;
 }
 
-.form-container {
+.register-message-container-show {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  animation: reveal-animation 1s linear;
+}
+
+.register-message-header {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.form-container-show {
   display: flex;
   flex-direction: column;
   height: 100vh;
   background: #f2f2f2;
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
+}
+
+.register-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+
+  height: 600px;
+  padding: 20px;
+}
+
+.register-right {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  font-weight: 600;
+  animation: reveal-animation 0.5s linear;
+}
+
+.profession-type-header {
+  font-size: 24px;
+  text-align: center;
+}
+
+/* iPad 1/3, mobile */
+@media (max-width: 767.98px) {
+  .profession-type-cards > * {
+    margin-right: 10px;
+  }
+  .register-message-container-show {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .register-message-header {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 24px;
+  }
+  .register-left {
+    height: auto;
+    width: auto;
+    background: none;
+    padding: 0;
+  }
+  .register-right {
+    margin-top: 40px;
+    width: 100%;
+    height: 100%;
+  }
+  .profession-type-cards {
+    display: flex;
+    align-items: center;
+
+    margin-top: 10px;
+    height: 100%;
+    overflow-x: scroll;
+  }
+  .profession-type-cards > * {
+    margin-right: 10px;
+    height: 100%;
+  }
+}
+/* iPad 2/3 */
+@media (min-width: 767.98px) and (max-width: 991.98px) {
+  .register-left {
+    height: auto;
+    width: 60%;
+    background: none;
+  }
+}
+
+/* iPad */
+@media (min-width: 991.98px) and (max-width: 1199.98px) {
+}
+
+@keyframes reveal-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -10,12 +10,13 @@ const UpcomingAppointments = (props) => {
   const { t } = useTranslation("dashboard")
 
   const handleAddAppointmentButtonClick = async () => {
-    try {
-      navigate("/Agenda")
-      console.log("Clicked Add Button")
-    } catch (error) {
-      console.log(error.message)
-    }
+    navigate("/audiogram")
+    // try {
+    //   navigate("/agenda")
+    //   console.log("Clicked Add Button")
+    // } catch (error) {
+    //   console.log(error.message)
+    // }
   }
 
   return (
