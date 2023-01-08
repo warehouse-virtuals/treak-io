@@ -174,7 +174,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px #fff inset !important;
   -webkit-box-shadow: 0 0 0 30px #fff inset !important;
-  outline: 1px solid #0e0e0e;
+  outline: 1px solid #198892;
 }
 
 /* Small devices (landscape phones, less than 768px) */

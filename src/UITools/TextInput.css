@@ -23,7 +23,7 @@
   font-size: 16px;
   font-weight: 500;
   border: 0px;
-  border: 1px solid #bfc6d4;
+  border: 1px solid rgba(0, 0, 0, 0.16);
   text-indent: 10px;
   font-family: inherit;
   border-radius: 10px;
@@ -31,9 +31,28 @@
 
 .textinput-input:focus {
   outline: none;
-  border: 1px solid #828282;
+  border: 1px solid rgba(0, 0, 0, 0.16);
 }
 .textinput-input:not(:placeholder-shown) + .textinput-label {
   opacity: 1;
   transition: 0.2s ease-in-out;
+}
+
+@media (max-width: 767.98px) {
+  .textinput-label {
+    font-size: 10px;
+  }
+  .textinput-input {
+    font-size: 14px;
+  }
+  .textinput-input::placeholder {
+    font-size: 14px;
+  }
+}
+/* iPad 2/3 */
+@media (min-width: 767.98px) and (max-width: 991.98px) {
+}
+
+/* iPad */
+@media (min-width: 991.98px) and (max-width: 1199.98px) {
 }

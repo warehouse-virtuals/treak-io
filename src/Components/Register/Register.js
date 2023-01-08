@@ -10,7 +10,7 @@ import People1 from "../../Assets/svg-illus/People1.svg"
 import PersonWorking1 from "../../Assets/svg-illus/PersonWorking1.svg"
 import Headphones1 from "../../Assets/svg-illus/Headphones1.svg"
 
-import Form from "../Form/Form"
+import RegisterForm from "../RegisterForm/RegisterForm"
 
 import treatLogo from "../../Assets/treat-logos/treat-tp.svg"
 
@@ -19,7 +19,7 @@ import "./Register.css"
 const Register = () => {
   const [businessType, setBusinessType] = useState(false)
   const [professionType, setProfessionType] = useState(false)
-  const [formsActive, setFormsActive] = useState(true)
+  const [activeTab, setActiveTab] = useState("general")
 
   const navigate = useNavigate()
   // const emailRef = useRef("")
@@ -40,9 +40,9 @@ const Register = () => {
   //     console.log(error.message)
   //   }
   // }
-
   useEffect(() => {
-    console.log(businessType, professionType)
+    console.log(businessType)
+    console.log(professionType)
   }, [businessType, professionType])
   return (
     <div
@@ -90,6 +90,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+
       <div
         className={
           businessType && !professionType
@@ -130,19 +131,37 @@ const Register = () => {
         className={
           businessType && professionType ? "form-container-show" : "hide"
         }
-        style={formsActive ? null : { height: "180px" }}
+        style={activeTab ? null : { height: "180px" }}
       >
-        <Form
-          title={"Business Information"}
-          businessType={businessType}
-          isActive={true}
-        />
-        <Form
+        <RegisterForm
           title={"General Information"}
-          professionType={professionType}
-          isActive={false}
+          businessType={businessType}
+          formType={"general"}
+          isActive={activeTab === "general" ? true : false}
+          switchTabs={(tab) => {
+            setActiveTab(tab)
+          }}
         />
-        <Form title={"Clinic Information"} isActive={false} />
+        {businessType === "company" ? (
+          <RegisterForm
+            title={"Business Information"}
+            businessType={businessType}
+            formType={"business"}
+            isActive={activeTab === "business" ? true : false}
+            switchTabs={(tab) => {
+              setActiveTab(tab)
+            }}
+          />
+        ) : null}
+        <RegisterForm
+          title={"Clinic Information"}
+          businessType={businessType}
+          formType={"clinic"}
+          isActive={activeTab === "clinic" ? true : false}
+          switchTabs={(tab) => {
+            setActiveTab(tab)
+          }}
+        />
       </div>
     </div>
   )

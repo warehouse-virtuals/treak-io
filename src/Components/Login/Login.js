@@ -97,15 +97,11 @@ const Login = () => {
                 inputRef={emailRef}
                 type={"text"}
                 label={t("E-Mail")}
-                containerCSS='login-textinput-container'
-                inputCSS='login-textinput-input'
               />
               <TextInput
                 inputRef={passwordRef}
                 type={"password"}
                 label={t("Password")}
-                containerCSS='login-textinput-container'
-                inputCSS='login-textinput-input'
               />
 
               <Button

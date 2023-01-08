@@ -1,4 +1,5 @@
 import { FiChevronRight } from "react-icons/fi"
+
 import "./RegisterOptions.css"
 
 const RegisterOptions = ({ icon, desc, onClick }) => {
