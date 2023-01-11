@@ -1,27 +1,22 @@
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { FiArrowLeft } from "react-icons/fi"
-// import { useNavigate } from "react-router-dom"
-// import { UserAuth } from "../../Context/UserContext"
+import { useState } from "react"
 
-import RegisterOptions from "../RegisterOptions/RegisterOptions"
+import RegisterHeader from "../RegisterHeader/RegisterHeader"
+import RegisterBusinessList from "../RegisterBusinessList/RegisterBusinessList"
+import RegisterProfessionList from "../RegisterProfessionList/RegisterProfessionList"
 
-import People1 from "../../Assets/svg-illus/People1.svg"
-import PersonWorking1 from "../../Assets/svg-illus/PersonWorking1.svg"
-import Headphones1 from "../../Assets/svg-illus/Headphones1.svg"
-
-import RegisterForm from "../RegisterForm/RegisterForm"
-
-import treatLogo from "../../Assets/treat-logos/treat-tp.svg"
+import RegisterGeneralForm from "../RegisterGeneralForm/RegisterGeneralForm"
+import RegisterBusinessForm from "../RegisterBusinessForm/RegisterBusinessForm"
+import RegisterClinicForm from "../RegisterClinicForm/RegisterClinicForm"
 
 import "./Register.css"
+import RegisterSidebar from "../RegisterSidebar/RegisterSidebar"
 
 const Register = () => {
   const [businessType, setBusinessType] = useState(false)
   const [professionType, setProfessionType] = useState(false)
+
   const [activeTab, setActiveTab] = useState("general")
 
-  const navigate = useNavigate()
   // const emailRef = useRef("")
   // const passwordRef = useRef("")
   // const navigate = useNavigate()
@@ -40,129 +35,52 @@ const Register = () => {
   //     console.log(error.message)
   //   }
   // }
-  useEffect(() => {
-    console.log(businessType)
-    console.log(professionType)
-  }, [businessType, professionType])
+
   return (
-    <div
-      className='register-container'
-      style={
-        businessType && professionType
-          ? { background: "rgba(14,17,17,.57)" }
-          : null
-      }
-    >
-      <div className='register-header'>
-        <img
-          className='register-treat-logo'
-          alt='logo'
-          src={treatLogo}
-          onClick={() => navigate("/login")}
-        />
-        <span>treat</span>
-      </div>
-
-      <div
-        className={businessType ? "hide" : "register-message-container-show"}
-      >
-        <div className='register-left'>
-          <div className='register-options'>
-            <div className='register-message-header'>
-              Tell us what your business type.
-            </div>
-            <RegisterOptions
-              icon={PersonWorking1}
-              desc=' You are a freelancer'
-              onClick={() => setBusinessType("freelance")}
-            />
-            <RegisterOptions
-              icon={People1}
-              desc='You have a company'
-              onClick={() => setBusinessType("company")}
-            />
-            <div
-              className='reset-password-back'
-              onClick={() => navigate("/login")}
-            >
-              <FiArrowLeft size={20} /> Back to login
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={
-          businessType && !professionType
-            ? "register-message-container-show"
-            : "hide"
-        }
-      >
-        <div className='register-left'>
-          <div className='register-options'>
-            <div className='register-message-header'>
-              What's your profession?
-            </div>
-            <RegisterOptions
-              icon={Headphones1}
-              desc='Audiologist'
-              onClick={() => setProfessionType("audiologist")}
-            />
-            <div
-              style={{
-                color: "#b2b2b2",
-                textAlign: "center",
-                fontWeight: "600",
-              }}
-            >
-              More options coming soon...
-            </div>
-            <div
-              className='reset-password-back'
-              onClick={() => navigate("/login")}
-            >
-              <FiArrowLeft size={20} /> Back to login
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={
-          businessType && professionType ? "form-container-show" : "hide"
-        }
-        style={activeTab ? null : { height: "180px" }}
-      >
-        <RegisterForm
-          title={"General Information"}
+    <div className='register-container'>
+      <RegisterHeader />
+      {/* İlk sayfa */}
+      {!businessType ? (
+        <RegisterBusinessList
           businessType={businessType}
-          formType={"general"}
-          isActive={activeTab === "general" ? true : false}
-          switchTabs={(tab) => {
-            setActiveTab(tab)
-          }}
+          businessTypeSetter={(type) => setBusinessType(type)}
         />
-        {businessType === "company" ? (
-          <RegisterForm
-            title={"Business Information"}
-            businessType={businessType}
-            formType={"business"}
-            isActive={activeTab === "business" ? true : false}
-            switchTabs={(tab) => {
-              setActiveTab(tab)
-            }}
+      ) : null}
+      {/* İkinci sayfa */}
+      {businessType && !professionType ? (
+        <RegisterProfessionList
+          businessType={businessType}
+          professionType={professionType}
+          professionTypeSetter={(type) => setProfessionType(type)}
+        />
+      ) : null}
+      {/* Form sayfası */}
+      {businessType && professionType ? (
+        <div className='form-body'>
+          <RegisterSidebar
+            activeTab={activeTab}
+            activeTabSetter={(tab) => setActiveTab(tab)}
           />
-        ) : null}
-        <RegisterForm
-          title={"Clinic Information"}
-          businessType={businessType}
-          formType={"clinic"}
-          isActive={activeTab === "clinic" ? true : false}
-          switchTabs={(tab) => {
-            setActiveTab(tab)
-          }}
-        />
-      </div>
+          {activeTab === "general" ? (
+            <RegisterGeneralForm
+              title='Tell us about yourself'
+              desc='This is your app and it needs to know you'
+            />
+          ) : null}
+          {activeTab === "business" ? (
+            <RegisterBusinessForm
+              title='Basic information about your business'
+              desc='Information about your business shapes your app'
+            />
+          ) : null}
+          {activeTab === "clinic" ? (
+            <RegisterClinicForm
+              title='Your app works as a clinic, open your first clinic'
+              desc='You can add your clinics here or do it later'
+            />
+          ) : null}
+        </div>
+      ) : null}
     </div>
   )
 }

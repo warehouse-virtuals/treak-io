@@ -58,11 +58,7 @@ const Login = () => {
     } catch (error) {
       console.log(error.message)
 
-      toast.error("Wrong email or password.", {
-        theme: "light",
-        hideProgressBar: true,
-        position: toast.POSITION.BOTTOM_LEFT,
-      })
+      toast.error("Wrong email or password.")
     }
   }
 

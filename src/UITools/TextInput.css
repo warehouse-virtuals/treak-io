@@ -23,7 +23,7 @@
   font-size: 16px;
   font-weight: 500;
   border: 0px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 1px solid #b2b2b2;
   text-indent: 10px;
   font-family: inherit;
   border-radius: 10px;
@@ -31,7 +31,7 @@
 
 .textinput-input:focus {
   outline: none;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 2px solid #0e0e0e;
 }
 .textinput-input:not(:placeholder-shown) + .textinput-label {
   opacity: 1;
