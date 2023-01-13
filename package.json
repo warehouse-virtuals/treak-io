@@ -26,6 +26,8 @@
     "json5": "^2.2.3",
     "jsonwebtoken": "^9.0.0",
     "nth-check": "^2.1.1",
+    "primeicons": "^6.0.1",
+    "primereact": "^8.7.3",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",
     "react-datepicker": "^4.8.0",

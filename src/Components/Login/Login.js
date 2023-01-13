@@ -80,7 +80,7 @@ const Login = () => {
           <div className='login-left-body'>
             <div className='login-icon-container'>
               <div className='login-icon'>
-                <FiLogIn className='' size={36} />
+                <FiLogIn size={36} />
               </div>
             </div>
             <div className='login-message-container'>

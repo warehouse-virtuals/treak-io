@@ -1,15 +1,18 @@
 import { useTranslation } from "react-i18next"
-import { FiArrowLeft } from "react-icons/fi"
 import { useNavigate } from "react-router-dom"
 
+import { FiArrowLeft } from "react-icons/fi"
+
+import "./RegisterFormFooter.css"
+
 const RegisterFormFooter = () => {
-  const { t } = useTranslation("register")
   const navigate = useNavigate()
+  const { t } = useTranslation("register")
+
   return (
-    <div className='form-footer-container'>
-      <div className='reset-password-back' onClick={() => navigate("/login")}>
-        <FiArrowLeft size={20} /> {t("Back to login")}
-      </div>
+    <div className='register-form-footer' onClick={() => navigate("/login")}>
+      <FiArrowLeft size={16} />
+      {t("Back to login")}
     </div>
   )
 }

@@ -53,10 +53,3 @@
   visibility: visible;
   opacity: 1;
 }
-
-* {
-  box-sizing: border-box;
-}
-svg {
-  display: none;
-}

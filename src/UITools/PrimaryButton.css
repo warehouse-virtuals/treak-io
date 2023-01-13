@@ -1,11 +1,15 @@
 /* CSS */
 .button-6 {
+  color: #fff;
+  background: #198892;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   height: 40px;
   width: 100%;
+  font-weight: 600;
+
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 5px;
   transition: box-shadow 0.1s linear;
 }
