@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next"
 import TextInput from "../../UITools/TextInput"
+import Checkbox from "../../UITools/Checkbox"
+import PrimaryButton from "../../UITools/PrimaryButton"
 
 const RegisterClinicForm = ({ title, desc }) => {
   const { t } = useTranslation("register")
@@ -12,7 +14,7 @@ const RegisterClinicForm = ({ title, desc }) => {
           // inputRef={passwordRef}
           type={"text"}
           label={t("Long Name")}
-        />{" "}
+        />
         <TextInput
           // inputRef={passwordRef}
           type={"text"}
@@ -42,6 +44,11 @@ const RegisterClinicForm = ({ title, desc }) => {
           type={"text"}
           label={t("Long Name")}
         />
+      </div>
+      <Checkbox />
+      <div className='register-footer-button'>
+        <PrimaryButton label={t("Back")} onClick />
+        <PrimaryButton label={t("Next")} onClick />
       </div>
     </div>
   )

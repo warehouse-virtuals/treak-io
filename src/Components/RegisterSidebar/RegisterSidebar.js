@@ -12,21 +12,21 @@ const RegisterSidebar = ({ activeTab, activeTabSetter }) => {
       className={hideSidebar ? "register-sidebar-min" : "register-sidebar-max"}
     >
       <RegisterSidebarTab
-        icon={<FiUser size={24} />}
+        icon={<FiUser />}
         desc={"General Information"}
         hideSidebar={hideSidebar}
         activeTab={activeTab === "general" ? true : false}
         onClick={() => activeTabSetter("general")}
       />
       <RegisterSidebarTab
-        icon={<FiBriefcase size={24} />}
+        icon={<FiBriefcase />}
         desc={"Business Information"}
         hideSidebar={hideSidebar}
         activeTab={activeTab === "business" ? true : false}
         onClick={() => activeTabSetter("business")}
       />
       <RegisterSidebarTab
-        icon={<FiHome size={24} />}
+        icon={<FiHome />}
         desc={"Clinic Information"}
         hideSidebar={hideSidebar}
         activeTab={activeTab === "clinic" ? true : false}

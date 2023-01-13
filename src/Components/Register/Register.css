@@ -141,7 +141,12 @@
   align-items: center;
   margin-top: auto;
 }
-
+.register-sidebar-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+}
 .register-sidebar-max {
   display: flex;
   flex-direction: column;
@@ -149,7 +154,7 @@
   width: 240px;
   color: #b2b2b2;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   border-right: 2px solid #f8f8f8;
   flex-shrink: 0;
 }
@@ -171,6 +176,14 @@
 
 .register-expand-button {
   display: none;
+}
+
+.register-footer-button {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
 }
 
 /* iPad 1/3, mobile */
@@ -256,11 +269,6 @@
 }
 /* iPad 2/3 */
 @media (min-width: 767.98px) and (max-width: 991.98px) {
-  .register-left {
-    height: auto;
-    width: 60%;
-    background: none;
-  }
 }
 
 /* iPad */

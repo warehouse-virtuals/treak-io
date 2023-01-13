@@ -8,8 +8,9 @@ import RegisterGeneralForm from "../RegisterGeneralForm/RegisterGeneralForm"
 import RegisterBusinessForm from "../RegisterBusinessForm/RegisterBusinessForm"
 import RegisterClinicForm from "../RegisterClinicForm/RegisterClinicForm"
 
-import "./Register.css"
 import RegisterSidebar from "../RegisterSidebar/RegisterSidebar"
+
+import "./Register.css"
 
 const Register = () => {
   const [businessType, setBusinessType] = useState(false)

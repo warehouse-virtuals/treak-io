@@ -5,14 +5,14 @@
   height: 80px;
   margin-bottom: 10px;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  transition: box-shadow 0.2s linear;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 10px;
+  transition: box-shadow 0.1s linear;
 }
 
 .register-options-container:hover {
   cursor: pointer;
-  box-shadow: none;
-  transition: box-shadow 0.2s linear;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+  transition: box-shadow 0.1s linear;
 }
 
 .register-options-icon {

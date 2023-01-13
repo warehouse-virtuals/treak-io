@@ -97,7 +97,7 @@
   font-size: 48px;
   color: #ffffff;
 
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   /* background: red; */
 }
@@ -207,11 +207,6 @@ input:-webkit-autofill:active {
     margin-left: 0px;
   }
 
-  .login-right-header {
-    margin-bottom: 50px;
-
-    /* background: red; */
-  }
   .login-left-body {
     padding: 0px 20px;
   }
@@ -219,16 +214,6 @@ input:-webkit-autofill:active {
 
 /* Large devices (desktops, less than 1200px) */
 @media (min-width: 991.98px) and (max-width: 1199.98px) {
-  .login-right-wrapper {
-    margin-left: 20px;
-    width: auto;
-  }
-  .login-right-header {
-    margin-bottom: 50px;
-    font-size: 40px;
-
-    /* background: red; */
-  }
 }
 
 @keyframes reveal-animation {

@@ -61,6 +61,10 @@
     "Short Name": "Kısa İsim",
     "City": "Şehir",
     "Address": "Adres",
+    "ZIP": "ZIP",
+    "Country": "Ülke",
+    "Back": "Geri",
+    "Next": "İleri",
     "Back to login": "Giriş ekranına dön"
   },
 

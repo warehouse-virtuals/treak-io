@@ -60,6 +60,10 @@
     "Short Name": "Short Name",
     "City": "City",
     "Address": "Adress",
+    "ZIP": "ZIP",
+    "Country": "Country",
+    "Back": "Back",
+    "Next": "Next",
     "Back to login": "Back to login"
   },
   "dashboard": {

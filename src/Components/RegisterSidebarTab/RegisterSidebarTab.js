@@ -17,7 +17,7 @@ const RegisterSidebarTab = ({
       onClick={onClick}
       style={activeTab ? { color: "#0e0e0e" } : null}
     >
-      {icon}
+      <div className='register-sidebar-icon'>{icon}</div>
       {hideSidebar ? null : <div>{t(desc)}</div>}
     </div>
   )
