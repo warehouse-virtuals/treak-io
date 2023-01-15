@@ -1,0 +1,23 @@
+.register-form-business {
+}
+
+.form-business-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.form-business-desc {
+  color: #b2b2b2;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-business-row-container {
+  margin-top: 15px;
+}
+
+.form-business-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}

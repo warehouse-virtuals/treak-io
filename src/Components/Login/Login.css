@@ -18,11 +18,12 @@
 .login-left-header {
   position: absolute;
   display: flex;
+  width: 100%;
+
   align-items: center;
-  justify-content: center;
+
   font-weight: 600;
   font-size: 24px;
-  gap: 10px;
 }
 .login-treat-logo {
   width: 50px;
@@ -30,8 +31,15 @@
   align-items: center;
   font-weight: 600;
   transition: height 0.3s;
-  margin-left: 10px;
+  margin: 0px 10px;
 }
+
+.login-step-count {
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
 .login-left-wrapper {
   height: 100vh;
 

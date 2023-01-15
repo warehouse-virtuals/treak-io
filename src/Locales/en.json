@@ -56,6 +56,8 @@
     "Date of Birth": "Date of Birth",
     "Gender": "Gender",
     "Phone": "Phone",
+    "Password": "Password",
+    "Confirm Password": "Confirm Password",
     "Long Name": "Long Name",
     "Short Name": "Short Name",
     "City": "City",
@@ -64,6 +66,7 @@
     "Country": "Country",
     "Back": "Back",
     "Next": "Next",
+    "Step": "Step",
     "Back to login": "Back to login"
   },
   "dashboard": {

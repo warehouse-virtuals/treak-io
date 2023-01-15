@@ -43,3 +43,12 @@
 /* iPad */
 @media (min-width: 991.98px) and (max-width: 1199.98px) {
 }
+
+@keyframes form-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

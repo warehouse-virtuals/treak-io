@@ -51,12 +51,14 @@
     "Audiologist": "Odyolog",
     "Name": "İsim",
     "Surname": "Soyisim",
-    "E-Mail": "E-Mail",
+    "E-Mail": "E-Posta",
     "Job Title": "İş Unvanı",
     "Role": "Rolü",
     "Date of Birth": "Doğum Tarihi",
     "Gender": "Cinsiyet",
     "Phone": "Numara",
+    "Password": "Parola",
+    "Confirm Password": "Parolayı Onayla",
     "Long Name": "Uzun İsim",
     "Short Name": "Kısa İsim",
     "City": "Şehir",
@@ -65,6 +67,7 @@
     "Country": "Ülke",
     "Back": "Geri",
     "Next": "İleri",
+    "Step": "Adım",
     "Back to login": "Giriş ekranına dön"
   },
 
