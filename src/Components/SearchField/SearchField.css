@@ -32,6 +32,7 @@
   margin: 0px;
   box-sizing: border-box;
   border: none;
+  border-radius: 0px;
   border-bottom: 2px solid #f8f8f8;
   padding-left: 10px;
   font-weight: 400;
@@ -61,6 +62,9 @@
   width: 40px;
   height: 100%;
   border-bottom: 2px solid #f8f8f8;
+}
+.close-icon {
+  display: none;
 }
 
 .found-patient-container {
@@ -149,7 +153,19 @@
 
 .found-patient-edit-btn:hover {
   cursor: pointer;
-  background: #ffa56a;
+
   transition: 0.3s ease-in-out;
   color: #252525;
+}
+@media (max-width: 992px) {
+  .search-icon {
+    border-bottom: none;
+  }
+  .close-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 100%;
+  }
 }

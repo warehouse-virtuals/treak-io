@@ -14,14 +14,17 @@
   width: 100%;
   max-width: 1680px;
   color: #0e0e0e;
-  padding: 10px 10px;
 }
 
 .dashboard-cards {
   width: 100%;
 }
 .dashboard-chart {
+  padding: 0px 10px;
   width: 40%;
+}
+.dashboard-upcoming {
+  padding: 0px 10px;
 }
 
 @media (max-width: 767.98px) {

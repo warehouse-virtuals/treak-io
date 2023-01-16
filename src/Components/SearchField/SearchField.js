@@ -1,12 +1,12 @@
 import { useRef, useState, useEffect } from "react"
-
 import "./SearchField.css"
 
 import {
-  FiSearch,
-  FiUsers,
-  FiCalendar,
+  FiX,
   FiEdit,
+  FiUsers,
+  FiSearch,
+  FiCalendar,
   FiMessageCircle,
 } from "react-icons/fi"
 
@@ -15,16 +15,20 @@ import { useTranslation } from "react-i18next"
 import { UserAuth } from "../../Context/UserContext"
 import { FirebaseActions } from "../../Context/FirebaseContext"
 
-const SearchField = ({ selectedPatientName }) => {
+import { UIToolsStatus } from "../../Context/UIToolsStatusContext"
+
+const SearchField = ({ selectedPatientName, expandSearchBar }) => {
   // eslint-disable-next-line
   const [searchSelectedPerson, setSearchSelectedPerson] = useState("")
-  const [timer, setTimer] = useState(null)
   const [foundPatients, setFoundPatients] = useState([])
+  const [timer, setTimer] = useState(null)
 
   const { userData } = UserAuth()
+  const { setExpandSearchBar } = UIToolsStatus()
   const { searchPatientsResult } = FirebaseActions()
 
   const searchTextRef = useRef("")
+
   const { t } = useTranslation("dashboard")
 
   const findPatients = async () => {
@@ -77,21 +81,39 @@ const SearchField = ({ selectedPatientName }) => {
       }, 400)
     )
   }
-
+  useEffect(() => {}, [expandSearchBar])
   return (
     <div className='searchfield-container'>
       <div className='search-bar'>
-        <input
-          className='searchfield-input'
-          ref={searchTextRef}
-          onClick={() => (searchTextRef.current.value = "")}
-          onChange={(e) => changeDelay(e.target.value)}
-          placeholder={t("Search patients...")}
-        />
+        {expandSearchBar ? (
+          <input
+            className='searchfield-input'
+            ref={searchTextRef}
+            onClick={() => (searchTextRef.current.value = "")}
+            onChange={(e) => changeDelay(e.target.value)}
+            placeholder={t("Search patients...")}
+          />
+        ) : null}
 
-        <div className='search-icon'>
+        <div
+          className='search-icon'
+          onClick={() =>
+            expandSearchBar === false ? setExpandSearchBar(true) : null
+          }
+        >
           <FiSearch className='' size={22} />
         </div>
+
+        {expandSearchBar ? (
+          <div
+            className='close-icon'
+            onClick={() =>
+              expandSearchBar === true ? setExpandSearchBar(false) : null
+            }
+          >
+            <FiX className='' size={22} />
+          </div>
+        ) : null}
       </div>
       {foundPatients.length > 0 ? (
         <div className='found-patient-container'>

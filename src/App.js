@@ -6,6 +6,8 @@ import { UserContextProvider } from "./Context/UserContext"
 
 import { FirebaseContextProvider } from "./Context/FirebaseContext"
 
+import { UIToolsStatusContextProvider } from "./Context/UIToolsStatusContext"
+
 import { ThemeProvider } from "./Context/ThemeContext"
 
 import MainRouter from "./Components/MainRouter/MainRouter"
@@ -31,10 +33,12 @@ const App = () => {
       <div className='App'>
         <UserContextProvider>
           <FirebaseContextProvider>
-            <ThemeProvider>
-              <Navbar />
-              <MainRouter />
-            </ThemeProvider>
+            <UIToolsStatusContextProvider>
+              <ThemeProvider>
+                <Navbar />
+                <MainRouter />
+              </ThemeProvider>
+            </UIToolsStatusContextProvider>
           </FirebaseContextProvider>
         </UserContextProvider>
       </div>
