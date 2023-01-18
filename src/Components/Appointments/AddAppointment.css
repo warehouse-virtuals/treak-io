@@ -10,8 +10,8 @@
   width: 480px;
   font-weight: 500;
   font-family: "Gilroy", sans-serif !important;
-  background: #ffffff;
-  color: #0e0e0e;
+  background: var(--c-bg);
+
   border-radius: 12px;
 }
 .add-appt {
@@ -63,7 +63,7 @@
   padding-left: 5px;
   border-radius: 12px;
   height: 32px;
-  border: 1px solid #e3e2e5;
+  border: 1px solid var(--c-gray);
   width: 125px;
 }
 
@@ -85,11 +85,11 @@
   width: 120px;
   border-radius: 12px;
   cursor: pointer;
-  background: #60cca9;
+  background: var(--c-brand);
 }
 
 .add-appt-btn-container-cancel {
-  color: #fd5868;
+  color: var(--c-danger);
   display: flex;
   justify-content: center;
   align-items: center;

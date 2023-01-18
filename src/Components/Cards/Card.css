@@ -1,46 +1,66 @@
 .card-container {
   display: flex;
-
-  background: #f8f8f8;
-  padding: 15px;
+  flex-direction: column;
+  color: var(--c-black);
+  /* background: var(--c-gray-light); */
+  padding: 10px;
   border-radius: 12px;
 }
 
-.card-left {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-}
-
-.card-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 10%;
-}
 .card-icon {
+  color: #fff;
   display: flex;
+  height: 34px;
+  width: 34px;
+  border-radius: 10px;
+  margin-bottom: 10px;
   justify-content: center;
   align-items: center;
-
-  border-radius: 12px;
-}
-.card-details {
-  color: #b2b2b2;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: underline;
-}
-
-.card-title {
-  color: #b2b2b2;
-  font-weight: 800;
-  font-size: 12px;
 }
 
 .card-body {
   display: flex;
   align-items: center;
-  height: 100%;
+  margin-bottom: 10px;
+}
+.card-value {
+  font-weight: 600;
+  font-size: 28px;
+}
+.card-booked {
+  font-weight: 600;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.card-details {
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.card-body-left {
+  display: flex;
+  width: 40%;
+  align-items: center;
+}
+
+.card-body-right {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  color: var(--c-danger);
+  font-weight: 600;
+  font-size: 14px;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #4ec69f;
 }

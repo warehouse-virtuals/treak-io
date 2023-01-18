@@ -28,7 +28,7 @@ function RepairForm(props) {
         </div>
         <div className='repair-form-header'>{t("Repair/Maintenance Form")}</div>
         <div className='repair-upload-container'>
-          <FiUploadCloud className='mb-3' color='#82878f' size={24} />
+          <FiUploadCloud size={24} />
           {t("Upload Images")}
         </div>
         <div className='repair-form-row'>

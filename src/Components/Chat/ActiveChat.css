@@ -22,7 +22,7 @@
 
 .chat-active-message-end {
   font-weight: 600;
-  color: #b3b3b3;
+  color: var(--c-gray);
   display: flex;
   justify-content: center;
   align-items: center;

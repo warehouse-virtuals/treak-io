@@ -1,5 +1,5 @@
 .login-container {
-  color: #191414;
+  color: #0e0e0e;
   display: flex;
   height: 100%;
   width: 100%;
@@ -17,27 +17,27 @@
 
 .login-left-header {
   position: absolute;
+  height: 65px;
   display: flex;
-  width: 100%;
-
+  width: 240px;
   align-items: center;
-
   font-weight: 600;
+  padding: 0px 20px;
   font-size: 24px;
+  gap: 10px;
 }
 .login-treat-logo {
-  width: 50px;
   display: flex;
   align-items: center;
-  font-weight: 600;
+  height: 56px;
   transition: height 0.3s;
-  margin: 0px 10px;
 }
 
 .login-step-count {
   font-size: 16px;
   margin-left: auto;
   margin-right: 10px;
+  background: red;
 }
 
 .login-left-wrapper {
@@ -68,7 +68,7 @@
 }
 
 .login-left-footer *:hover {
-  color: #191414;
+  color: #0e0e0e;
   cursor: pointer;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .login-right {
-  background: #191414;
+  background: #0e0e0e;
   height: 100vh;
   display: flex;
   flex-direction: column;

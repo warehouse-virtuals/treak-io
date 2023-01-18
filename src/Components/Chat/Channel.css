@@ -7,7 +7,6 @@
 }
 
 .chat-channel-icon {
-  color: #252525;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,15 +19,16 @@
   display: flex;
   align-items: center;
   height: 19px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .chat-channel-message {
-  color: #767e98;
+  color: var(--c-gray);
   display: flex;
+  font-weight: 600;
   align-items: center;
   height: 16px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .chat-channel-pp {
@@ -53,7 +53,7 @@
 }
 
 .chat-channel-date {
-  color: #b3b5ba;
+  color: var(--c-gray);
   display: flex;
   font-size: 12px;
   font-weight: 600;
@@ -65,7 +65,7 @@
   align-items: center;
   justify-content: center;
   margin-left: auto;
-  border: 2px solid #f9f9f9;
+  border: 2px solid var(--c-gray-light);
   border-radius: 50%;
   height: 36px;
   width: 36px;
@@ -81,5 +81,5 @@
 }
 
 .chat-channel-options-btn:hover {
-  background: #f9f9f9;
+  background: var(--c-gray-light);
 }

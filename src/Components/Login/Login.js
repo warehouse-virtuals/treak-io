@@ -6,7 +6,7 @@ import { UserAuth } from "../../Context/UserContext"
 import { useTranslation } from "react-i18next"
 import { FiLogIn } from "react-icons/fi"
 
-import treatLogo from "../../Assets/treat-logos/treat-tp.svg"
+import treatLogoColored from "../../Assets/treat-logos/treat-tp-colored.svg"
 
 import NavbarButtons from "../Navbar/NavbarButtons"
 
@@ -69,7 +69,7 @@ const Login = () => {
   return (
     <div className='login-container'>
       <div className='login-left-header'>
-        <img className='login-treat-logo' alt='logo' src={treatLogo} />
+        <img className='login-treat-logo' alt='logo' src={treatLogoColored} />
         <span>treat</span>
       </div>
 

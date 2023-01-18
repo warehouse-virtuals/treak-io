@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  color: #d1d1d1;
+  color: var(--c-gray);
 }
 
 .footer-active-button {
@@ -19,7 +19,7 @@
 .footer-active-input {
   height: 40px;
   width: calc(100% - 120px);
-  background: #f2f2f2;
+  background: var(--c-gray-light);
 }
 
 .footer-active-button:hover {

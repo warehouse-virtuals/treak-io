@@ -14,14 +14,14 @@
   display: flex;
   align-items: flex-end;
   color: #fff;
-  background: #252525;
+  background: var(--c-black);
 }
 
 .messagebubble-message {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: #f9f9f9;
+  background: var(--c-gray-light);
   border-radius: 18px;
   padding: 5px 15px;
   min-width: 150px;
@@ -40,7 +40,7 @@
   margin-bottom: 4px;
 }
 .messagebubble-date {
-  color: #b3b5ba;
+  color: var(--c-gray);
   display: flex;
   font-size: 12px;
   font-weight: 600;

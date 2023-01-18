@@ -1,0 +1,32 @@
+.dark {
+  color: #0e0e0e;
+}
+
+.light {
+  --c-brand: #1a9ab4;
+  --c-brand-dark: #358a9b;
+  --c-black: #0e0e0e;
+  --c-gray: #b2b2b2;
+  --c-gray-light: #f9f9f9;
+  --c-succes: #4ec69f;
+  --c-info: #33a6c9;
+  --c-warning: #ff9500;
+  --c-danger: #fd5868;
+  --c-bg: #fff;
+
+  --c-pink-light: #ffe2e6;
+  --c-pink-dark: #fb5a7c;
+
+  --c-orange-light: #fff4de;
+  --c-orange-dark: #ff947a;
+
+  --c-green-light: #dcfde7;
+  --c-green-dark: #3dda56;
+
+  --c-purple-light: #f4e8ff;
+  --c-purple-dark: #c083ff;
+
+  --c-black-opaque: #00000050;
+}
+
+/* https://colors.eva.design/ buraya bakınabilirim */

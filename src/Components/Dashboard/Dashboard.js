@@ -16,7 +16,6 @@ const Dashboard = () => {
       <TopBar placeholder={t("Search patients...")} />
       <div className='dashboard-body'>
         <Cards t={t} />
-
         <Chart t={t} />
 
         {/* <div className='dashboard-upcoming'>

@@ -1,5 +1,4 @@
 .agenda-container {
-  color: #252525;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +17,6 @@
   display: flex;
   align-items: center;
   height: 40px;
-  color: #252525;
 }
 .scheduler-container {
   display: flex;
@@ -52,13 +50,13 @@
   justify-content: center;
   align-items: center;
   width: calc(100% / 7);
-  border-bottom: 2px solid #f8f8f8;
+  border-bottom: 2px solid var(--c-gray-light);
 }
 
 .grid-cell {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: var(--c-bg);
   height: 100px;
   padding: 3px 0px 0 3px;
 }
@@ -74,6 +72,6 @@
 }
 
 .grid-cell:hover {
-  background: #f8f8f8;
+  background: var(--c-gray-light);
   cursor: pointer;
 }

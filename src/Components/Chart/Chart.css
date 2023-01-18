@@ -2,7 +2,8 @@
   padding-left: 10px;
   width: 70%;
   height: 300px;
-
+  border-radius: 10px;
+  background: var(--c-bg);
   font-family: "Gilroy", sans-serif !important;
 }
 

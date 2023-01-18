@@ -28,7 +28,7 @@ import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import "./Agenda.css"
 
-function AA() {
+function Agenda() {
   const [viewType, setViewType] = useState("month")
 
   const [days, setDays] = useState([new Date()])
@@ -240,4 +240,4 @@ function AA() {
   )
 }
 
-export default AA
+export default Agenda

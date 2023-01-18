@@ -8,7 +8,7 @@
   width: 240px;
   font-size: 12px;
   font-weight: 500;
-  background: #fff;
+  background: var(--c-bg);
   border-right: 2px solid #f9f9f9;
 }
 
@@ -20,7 +20,6 @@
   align-items: center;
   font-weight: 600;
   font-size: 24px;
-
   width: 240px;
   height: 65px;
   cursor: pointer;
@@ -50,7 +49,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  color: #b2b2b2;
+  color: var(--c-gray);
 }
 
 .navbar-buttons {
@@ -66,7 +65,7 @@
   padding-left: 20px;
 }
 .navbar-buttons-focused {
-  color: #191414;
+  color: var(--c-black);
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -90,11 +89,11 @@
   height: 40px;
   width: 40px;
   border-radius: 10px;
-  color: #b2b2b2;
+  color: var(--c-gray);
 }
 
 .navbar-button-icon-focused {
-  color: #191414;
+  color: var(--c-black);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,8 +109,8 @@
 }
 .navbar-user-info-container {
   width: 100%;
-  border-top: 2px solid #f9f9f9;
-  border-bottom: 2px solid #f9f9f9;
+  border-top: 2px solid var(--c-gray-light);
+  border-bottom: 2px solid var(--c-gray-light);
 }
 .navbar-user-info {
   height: 80px;
@@ -125,7 +124,7 @@
   height: 60px;
   width: 100%;
   transition: all 0.3s;
-  color: #b2b2b2;
+  color: var(--c-gray);
   padding-left: 20px;
 }
 
@@ -134,7 +133,7 @@
 }
 
 .navbar-button-logout {
-  color: #b2b2b2;
+  color: var(--c-gray);
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -142,6 +141,7 @@
   justify-content: center;
   height: 40px;
   width: 40px;
+  border-radius: 10px;
 }
 .navbar-button-logout-container:hover {
   cursor: pointer;
@@ -150,9 +150,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 22px;
-  width: 22px;
-  border-radius: 10px;
+  height: 20px;
+  width: 20px;
 }
 
 .navbar-collapse-icon {
@@ -165,7 +164,7 @@
 }
 
 .navbar-button-collapse {
-  color: #b2b2b2;
+  color: var(--c-gray);
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -180,7 +179,6 @@
     position: absolute;
     z-index: 10;
     left: 0;
-
     /* transition: left 1s ease-in-out;
     position: absolute;
     left: -190px;
@@ -195,7 +193,7 @@
     position: absolute;
     width: calc(100vw - 240px);
     height: 100%;
-    background: #00000050;
+    background: var(--c-black-opaque);
     left: 240px;
     top: 0px;
     backdrop-filter: blur(1px);
@@ -211,7 +209,7 @@
     height: 60px;
     width: 30%;
     transition: all 0.3s;
-    color: #191414;
+    color: var(--c-black);
   }
 
   .navbar-button-logout-container {

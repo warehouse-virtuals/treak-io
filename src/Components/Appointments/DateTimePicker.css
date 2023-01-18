@@ -23,7 +23,7 @@
   flex-shrink: 0;
   padding: 2px;
   border: none;
-  border-bottom: 2px solid #f8f8f8;
+  border-bottom: 2px solid var(--c-gray-light);
 }
 .react-datetime-picker__inputGroup {
   min-width: calc(4px + (4px * 3) + 0.54em * 6 + 0.217em * 2);
@@ -97,15 +97,15 @@
 }
 .react-datetime-picker__calendar .react-calendar {
   border-radius: 12px;
-  border: 1px solid #e3e2e5;
+  border: 1px solid var(--c-gray-light);
 }
 .react-datetime-picker__clock {
   width: 200px;
   height: 200px;
   max-width: 100vw;
   padding: 25px;
-  background-color: #fff;
-  border: 1px solid #e3e2e5;
+  background-color: var(--c-bg);
+  border: 1px solid var(--c-gray-light);
   border-radius: 12px;
 }
 
@@ -122,18 +122,18 @@
 }
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #ccc;
-  background: #f7f7f7;
+  background: var(--c-gray-light);
 }
 .react-calendar__month-view__days__day--neighboringMonth {
   border-radius: 12px;
   color: #ccc;
-  background: #f7f7f7;
+  background: var(--c-gray-light);
 }
 
 .react-calendar__tile--active {
   border-radius: 12px;
   background: #6656c5;
-  color: #ffffff;
+  color: var(--c-bg);
 }
 
 .react-calendar__tile:hover {

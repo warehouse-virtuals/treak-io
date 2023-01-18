@@ -2,11 +2,12 @@ import { useEffect, useRef } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/UserContext"
 import { UIToolsStatus } from "../../Context/UIToolsStatusContext"
+
 import { FiLogOut } from "react-icons/fi"
 
 import { useTranslation } from "react-i18next"
 
-import treatLogo from "../../Assets/treat-logos/treat-tp.svg"
+import treatLogoColored from "../../Assets/treat-logos/treat-tp-colored.svg"
 
 import UserInfo from "./UserInfo"
 import NavbarButtons from "./NavbarButtons"
@@ -16,6 +17,7 @@ import "./Navbar.css"
 const Navbar = () => {
   const { isNavbarCollapsed, navbarButtonClick, toggleCollapse } =
     UIToolsStatus()
+
   const { user, logout } = UserAuth()
   const { t } = useTranslation("navbar")
 
@@ -63,7 +65,7 @@ const Navbar = () => {
             className='navbar-logo-container'
             onClick={() => handleNavbarButtonClick("/dashboard")}
           >
-            <img className='navbar-logo' alt='logo' src={treatLogo} />{" "}
+            <img className='navbar-logo' alt='logo' src={treatLogoColored} />
             <span>treat</span>
           </div>
           <div className='navbar-user-info-container'>

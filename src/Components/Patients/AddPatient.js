@@ -115,25 +115,16 @@ const AddPatient = ({ closeForm }) => {
                 inputRef={patientNameRef}
                 type={"text"}
                 label={t("Name")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
               />
               <TextInput
                 inputRef={patientSurnameRef}
                 type={"text"}
                 label={t("Surname")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
               />
               <TextInput
                 inputRef={addressRef}
                 type={"text"}
                 label={t("Adress")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
               />
             </div>
             <div className='add-patient-text-input-cols'>
@@ -141,25 +132,16 @@ const AddPatient = ({ closeForm }) => {
                 inputRef={socialSecurityNumberRef}
                 type={"text"}
                 label={t("ID Number")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
               />
               <TextInput
                 inputRef={patientPhoneRef}
                 type={"text"}
                 label={t("Phone")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
               />
               <TextInput
                 inputRef={patientEmailRef}
                 type={"text"}
                 label={t("Email")}
-                containerCSS='add-patient-textinput-container'
-                labelCSS='add-patient-textinput-label'
-                inputCSS='add-patient-textinput-input'
               />
             </div>
             <div className='add-patient-text-input-cols'>
@@ -209,25 +191,16 @@ const AddPatient = ({ closeForm }) => {
                     inputRef={rightSerialNumberRef}
                     type={"text"}
                     label={t("Serial Number")}
-                    containerCSS='add-patient-textinput-container'
-                    labelCSS='add-patient-textinput-label'
-                    inputCSS='add-patient-textinput-input'
                   />
                   <TextInput
                     inputRef={rightAidBrandRef}
                     type={"text"}
                     label={t("Device Name")}
-                    containerCSS='add-patient-textinput-container'
-                    labelCSS='add-patient-textinput-label'
-                    inputCSS='add-patient-textinput-input'
                   />
                   <TextInput
                     inputRef={rightAidModelRef}
                     type={"text"}
                     label={t("Device Name")}
-                    containerCSS='add-patient-textinput-container'
-                    labelCSS='add-patient-textinput-label'
-                    inputCSS='add-patient-textinput-input'
                   />
                 </div>
                 <div className='add-patient-warranty-container'>
@@ -270,25 +243,16 @@ const AddPatient = ({ closeForm }) => {
                     inputRef={leftSerialNumberRef}
                     type={"text"}
                     label={t("Serial Number")}
-                    containerCSS='add-patient-textinput-container'
-                    labelCSS='add-patient-textinput-label'
-                    inputCSS='add-patient-textinput-input'
                   />
                   <TextInput
                     inputRef={leftAidBrandRef}
                     type={"text"}
                     label={t("Device Name")}
-                    containerCSS='add-patient-textinput-container'
-                    labelCSS='add-patient-textinput-label'
-                    inputCSS='add-patient-textinput-input'
                   />
                   <TextInput
                     inputRef={leftAidModelRef}
                     type={"text"}
                     label={t("Device Name")}
-                    containerCSS='add-patient-textinput-container'
-                    labelCSS='add-patient-textinput-label'
-                    inputCSS='add-patient-textinput-input'
                   />
                 </div>
                 <div className='add-patient-warranty-container'>
@@ -329,8 +293,6 @@ const AddPatient = ({ closeForm }) => {
             type={"text"}
             label={t("Notes")}
             containerCSS='add-patient-notes'
-            labelCSS='add-patient-textinput-label'
-            inputCSS='add-patient-textinput-input'
           />
           <div
             onClick={async () => {

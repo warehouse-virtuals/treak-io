@@ -4,17 +4,17 @@
   height: 600px;
   width: 100%;
   overflow-y: auto;
-  background-color: #f8f8f8;
+  background-color: var(--c-gray-light);
 }
 
 .day-time-cell-container {
   height: fit-content;
   background-size: contain;
   flex-direction: column;
-  background-color: #fff;
+  background-color: var(--c-bg);
   width: 50px;
   font-weight: 600;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--c-bg);
 }
 
 .day-time-cell {
@@ -32,7 +32,6 @@
 
 .grid-day-event {
   position: relative;
-  color: #252525;
   font-weight: 600;
   font-size: 13px;
   padding: 3px;
@@ -41,7 +40,7 @@
   align-items: center;
 }
 .day-grid-col-item:hover {
-  background: #f7f7f7;
+  background: var(--c-gray-light);
   cursor: pointer;
 }
 
@@ -53,5 +52,5 @@
 .day-grid-col-item {
   height: 46px;
   margin: 1px;
-  background: #fff;
+  background: var(--c-bg);
 }

@@ -20,7 +20,7 @@
   transition: all 0.2s ease-in-out;
 }
 .grid-navbar-arrow:hover {
-  background: #f7f7f7;
+  background: var(--c-gray-light);
   cursor: pointer;
 }
 .grid-navbar-arrow-title {
@@ -46,6 +46,6 @@
   transition: all 0.2s ease-in-out;
 }
 .grid-navbar-button:hover {
-  background: #f7f7f7;
+  background: var(--c-gray-light);
   cursor: pointer;
 }

@@ -23,5 +23,5 @@
   box-sizing: border-box;
   display: flex;
   height: 100%;
-  border-left: 2px solid #f8f8f8;
+  border-left: 1px solid var(--c-gray-light);
 }

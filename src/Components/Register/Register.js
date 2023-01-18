@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import { useTranslation } from "react-i18next"
 
-import treatLogo from "../../Assets/treat-logos/treat-tp.svg"
+import treatLogo from "../../Assets/treat-logos/treat-tp-colored.svg"
 
 import RegisterFormHeader from "../RegisterFormHeader/RegisterFormHeader"
 import RegisterFormBody from "../RegisterFormBody/RegisterFormBody"
@@ -19,7 +19,11 @@ import { useState } from "react"
 const Register = () => {
   const [businessOptions, setBusinessOptions] = useState([])
   const [professionOptions, setProfessionOptions] = useState([])
-  const [step, setStep] = useState("1")
+  const [
+    ,
+    // step
+    setStep,
+  ] = useState("1")
   const { t } = useTranslation("register")
 
   const [selectedOptions, setSelectedOptions] = useState({
@@ -65,9 +69,9 @@ const Register = () => {
       <div className='login-left-header'>
         <img className='login-treat-logo' alt='logo' src={treatLogo} />
         <span>treat</span>
-        <div className='login-step-count'>
+        {/* <div className='login-step-count'>
           {t("Step")} {step}/3
-        </div>
+        </div> */}
       </div>
       <div className='register-left'>
         <div className='register-form'>
