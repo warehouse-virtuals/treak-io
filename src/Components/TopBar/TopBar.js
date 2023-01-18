@@ -26,6 +26,7 @@ const TopBar = () => {
           </div>
           {t(location.pathname)}
         </div>
+
         <div
           className={
             expandSearchBar === false

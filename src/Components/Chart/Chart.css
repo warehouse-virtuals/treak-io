@@ -1,0 +1,31 @@
+.chartjs-container {
+  padding-left: 10px;
+  width: 70%;
+  height: 300px;
+
+  font-family: "Gilroy", sans-serif !important;
+}
+
+@media (max-width: 767.98px) {
+  .chartjs-container {
+    width: 100%;
+    margin-top: 20px;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr; */
+  }
+}
+
+@media (min-width: 767.98px) and (max-width: 991.98px) {
+  .chartjs-container {
+    width: 50%;
+
+    /* grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr; */
+  }
+}
+
+@media (min-width: 991.98px) and (max-width: 1199.98px) {
+  .chartjs-container {
+    width: 60%;
+  }
+}

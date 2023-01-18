@@ -6,7 +6,7 @@ import "./Dashboard.css"
 import TopBar from "../TopBar/TopBar"
 import Cards from "../Cards/Cards"
 import Chart from "../Chart/Chart"
-import UpcomingAppointments from "../Appointments/UpcomingAppointments"
+// import UpcomingAppointments from "../Appointments/UpcomingAppointments"
 
 const Dashboard = () => {
   const { t } = useTranslation("dashboard")
@@ -15,16 +15,13 @@ const Dashboard = () => {
     <div className='dashboard-cointainer'>
       <TopBar placeholder={t("Search patients...")} />
       <div className='dashboard-body'>
-        <div className='dashboard-cards'>
-          <Cards t={t} />
-        </div>
-        <div className='dashboard-chart'>
-          <Chart t={t} />
-        </div>
+        <Cards t={t} />
 
-        <div className='dashboard-upcoming'>
+        <Chart t={t} />
+
+        {/* <div className='dashboard-upcoming'>
           <UpcomingAppointments t={t} limitRows={5} />
-        </div>
+        </div> */}
       </div>
     </div>
   )

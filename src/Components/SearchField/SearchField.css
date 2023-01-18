@@ -2,10 +2,8 @@
   display: flex;
   height: 100%;
   width: 100%;
-
   align-items: center;
   position: relative;
-  color: #3e3e3e;
 }
 
 .make-appt-btn-container {
@@ -18,7 +16,7 @@
 }
 
 .search-bar {
-  background: #fff;
+  border-radius: 12px;
   display: flex;
   width: 100%;
   align-items: center;
@@ -33,26 +31,25 @@
   box-sizing: border-box;
   border: none;
   border-radius: 0px;
-  border-bottom: 2px solid #f8f8f8;
+
   padding-left: 10px;
   font-weight: 400;
   font-size: 16px;
   font-family: inherit;
   flex: 1;
   outline: none;
+  border-radius: 12px;
 }
 
 .search-bar input:focus + .search-icon {
   color: #0e0e0e;
-  border-bottom: 2px solid #0e0e0e;
 }
 .search-bar input:focus {
-  border-bottom: 2px solid #0e0e0e;
 }
 ::placeholder {
   font-size: 16px;
   font-weight: 400;
-  color: #3e3e3e;
+  color: #301934;
 }
 
 .search-icon {
@@ -61,7 +58,6 @@
   align-items: center;
   width: 40px;
   height: 100%;
-  border-bottom: 2px solid #f8f8f8;
 }
 .close-icon {
   display: none;
@@ -90,7 +86,7 @@
   font-weight: 600;
   border: 1px #eee7da;
   border-radius: 10px;
-  color: #252525;
+  color: #301934;
   cursor: pointer;
   transition: 0.1s ease-in-out;
 }
@@ -159,9 +155,11 @@
 }
 @media (max-width: 992px) {
   .search-icon {
+    color: #fff;
     border-bottom: none;
   }
   .close-icon {
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;

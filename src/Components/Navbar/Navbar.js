@@ -14,7 +14,8 @@ import NavbarButtons from "./NavbarButtons"
 import "./Navbar.css"
 
 const Navbar = () => {
-  const { isCollapsed, navbarButtonClick, toggleCollapse } = UIToolsStatus()
+  const { isNavbarCollapsed, navbarButtonClick, toggleCollapse } =
+    UIToolsStatus()
   const { user, logout } = UserAuth()
   const { t } = useTranslation("navbar")
 
@@ -36,14 +37,14 @@ const Navbar = () => {
     navbarButtonClick()
   }
 
-  useEffect(() => {}, [user, isCollapsed])
+  useEffect(() => {}, [user, isNavbarCollapsed])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         navbarRef.current &&
         !navbarRef.current.contains(event.target) &&
-        isCollapsed === false
+        isNavbarCollapsed === false
       ) {
         toggleCollapse(true)
       }
@@ -52,9 +53,9 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     } // eslint-disable-next-line
-  }, [navbarRef, isCollapsed])
+  }, [navbarRef, isNavbarCollapsed])
 
-  if (user.auth && !isCollapsed) {
+  if (user.auth && !isNavbarCollapsed) {
     return (
       <div className='navbar-container' ref={navbarRef}>
         <div>
@@ -62,7 +63,7 @@ const Navbar = () => {
             className='navbar-logo-container'
             onClick={() => handleNavbarButtonClick("/dashboard")}
           >
-            <img className='navbar-logo' alt='logo' src={treatLogo} />
+            <img className='navbar-logo' alt='logo' src={treatLogo} />{" "}
             <span>treat</span>
           </div>
           <div className='navbar-user-info-container'>
@@ -71,7 +72,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className='navbar-buttons-container'>
-            {NavbarButtons("18", "navbarbtn").map((button, index) => {
+            {NavbarButtons("20", "navbarbtn").map((button, index) => {
               return (
                 <div
                   key={button.pathname}
@@ -105,7 +106,7 @@ const Navbar = () => {
             onClick={handleNavbarLogoutButtonClick}
           >
             <div className='navbar-button-logout'>
-              <FiLogOut color='#0e0e0e' className='navbar-logout-icon' />
+              <FiLogOut className='navbar-logout-icon' />
             </div>
             <div className=''>{t("Logout")}</div>
           </div>

@@ -9,7 +9,7 @@ const Card = (props) => {
       </div>
       <div className='card-right'>
         <div className='card-icon'>{props.icon}</div>
-        <div className='card-details'>{props.details}</div>
+        {/* <div className='card-details'>{props.details}</div> */}
       </div>
     </div>
   )

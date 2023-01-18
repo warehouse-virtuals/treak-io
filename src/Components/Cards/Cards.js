@@ -39,6 +39,7 @@ const CardContainer = (props) => {
           />
         }
       />
+
       <Card
         icon={CardIcons.FiShoppingBag}
         title={props.t("Goal progress")}

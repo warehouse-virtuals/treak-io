@@ -4,30 +4,31 @@ import useWindowSize from "../Hooks/useWindowBreakpoint"
 const UIToolsStatusContext = createContext()
 
 export const UIToolsStatusContextProvider = ({ children }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isNavbarCollapsed, setIsNavbarCollapsed] = useState(false)
   const [expandSearchBar, setExpandSearchBar] = useState(true)
   const [width] = useWindowSize()
 
   const toggleCollapse = (boolean) => {
+    console.log(width)
     if (width < 992) {
-      setIsCollapsed(boolean)
+      setIsNavbarCollapsed(boolean)
     } else {
-      setIsCollapsed(false)
+      setIsNavbarCollapsed(false)
     }
   }
 
   const navbarButtonClick = (path) => {
     if (width < 992) {
-      setIsCollapsed(true)
+      setIsNavbarCollapsed(true)
     }
   }
 
   useEffect(() => {
     if (width < 992) {
-      setIsCollapsed(true)
+      setIsNavbarCollapsed(true)
       setExpandSearchBar(false)
     } else {
-      setIsCollapsed(false)
+      setIsNavbarCollapsed(false)
       setExpandSearchBar(true)
     }
   }, [width])
@@ -35,11 +36,11 @@ export const UIToolsStatusContextProvider = ({ children }) => {
   return (
     <UIToolsStatusContext.Provider
       value={{
-        isCollapsed,
         width,
         toggleCollapse,
-        navbarButtonClick,
         expandSearchBar,
+        navbarButtonClick,
+        isNavbarCollapsed,
         setExpandSearchBar,
       }}
     >

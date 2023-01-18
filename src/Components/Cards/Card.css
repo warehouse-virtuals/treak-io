@@ -1,12 +1,9 @@
 .card-container {
   display: flex;
-  width: 210px;
-  height: 130px;
+
   background: #f8f8f8;
-  padding: 20px;
+  padding: 15px;
   border-radius: 12px;
-  margin: 10px;
-  flex-shrink: 0;
 }
 
 .card-left {
@@ -46,10 +43,4 @@
   display: flex;
   align-items: center;
   height: 100%;
-}
-
-@media screen and (max-width: 1366px) {
-  .card-container {
-    width: 210px;
-  }
 }
