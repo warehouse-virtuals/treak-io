@@ -9,6 +9,7 @@ const TextInput = ({ type, label, inputRef, status }) => {
 
   useEffect(() => {
     if (type === "password") setHide(true)
+    //eslint-disable-next-line
   }, [])
 
   return (

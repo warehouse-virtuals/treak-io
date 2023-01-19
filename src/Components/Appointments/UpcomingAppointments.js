@@ -3,7 +3,7 @@ import "./UpcomingAppointments.css"
 import AppointmentList from "./AppointmentList"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { FiPlus } from "react-icons/fi"
+import { FiMoreHorizontal } from "react-icons/fi"
 
 const UpcomingAppointments = (props) => {
   const navigate = useNavigate()
@@ -25,10 +25,9 @@ const UpcomingAppointments = (props) => {
         {t("Upcoming Appointments")}
         <div
           onClick={handleAddAppointmentButtonClick}
-          className='upcoming-add-btn'
+          className='upcoming-details-btn'
         >
-          <FiPlus size={18} stroke='#0e0e0e' className='' />
-          <div>Randevu oluştur</div>
+          <FiMoreHorizontal size={24} />
         </div>
       </div>
       <div className='upcoming-list-container'>

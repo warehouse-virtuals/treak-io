@@ -37,6 +37,7 @@
   width: 30%;
 }
 .hamburger-menu-button {
+  transform: rotate(90deg);
   display: none;
 }
 @media (max-width: 992px) {
@@ -44,9 +45,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 56px;
-    height: 56px;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
   }
   .topbar-container {
     border-bottom: 2px solid #f9f9f9;

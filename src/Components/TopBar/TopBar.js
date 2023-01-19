@@ -1,6 +1,6 @@
 import SearchField from "../SearchField/SearchField"
 import DateAndTime from "./DateAndTime"
-import { FiMenu } from "react-icons/fi"
+import { FiBarChart2 } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
 import { useLocation } from "react-router-dom"
 
@@ -22,7 +22,7 @@ const TopBar = () => {
             className='hamburger-menu-button'
             onClick={() => toggleCollapse(false)}
           >
-            {<FiMenu size={24} />}
+            {<FiBarChart2 size={24} />}
           </div>
           {t(location.pathname)}
         </div>

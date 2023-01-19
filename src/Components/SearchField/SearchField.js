@@ -101,7 +101,7 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
             expandSearchBar === false ? setExpandSearchBar(true) : null
           }
         >
-          <FiSearch size={22} />
+          <FiSearch size={24} />
         </div>
 
         {expandSearchBar ? (
@@ -111,7 +111,7 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
               expandSearchBar === true ? setExpandSearchBar(false) : null
             }
           >
-            <FiX size={22} />
+            <FiX size={24} />
           </div>
         ) : null}
       </div>

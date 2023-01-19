@@ -10,18 +10,25 @@
 
 .dashboard-body {
   display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 1680px;
   height: 100%;
-  padding: 10px;
-
-  overflow-y: scroll;
+  padding: 20px;
+}
+.dashboard-row {
+  display: flex;
+  flex-direction: row;
 }
 
 @media (max-width: 767.98px) {
   .dashboard-body {
     flex-direction: column;
-    padding: 10px;
+    overflow-y: scroll;
+  }
+  .dashboard-row {
+    display: flex;
+    flex-direction: column;
   }
 }
 @media (min-width: 767.98px) and (max-width: 991.98px) {

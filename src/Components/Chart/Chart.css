@@ -1,10 +1,12 @@
 .chartjs-container {
-  padding-left: 10px;
-  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 600;
+  width: 50%;
   height: 300px;
   border-radius: 10px;
   background: var(--c-bg);
-  font-family: "Gilroy", sans-serif !important;
 }
 
 @media (max-width: 767.98px) {
@@ -26,7 +28,4 @@
 }
 
 @media (min-width: 991.98px) and (max-width: 1199.98px) {
-  .chartjs-container {
-    width: 60%;
-  }
 }

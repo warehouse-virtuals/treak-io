@@ -40,6 +40,7 @@
     "react-text-transition": "^3.0.2",
     "react-toastify": "^9.0.7",
     "react-transition-group": "^4.4.5",
+    "recharts": "^2.3.2",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
