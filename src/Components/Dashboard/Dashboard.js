@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"
 import "./Dashboard.css"
 
 import TopBar from "../TopBar/TopBar"
+import Greetings from "../Greetings/Greetings"
 import Cards from "../Cards/Cards"
 import Chart from "../Chart/Chart"
 import UpcomingAppointments from "../Appointments/UpcomingAppointments"
@@ -15,6 +16,7 @@ const Dashboard = () => {
     <div className='dashboard-cointainer'>
       <TopBar placeholder={t("Search patients...")} />
       <div className='dashboard-body'>
+        <Greetings />
         <div className='dashboard-row'>
           <Cards t={t} />
           <Chart t={t} />
