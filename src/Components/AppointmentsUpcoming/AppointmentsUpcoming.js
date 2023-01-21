@@ -1,11 +1,11 @@
-import "./UpcomingAppointments.css"
+import "./AppointmentsUpcoming.css"
 
-import AppointmentList from "./AppointmentList"
+import AppointmentList from "../AppointmentList/AppointmentList"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { FiMoreHorizontal } from "react-icons/fi"
 
-const UpcomingAppointments = (props) => {
+const AppointmentsUpcoming = (props) => {
   const navigate = useNavigate()
   const { t } = useTranslation("dashboard")
 
@@ -37,4 +37,4 @@ const UpcomingAppointments = (props) => {
   )
 }
 
-export default UpcomingAppointments
+export default AppointmentsUpcoming

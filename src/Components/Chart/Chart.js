@@ -15,66 +15,70 @@ const Chart = () => {
   //eslint-disable-next-line
   const [chartData, setChartData] = useState([
     {
-      name: "Page A",
+      name: "Pzt",
+      uv: 10,
+      pv: 240,
+      amt: 240,
+    },
+    {
+      name: "Sal",
+      uv: 300,
+      pv: 139,
+      amt: 221,
+    },
+    {
+      name: "Çar",
       uv: 100,
-      pv: 2400,
-      amt: 2400,
+      pv: 980,
+      amt: 229,
     },
     {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      name: "Per",
+      uv: 278,
+      pv: 390,
+      amt: 200,
     },
     {
-      name: "Page C",
-      uv: 1000,
-      pv: 9800,
-      amt: 2290,
+      name: "Cum",
+      uv: 189,
+      pv: 480,
+      amt: 218,
     },
     {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 900,
-      pv: 4300,
-      amt: 2100,
+      name: "Cmt",
+      uv: 239,
+      pv: 380,
+      amt: 250,
     },
   ])
 
   return (
     <div className='chartjs-container'>
-      <ResponsiveContainer width='100%' height={300}>
+      <div className='chart-header'>Chart Title</div>
+      <ResponsiveContainer width='100%' maxHeight={300}>
         <AreaChart
           data={chartData}
           margin={{
-            top: 10,
-            right: 30,
-            left: 0,
-            bottom: 0,
+            left: 25,
+            right: 25,
           }}
         >
+          <defs>
+            <linearGradient id='colorUv' x1='0' y1='0' x2='0' y2='1'>
+              <stop offset='5%' stopColor='#6584FF' stopOpacity={0.1} />
+              <stop offset='95%' stopColor='#FFFFFF' stopOpacity={0.1} />
+            </linearGradient>
+          </defs>
           <CartesianGrid display='none' strokeDasharray='0 0 0 0' />
           <XAxis dataKey='name' stroke='var(--c-gray)' />
-          <YAxis stroke='var(--c-gray)' />
+          <YAxis
+            stroke='var(--c-gray)'
+            tickLine={false}
+            axisLine={false}
+            hide
+          />
           <Tooltip />
-          <Area type='monotone' dataKey='uv' stroke='#8884d8' fill='#8884d8' />
+          <Area type='monotone' dataKey='uv' fill='#8884d8' />
         </AreaChart>
       </ResponsiveContainer>
     </div>

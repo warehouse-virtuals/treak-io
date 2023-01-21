@@ -4,44 +4,20 @@
   "private": true,
   "homepage": "/",
   "dependencies": {
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.6.2",
-    "@mui/lab": "^5.0.0-alpha.81",
-    "@mui/material": "^5.7.0",
-    "@mui/styled-engine": "^5.7.0",
-    "@mui/x-date-pickers": "^5.0.6",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "chart.js": "^4.0.1",
-    "d3-ease": "^3.0.1",
     "date-fns": "^2.29.2",
-    "dotenv": "^16.0.1",
-    "dotenv-expand": "^8.0.3",
     "firebase": "^9.15.0",
-    "global": "^4.4.0",
     "i18next": "^21.8.16",
     "i18next-browser-languagedetector": "^6.1.4",
-    "json5": "^2.2.3",
-    "jsonwebtoken": "^9.0.0",
-    "nth-check": "^2.1.1",
-    "primeicons": "^6.0.1",
-    "primereact": "^8.7.3",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.0.1",
     "react-datepicker": "^4.8.0",
     "react-datetime-picker": "^4.0.1",
     "react-dom": "^18.2.0",
     "react-i18next": "^11.18.3",
     "react-icons": "^4.4.0",
-    "react-move": "^6.5.0",
     "react-router-dom": "^6.3.0",
     "react-text-transition": "^3.0.2",
     "react-toastify": "^9.0.7",
-    "react-transition-group": "^4.4.5",
-    "recharts": "^2.3.2",
-    "web-vitals": "^2.1.4"
+    "recharts": "^2.3.2"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"
@@ -51,12 +27,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

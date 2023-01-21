@@ -1,0 +1,6 @@
+.appointment-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 14px;
+}

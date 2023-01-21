@@ -1,29 +1,32 @@
 .chartjs-container {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
   font-weight: 600;
-  width: 50%;
   height: 300px;
-  border-radius: 10px;
+  width: 100%;
+  padding: 10px 0px;
+  border-radius: 12px;
+  box-shadow: var(--c-shadow);
   background: var(--c-bg);
+}
+
+.chart-header {
+  width: 100%;
+  padding: 0px 10px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 767.98px) {
   .chartjs-container {
-    width: 100%;
-    margin-top: 20px;
-    /* grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr; */
+    height: 150px;
   }
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
   .chartjs-container {
-    width: 50%;
-
-    /* grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr; */
+    height: 250px;
   }
 }
 

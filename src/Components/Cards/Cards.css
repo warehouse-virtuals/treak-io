@@ -1,14 +1,11 @@
 .cards-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 1fr;
-  row-gap: 10px;
-  grid-template-rows: 1fr;
-  height: 300px;
-  width: 40%;
-  grid-template-columns: repeat(2, calc(50% - 0.25em));
-  grid-template-rows: repeat(2, calc(50% - 0.25em));
-  grid-gap: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-shrink: 0;
+  gap: 10px;
+  padding: 10px 20px;
+  overflow-x: scroll;
 }
 .cards-row {
   display: flex;
@@ -21,6 +18,7 @@
 
 @media (max-width: 767.98px) {
   .cards-container {
+    min-width: 0;
     width: 100%;
   }
 }

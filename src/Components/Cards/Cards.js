@@ -56,30 +56,26 @@ const CardContainer = ({ t }) => {
       <Card
         icon={<FiCalendar size={18} />}
         title={t("Today's Appointments")}
-        background='--c-pink-light'
-        iconBackground='--c-pink-dark'
+        navigateTo='/analytics/today'
         {...todaysAppointments}
       />
       <Card
         icon={<FiFile size={18} />}
         title={t("All Appointments")}
-        background='--c-purple-light'
-        iconBackground='--c-purple-dark'
+        navigateTo='/analytics/all'
         {...allAppointments}
       />
 
       <Card
         icon={<FiShoppingBag size={18} />}
         title={t("Goal progress")}
-        background='--c-orange-light'
-        iconBackground='--c-orange-dark'
+        navigateTo='/analytics/goal'
         {...goal}
       />
       <Card
         icon={<FiUserPlus size={18} />}
         title={t("New patients")}
-        background='--c-green-light'
-        iconBackground='--c-green-dark'
+        navigateTo='/analytics/month'
         {...patients}
       />
     </div>
