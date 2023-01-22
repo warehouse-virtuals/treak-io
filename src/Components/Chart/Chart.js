@@ -59,6 +59,7 @@ const Chart = () => {
         <AreaChart
           data={chartData}
           margin={{
+            top: 5,
             left: 25,
             right: 25,
           }}
@@ -72,7 +73,13 @@ const Chart = () => {
             hide
           />
           <Tooltip />
-          <Area type='monotone' dataKey='uv' stroke='#f4ae18' fill='#8884d8' />
+          <Area
+            type='monotone'
+            dataKey='uv'
+            strokeWidth={2}
+            stroke='var(--c-chart-purple)'
+            fill='none'
+          />
         </AreaChart>
       </ResponsiveContainer>
     </div>

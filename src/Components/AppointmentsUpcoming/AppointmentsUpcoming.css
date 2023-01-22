@@ -7,6 +7,8 @@
   flex: 1;
   overflow-y: hidden;
   border-radius: 12px;
+  min-height: 300px;
+  max-height: 500px;
   box-shadow: var(--c-shadow);
 }
 
@@ -37,7 +39,6 @@
   .upcoming-container {
     display: flex;
     flex-direction: column;
-
     width: 100%;
   }
 }

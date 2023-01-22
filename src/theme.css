@@ -4,7 +4,7 @@
 
 .light {
   --c-brand: #1a9ab4;
-  --c-brand-dark: #358a9b;
+  --c-brand-dark: #178ba2;
   --c-black: #0e0e0e;
   --c-gray: #b2b2b2;
   --c-gray-light: #f9f9f9;
@@ -23,23 +23,20 @@
 
   --c-cancel: #feacb4;
   --c-cancel-hover: #fd5868;
-
   --c-blue: #3e99dc;
   --c-red: #ff6962;
 
-  --c-pink-light: #ffe2e6;
-  --c-pink-dark: #fb5a7c;
+  --c-purple: #8a24ff;
+  --c-orange: #f25324;
+  --c-green: #57b283;
+  --c-gold: #ffaa1c;
 
-  --c-orange-light: #fff4de;
-  --c-orange-dark: #ff947a;
-
-  --c-green-light: #dcfde7;
-  --c-green-dark: #3dda56;
-
-  --c-purple-light: #f4e8ff;
-  --c-purple-dark: #c083ff;
+  --c-chart-purple: #a982c2;
 
   --c-black-opaque: #00000050;
+
+  --c-button-bg: #a33c6b;
+  --c-button-bg-hover: #933660;
 
   --c-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;

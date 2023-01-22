@@ -3,7 +3,6 @@
   width: 100%;
   font-size: 14px;
   flex: 1;
-
   overflow-y: scroll;
 }
 .appointment-container::-webkit-scrollbar {

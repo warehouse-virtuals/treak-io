@@ -1,0 +1,21 @@
+.recent-activity-container {
+  flex: 1;
+  border-radius: 12px;
+  margin: 10px 0px 20px 0px;
+  box-shadow: var(--c-shadow);
+  min-height: 300px;
+}
+
+.recent-activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.recent-activity-title {
+  padding: 10px;
+  height: 100%;
+}

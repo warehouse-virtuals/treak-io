@@ -8,7 +8,7 @@ import Greetings from "../Greetings/Greetings"
 import Cards from "../Cards/Cards"
 import Chart from "../Chart/Chart"
 import AppointmentsUpcoming from "../AppointmentsUpcoming/AppointmentsUpcoming"
-import RecentSales from "../RecentSales/RecentSales"
+import RecentActivity from "../RecentActivity/RecentActivity"
 import DashboardButtons from "../DashboardButtons/DashboardButtons"
 
 const Dashboard = () => {
@@ -19,14 +19,16 @@ const Dashboard = () => {
       <TopBar placeholder={t("Search patients...")} />
       <div className='dashboard-body'>
         <Cards t={t} />
+
         <div className='dashboard-row'>
           <div className='dashboard-col1'>
             <Chart t={t} />
             <AppointmentsUpcoming t={t} limitRows={5} />
           </div>
-          <div className='dashboard-col'>
+
+          <div className='dashboard-col2'>
             <DashboardButtons />
-            <RecentSales />
+            <RecentActivity />
           </div>
         </div>
       </div>
