@@ -30,9 +30,8 @@ const AppointmentsUpcoming = (props) => {
           <FiMoreHorizontal size={24} />
         </div>
       </div>
-      <div className='upcoming-list-container'>
-        <AppointmentList t={t} limitRows={props.limitRows} />
-      </div>
+
+      <AppointmentList t={t} limitRows={props.limitRows} />
     </div>
   )
 }

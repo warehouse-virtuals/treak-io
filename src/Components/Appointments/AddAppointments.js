@@ -2,12 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { FiCalendar, FiX } from "react-icons/fi"
 
-import DateTimePicker from "react-datetime-picker"
-// import DateTimePicker from "react-datetime-picker/dist/entry.nostyle"
 import "./AddAppointment.css"
-import "./DateTimePicker.css"
-// import "./Calendar.css"
-// import "./Clock.css"
 
 import { collection, addDoc, Timestamp } from "firebase/firestore"
 

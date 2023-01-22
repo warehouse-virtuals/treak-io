@@ -20,14 +20,14 @@ const Dashboard = () => {
       <div className='dashboard-body'>
         <Cards t={t} />
         <div className='dashboard-row'>
-          <div className='dashboard-col'>
+          <div className='dashboard-col1'>
             <Chart t={t} />
             <AppointmentsUpcoming t={t} limitRows={5} />
           </div>
-          {/* <div className='dashboard-col'>
+          <div className='dashboard-col'>
             <DashboardButtons />
             <RecentSales />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

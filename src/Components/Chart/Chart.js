@@ -63,12 +63,6 @@ const Chart = () => {
             right: 25,
           }}
         >
-          <defs>
-            <linearGradient id='colorUv' x1='0' y1='0' x2='0' y2='1'>
-              <stop offset='5%' stopColor='#6584FF' stopOpacity={0.1} />
-              <stop offset='95%' stopColor='#FFFFFF' stopOpacity={0.1} />
-            </linearGradient>
-          </defs>
           <CartesianGrid display='none' strokeDasharray='0 0 0 0' />
           <XAxis dataKey='name' stroke='var(--c-gray)' />
           <YAxis
@@ -78,7 +72,7 @@ const Chart = () => {
             hide
           />
           <Tooltip />
-          <Area type='monotone' dataKey='uv' fill='#8884d8' />
+          <Area type='monotone' dataKey='uv' stroke='#f4ae18' fill='#8884d8' />
         </AreaChart>
       </ResponsiveContainer>
     </div>

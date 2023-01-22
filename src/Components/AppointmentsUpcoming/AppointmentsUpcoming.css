@@ -1,13 +1,13 @@
 .upcoming-container {
-  box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 10px;
+  margin: 20px 0px;
+  flex: 1;
+  overflow-y: hidden;
   border-radius: 12px;
   box-shadow: var(--c-shadow);
-  width: 100%;
 }
 
 .upcoming-header {
@@ -33,13 +33,11 @@
   background: #cbcfff;
 }
 
-.upcoming-list-container {
-  height: 100%;
-  display: flex;
-}
-
 @media (max-width: 767.98px) {
   .upcoming-container {
+    display: flex;
+    flex-direction: column;
+
     width: 100%;
   }
 }
