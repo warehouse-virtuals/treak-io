@@ -7,13 +7,16 @@
   font-size: 12px;
   height: 300px;
   width: 100%;
-  padding: 10px 0px;
   border-radius: 12px;
   box-shadow: var(--c-shadow);
   background: var(--c-bg);
 }
 
 .chart-header {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  height: 40px;
   width: 100%;
   padding: 0px 10px;
   margin-bottom: 10px;

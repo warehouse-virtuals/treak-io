@@ -1,0 +1,35 @@
+.recent-activity-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border-radius: 12px;
+  margin: 10px;
+  box-shadow: var(--c-shadow);
+}
+
+.recent-activity-item-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  margin: 0px 10px;
+  border-radius: 12px;
+}
+
+.recent-activity-item-title {
+  display: flex;
+  font-weight: 600;
+  flex: 1;
+}
+
+.recent-activity-item-elapsed {
+  color: var(--c-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  margin: 0px 10px;
+}

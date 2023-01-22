@@ -96,7 +96,8 @@
     "more to go": "daha",
     "is done": "bitti",
     "Details": "Detaylar",
-    "Total": "Toplam"
+    "Total": "Toplam",
+    "mins": "dk"
   },
   "topbar": {
     "/dashboard": "Genel Bakış",

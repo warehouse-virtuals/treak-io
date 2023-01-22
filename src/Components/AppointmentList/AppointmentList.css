@@ -48,12 +48,15 @@
 }
 
 .appointment-duration {
+  color: var(--c-gray);
+  font-weight: 600;
   display: flex;
   height: 25px;
   align-items: center;
 }
 .appointment-date {
   font-size: 12px;
+  color: var(--c-gray);
   font-weight: 600;
   padding: 10px;
   display: flex;
@@ -104,48 +107,20 @@
   justify-content: space-around;
   width: 60px;
 }
-.appointment-button-check {
+.appointment-button {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  color: var(--c-check);
-}
-.appointment-button-edit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  color: var(--c-edit);
-}
-.appointment-button-cancel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  color: var(--c-cancel);
+  color: var(--c-gray);
 }
 
-.appointment-button-check:hover {
+.appointment-button:hover {
   cursor: pointer;
-  color: #fff;
-  background: var(--c-check-hover);
-}
-.appointment-button-edit:hover {
-  cursor: pointer;
-  color: #fff;
-  background: var(--c-edit-hover);
-}
-.appointment-button-cancel:hover {
-  cursor: pointer;
-  color: #fff;
-  background: var(--c-cancel-hover);
+  color: var(--c-black);
+  background: var(--c-gray-light);
 }
 
 .appointment-to {

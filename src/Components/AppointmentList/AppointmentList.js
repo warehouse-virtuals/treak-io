@@ -1,4 +1,5 @@
-import { FiCheckCircle, FiEdit, FiX } from "react-icons/fi"
+import { FiPhoneCall, FiEdit, FiX } from "react-icons/fi"
+import { secondsToMinutes } from "date-fns"
 
 import "./AppointmentList.css"
 
@@ -45,7 +46,7 @@ const AppointmentList = (props) => {
               <div className='appointment-col'>
                 <div className='appointment-time'>13:30</div>
                 <div className='appointment-duration'>
-                  {appointment.duration}
+                  {secondsToMinutes(appointment.duration)} {t("mins")}
                 </div>
               </div>
               <div className='appointment-to'>{appointment.appointedTo}</div>
@@ -58,17 +59,17 @@ const AppointmentList = (props) => {
               <div className='appointment-reason'>{appointment.reason}</div>
               <div className='appointment-sides'>Sol</div>
             </div>
-            {/* <div className='appointment-buttons'>
-              <div className='appointment-button-check'>
-                <FiCheckCircle size={18} />
+            <div className='appointment-buttons'>
+              <div className='appointment-button'>
+                <FiPhoneCall size={18} />
               </div>
-              <div className='appointment-button-edit'>
+              <div className='appointment-button'>
                 <FiEdit size={18} />
               </div>
-              <div className='appointment-button-cancel'>
+              {/* <div className='appointment-button'>
                 <FiX size={18} />
-              </div>
-            </div> */}
+              </div> */}
+            </div>
           </div>
         )
       })}

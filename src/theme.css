@@ -26,10 +26,17 @@
   --c-blue: #3e99dc;
   --c-red: #ff6962;
 
-  --c-purple: #8a24ff;
-  --c-orange: #f25324;
-  --c-green: #57b283;
-  --c-gold: #ffaa1c;
+  --c-purple-dark: #3c1690;
+  --c-purple-light: #ded7e9;
+
+  --c-orange-dark: #ff7f67;
+  --c-orange-light: #ffd9d4;
+
+  --c-green-dark: #00c78f;
+  --c-green-light: #c0ecde;
+
+  --c-gold-dark: #f4ae6b;
+  --c-gold-light: #f9e4d3;
 
   --c-chart-purple: #a982c2;
 

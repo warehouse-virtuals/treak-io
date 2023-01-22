@@ -12,10 +12,12 @@
 
 .dashboard-button {
   /* color: var(--c-white); */
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 24px;
+  border-radius: 12px;
 }
 .dashboard-add {
   position: absolute;

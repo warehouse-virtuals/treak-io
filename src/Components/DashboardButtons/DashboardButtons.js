@@ -9,19 +9,23 @@ const DashboardButtons = () => {
     <div className='dashboard-buttons-container'>
       <DashboardButton
         icon={<FiUser size={26} />}
-        backgroundColor='var(--c-green)'
+        iconColor='var(--c-green-dark)'
+        backgroundColor='var(--c-green-light)'
       />
       <DashboardButton
-        backgroundColor='var(--c-purple)'
         icon={<FiCalendar size={26} />}
+        backgroundColor='var(--c-purple-light)'
+        iconColor='var(--c-purple-dark)'
       />
       <DashboardButton
-        backgroundColor='var(--c-orange)'
+        backgroundColor='var(--c-gold-light)'
+        iconColor='var(--c-gold-dark)'
         icon={<FiFile size={26} />}
       />
       <DashboardButton
-        backgroundColor='var(--c-gold)'
         icon={<FiShoppingBag size={26} />}
+        backgroundColor='var(--c-orange-light)'
+        iconColor='var(--c-orange-dark)'
       />
     </div>
   )
