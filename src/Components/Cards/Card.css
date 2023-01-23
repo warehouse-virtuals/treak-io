@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: var(--c-black);
+  color: var(--c-neutral-1000);
   padding: 10px;
   border-radius: 12px;
-  box-shadow: var(--c-shadow);
+
   width: 200px;
   flex-shrink: 0;
+  background: var(--c-bg-white);
 }
 
 .card-container:hover {
@@ -22,12 +23,11 @@
 }
 
 .card-icon {
-  color: #0e0e0e;
+  color: var(--c-neutral-500);
   display: flex;
   height: 34px;
   width: 34px;
   border-radius: 10px;
-
   justify-content: center;
   align-items: center;
 }
@@ -45,6 +45,7 @@
 }
 
 .card-title {
+  color: var(--c-neutral-500);
   font-weight: 600;
   font-size: 12px;
 }
@@ -65,7 +66,7 @@
   display: flex;
   width: 60%;
   align-items: center;
-  color: var(--c-danger);
+  color: var(--c-red-300);
   font-weight: 600;
   font-size: 14px;
 }
@@ -74,6 +75,6 @@
   align-items: center;
   font-size: 10px;
   font-weight: 600;
-  color: #4ec69f;
+  color: var(--c-green-300);
   margin-left: auto;
 }

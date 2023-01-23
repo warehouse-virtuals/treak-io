@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "Dashboard": "Panel",
+    "Dashboard": "Genel Bakış",
     "Patients": "Kullanıcılar",
     "Agenda": "Ajanda",
     "Repair": "Tamir",
@@ -99,6 +99,7 @@
     "Total": "Toplam",
     "mins": "dk"
   },
+
   "topbar": {
     "/dashboard": "Genel Bakış",
     "/patients": "Kullanıcılar",

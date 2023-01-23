@@ -4,7 +4,7 @@
   width: 100%;
   padding: 0px 20px;
 
-  border-bottom: 2px solid #f9f9f9;
+  border-bottom: 2px solid var(--c-gray-light);
 }
 .topbar {
   position: relative;
@@ -30,6 +30,12 @@
   width: 40%;
 }
 
+.searchfield-component-expand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .datentime-component {
   display: flex;
   align-items: center;
@@ -50,7 +56,7 @@
     height: 40px;
   }
   .topbar-container {
-    border-bottom: 2px solid #f9f9f9;
+    border-bottom: 2px solid var(--c-gray-light);
     padding: 0px;
   }
   .datentime-component {

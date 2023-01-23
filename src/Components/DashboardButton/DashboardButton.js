@@ -16,7 +16,7 @@ const DashboardButton = ({ icon, backgroundColor, iconColor }) => {
       </div>
 
       <div className='dashboard-add'>
-        <FiPlus size={20} style={{ color: iconColor }} />
+        <FiPlus size={12} style={{ color: iconColor }} />
       </div>
     </div>
   )

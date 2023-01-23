@@ -4,8 +4,6 @@
   justify-content: space-between;
   height: 60px;
   border-radius: 12px;
-  margin: 10px;
-  box-shadow: var(--c-shadow);
 }
 
 .recent-activity-item-icon-container {
@@ -14,7 +12,7 @@
   justify-content: center;
   height: 40px;
   width: 40px;
-  margin: 0px 10px;
+  margin-right: 10px;
   border-radius: 12px;
 }
 
@@ -25,7 +23,7 @@
 }
 
 .recent-activity-item-elapsed {
-  color: var(--c-gray);
+  color: var(--c-neutral-500);
   display: flex;
   align-items: center;
   justify-content: center;

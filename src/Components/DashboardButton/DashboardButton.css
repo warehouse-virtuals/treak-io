@@ -3,15 +3,13 @@
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  width: 70px;
-  height: 70px;
-  /* background: var(--c-black); */
-  box-shadow: var(--c-shadow);
+  width: 40px;
+  height: 40px;
   position: relative;
+  opacity: 0.8;
 }
 
 .dashboard-button {
-  /* color: var(--c-white); */
   height: 100%;
   width: 100%;
   display: flex;
@@ -22,11 +20,10 @@
 .dashboard-add {
   position: absolute;
   top: 0;
-  padding: 7px;
+  padding: 3px;
   right: 0;
-  /* color: var(--c-white); */
 }
 .dashboard-button-container:hover {
+  opacity: 1;
   cursor: pointer;
-  background: var(--c-gray-light);
 }

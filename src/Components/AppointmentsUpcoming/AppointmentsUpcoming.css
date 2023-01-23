@@ -7,9 +7,9 @@
   flex: 1;
   overflow-y: hidden;
   border-radius: 12px;
-  min-height: 300px;
-  max-height: 500px;
-  box-shadow: var(--c-shadow);
+  min-height: 200px;
+  height: 100%;
+  background: var(--c-bg-white);
 }
 
 .upcoming-header {
@@ -22,7 +22,7 @@
 }
 
 .upcoming-details-btn {
-  color: var(--c-gray);
+  color: var(--c-neutral-500);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,9 +30,9 @@
   width: 40px;
 }
 
-.upcoming-add-btn:hover {
+.upcoming-details-btn:hover {
   cursor: pointer;
-  background: #cbcfff;
+  color: var(--c-neutral-1000);
 }
 
 @media (max-width: 767.98px) {

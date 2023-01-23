@@ -60,24 +60,28 @@ const Chart = () => {
           data={chartData}
           margin={{
             top: 5,
-            left: 25,
+            left: 0,
             right: 25,
           }}
         >
           <CartesianGrid display='none' strokeDasharray='0 0 0 0' />
-          <XAxis dataKey='name' stroke='var(--c-gray)' />
-          <YAxis
-            stroke='var(--c-gray)'
+          <XAxis
+            dataKey='name'
+            stroke='var(--c-neutral-500)'
             tickLine={false}
             axisLine={false}
-            hide
+          />
+          <YAxis
+            stroke='var(--c-neutral-500)'
+            tickLine={false}
+            axisLine={false}
           />
           <Tooltip />
           <Area
             type='monotone'
             dataKey='uv'
             strokeWidth={2}
-            stroke='var(--c-chart-purple)'
+            stroke='var(--c-violet-400)'
             fill='none'
           />
         </AreaChart>

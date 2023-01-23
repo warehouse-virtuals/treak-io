@@ -29,9 +29,12 @@
   align-items: left;
   width: 100%;
   height: 100%;
+
+  color: var(--c-neutral-1000);
+  background-color: var(--c-gray-light);
+
   font-family: "Gilroy", sans-serif !important;
   animation: app-reveal 0.8s ease-out 0.3s 1 both;
-  background-color: var(--c-white);
 }
 .app-suspense {
   animation: app-reveal 0.8s ease-out 0.3s 1 both;

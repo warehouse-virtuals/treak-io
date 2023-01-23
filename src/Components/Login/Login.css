@@ -1,5 +1,6 @@
 .login-container {
-  color: #0e0e0e;
+  user-select: none;
+  color: var(--c-neutral-1000);
   display: flex;
   height: 100%;
   width: 100%;
@@ -33,13 +34,6 @@
   transition: height 0.3s;
 }
 
-.login-step-count {
-  font-size: 16px;
-  margin-left: auto;
-  margin-right: 10px;
-  background: red;
-}
-
 .login-left-wrapper {
   height: 100vh;
 
@@ -56,7 +50,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #b2b2b2;
+  color: var(--c-neutral-500);
   font-size: 14px;
   font-weight: 600;
   height: 40px;
@@ -68,21 +62,21 @@
 }
 
 .login-left-footer *:hover {
-  color: #0e0e0e;
+  color: var(--c-neutral-1000);
   cursor: pointer;
 }
 
 .login-left-footer *:hover > .login-left-footer-register-btn {
-  color: #7f56da;
+  color: var(--c-violet-500);
   cursor: pointer;
 }
 
 .login-left-footer-register-btn {
-  color: #b29ae9;
+  color: var(--c-violet-200);
 }
 
 .login-right {
-  background: #0e0e0e;
+  background: var(--c-bg-gray-dark);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -102,7 +96,7 @@
   align-items: center;
   font-weight: 600;
   font-size: 48px;
-  color: #ffffff;
+  color: var(--c-white);
 
   margin-bottom: 50px;
 
@@ -121,7 +115,7 @@
   align-items: center;
   height: 34px;
   width: 34px;
-  background: #f8f8f8;
+  background: var(--c-gray-light);
   border-radius: 50%;
   margin-right: 20px;
 }
@@ -129,10 +123,7 @@
 .button-desc {
   font-size: 20px;
   font-weight: 500;
-  color: #ffffff;
-}
-
-.lgn-right-icons {
+  color: var(--c-white);
 }
 
 .login-icon-container {
@@ -147,8 +138,8 @@
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  background: #f2f2f2;
-  box-shadow: 0 0 0 12px #f9f9f9;
+  background: var(--c-neutral-200);
+  box-shadow: 0 0 0 12px var(--c-neutral-100);
 }
 .login-message-container {
   height: 80px;
@@ -166,7 +157,7 @@
 .login-message {
   font-size: 16px;
   font-weight: 600;
-  color: #b3b3b3;
+  color: var(--c-neutral-500);
 }
 .login-input-and-button {
   height: 160px;
@@ -179,9 +170,9 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  box-shadow: 0 0 0 30px #fff inset !important;
-  -webkit-box-shadow: 0 0 0 30px #fff inset !important;
-  outline: 1px solid #198892;
+  box-shadow: 0 0 0 30px var(--c-white) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--c-white) inset !important;
+  border: 2px solid var(--c-blue-500);
 }
 
 /* Small devices (landscape phones, less than 768px) */

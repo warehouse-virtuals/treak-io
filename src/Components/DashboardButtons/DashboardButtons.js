@@ -1,4 +1,4 @@
-import { FiCalendar, FiFile, FiShoppingBag, FiUser } from "react-icons/fi"
+import { FiCalendar, FiTool, FiShoppingBag, FiUser } from "react-icons/fi"
 
 import DashboardButton from "../DashboardButton/DashboardButton"
 
@@ -8,24 +8,24 @@ const DashboardButtons = () => {
   return (
     <div className='dashboard-buttons-container'>
       <DashboardButton
-        icon={<FiUser size={26} />}
-        iconColor='var(--c-green-dark)'
-        backgroundColor='var(--c-green-light)'
+        icon={<FiUser size={18} />}
+        iconColor='var(--c-green-500)'
+        backgroundColor='var(--c-green-100)'
       />
       <DashboardButton
-        icon={<FiCalendar size={26} />}
-        backgroundColor='var(--c-purple-light)'
-        iconColor='var(--c-purple-dark)'
+        icon={<FiCalendar size={18} />}
+        iconColor='var(--c-violet-500)'
+        backgroundColor='var(--c-violet-100)'
       />
       <DashboardButton
-        backgroundColor='var(--c-gold-light)'
-        iconColor='var(--c-gold-dark)'
-        icon={<FiFile size={26} />}
+        icon={<FiTool size={18} />}
+        iconColor='var(--c-blue-500)'
+        backgroundColor='var(--c-blue-100)'
       />
       <DashboardButton
-        icon={<FiShoppingBag size={26} />}
-        backgroundColor='var(--c-orange-light)'
-        iconColor='var(--c-orange-dark)'
+        icon={<FiShoppingBag size={18} />}
+        iconColor='var(--c-orange-500)'
+        backgroundColor='var(--c-orange-100)'
       />
     </div>
   )

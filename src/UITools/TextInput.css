@@ -12,7 +12,7 @@
   left: 10px;
   font-size: 12px;
   font-weight: 600;
-  background: #fff;
+  background: var(--c-bg-white);
   opacity: 0;
   transition: 0.2s ease-in-out;
 }
@@ -23,7 +23,7 @@
   font-size: 16px;
   font-weight: 500;
   border: 0px;
-  border: 2px solid #f2f2f2;
+  border: 2px solid var(--c-gray-300);
   text-indent: 10px;
   font-family: inherit;
   border-radius: 10px;
@@ -38,8 +38,8 @@
 
 .textinput-input:focus {
   outline: none;
-  border: 2px solid #b2b2b2;
-  box-shadow: 0 0 0 4px #f9f9f9;
+  outline: 2px solid var(--c-gray-300);
+  box-shadow: 0 0 0 4px var(--c-gray-light);
   transition: border 1s ease-in-out;
   transition: box-shadow 1s ease-in-out;
 }

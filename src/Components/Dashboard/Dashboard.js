@@ -9,7 +9,6 @@ import Cards from "../Cards/Cards"
 import Chart from "../Chart/Chart"
 import AppointmentsUpcoming from "../AppointmentsUpcoming/AppointmentsUpcoming"
 import RecentActivity from "../RecentActivity/RecentActivity"
-import DashboardButtons from "../DashboardButtons/DashboardButtons"
 
 const Dashboard = () => {
   const { t } = useTranslation("dashboard")
@@ -19,7 +18,6 @@ const Dashboard = () => {
       <TopBar placeholder={t("Search patients...")} />
       <div className='dashboard-body'>
         <Cards t={t} />
-
         <div className='dashboard-row'>
           <div className='dashboard-col1'>
             <Chart t={t} />
@@ -27,7 +25,6 @@ const Dashboard = () => {
           </div>
 
           <div className='dashboard-col2'>
-            <DashboardButtons />
             <RecentActivity />
           </div>
         </div>
