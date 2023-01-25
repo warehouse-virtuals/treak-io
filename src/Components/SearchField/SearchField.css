@@ -17,7 +17,6 @@
 }
 
 .search-bar {
-  overflow: hidden;
   border-radius: 12px;
   display: flex;
   width: 100%;
@@ -33,7 +32,6 @@
   box-sizing: border-box;
   border: none;
   border-radius: 0px;
-
   padding-left: 10px;
   font-weight: 400;
   font-size: 16px;
@@ -42,21 +40,15 @@
   outline: none;
   border-radius: 12px;
 }
-
-.search-bar input:focus + .search-icon {
-  color: var(--c-neutral-1000);
-}
-.search-bar input:focus {
-  color: var(--c-neutral-1000);
+.found {
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
 }
 
-.searchfield-container:focus-within {
-  outline: 1px solid var(--c-gray-300);
-}
 ::placeholder {
   font-size: 16px;
-  font-weight: 400;
-  color: var(--c-neutral-600);
+  font-weight: 600;
+  color: var(--c-neutral-500);
 }
 
 .search-icon {
@@ -76,10 +68,11 @@
   overflow: hidden;
   position: absolute;
   width: 100%;
-  top: calc(100% + 3px);
+  top: calc(100% + 0px);
   background: var(--c-bg-white);
-  border-radius: 12px;
-  outline: 1px solid var(--c-gray-300);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: var(--bs-spread);
   z-index: 1;
 }
 .found-patient {
@@ -170,21 +163,27 @@
 
 .search-icon:hover,
 .close-icon:hover {
+  color: var(--c-neutral-400);
   cursor: pointer;
-  background: var(--c-gray-light);
 }
 
 @media (max-width: 992px) {
   .search-icon {
-    color: var(--c-neutral-1000);
+    color: var(--c-neutral-200);
     border-bottom: none;
   }
   .close-icon {
-    color: var(--c-neutral-1000);
+    color: var(--c-neutral-200);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 40px;
     height: 100%;
+  }
+  .found-patient-container {
+    width: calc(100% - 80px);
+  }
+  .searchfield-container {
+    background: var(--c-bg-gray-dark);
   }
 }

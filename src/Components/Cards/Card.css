@@ -5,14 +5,14 @@
   color: var(--c-neutral-1000);
   padding: 10px;
   border-radius: 12px;
-
+  transition: box-shadow 0.1s ease-in-out;
   width: 200px;
   flex-shrink: 0;
   background: var(--c-bg-white);
 }
 
 .card-container:hover {
-  background: var(--c-gray-light);
+  box-shadow: var(--bs-spread);
   cursor: pointer;
 }
 

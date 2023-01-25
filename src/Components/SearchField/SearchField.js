@@ -87,7 +87,9 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
       <div className='search-bar'>
         {expandSearchBar ? (
           <input
-            className='searchfield-input'
+            className={`searchfield-input ${
+              foundPatients.length > 0 ? "found" : null
+            }`}
             ref={searchTextRef}
             onClick={() => (searchTextRef.current.value = "")}
             onChange={(e) => changeDelay(e.target.value)}

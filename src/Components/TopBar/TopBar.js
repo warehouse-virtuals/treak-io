@@ -36,9 +36,9 @@ const TopBar = () => {
         >
           <SearchField expandSearchBar={expandSearchBar} />
         </div>
-        <div className='datentime-component'>
+        {/* <div className='datentime-component'>
           <DateAndTime />
-        </div>
+        </div> */}
       </div>
     </div>
   )

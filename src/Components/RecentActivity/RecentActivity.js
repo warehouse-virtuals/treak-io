@@ -35,12 +35,13 @@ const RecentActivity = () => {
         />
         <RecentActivityItem
           icon={<FiTool size={18} />}
-          title='Teknik Servis Kaydı'
+          title='Teknik Servis'
           iconColor='var(--c-blue-500)'
           backgroundColor='var(--c-blue-100)'
           elapsedTime='30'
         />
       </div>
+
       <DashboardButtons />
     </div>
   )
