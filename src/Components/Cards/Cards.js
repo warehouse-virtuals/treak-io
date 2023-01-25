@@ -13,6 +13,7 @@ const CardContainer = ({ t }) => {
 
   const calculateTodays = (finished, cancelled, booked) => {
     setTodaysAppointments({
+      type: "todaysAppointments",
       value: finished + cancelled,
       cancelled: cancelled,
       denominator: booked,
@@ -22,6 +23,7 @@ const CardContainer = ({ t }) => {
 
   const calculateAll = (currentMonth, lastMonth, cancelled) => {
     setAllAppointments({
+      type: "allAppointments",
       value: currentMonth + cancelled,
       cancelled: cancelled,
       percent: Math.round((100 * (currentMonth - lastMonth)) / lastMonth),
@@ -30,6 +32,7 @@ const CardContainer = ({ t }) => {
 
   const calculateGoal = (sold, goal) => {
     setGoal({
+      type: "goal",
       value: sold,
       denominator: goal,
       percent: Math.round((sold * 100) / goal),
@@ -38,6 +41,7 @@ const CardContainer = ({ t }) => {
 
   const calculateNew = (newPatients, lastMonthPatients, totalPatients) => {
     setPatients({
+      type: "newPatient",
       value: newPatients,
       total: totalPatients,
       percent: Math.round((100 * newPatients) / lastMonthPatients),

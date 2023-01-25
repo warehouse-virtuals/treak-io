@@ -9,7 +9,6 @@ export const UIToolsStatusContextProvider = ({ children }) => {
   const [width] = useWindowSize()
 
   const toggleCollapse = (boolean) => {
-    console.log(width)
     if (width < 992) {
       setIsNavbarCollapsed(boolean)
     } else {

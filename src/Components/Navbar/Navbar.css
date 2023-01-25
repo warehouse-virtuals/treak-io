@@ -11,6 +11,10 @@
   color: var(--c-neutral-200);
   background: var(--c-bg-gray-dark);
 }
+.closed {
+  left: -100% !important;
+  position: absolute;
+}
 
 .navbar-logo-container {
   font-family: "Comfortaa", cursive;
@@ -114,7 +118,6 @@
   border-bottom: 2px solid var(--c-gray-light); */
 }
 .navbar-user-info {
-  height: 80px;
   display: flex;
 }
 .navbar-button-logout-container {
@@ -168,11 +171,8 @@
   .navbar-container {
     position: absolute;
     z-index: 10;
-    left: 0;
-    /* transition: left 1s ease-in-out;
-    position: absolute;
-    left: -190px;
-    background: red; */
+    left: 0px;
+    transition: left 0.3s ease-in-out;
   }
 
   .navbar-container::after {
@@ -183,7 +183,7 @@
     position: absolute;
     width: calc(100vw - 240px);
     height: 100%;
-    background: var(--c-black-opaque);
+    /* background: var(--c-black-opaque); */
     left: 240px;
     top: 0px;
     backdrop-filter: blur(1px);

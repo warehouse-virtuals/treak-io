@@ -57,9 +57,12 @@ const Navbar = () => {
     } // eslint-disable-next-line
   }, [navbarRef, isNavbarCollapsed])
 
-  if (user.auth && !isNavbarCollapsed) {
+  if (user.auth) {
     return (
-      <div className='navbar-container' ref={navbarRef}>
+      <div
+        className={`navbar-container ${!isNavbarCollapsed ? null : " closed"}`}
+        ref={navbarRef}
+      >
         <div>
           <div
             className='navbar-logo-container'

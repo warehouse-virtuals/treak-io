@@ -83,13 +83,15 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
   }
   useEffect(() => {}, [expandSearchBar])
   return (
-    <div className='searchfield-container'>
+    <div
+      className={`searchfield-container ${
+        foundPatients.length > 0 ? "found" : null
+      }`}
+    >
       <div className='search-bar'>
         {expandSearchBar ? (
           <input
-            className={`searchfield-input ${
-              foundPatients.length > 0 ? "found" : null
-            }`}
+            className='searchfield-input'
             ref={searchTextRef}
             onClick={() => (searchTextRef.current.value = "")}
             onChange={(e) => changeDelay(e.target.value)}

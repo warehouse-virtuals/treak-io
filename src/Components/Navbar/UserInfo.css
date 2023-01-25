@@ -1,41 +1,58 @@
 .userinfo-container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 20px;
+
   width: 100%;
   transition: opacity 1s;
   transition-delay: 0.4s;
 }
 
 .userinfo-pp-container {
+  user-select: none;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   object-fit: cover;
-  height: 100%;
-  width: 40px;
-  height: 100%;
+  border-radius: 50%;
+  background: var(--c-bg-white);
+  width: 110px;
+  height: 110px;
+  margin-top: 30px;
 }
 
 .userinfo-pp {
-  width: 32px;
-  height: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 50%;
 }
 
 .userinfo-userinfo {
-  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
   font-weight: 600;
-  margin-left: 5px;
+  margin: 10px 0px;
 }
 .userinfo-username {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-
   font-weight: 600;
   width: 100%;
 }
@@ -43,4 +60,23 @@
 .userinfo-jobtitle {
   font-size: 12px;
   font-weight: 400;
+}
+
+@media (max-width: 767.98px) {
+  .userinfo-pp-container {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+  }
+  .userinfo-pp {
+    width: 50px;
+    height: 50px;
+  }
+}
+/* iPad 2/3 */
+@media (min-width: 767.98px) and (max-width: 991.98px) {
+}
+
+/* iPad */
+@media (min-width: 991.98px) and (max-width: 1199.98px) {
 }

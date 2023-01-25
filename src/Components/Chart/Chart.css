@@ -8,7 +8,7 @@
   height: 300px;
   width: 100%;
   border-radius: 12px;
-  background: var(--c-bg-white);
+  /* background: var(--c-bg-white); */
 }
 
 .chart-header {

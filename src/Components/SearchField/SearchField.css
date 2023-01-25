@@ -163,7 +163,7 @@
 
 .search-icon:hover,
 .close-icon:hover {
-  color: var(--c-neutral-400);
+  color: var(--c-neutral-1000);
   cursor: pointer;
 }
 
@@ -185,5 +185,10 @@
   }
   .searchfield-container {
     background: var(--c-bg-gray-dark);
+  }
+  .search-icon:hover,
+  .close-icon:hover {
+    color: var(--c-neutral-200);
+    cursor: pointer;
   }
 }

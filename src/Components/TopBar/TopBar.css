@@ -4,8 +4,6 @@
   width: 100%;
   padding: 0px 20px;
   user-select: none;
-  border-bottom: 2px solid var(--c-gray-light);
-  max-width: var(--w-max);
 }
 .topbar {
   position: relative;
