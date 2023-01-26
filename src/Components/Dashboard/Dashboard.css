@@ -6,6 +6,11 @@
   height: 100%;
   width: 100%;
 }
+.dashboard-tabmenu {
+  display: none;
+  padding-left: 20px;
+  padding-top: 20px;
+}
 
 .dashboard-body {
   display: flex;
@@ -67,4 +72,9 @@
 }
 
 @media (min-width: 991.98px) and (max-width: 1199.98px) {
+}
+@media (max-width: 992px) {
+  .dashboard-tabmenu {
+    display: block;
+  }
 }

@@ -7,13 +7,10 @@ import { useTranslation } from "react-i18next"
 import { UserAuth } from "../../Context/UserContext"
 import { FirebaseActions } from "../../Context/FirebaseContext"
 
-import Spinner from "../Spinner/Spinner"
-
 import "./PatientsList.css"
 
-const PatientsList = (props) => {
+const PatientsList = ({ focusedPatient }) => {
   const [patients, setPatients] = useState([])
-  const [spinner, setSpinner] = useState(true)
 
   const { userData } = UserAuth()
 
@@ -33,12 +30,10 @@ const PatientsList = (props) => {
 
   useEffect(() => {
     setPatients(currentPatients)
-    setSpinner(false)
   }, [currentPatients, isEndOfPatientList])
 
   return (
     <div className='patient-table-container' onScroll={handleScroll}>
-      {spinner ? <Spinner /> : null}
       <table className='patient-table'>
         <thead>
           <tr>
@@ -55,7 +50,7 @@ const PatientsList = (props) => {
               <tr
                 key={i}
                 onClick={() => {
-                  props.focusedPatient(patient)
+                  focusedPatient(patient)
                 }}
               >
                 <td>{`${patient.name} ${patient.surname}`}</td>

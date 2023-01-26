@@ -187,9 +187,3 @@
     height: 250px;
   }
 }
-
-@media (min-width: 991.98px) and (max-width: 1199.98px) {
-  .upcoming-container {
-    height: 200px;
-  }
-}

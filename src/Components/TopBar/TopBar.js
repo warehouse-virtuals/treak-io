@@ -1,5 +1,9 @@
+import { useEffect } from "react"
+
 import SearchField from "../SearchField/SearchField"
 import DateAndTime from "./DateAndTime"
+import treatLogoColored from "../../Assets/treat-logos/treat-tp-colored.svg"
+
 import { FiBarChart2 } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
 import { useLocation } from "react-router-dom"
@@ -24,7 +28,8 @@ const TopBar = () => {
           >
             {<FiBarChart2 size={24} />}
           </div>
-          {t(location.pathname)}
+          <div className='topbar-pathname'> {t(location.pathname)}</div>
+          {/* Buraya şirketin logosu gelebilir */}
         </div>
 
         <div

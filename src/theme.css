@@ -12,6 +12,7 @@
   --c-brand-300: #1a9ab4;
   --c-brand-400: #157b90;
   --c-brand-500: #105c6c;
+  --c-brand-600: #0a3e48;
 
   --c-white: #fff;
 
@@ -116,6 +117,7 @@
 
   /* Backgrounds */
   --c-bg-white: #fff;
+  --c-bg-table-header: #eee;
   --c-bg-gray-dark: #121212;
 
   /* Component border */

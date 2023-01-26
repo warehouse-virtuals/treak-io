@@ -51,6 +51,83 @@ export const FirebaseContextProvider = ({ children }) => {
   })
   const [isEndOfActiveChat, setIsEndOfActiveChat] = useState(false)
 
+  const [radarChartData, setRadaraChartData] = useState([
+    {
+      subject: "Math",
+      A: 120,
+      B: 110,
+      fullMark: 150,
+    },
+    {
+      subject: "Chinese",
+      A: 98,
+      B: 130,
+      fullMark: 150,
+    },
+    {
+      subject: "English",
+      A: 86,
+      B: 130,
+      fullMark: 150,
+    },
+    {
+      subject: "Geography",
+      A: 99,
+      B: 100,
+      fullMark: 150,
+    },
+    {
+      subject: "Physics",
+      A: 85,
+      B: 90,
+      fullMark: 150,
+    },
+    {
+      subject: "History",
+      A: 65,
+      B: 85,
+      fullMark: 150,
+    },
+  ])
+  const [lineChartData, setLineChartData] = useState([
+    {
+      name: "Pzt",
+      uv: 10,
+      pv: 240,
+      amt: 240,
+    },
+    {
+      name: "Sal",
+      uv: 300,
+      pv: 139,
+      amt: 221,
+    },
+    {
+      name: "Çar",
+      uv: 100,
+      pv: 980,
+      amt: 229,
+    },
+    {
+      name: "Per",
+      uv: 278,
+      pv: 390,
+      amt: 200,
+    },
+    {
+      name: "Cum",
+      uv: 189,
+      pv: 480,
+      amt: 218,
+    },
+    {
+      name: "Cmt",
+      uv: 239,
+      pv: 380,
+      amt: 250,
+    },
+  ])
+
   const getEmployeesOfClinic = async (usersClinic) => {
     const q = query(
       collection(db, "users/"),
@@ -487,6 +564,8 @@ export const FirebaseContextProvider = ({ children }) => {
         getPortfolio,
         deletePatient,
         setChatResults,
+        radarChartData,
+        lineChartData,
         currentPatients,
         getMoreMessages,
         getMorePatients,

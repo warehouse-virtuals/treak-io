@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Routes, Route } from "react-router-dom"
 
 import { FirebaseActions } from "../../Context/FirebaseContext"
 
@@ -9,6 +10,8 @@ import PatientOverview from "./PatientOverview"
 import PatientsList from "./PatientsList"
 import AddPatient from "./AddPatient"
 import TopBar from "../TopBar/TopBar"
+import TabMenu from "../TabMenu/TabMenu"
+import SearchField from "../SearchField/SearchField"
 
 import "./Patients.css"
 
@@ -29,40 +32,37 @@ const Patients = () => {
 
   return (
     <div className='patients-cointainer'>
-      <TopBar pholder={t("Search patients...")} />
+      <TopBar />
       <div className='patients-body' onKeyDown={handleKeyDown} tabIndex='0'>
-        <div className='patients-body-navbar'>
-          <div className='patients-body-navbar-tabs'>
-            <div className='patients-body-navbar-tab-active'>
-              Tüm Kullanıcılar
-            </div>
-            <div className='patients-body-navbar-tab'>Raporlar</div>
-          </div>
-        </div>
-        <div className='patients-body-patient-list'>
-          <div className='patients-patients-list-container'>
-            <div className='patients-patients-list'>
+        <TabMenu
+          tabs={[
+            { title: "Tüm Kullanıcılar", path: "/patients" },
+            { title: "Tıbbi Kayıtlar", path: "/patients/medicalReports" },
+            { title: "Odyogramlar", path: "/patients/audiograms" },
+          ]}
+        />
+
+        <div className='patients-body-list-container'>
+          <div className='patients-body-patients-list-container'>
+            <div className='patients-body-list'>
               <PatientsList
                 focusedPatient={(patient) => {
                   setFocusedPatient(patient)
                 }}
               />
             </div>
-          </div>
-          <div className='patients-patients-list-footer'>
-            <div className='patients-add-patient-btn-container'>
-              <div
-                onClick={() => {
-                  setNewPatientForm(true)
-                }}
-                className='patients-add-patient-btn'
-              >
-                <FiUserPlus size={22} stroke='#fff' className='' /> KULLANICI
-                EKLE
+            <div className='patients-body-list-footer'>
+              <div className='patients-body-list-button'>
+                <div
+                  onClick={() => {
+                    setNewPatientForm(true)
+                  }}
+                  className='patients-body-list-add-button'
+                >
+                  <FiUserPlus size={14} /> Kullanıcı Ekle
+                </div>
               </div>
-            </div>
-            <div className='patients-patients-list-footer'>
-              Listelenen Kullanıcı Sayısı: {currentPatients.length}
+              <div>Listelenen Kullanıcı Sayısı: {currentPatients.length}</div>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@ const Patients = () => {
           />
         </div>
       ) : null}
-      {newPatientForm ? (
+      {/* {newPatientForm ? (
         <div className='add-patient-form-container'>
           <AddPatient
             closeForm={() => {
@@ -90,7 +90,7 @@ const Patients = () => {
             }}
           />
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   )
 }

@@ -38,43 +38,42 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
   } else {
     return (
       <div className='patient-overview-container'>
-        <div className='patient-overview-header'>
-          <div className='patient-overview-close' onClick={close}>
-            <FiX size={28} color='#252525' />
-          </div>
-          <div className='patient-overview-name'>
-            {person.name}&nbsp;{person.surname}
-          </div>
-          <div className='patient-overview-ssn'>{person.SSN}</div>
+        <div className='patient-overview-close' onClick={close}>
+          <FiX size={28} color='#252525' />
         </div>
-        <div className='patient-overview-details-container'>
-          <div className='patient-overview-titles'>Genel Bilgiler</div>
-          <div className='patient-overview-content-container'>
-            <div className='patient-overview-content'>
-              <div className='patient-overview-content-key'>Adres</div>
-              <div className='patient-overview-content-value'>
-                {person.address}
-              </div>
-            </div>
-            <div className='patient-overview-content'>
-              <div className='patient-overview-content-key'>Telefon</div>
-              <div className='patient-overview-content-value'>
-                {person.phone}
-              </div>
-            </div>
-            <div className='patient-overview-content'>
-              <div className='patient-overview-content-key'>Doğum Tarihi</div>
-              <div className='patient-overview-content-value'>
+        <div className='patient-overview-header'>
+          <div className='patient-overview-patient-info'>
+            <div className='patient-overview-ssn'>
+              {person.SSN}
+              <div className='patient-overview-dob'>
                 {format(person.DOB.toMillis(), "PP", {
                   locale: tr,
                 })}
               </div>
             </div>
-            <div className='patient-overview-content'>
-              <div className='patient-overview-content-key'>Klinik</div>
-              <div className='patient-overview-content-value'>Muratpaşa</div>
+            <div className='patient-overview-name'>
+              {person.name}&nbsp;{person.surname}
+              <div className='patient-overview-age-gender'>
+                (30, {person.isMale ? "E" : "K"})
+              </div>
+            </div>
+            <div className='patient-overview-additional'>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              ></div>{" "}
+              <div>{person.phone}</div>
+              <div className='patient-overview-address'>{person.address}</div>
             </div>
           </div>
+        </div>
+        {/* klinik ekle */}
+        <div></div>
+        {/* 
+           
         </div>
         <div className='patient-overview-hearingaid-container'>
           <div className='patient-overview-titles'>Cihaz Bilgileri</div>
@@ -158,7 +157,7 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
               }}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }

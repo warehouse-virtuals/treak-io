@@ -1,0 +1,38 @@
+.chartline-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+  font-size: 12px;
+  height: 300px;
+  width: 100%;
+  border-radius: 12px;
+  /* background: var(--c-bg-white); */
+}
+
+.chartline-header {
+  font-size: 16px;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  padding: 0px 20px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 767.98px) {
+  .chartline-container {
+    height: 200px;
+  }
+}
+
+@media (min-width: 767.98px) and (max-width: 991.98px) {
+  .chartline-container {
+    height: 250px;
+  }
+}
+
+@media (min-width: 991.98px) and (max-width: 1199.98px) {
+}
