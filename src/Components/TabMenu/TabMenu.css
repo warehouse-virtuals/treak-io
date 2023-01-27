@@ -7,9 +7,9 @@
 .tabmenu-tabs {
   display: flex;
   height: 30px;
-  color: var(--c-neutral-500);
+  color: var(--c-secondary);
   width: 100%;
-  border-bottom: 1px solid var(--c-neutral-300);
+  border-bottom: 1px solid var(--c-border);
 
   font-weight: 600;
   font-size: 14px;
@@ -23,14 +23,13 @@
 }
 
 .focused-tab {
-  color: var(--c-neutral-1000);
-  border-bottom: 3px solid var(--c-neutral-1000);
+  color: var(--c-primary);
+  border-bottom: 3px solid var(--c-primary);
   border-radius: 3px;
 }
 
 .tabmenu-pagename {
   display: none;
-  color: var(--c-neutral-1000);
 
   height: 50px;
   font-weight: 700;

@@ -16,7 +16,7 @@
     "Login to app": "Uygulamaya giriş yap",
     "E-Mail": "E-Posta",
     "Password": "Parola",
-    "Improve your workflow": "İş akışınızı geliştirin!",
+    "Online clinical solutions for a better workflow.": "Daha iyi bir iş akışı için online klinik çözümleri.",
     "Forgot Password?": "Şifreni mi unuttun?",
     "Enter your email.": "E-posta adresini gir",
     "We'll send you a link to reset your password": "Şifreni sıfırlaman için sana bir bağlantı göndereceğiz",
@@ -24,12 +24,7 @@
     "Register": "Kaydol",
     "Send Reset Link": "Gönder",
     "Back to login": "Giriş ekranına dön",
-    "Glance at your workspace": "Çalışma alanınıza göz atın",
-    "Track your patient records": "Kullanıcı kayıtlarınızı takip edin",
-    "Arrange appointments": "Randevularınızı düzenleyin",
-    "Track ongoing repairments of aids": "Cihaz tamir ve bakımını takip edin",
-    "Get in touch with your colleagues": "Meslektaşlarınızla iletişim kurun",
-    "Analyze your business statistics": "İş istatistiklerinizi analiz edin"
+    "Monitor, manage, share and more.": "İzle, yönet, paylaş... "
   },
   "register": {
     "Tell us what your business model.": "İş modelinizi belirleyin.",

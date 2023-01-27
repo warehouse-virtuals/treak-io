@@ -4,13 +4,13 @@
   justify-content: center;
   align-items: center;
   height: 40px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--c-white);
-  background: var(--c-bg-gray-dark);
+  background: var(--c-primary);
   border-radius: 10px;
 }
 
 .button-tool:hover {
   cursor: pointer;
-  background: var(--c-neutral-1000);
 }

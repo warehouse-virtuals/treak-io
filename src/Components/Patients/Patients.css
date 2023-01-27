@@ -11,7 +11,7 @@
 
 .patients-body-overview::before {
   pointer-events: none;
-  background: var(--c-neutral-1000);
+
   opacity: 0.5;
   display: block;
   content: " ";
@@ -31,7 +31,6 @@
   height: calc(100% - 56px);
   width: 100%;
   max-width: 1680px;
-  color: var(--c-neutral-1000);
 }
 
 .patient-tabmenu-container {
@@ -72,7 +71,7 @@
   padding: 0px 32px;
   height: 72px;
 
-  border-top: 3px solid var(--c-neutral-100);
+  border-top: 2px solid var(--c-border);
 }
 .patients-body-list-button {
   display: flex;

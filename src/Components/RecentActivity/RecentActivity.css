@@ -2,14 +2,12 @@
   display: flex;
   flex-direction: column;
   border-radius: 12px;
-  flex: 1;
-  margin: 10px 0px 20px 0px;
+  margin-top: 30px;
   border-radius: 12px;
   padding: 20px;
-  background: var(--c-bg-white);
-  min-height: 300px;
+  background: var(--c-bg-gray);
   font-weight: 600;
-  max-height: 500px;
+  height: 350px;
 }
 
 .recent-activity-header {

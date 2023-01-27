@@ -6,7 +6,7 @@ import { UserAuth } from "../../Context/UserContext"
 import { useTranslation } from "react-i18next"
 import { FiLogIn } from "react-icons/fi"
 
-import treatLogoColored from "../../Assets/treat-logos/treat-brand-tp.svg"
+import treatLogo from "../../Assets/treat-logos/treat-new.svg"
 
 import NavbarButtons from "../Navbar/NavbarButtons"
 
@@ -68,21 +68,14 @@ const Login = () => {
 
   return (
     <div className='login-container'>
-      <div className='login-left-header'>
-        <img className='login-treat-logo' alt='logo' src={treatLogoColored} />
-        <span>treat</span>
-      </div>
-
       {isForgot ? (
         <ResetPassword back={back} />
       ) : (
         <div className='login-left'>
+          <div className='login-left-header'>
+            <img className='login-treat-logo' alt='logo' src={treatLogo} />
+          </div>
           <div className='login-left-body'>
-            <div className='login-icon-container'>
-              <div className='login-icon'>
-                <FiLogIn size={36} />
-              </div>
-            </div>
             <div className='login-message-container'>
               <div className='welcome-message'>{welcomeMessage()}</div>
               <div className='login-message'>{t("Login to app")}</div>
@@ -93,17 +86,19 @@ const Login = () => {
                 inputRef={emailRef}
                 type={"text"}
                 label={t("E-Mail")}
+                style={{ height: "56px", marginBottom: "12px" }}
               />
               <TextInput
                 inputRef={passwordRef}
                 type={"password"}
                 label={t("Password")}
+                style={{ height: "56px", marginBottom: "24px" }}
               />
 
               <Button
                 label={t("Login")}
                 onClick={handleLoginButtonPress}
-                buttonCSS='login-textinput-button'
+                buttonHeight='52px'
               />
             </div>
             <div className='login-left-footer'>
@@ -129,15 +124,12 @@ const Login = () => {
 
       <div className='login-right'>
         <div className='login-right-wrapper'>
-          <div className='login-right-header'>{t("Improve your workflow")}</div>
-          {NavbarButtons("20", "lgn-right-icons").map((button, index) => {
-            return (
-              <div className='buttons-row' key={index}>
-                <div className='button-icon'>{button.icon}</div>
-                <div className='button-desc'>{t(button.desc)}</div>
-              </div>
-            )
-          })}
+          <div className='login-right-title'>
+            {t("Online clinical solutions for a better workflow.")}
+          </div>
+          <div className='login-right-desc'>
+            {t("Monitor, manage, share and more.")}
+          </div>
         </div>
       </div>
     </div>

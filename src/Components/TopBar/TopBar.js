@@ -28,7 +28,6 @@ const TopBar = () => {
           >
             {<FiBarChart2 size={24} />}
           </div>
-
           <img className='topbar-logo' alt='logo' src={treatLogoColored} />
 
           <div className='topbar-pathname'> {t(location.pathname)}</div>

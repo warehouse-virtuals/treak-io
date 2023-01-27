@@ -62,15 +62,17 @@
   font-weight: 400;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .userinfo-pp-container {
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
   }
   .userinfo-pp {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
   }
+}
+@media (max-width: 767.98px) {
 }
 /* iPad 2/3 */
 @media (min-width: 767.98px) and (max-width: 991.98px) {

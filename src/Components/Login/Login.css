@@ -4,28 +4,38 @@
   display: flex;
   height: 100%;
   width: 100%;
+  position: relative;
+  overflow-y: scroll;
+  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.87)), */
+  background: linear-gradient(#00bbbb7c, #000000b7),
+    url("../../Assets/images/clinic.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .login-left {
-  height: 100vh;
+  position: absolute;
+  min-height: 712px;
+  height: calc(100% - 75px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
+  padding: 0px 65px;
+  width: 526px;
+  left: 187px;
+  background: var(--c-bg-white);
   animation: reveal-animation 0.5s linear;
 }
 
 .login-left-header {
-  position: absolute;
-  height: 65px;
+  margin-top: 100px;
+  margin-bottom: 54px;
   display: flex;
   width: 240px;
   align-items: center;
   font-weight: 600;
-  padding: 0px 20px;
+  left: 0;
   font-size: 24px;
-  gap: 10px;
+  z-index: 499;
 }
 .login-treat-logo {
   display: flex;
@@ -43,17 +53,30 @@
   align-items: center;
 }
 .login-left-body {
-  height: 500px;
+  height: 100%;
   width: 400px;
 }
 .login-left-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
   color: var(--c-neutral-500);
+  display: flex;
   font-size: 14px;
   font-weight: 600;
-  height: 40px;
+  height: calc(100% - 358px);
+  padding-bottom: 20px;
+}
+.login-left-footer-forgot {
+  display: flex;
+  height: 64px;
+  align-items: center;
+
+  border-bottom: 1px solid var(--c-border);
+}
+.login-left-footer-register {
+  display: flex;
+  height: 64px;
+  align-items: center;
 }
 
 .login-left-footer * {
@@ -76,55 +99,32 @@
 }
 
 .login-right {
-  background: var(--c-bg-gray-dark);
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  padding-bottom: 150px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
   transition: opacity 1s ease-in-out;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--c-white);
 }
 
 .login-right-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+
+  margin-bottom: 120px;
+  margin-right: 60px;
 }
 
-.login-right-header {
+.login-right-title {
   display: flex;
   align-items: center;
-  font-weight: 600;
-  font-size: 48px;
-  color: var(--c-white);
-
-  margin-bottom: 50px;
 
   /* background: red; */
-}
-
-.buttons-row {
-  margin-bottom: 10px;
-  margin-left: 120px;
-  display: flex;
-  align-items: center;
-}
-.button-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 34px;
-  width: 34px;
-  background: var(--c-gray-light);
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
-.button-desc {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--c-white);
 }
 
 .login-icon-container {
@@ -132,39 +132,31 @@
   justify-content: center;
   width: 100%;
 }
-.login-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  background: var(--c-neutral-300);
-  box-shadow: 0 0 0 12px var(--c-neutral-200);
-}
+
 .login-message-container {
-  height: 80px;
+  /* height: 80px; */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-bottom: 50px;
   justify-content: center;
-  margin: 20px 0;
 }
 
 .welcome-message {
-  font-size: 48px;
-  font-weight: 600;
+  height: 41px;
+  font-size: 28px;
+  font-weight: 700;
 }
 .login-message {
+  height: 20px;
   font-size: 16px;
   font-weight: 600;
-  color: var(--c-neutral-500);
+  color: var(--c-secondary);
 }
 .login-input-and-button {
-  height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: auto;
 }
 
 input:-webkit-autofill,
@@ -177,14 +169,27 @@ input:-webkit-autofill:active {
 }
 
 /* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .login-left {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
     width: 100%;
+    background: var(--c-bg-white);
+    z-index: 30;
+    left: 0px;
+    animation: reveal-animation 0.5s linear;
+    padding: 0px 30px;
   }
+  .login-left-header {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
   .login-left-body {
-    height: 400px;
     width: 100%;
-    padding: 20px;
   }
   .login-right {
     display: none;
@@ -192,22 +197,13 @@ input:-webkit-autofill:active {
 }
 
 /* Medium devices (tablets, less than 992px) */
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .login-right-wrapper {
-    margin-left: 20px;
-    width: auto;
-  }
-  .buttons-row {
-    margin-left: 0px;
-  }
-
-  .login-left-body {
-    padding: 0px 20px;
-  }
-}
 
 /* Large devices (desktops, less than 1200px) */
 @media (min-width: 991.98px) and (max-width: 1199.98px) {
+  .login-left-header {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }
 
 @keyframes reveal-animation {

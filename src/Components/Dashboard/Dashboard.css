@@ -1,9 +1,8 @@
 .dashboard-cointainer {
-  box-sizing: border-box;
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   align-items: center;
-  height: 100%;
   width: 100%;
 }
 .dashboard-tabmenu {
@@ -15,14 +14,15 @@
 .dashboard-body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: var(--w-max);
-  height: 100%;
-  overflow-y: hidden;
+  height: calc(100% - 65px);
+  overflow-y: scroll;
 }
 .dashboard-row {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 163px);
   display: flex;
 }
 

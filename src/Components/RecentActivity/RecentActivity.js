@@ -41,8 +41,6 @@ const RecentActivity = () => {
           elapsedTime='30'
         />
       </div>
-
-      <DashboardButtons />
     </div>
   )
 }

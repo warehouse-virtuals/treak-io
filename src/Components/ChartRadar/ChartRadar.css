@@ -1,12 +1,11 @@
 .chartradar-container {
   display: flex;
-
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   font-weight: 600;
   font-size: 12px;
-  height: 200px;
+  height: 300px;
   width: 100%;
   border-radius: 12px;
   /* background: var(--c-bg-white); */
@@ -24,15 +23,9 @@
 }
 
 @media (max-width: 767.98px) {
-  .chartradar-container {
-    height: 200px;
-  }
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
-  .chartradar-container {
-    height: 250px;
-  }
 }
 
 @media (min-width: 991.98px) and (max-width: 1199.98px) {
