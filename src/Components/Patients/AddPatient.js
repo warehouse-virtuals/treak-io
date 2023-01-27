@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 
 import { FiPlus, FiXCircle, FiCalendar } from "react-icons/fi"
 import DatePicker from "react-datepicker"
@@ -96,6 +96,17 @@ const AddPatient = ({ closeForm }) => {
       console.log(error.message)
     }
   }
+
+  const setDummyDatas = () => {
+    const sendToFirebase = async () => {
+      console.log("sa")
+    }
+
+    sendToFirebase().then(() => sendToFirebase())
+  }
+  useEffect(() => {
+    setDummyDatas()
+  }, [])
   return (
     <div className='add-patient-container'>
       <div className='add-patient-body'>

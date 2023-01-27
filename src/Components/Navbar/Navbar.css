@@ -11,14 +11,12 @@
   color: var(--c-neutral-200);
   background: var(--c-bg-gray-dark);
 }
-.closed {
+.closed-navbar {
   left: -100% !important;
   position: absolute;
 }
 
 .navbar-logo-container {
-  font-family: "Comfortaa", cursive;
-  font-weight: 700;
   box-sizing: border-box;
   display: flex;
   padding: 0px 20px;
@@ -26,8 +24,13 @@
   align-items: center;
   font-size: 24px;
   width: 240px;
-  height: 65px;
+  height: 180;
   cursor: pointer;
+}
+
+.navbar-logo-brand {
+  font-family: "Visby";
+  font-weight: 800;
 }
 
 @keyframes logo-reveal {
@@ -114,11 +117,12 @@
 }
 .navbar-user-info-container {
   width: 100%;
-  /* border-top: 2px solid var(--c-gray-light);
-  border-bottom: 2px solid var(--c-gray-light); */
 }
 .navbar-user-info {
   display: flex;
+  height: 200px;
+  margin-top: 30px;
+  align-items: center;
 }
 .navbar-button-logout-container {
   display: flex;
@@ -173,6 +177,12 @@
     z-index: 10;
     left: 0px;
     transition: left 0.3s ease-in-out;
+  }
+  .navbar-user-info {
+    display: flex;
+    height: 150px;
+    align-items: center;
+    margin-top: 10px;
   }
 
   .navbar-container::after {

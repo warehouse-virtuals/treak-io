@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { FirebaseActions } from "../../Context/FirebaseContext"
 
-import { FiMoreHorizontal, FiPhoneCall, FiEdit } from "react-icons/fi"
+import { FiMoreHorizontal, FiPhoneCall, FiEdit, FiClock } from "react-icons/fi"
 import { secondsToMinutes } from "date-fns"
 
 import "./AppointmentsUpcoming.css"
@@ -65,6 +65,9 @@ const AppointmentsUpcoming = (props) => {
                 <div className='appointment-col'>
                   <div className='appointment-time'>13:30</div>
                   <div className='appointment-duration'>
+                    <div className='appointment-duration-icon'>
+                      <FiClock size={14} />
+                    </div>
                     {secondsToMinutes(appointment.duration)} {t("mins")}
                   </div>
                 </div>

@@ -6,7 +6,7 @@ import { UserAuth } from "../../Context/UserContext"
 import { useTranslation } from "react-i18next"
 import { FiLogIn } from "react-icons/fi"
 
-import treatLogoColored from "../../Assets/treat-logos/treat-tp-colored.svg"
+import treatLogoColored from "../../Assets/treat-logos/treat-brand-tp.svg"
 
 import NavbarButtons from "../Navbar/NavbarButtons"
 

@@ -7,12 +7,13 @@
   --c-bg: red;
   --c-gray: blue;
 
-  --c-brand-100: #76c2d2;
-  --c-brand-200: #48aec3;
-  --c-brand-300: #1a9ab4;
-  --c-brand-400: #157b90;
-  --c-brand-500: #105c6c;
-  --c-brand-600: #0a3e48;
+  --c-brand-100: #99e4e4;
+  --c-brand-200: #66d6d6;
+  --c-brand-300: #33c9c9;
+  --c-brand-400: #00bbbb;
+  --c-brand-500: #009696;
+  --c-brand-600: #007070;
+  --c-brand-700: #004b4b;
 
   --c-white: #fff;
 
@@ -121,11 +122,11 @@
   --c-bg-gray-dark: #121212;
 
   /* Component border */
-  --bs-spread: 0 1px 2px 0 rgb(60 64 67 / 30%),
-    0 1px 3px 1px rgb(60 64 67 / 15%);
+  --bs: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 
-  --c-shadow-focus: rgba(0, 0, 0, 0.16) 0px 1px 2px,
-    rgb(51, 51, 51) 0px 0px 0px 2px;
+  --ts: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
+
+  --c-shadow-focus: 0px 11px 10px rgba(81, 67, 21, 0.8);
 
   /* Width and Height */
   --w-max: 1366px;

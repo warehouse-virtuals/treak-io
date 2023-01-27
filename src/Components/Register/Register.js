@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import { useTranslation } from "react-i18next"
 
-import treatLogo from "../../Assets/treat-logos/treat-tp-colored.svg"
+import treatLogo from "../../Assets/treat-logos/treat-brand-tp.svg"
 
 import RegisterFormHeader from "../RegisterFormHeader/RegisterFormHeader"
 import RegisterFormBody from "../RegisterFormBody/RegisterFormBody"

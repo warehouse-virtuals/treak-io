@@ -18,7 +18,7 @@ const Card = ({
 }) => {
   const navigate = useNavigate()
   const { t } = useTranslation("dashboard")
-  console.log(type)
+
   return (
     <div
       className='card-container'

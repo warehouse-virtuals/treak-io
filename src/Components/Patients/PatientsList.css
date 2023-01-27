@@ -9,10 +9,9 @@
   width: 100%;
   border-spacing: 0;
   table-layout: fixed;
+  overflow-y: scroll;
 }
 .patient-table thead {
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
 }
 
 .patient-table th {
@@ -35,14 +34,12 @@
   text-align: center;
 }
 
-.patient-table th:nth-child(1) {
-}
-
 .patient-table tr:nth-child(odd) td {
   background: #fcfcfc;
 }
 
 .patient-table td {
+  white-space: nowrap;
   color: var(--c-neutral-900);
   font-size: 13px;
   height: 48px;
@@ -58,4 +55,13 @@
 .patient-table tr:hover td {
   background: #efefef;
   cursor: pointer;
+}
+
+@media (max-width: 767.98px) {
+  .patient-table td:nth-child(3),
+  .patient-table td:nth-child(5),
+  .patient-table th:nth-child(3),
+  .patient-table th:nth-child(5) {
+    display: none;
+  }
 }

@@ -15,7 +15,9 @@
 
 .page-name {
   display: block;
-  color: var(--c-brand-600);
+
+  color: var(--c-neutral-1000);
+  text-shadow: var(--ts);
   display: flex;
   height: 100%;
   justify-content: center;
@@ -52,7 +54,28 @@
 .hamburger-menu-button:hover {
   cursor: pointer;
 }
+
+.topbar-logo {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  width: 56px;
+}
+
 @media (max-width: 992px) {
+  .topbar-logo {
+    display: flex;
+  }
+
+  .topbar-logo-container {
+    color: var(--c-brand-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    gap: 5px;
+  }
   .hamburger-menu-button {
     color: var(--c-neutral-200);
     display: flex;

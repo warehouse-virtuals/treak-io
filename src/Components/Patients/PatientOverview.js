@@ -1,11 +1,19 @@
+import { useEffect, useState } from "react"
 import "./PatientOverview.css"
 import { useNavigate } from "react-router-dom"
+
+import { format } from "date-fns"
+
+import { tr } from "date-fns/locale"
 
 import { UserAuth } from "../../Context/UserContext"
 import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import {
   FiEdit,
+  FiUser,
+  FiGift,
+  FiPhone,
   // FiFolder,
   FiCalendar,
   // FiMessageSquare,
@@ -13,16 +21,14 @@ import {
   FiTrash,
 } from "react-icons/fi"
 
-import { format } from "date-fns"
-import { tr } from "date-fns/locale"
-import { useEffect, useState } from "react"
+import TabMenu from "../TabMenu/TabMenu"
 
 const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
+  const [activeTab, setActiveTab] = useState("general")
+  const [person, setPerson] = useState({})
+
   const { userData } = UserAuth()
   const { deletePatient } = FirebaseActions()
-
-  const [person, setPerson] = useState({})
-  const navigate = useNavigate()
 
   const handleDeleteOnClick = async (patientID) => {
     await deletePatient(userData.customerID, patientID)
@@ -39,39 +45,55 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
     return (
       <div className='patient-overview-container'>
         <div className='patient-overview-close' onClick={close}>
-          <FiX size={28} color='#252525' />
+          <FiX size={24} />
         </div>
-        <div className='patient-overview-header'>
-          <div className='patient-overview-patient-info'>
-            <div className='patient-overview-ssn'>
-              {person.SSN}
-              <div className='patient-overview-dob'>
-                {format(person.DOB.toMillis(), "PP", {
-                  locale: tr,
-                })}
+        <div className='patient-overview-body'>
+          <div className='patient-overview-header'>
+            <div className='patient-overview-patient-info'>
+              <div className='patient-overview-patient-additionals'>
+                <div className='patient-overview-patient-ssn'>
+                  {person.SSN}
+                  <div className='patient-overview-patient-gender'>
+                    {person.isMale ? "E" : "K"}, 33
+                  </div>{" "}
+                </div>
+                <div className='patient-overview-patient-name'>
+                  {person.name}&nbsp;{person.surname}
+                </div>
+                <div className='patient-overview-patient-subinfo'>
+                  {person.address}
+                </div>
+                <div className='patient-overview-header-buttons'>
+                  <div className='patient-overview-header-button'>
+                    <FiPhone size={14} /> {person.phone}
+                  </div>
+                  <div className='patient-overview-header-button'>
+                    <FiGift size={14} />
+                    {format(person.DOB.toMillis(), "PP", {
+                      locale: tr,
+                    })}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className='patient-overview-name'>
-              {person.name}&nbsp;{person.surname}
-              <div className='patient-overview-age-gender'>
-                (30, {person.isMale ? "E" : "K"})
-              </div>
-            </div>
-            <div className='patient-overview-additional'>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "100%",
-                }}
-              ></div>{" "}
-              <div>{person.phone}</div>
-              <div className='patient-overview-address'>{person.address}</div>
             </div>
           </div>
+          <div className='patient-overview-tabmenu-container'>
+            <TabMenu
+              tabs={[
+                { title: "Genel Bilgiler", tabName: "general" },
+                { title: "Tıbbi Kayıtlar", tabName: "medicalRecords" },
+                { title: "Odyogramlar", tabName: "audiograms" },
+              ]}
+              tabSetter={(tab) => setActiveTab(tab)}
+              activeTab={activeTab}
+            />
+          </div>
+          <div className='patient-overview-content'>
+            <div className='patient-overview-content-left'></div>
+            <div className='patient-overview-content-right'></div>
+          </div>
         </div>
-        {/* klinik ekle */}
-        <div></div>
+
         {/* 
            
         </div>
@@ -116,7 +138,7 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
                         <div className='patient-overview-hearingaid-left-title'>
                           Sol
                         </div>
-                        <div
+                        <patient-overview-hearingaid-left
                           id='left-brand-modal'
                           className='patient-overview-hearingaid-brand'
                         >

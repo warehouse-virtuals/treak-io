@@ -1,10 +1,10 @@
-.tabmenu-container {
+.tabmenu-patient-container {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.tabmenu-tabs {
+.tabmenu-patient-tabs {
   display: flex;
   height: 30px;
   color: var(--c-neutral-500);
@@ -15,7 +15,7 @@
   font-size: 14px;
 }
 
-.tabmenu-title {
+.tabmenu-patient-title {
   display: flex;
   align-items: center;
   margin-right: 20px;
@@ -28,7 +28,7 @@
   border-radius: 3px;
 }
 
-.tabmenu-pagename {
+.tabmenu-patient-pagename {
   display: none;
   color: var(--c-neutral-1000);
 
@@ -38,6 +38,9 @@
 }
 
 @media (max-width: 991.98px) {
+  .tabmenu-tabs {
+    margin-bottom: 20px;
+  }
   .tabmenu-pagename {
     display: block;
   }

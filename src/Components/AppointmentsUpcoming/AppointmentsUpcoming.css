@@ -26,6 +26,13 @@
   height: 40px;
   width: 40px;
 }
+.appointment-duration-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 18px;
+  height: 18px;
+}
 
 .upcoming-details-btn:hover {
   cursor: pointer;
@@ -43,7 +50,7 @@
 
 .appointment {
   display: flex;
-
+  overflow: hidden;
   box-shadow: var(--c-shadow);
   margin-bottom: 10px;
   border-radius: 10px;
@@ -55,7 +62,7 @@
   justify-content: space-between;
   width: 100px;
   color: var(--c-white);
-  background: var(--c-brand-200);
+  background: var(--c-brand-400);
   height: 100%;
 }
 
@@ -73,7 +80,7 @@
 }
 
 .appointment-duration {
-  color: var(--c-neutral-200);
+  color: var(--c-neutral-100);
   font-weight: 600;
   display: flex;
   height: 25px;
@@ -81,7 +88,7 @@
 }
 .appointment-date {
   font-size: 12px;
-  color: var(--c-neutral-200);
+  color: var(--c-neutral-100);
   font-weight: 600;
   padding: 10px;
   display: flex;

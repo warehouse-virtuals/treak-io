@@ -20,7 +20,7 @@ const Dashboard = () => {
       <TopBar placeholder={t("Search patients...")} />
       <div className='dashboard-body'>
         <div className='dashboard-tabmenu'>
-          <TabMenu />
+          <TabMenu path={t(location.pathname)} />
         </div>
         <Cards t={t} />
         <div className='dashboard-row'>

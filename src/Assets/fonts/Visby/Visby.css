@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-Thin.ttf);
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-ThinItalic.ttf);
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-Light.ttf);
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-RegularItalic.ttf);
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-Semibold.ttf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-SemiboldItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(./Visby-Bold.ttf);
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-BoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-Extrabold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-ExtraboldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-Heavy.otf);
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Visby";
+  src: url(Visby-HeavyItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}

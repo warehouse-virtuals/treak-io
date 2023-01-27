@@ -18,10 +18,10 @@
   align-items: center;
   object-fit: cover;
   border-radius: 50%;
-  background: var(--c-bg-white);
+  background: var(--c-brand-400);
+  /* background: var(--c-bg-white); */
   width: 110px;
   height: 110px;
-  margin-top: 30px;
 }
 
 .userinfo-pp {
@@ -64,13 +64,12 @@
 
 @media (max-width: 767.98px) {
   .userinfo-pp-container {
-    width: 60px;
-    height: 60px;
-    margin-top: 10px;
+    width: 70px;
+    height: 70px;
   }
   .userinfo-pp {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 }
 /* iPad 2/3 */

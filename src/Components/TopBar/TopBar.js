@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import SearchField from "../SearchField/SearchField"
 import DateAndTime from "./DateAndTime"
-import treatLogoColored from "../../Assets/treat-logos/treat-tp-colored.svg"
+import treatLogoColored from "../../Assets/treat-logos/treat-brand-tp.svg"
 
 import { FiBarChart2 } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
@@ -28,6 +28,9 @@ const TopBar = () => {
           >
             {<FiBarChart2 size={24} />}
           </div>
+
+          <img className='topbar-logo' alt='logo' src={treatLogoColored} />
+
           <div className='topbar-pathname'> {t(location.pathname)}</div>
           {/* Buraya şirketin logosu gelebilir */}
         </div>

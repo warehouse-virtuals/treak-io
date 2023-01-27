@@ -7,7 +7,8 @@ import { FiLogOut } from "react-icons/fi"
 
 import { useTranslation } from "react-i18next"
 
-import treatLogoColored from "../../Assets/treat-logos/treat-tp-colored.svg"
+import treatLogoColored from "../../Assets/treat-logos/treat-brand-tp.svg"
+import treatBackdrop from "../../Assets/treat-logos/treat-navbar-bg.svg"
 
 import UserInfo from "./UserInfo"
 import NavbarButtons from "./NavbarButtons"
@@ -60,7 +61,9 @@ const Navbar = () => {
   if (user.auth) {
     return (
       <div
-        className={`navbar-container ${!isNavbarCollapsed ? null : " closed"}`}
+        className={`navbar-container ${
+          !isNavbarCollapsed ? null : " closed-navbar"
+        }`}
         ref={navbarRef}
       >
         <div>
@@ -69,7 +72,7 @@ const Navbar = () => {
             onClick={() => handleNavbarButtonClick("/dashboard")}
           >
             <img className='navbar-logo' alt='logo' src={treatLogoColored} />
-            <span>treat</span>
+            <span className='navbar-logo-brand'>Treat</span>
           </div>
           <div className='navbar-user-info-container'>
             <div className='navbar-user-info'>

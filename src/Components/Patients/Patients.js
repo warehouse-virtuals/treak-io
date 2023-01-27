@@ -1,26 +1,20 @@
-import { useState, useEffect } from "react"
-import { Routes, Route } from "react-router-dom"
-
 import { FirebaseActions } from "../../Context/FirebaseContext"
-
-import { useTranslation } from "react-i18next"
+import { useState, useEffect } from "react"
 import { FiUserPlus } from "react-icons/fi"
 
 import PatientOverview from "./PatientOverview"
 import PatientsList from "./PatientsList"
-import AddPatient from "./AddPatient"
-import TopBar from "../TopBar/TopBar"
 import TabMenu from "../TabMenu/TabMenu"
-import SearchField from "../SearchField/SearchField"
+import TopBar from "../TopBar/TopBar"
+import AddPatient from "./AddPatient"
 
 import "./Patients.css"
 
 const Patients = () => {
   const [newPatientForm, setNewPatientForm] = useState(false)
+  const [activeTab, setActiveTab] = useState("patients")
   const [focusedPatient, setFocusedPatient] = useState({})
   const { currentPatients } = FirebaseActions()
-
-  const { t } = useTranslation("dashboard")
 
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
@@ -34,54 +28,62 @@ const Patients = () => {
     <div className='patients-cointainer'>
       <TopBar />
       <div className='patients-body' onKeyDown={handleKeyDown} tabIndex='0'>
-        <TabMenu
-          tabs={[
-            { title: "Tüm Kullanıcılar", path: "/patients" },
-            { title: "Tıbbi Kayıtlar", path: "/patients/medicalReports" },
-            { title: "Odyogramlar", path: "/patients/audiograms" },
-          ]}
-        />
-
-        <div className='patients-body-list-container'>
-          <div className='patients-body-patients-list-container'>
-            <div className='patients-body-list'>
-              <PatientsList
-                focusedPatient={(patient) => {
-                  setFocusedPatient(patient)
-                }}
-              />
-            </div>
-            <div className='patients-body-list-footer'>
-              <div className='patients-body-list-button'>
-                <div
-                  onClick={() => {
-                    setNewPatientForm(true)
-                  }}
-                  className='patients-body-list-add-button'
-                >
-                  <FiUserPlus size={14} /> Kullanıcı Ekle
-                </div>
-              </div>
-              <div>Listelenen Kullanıcı Sayısı: {currentPatients.length}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {focusedPatient.name ? (
-        <div
-          className='patients-body-overview'
-          onKeyDown={handleKeyDown}
-          tabIndex='0'
-        >
-          <PatientOverview
-            focusedPatientData={focusedPatient}
-            close={() => setFocusedPatient("")}
-            patientDeleted={(confirm) => {
-              setFocusedPatient(confirm)
-            }}
+        <div className='patient-tabmenu-container'>
+          <TabMenu
+            tabs={[
+              { title: "Tüm Kullanıcılar", tabName: "patients" },
+              { title: "Tıbbi Kayıtlar", tabName: "medicalReports" },
+              { title: "Odyogramlar", tabName: "audiograms" },
+            ]}
+            tabSetter={(tab) => setActiveTab(tab)}
+            activeTab={activeTab}
+            path={true}
           />
         </div>
-      ) : null}
+
+        <div className='patients-body-list-container'>
+          {activeTab === "patients" ? (
+            <div className='patients-body-patients-list-container'>
+              <div className='patients-body-list'>
+                <PatientsList
+                  focusedPatient={(patient) => {
+                    setFocusedPatient(patient)
+                  }}
+                />
+              </div>
+              <div className='patients-body-list-footer'>
+                <div className='patients-body-list-button'>
+                  <div
+                    onClick={() => {
+                      setNewPatientForm(true)
+                    }}
+                    className='patients-body-list-add-button'
+                  >
+                    <FiUserPlus size={14} /> Kullanıcı Ekle
+                  </div>
+                </div>
+                <div>Listelenen Kullanıcı Sayısı: {currentPatients.length}</div>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
+
+      <div
+        className={`patients-body-overview ${
+          focusedPatient.name ? null : " closed-patients"
+        }`}
+        onKeyDown={handleKeyDown}
+      >
+        <PatientOverview
+          focusedPatientData={focusedPatient}
+          close={() => setFocusedPatient("")}
+          patientDeleted={(confirm) => {
+            setFocusedPatient(confirm)
+          }}
+        />
+      </div>
+
       {/* {newPatientForm ? (
         <div className='add-patient-form-container'>
           <AddPatient
