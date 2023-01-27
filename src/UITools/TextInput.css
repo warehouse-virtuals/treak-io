@@ -12,6 +12,8 @@
   left: 10px;
   font-size: 12px;
   font-weight: 600;
+
+  border-radius: 10px;
   background: var(--c-bg-white);
   opacity: 0;
   transition: 0.2s ease-in-out;
@@ -23,11 +25,11 @@
   font-size: 16px;
   font-weight: 500;
   border: 0px;
-  border: 2px solid var(--c-gray-300);
+  border: 2px solid var(--c-gray-200);
   text-indent: 10px;
   font-family: inherit;
   border-radius: 10px;
-  transition: 0.1s ease-in-out;
+  transition: border 0.1s ease-in-out;
 }
 
 .textinput-password {
@@ -38,10 +40,7 @@
 
 .textinput-input:focus {
   outline: none;
-  outline: 2px solid var(--c-gray-300);
-  box-shadow: 0 0 0 4px var(--c-gray-light);
-  transition: border 1s ease-in-out;
-  transition: box-shadow 1s ease-in-out;
+  border: 2px solid var(--c-brand-600);
 }
 .textinput-input:not(:placeholder-shown) + .textinput-label {
   opacity: 1;
