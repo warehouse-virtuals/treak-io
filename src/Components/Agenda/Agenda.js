@@ -13,7 +13,6 @@ import {
 import { tr } from "date-fns/locale"
 
 import TopBar from "../TopBar/TopBar"
-import Spinner from "../Spinner/Spinner"
 
 import GridNavbar from "./GridNavbar"
 import GridHeader from "./GridHeader"
@@ -36,8 +35,6 @@ function Agenda() {
   const [newWeek, setNewWeek] = useState(new Date())
   const [newDay, setNewDay] = useState(new Date())
 
-  const [spinner, setSpinner] = useState(true)
-
   const [appointments, setAppointments] = useState([]) // eslint-disable-next-line
   const [updatedData, setUpdatedData] = useState("")
 
@@ -58,9 +55,7 @@ function Agenda() {
     appointmentId,
     updatedData
   ) => {
-    setSpinner(true)
     await updateAppointment(customerid, usersClinic, appointmentId, updatedData)
-    setSpinner(false)
     setUpdatedData(updatedData)
   }
 
@@ -154,7 +149,6 @@ function Agenda() {
       return obj
     })
     setAppointments(fixedList)
-    setSpinner(false)
 
     //eslint-disable-next-line
   }, [currentAppointments])
@@ -181,7 +175,6 @@ function Agenda() {
               updateDay={updateDay}
               currentMonth={newMonth}
             />
-            {spinner ? <Spinner /> : null}
 
             {viewType === "week" ? (
               <GridHeader

@@ -11,7 +11,8 @@
 
 .patients-body-overview::before {
   pointer-events: none;
-
+  background: var(--c-black-opaque);
+  
   opacity: 0.5;
   display: block;
   content: " ";
@@ -100,11 +101,11 @@
   position: absolute;
   width: 100%;
   bottom: 0;
-
   transition: bottom 0.3s ease-in-out;
 }
 
 .closed-patients {
+  transition: background 1s ease-in-out;
   bottom: -100%;
 }
 

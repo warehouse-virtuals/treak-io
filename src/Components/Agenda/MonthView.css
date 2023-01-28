@@ -1,14 +1,14 @@
 .scheduler-month-grid-cell-container {
   display: inline-grid;
-  grid-template-columns: repeat(7, calc(100% / 7));
+  grid-template-columns: repeat(7, calc(100% / 7 - 1.7px));
   grid-gap: 2px;
-  background-color: var(--c-gray-light);
-  border: 2px solid var(--c-gray-light);
+  background-color: var(--c-bg-gray);
+  border: 2px solid var(--c-bg-gray);
 }
 
 .grid-month-event {
   position: relative;
-
+  overflow: hidden;
   font-weight: 600;
   font-size: 13px;
   padding: 3px;

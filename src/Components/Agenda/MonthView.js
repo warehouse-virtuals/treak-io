@@ -51,7 +51,7 @@ function MonthView({
             style={
               isSameMonth(day, newMonth)
                 ? null
-                : { background: "#f7f7f7", color: "#ccc" }
+                : { background: "#f6f6f6", color: "#ccc" }
             }
             onDragEnter={(e) => dragEnter(e, index)}
             onDragEnd={drop}
@@ -59,7 +59,7 @@ function MonthView({
             <div
               className='grid-cell-day'
               style={
-                isToday(day) ? { color: "white", background: "#605bff" } : null
+                isToday(day) ? { color: "white", background: "#4285f4" } : null
               }
             >
               {format(day, "dd")}

@@ -181,7 +181,7 @@
     position: absolute;
     width: calc(100vw - 240px);
     height: 100%;
-    /* background: var(--c-black-opaque); */
+    background: var(--bg-lg-rtl);
     left: 240px;
     top: 0px;
     backdrop-filter: blur(1px);

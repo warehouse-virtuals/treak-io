@@ -4,17 +4,17 @@
   height: 600px;
   width: 100%;
   overflow-y: auto;
-  background-color: var(--c-gray-light);
+  background-color: var(--c-bg-gray);
 }
 
 .week-time-cell-container {
   height: fit-content;
   background-size: contain;
   flex-direction: column;
-  background-color: var(--c-bg);
+  background-color: var(--c-bg-white);
   width: 50px;
   font-weight: 600;
-  border-bottom: 1px solid var(--c-bg);
+  border-bottom: 1px solid var(--c-bg-white);
 }
 
 .week-time-cell {
@@ -42,10 +42,6 @@
   display: flex;
   align-items: center;
 }
-.week-grid-col-item:hover {
-  background: var(--c-gray-light);
-  cursor: pointer;
-}
 
 .grid-week-event-overview {
   position: absolute;
@@ -55,5 +51,9 @@
 .week-grid-col-item {
   height: 46px;
   margin: 1px;
-  background: var(--c-bg);
+  background: var(--c-bg-white);
+}
+.week-grid-col-item:hover {
+  background: var(--c-bg-white-hover);
+  cursor: pointer;
 }

@@ -4,21 +4,21 @@
   height: 600px;
   width: 100%;
   overflow-y: auto;
-  background-color: var(--c-gray-light);
+  background-color: var(--c-bg-gray);
 }
 
 .day-time-cell-container {
   height: fit-content;
   background-size: contain;
   flex-direction: column;
-  background-color: var(--c-bg);
+  background-color: var(--c-bg-white);
   width: 50px;
   font-weight: 600;
-  border-bottom: 1px solid var(--c-bg);
+  border-bottom: 1px solid var(--c-bg-white);
 }
 
 .day-time-cell {
-  height: 46px;
+  height: 47px;
   display: flex;
   flex-direction: row;
   margin-top: 1px;
@@ -39,10 +39,6 @@
   display: flex;
   align-items: center;
 }
-.day-grid-col-item:hover {
-  background: var(--c-gray-light);
-  cursor: pointer;
-}
 
 .grid-day-event-overview {
   position: absolute;
@@ -52,5 +48,10 @@
 .day-grid-col-item {
   height: 46px;
   margin: 1px;
-  background: var(--c-bg);
+  background: var(--c-bg-white);
+}
+
+.day-grid-col-item:hover {
+  background: var(--c-bg-white-hover);
+  cursor: pointer;
 }
