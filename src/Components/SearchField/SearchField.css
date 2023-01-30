@@ -2,8 +2,10 @@
   position: relative;
   display: flex;
   width: 100%;
-  align-items: center; 
+  align-items: center;
   border-radius: 12px;
+
+  background: var(--c-bg-gray);
 }
 
 .make-appt-btn-container {
@@ -24,7 +26,6 @@
 }
 
 .search-bar input {
-  background: var(--c-bg-gray);
   display: flex;
   width: 100%;
   height: 40px;
@@ -37,6 +38,8 @@
   font-size: 16px;
   font-family: inherit;
   flex: 1;
+  background: var(--c-bg-gray);
+
   outline: none;
   border-radius: 12px;
 }
@@ -72,7 +75,7 @@
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 
-  box-shadow: var(--c-boxshadow);
+  box-shadow: var(--bs);
   background: var(--c-bg-white);
   border: 1px solid var(--c-bg-gray);
   z-index: 1;

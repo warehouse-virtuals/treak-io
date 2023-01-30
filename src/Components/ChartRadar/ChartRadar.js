@@ -17,7 +17,7 @@ const ChartRadar = () => {
   return (
     <div className='chartradar-container'>
       {/* <div className='chartradar-header'>Chart Title</div> */}
-      <ResponsiveContainer width='100%' height='100%'>
+      <ResponsiveContainer width='100%' maxHeight={300}>
         <RadarChart cx='50%' cy='50%' outerRadius='80%' data={radarChartData}>
           <PolarGrid />
           <PolarAngleAxis dataKey='subject' />

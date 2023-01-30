@@ -36,7 +36,7 @@
 
   --c-secondary-dark-red: #8f0031;
   --c-secondary-ochre-yellow: #f79b19;
-  --c-secondary-sea-grean: #028fa3;
+  --c-secondary-sea-green: #028fa3;
   --c-secondary-baby-blue: #00a8cc;
   --c-secondary-violet: #91198e;
 
@@ -110,11 +110,9 @@
   /* Opaque */
   --c-black-opaque: #00000050;
 
-    /* Gradient bg */
-  --bg-lg-rtl: linear-gradient(to right, #00000080,  #00000000);
-  --bg-lg-btt: linear-gradient(to top, #00000080,  #00000000);
-  
-
+  /* Gradient bg */
+  --bg-lg-rtl: linear-gradient(to right, #00000080, #00000000);
+  --bg-lg-btt: linear-gradient(to top, #00000080, #00000000);
 
   /* Backgrounds */
   --c-bg-white: #fff;

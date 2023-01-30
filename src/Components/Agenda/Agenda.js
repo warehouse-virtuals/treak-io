@@ -182,6 +182,16 @@ function Agenda() {
                 days={days}
                 viewType={viewType}
                 newWeek={newWeek}
+                dayShowNumbers={true}
+              />
+            ) : null}
+            {viewType === "month" ? (
+              <GridHeader
+                t={t}
+                days={days}
+                viewType={viewType}
+                newWeek={newWeek}
+                dayShowNumbers={false}
               />
             ) : null}
             {viewType === "month" ? (

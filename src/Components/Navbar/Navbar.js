@@ -7,8 +7,7 @@ import { FiLogOut } from "react-icons/fi"
 
 import { useTranslation } from "react-i18next"
 
-import treatLogoColored from "../../Assets/treat-logos/treat-brand-tp.svg"
-import treatBackdrop from "../../Assets/treat-logos/treat-navbar-bg.svg"
+import treatLogo from "../../Assets/treat-logos/treat-new.svg"
 
 import UserInfo from "./UserInfo"
 import NavbarButtons from "./NavbarButtons"
@@ -71,8 +70,8 @@ const Navbar = () => {
             className='navbar-logo-container'
             onClick={() => handleNavbarButtonClick("/dashboard")}
           >
-            <img className='navbar-logo' alt='logo' src={treatLogoColored} />
-            <span className='navbar-logo-brand'>Treat</span>
+            <img className='navbar-logo' alt='logo' src={treatLogo} />
+            {/* <span className='navbar-logo-brand'>Treat</span> */}
           </div>
           <div className='navbar-user-info-container'>
             <div className='navbar-user-info'>

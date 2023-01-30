@@ -5,7 +5,6 @@
   align-items: center;
   width: 100%;
   overflow: hidden;
-  overflow-y: scroll;
 }
 .dashboard-tabmenu {
   width: 100%;
@@ -20,12 +19,11 @@
   align-items: center;
   width: 100%;
   max-width: var(--w-max);
-  height: calc(100% - 65px);
   overflow-y: scroll;
+  padding-bottom: 30px;
 }
 .dashboard-row {
   width: 100%;
-  height: calc(100% - 163px);
   display: flex;
 }
 

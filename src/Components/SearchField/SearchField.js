@@ -101,6 +101,7 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
 
         <div
           className='search-icon'
+          style={expandSearchBar ? null : { background: "var(--c-bg-white)" }}
           onClick={() =>
             expandSearchBar === false ? setExpandSearchBar(true) : null
           }

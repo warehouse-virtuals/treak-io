@@ -9,14 +9,14 @@
   font-size: 12px;
   font-weight: 500;
   color: var(--c-primary);
-
-  background: var(--c-bg-gray);
+  box-shadow: var(--bs);
+  background: var(--c-bg-white);
+  /* background: var(--c-bg-gray); */
 }
 .closed-navbar {
   left: -100% !important;
   position: absolute;
 }
-
 .navbar-logo-container {
   box-sizing: border-box;
   display: flex;
