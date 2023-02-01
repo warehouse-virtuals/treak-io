@@ -1,8 +1,8 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 
-import TextInput from "../../UITools/TextInput"
-import Dropdown from "../../UITools/Dropdown"
+import TextInput from "../../UITools/TextInput/TextInput"
+import Dropdown from "../../UITools/Dropdown/Dropdown"
 
 import "./RegisterFormGeneral.css"
 

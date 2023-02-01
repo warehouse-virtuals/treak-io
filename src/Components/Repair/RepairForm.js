@@ -1,7 +1,7 @@
 import { FiUploadCloud, FiPlus, FiXCircle } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
 
-import TextInput from "../../UITools/TextInput"
+import TextInput from "../../UITools/TextInput/TextInput"
 
 import "./RepairForm.css"
 

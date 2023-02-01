@@ -11,21 +11,26 @@ import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import { useTranslation } from "react-i18next"
 
+import DateTimePicker from "../../UITools/DateTimePicker/DateTimePicker"
 import SearchField from "../SearchField/SearchField"
-import Button from "../../UITools/Button"
+import Button from "../../UITools/Button/Button"
 
 const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
   const [carers, setCarers] = useState([])
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [addedAppointment, setAddedApointment] = useState("")
   const appointedToRef = useRef("")
-  const [appointmentStartDate, onChangeAppointmentStartDate] = useState(
+  const [appointmentStartDate, setAppointmentStartDate] = useState(
     new Date(newAppointmentDay)
   )
 
-  const [appointmentEndDate, onChangeAppointmentEndDate] = useState(
+  const [appointmentEndDate, setAppointmentEndDate] = useState(
     new Date(newAppointmentDay)
   )
+
+  useEffect(() => {
+    console.log(appointmentStartDate, appointmentEndDate)
+  }, [appointmentStartDate, appointmentEndDate])
 
   const appointmentReasonRef = useRef("")
   const appointmentStatusRef = useRef("")
@@ -132,23 +137,21 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
           <div className='add-appt-date-container'>
             <div className='add-appt-dates'>
               <div className='add-appt-input-title'>{t("Start")}</div>
-              <DateTimePicker
-                onChange={onChangeAppointmentStartDate}
-                value={appointmentStartDate}
-                calendarIcon={<FiCalendar color='#ccc' />}
-                clearIcon={<FiX color='#ccc' />}
-                disableClock={true}
-              />
+              <div className='add-appt-picker-container'>
+                <DateTimePicker
+                  date={appointmentStartDate}
+                  setNewDate={setAppointmentStartDate}
+                />
+              </div>
             </div>
             <div className='add-appt-dates'>
               <div className='add-appt-input-title'>{t("End")}</div>
-              <DateTimePicker
-                onChange={onChangeAppointmentEndDate}
-                value={appointmentEndDate}
-                calendarIcon={<FiCalendar color='#ccc' />}
-                clearIcon={<FiX color='#ccc' />}
-                disableClock={true}
-              />
+              <div className='add-appt-picker-container'>
+                <DateTimePicker
+                  date={appointmentEndDate}
+                  setNewDate={setAppointmentEndDate}
+                />
+              </div>
             </div>
           </div>
           <div className='add-appt-triplets-container'>

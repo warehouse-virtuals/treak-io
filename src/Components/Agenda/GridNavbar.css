@@ -35,14 +35,15 @@
   display: flex;
   align-items: center;
   height: 100%;
+  transition: all 0.2s ease-in-out;
 }
 
 .grid-navbar-button {
+  display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
   height: 40px;
-  width: 64px;
+  width: 40px;
   cursor: pointer;
   border-radius: 18px;
   transition: all 0.2s ease-in-out;
@@ -140,9 +141,6 @@
 @media (max-width: 767.98px) {
   .grid-navbar-container {
     margin: 15px 0px;
-  }
-  .grid-navbar-title {
-    display: none;
   }
 
   .grid-navbar-arrow-title {

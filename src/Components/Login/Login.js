@@ -10,8 +10,8 @@ import treatLogo from "../../Assets/treat-logos/treat-new.svg"
 
 import NavbarButtons from "../Navbar/NavbarButtons"
 
-import TextInput from "../../UITools/TextInput"
-import Button from "../../UITools/Button"
+import TextInput from "../../UITools/TextInput/TextInput"
+import Button from "../../UITools/Button/Button"
 
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"

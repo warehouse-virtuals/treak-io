@@ -1,0 +1,105 @@
+.date-time-picker-open {
+  height: 40px;
+  width: 100%;
+}
+
+.date-time-picker-close {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--c-bg-gray);
+  border-radius: 12px;
+  background: red;
+  background: var(--c-bg-white);
+  overflow: hidden;
+}
+
+.date-time-picker-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: calc(60% - 20px);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.date-date-picker-earlier {
+  opacity: 0;
+  color: var(--c-secondary);
+  font-size: 10px;
+  top: 0;
+  position: absolute;
+  transition: opacity 0.3s ease-in-out;
+}
+.date-date-picker-later {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: var(--c-secondary);
+  position: absolute;
+  bottom: 0;
+  font-size: 10px;
+}
+
+.date-time-picker-date:hover > .date-date-picker-earlier,
+.date-time-picker-date:hover > .date-date-picker-later,
+.date-time-picker-time:hover > .date-time-picker-earlier,
+.date-time-picker-time:hover > .date-time-picker-later {
+  opacity: 1;
+}
+
+.date-time-picker-time {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--c-bg-gray);
+  border-left: 1px solid var(--c-bg-gray);
+  height: 100%;
+  width: calc(40% - 20px);
+  position: relative;
+}
+.date-time-picker-earlier {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: var(--c-secondary);
+  font-size: 10px;
+  top: 0;
+  position: absolute;
+}
+.date-time-picker-later {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: var(--c-secondary);
+  position: absolute;
+  bottom: 0;
+  font-size: 10px;
+}
+
+.date-time-picker-calendar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 40px;
+
+  position: relative;
+}
+.date-time-picker-calendar-edit-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 5px;
+  bottom: 5px;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: var(--c-bg-white);
+}
+
+.picker-hover {
+  border: 1px solid var(--c-bg-gray);
+}

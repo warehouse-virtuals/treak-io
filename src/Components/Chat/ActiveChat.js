@@ -31,7 +31,7 @@ const ActiveChat = ({ activeChatMessages, activeChat }) => {
 
   return (
     <div className='chat-active-wrapper'>
-      <div className='chat-active-message-container' onScroll={handleScroll}>
+      {/* <div className='chat-active-message-container' onScroll={handleScroll}>
         {isEndOfActiveChat ? (
           <div className='chat-active-message-end'>End of chat</div>
         ) : null}
@@ -55,7 +55,7 @@ const ActiveChat = ({ activeChatMessages, activeChat }) => {
         <div className='chat-active-footer'>
           <FooterActiveChat activeChat={activeChat} />
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   )
 }

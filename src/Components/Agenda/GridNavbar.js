@@ -41,8 +41,8 @@ function GridNavbar({
   const navbarTitleMonth = () => {
     return (
       <div>
-        {format(currentMonth, "01 MMMM", { locale: tr })} -{" "}
-        {format(lastDayOfMonth(currentMonth), "dd MMMM", { locale: tr })}
+        {format(currentMonth, "01 MMM", { locale: tr })} -{" "}
+        {format(lastDayOfMonth(currentMonth), "dd MMM", { locale: tr })}
       </div>
     )
   }
@@ -50,11 +50,11 @@ function GridNavbar({
   const navbarTitleWeek = () => {
     return (
       <div>
-        {format(startOfWeek(currentWeek, { locale: tr }), "dd MMMM", {
+        {format(startOfWeek(currentWeek, { locale: tr }), "dd MMM", {
           locale: tr,
         })}{" "}
         -{" "}
-        {format(endOfWeek(currentWeek, { locale: tr }), "dd MMMM", {
+        {format(endOfWeek(currentWeek, { locale: tr }), "dd MMM", {
           locale: tr,
         })}
       </div>

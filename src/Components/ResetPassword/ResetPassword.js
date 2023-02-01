@@ -6,8 +6,8 @@ import { toast } from "react-toastify"
 
 import { UserAuth } from "../../Context/UserContext"
 
-import TextInput from "../../UITools/TextInput"
-import Button from "../../UITools/Button"
+import TextInput from "../../UITools/TextInput/TextInput"
+import Button from "../../UITools/Button/Button"
 
 import "./ResetPassword.css"
 

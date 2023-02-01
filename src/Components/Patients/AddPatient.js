@@ -12,7 +12,7 @@ import { UserAuth } from "../../Context/UserContext"
 
 import { useTranslation } from "react-i18next"
 
-import TextInput from "../../UITools/TextInput"
+import TextInput from "../../UITools/TextInput/TextInput"
 
 const AddPatient = ({ closeForm }) => {
   const [DOB, onChangeDOB] = useState(new Date())
