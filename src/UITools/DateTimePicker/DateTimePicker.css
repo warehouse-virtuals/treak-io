@@ -30,7 +30,7 @@
   opacity: 0;
   color: var(--c-secondary);
   font-size: 10px;
-  top: 0;
+  bottom: 0;
   position: absolute;
   transition: opacity 0.3s ease-in-out;
 }
@@ -39,7 +39,7 @@
   transition: opacity 0.3s ease-in-out;
   color: var(--c-secondary);
   position: absolute;
-  bottom: 0;
+  top: 0;
   font-size: 10px;
 }
 
@@ -66,7 +66,7 @@
   transition: opacity 0.3s ease-in-out;
   color: var(--c-secondary);
   font-size: 10px;
-  top: 0;
+  bottom: 0;
   position: absolute;
 }
 .date-time-picker-later {
@@ -74,7 +74,7 @@
   transition: opacity 0.3s ease-in-out;
   color: var(--c-secondary);
   position: absolute;
-  bottom: 0;
+  top: 0;
   font-size: 10px;
 }
 
