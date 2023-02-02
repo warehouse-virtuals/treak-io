@@ -3,26 +3,24 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  border: 1px solid var(--c-bg-gray);
+  border: 1px solid var(--c-border);
   border-radius: 12px;
   background: var(--c-bg-white);
   position: relative;
 }
 .round-top {
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  box-shadow: var(--bs);
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 .date-time-picker-mini-calendar-container {
   position: absolute;
-  bottom: calc(100% + 2px);
-  width: calc(100% + 2px);
-  box-shadow: var(--bs);
+  top: 100%;
+  width: 200px;
   left: -1px;
   background: var(--c-bg-white);
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  border: 1px solid var(--c-bg-gray);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: 1px solid var(--c-border);
   z-index: 3;
   display: flex;
   flex-direction: column;
@@ -57,6 +55,10 @@
   font-weight: 600;
   height: 100%;
   width: calc(100% - 80px);
+}
+.date-time-picker-mini-calendar-header-title:hover {
+  cursor: pointer;
+  color: var(--c-violet-500);
 }
 
 .date-time-picker-mini-calendar-header {
@@ -138,6 +140,9 @@
   color: var(--c-secondary);
   position: relative;
   transition: color 0.3s ease-in-out;
+}
+.datepicker-month-days-grid-day-names {
+  color: var(--c-secondary);
 }
 
 .date-time-picker-calendar-icon:hover {

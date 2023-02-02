@@ -35,6 +35,7 @@ import MonthDaysGrid from "./MonthDaysGrid"
 const DateTimePicker = ({ date, setNewDate }) => {
   const [isPickerOpen, setIsPickerOpen] = useState(false)
   const [touchStartPos, setTouchStartPos] = useState()
+  const [activeViewTypeIndex, setActiveViewTypeIndex] = useState(0)
 
   const [days, setDays] = useState([])
   const [month, setMonth] = useState(new Date())
@@ -110,43 +111,13 @@ const DateTimePicker = ({ date, setNewDate }) => {
     )
   }, [month])
 
+  useEffect(() => {
+    console.log("sa", activeViewTypeIndex)
+  })
   return (
     <div
       className={`date-time-picker-close ${isPickerOpen ? "round-top" : null}`}
     >
-      {isPickerOpen ? (
-        <div className='date-time-picker-mini-calendar-container'>
-          <div className='date-time-picker-mini-calendar-header'>
-            <div
-              className='date-time-picker-mini-calendar-header-buttons'
-              onClick={() => {
-                setMonth(subMonths(month, 1))
-              }}
-            >
-              <FiChevronLeft size={14} />
-            </div>
-            <div className='date-time-picker-mini-calendar-header-title'>
-              {format(month, "LLLL yy", { locale: tr })}
-            </div>
-            <div
-              className='date-time-picker-mini-calendar-header-buttons'
-              onClick={() => setMonth(addMonths(month, 1))}
-            >
-              <FiChevronRight size={14} />
-            </div>
-          </div>
-
-          <div className='date-time-picker-mini-calendar-body'>
-            <MonthDaysGrid
-              days={days}
-              weekDays={weekDays}
-              month={month}
-              handlePickedDate={handlePickedDate}
-            />
-          </div>
-        </div>
-      ) : null}
-
       <div
         id='date-time-picker-date'
         className='date-time-picker-date'
@@ -185,7 +156,10 @@ const DateTimePicker = ({ date, setNewDate }) => {
             { locale: tr }
           )}`}
         </div>
-        {`${format(date, "HH:mm", { locale: tr })}`}
+        <div>{`${format(date, "HH:mm", {
+          locale: tr,
+        })}`}</div>
+
         <div className='date-time-picker-later'>
           {`${format(
             addMinutes(
@@ -203,12 +177,71 @@ const DateTimePicker = ({ date, setNewDate }) => {
       <div
         className='date-time-picker-calendar-icon'
         onClick={() => setIsPickerOpen((prevState) => !prevState)}
+        style={isPickerOpen ? { color: "var(--c-primary)" } : null}
       >
         <FiCalendar size={18} />
         <div className='date-time-picker-calendar-edit-icon'>
           <FiEdit2 size={12} />
         </div>
       </div>
+      {isPickerOpen ? (
+        <div className='date-time-picker-mini-calendar-container'>
+          <div className='date-time-picker-mini-calendar-header'>
+            <div
+              className='date-time-picker-mini-calendar-header-buttons'
+              onClick={() => {
+                setMonth(subMonths(month, 1))
+              }}
+            >
+              <FiChevronLeft size={14} />
+            </div>
+            <div
+              className='date-time-picker-mini-calendar-header-title'
+              onClick={() =>
+                setActiveViewTypeIndex((prevIndex) => {
+                  if (prevIndex === 2) {
+                    return 0
+                  }
+                  return prevIndex + 1
+                })
+              }
+            >
+              {format(month, "LLLL yy", { locale: tr })}
+            </div>
+            <div
+              className='date-time-picker-mini-calendar-header-buttons'
+              onClick={() => setMonth(addMonths(month, 1))}
+            >
+              <FiChevronRight size={14} />
+            </div>
+          </div>
+
+          <div className='date-time-picker-mini-calendar-body'>
+            {activeViewTypeIndex === 0 ? (
+              <MonthDaysGrid
+                days={days}
+                weekDays={weekDays}
+                month={month}
+                handlePickedDate={handlePickedDate}
+              />
+            ) : activeViewTypeIndex === 1 ? (
+              <MonthDaysGrid
+                days={days}
+                weekDays={weekDays}
+                month={month}
+                handlePickedDate={handlePickedDate}
+              />
+            ) : activeViewTypeIndex === 2 ? (
+              <MonthDaysGrid
+                days={days}
+                weekDays={weekDays}
+                month={month}
+                handlePickedDate={handlePickedDate}
+              />
+            ) : null}
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }

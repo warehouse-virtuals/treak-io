@@ -9,7 +9,7 @@ const MonthDaysGrid = ({ days, month, weekDays, handlePickedDate }) => {
     <div className='datepicker-month-days-grid-container'>
       {weekDays.map((day, index) => {
         return (
-          <div key={day} className='datepicker-month-days-grid-day-names '>
+          <div key={day} className='datepicker-month-days-grid-day-names'>
             {format(day, "EE", { locale: tr })}
           </div>
         )
@@ -21,9 +21,7 @@ const MonthDaysGrid = ({ days, month, weekDays, handlePickedDate }) => {
             id={day}
             className='datepicker-month-days-grid-cell'
             style={
-              isSameMonth(day, month)
-                ? null
-                : { background: "#f6f6f6", color: "#ccc" }
+              isSameMonth(day, month) ? null : { color: "var(--c-secondary)" }
             }
             onClick={() => handlePickedDate(day)}
           >
