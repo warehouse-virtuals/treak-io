@@ -1,0 +1,25 @@
+.datepicker-month-days-grid-container {
+  display: inline-grid;
+  font-size: 10px;
+  grid-template-columns: repeat(7, calc(200px / 7));
+  height: 100%;
+}
+
+.datepicker-month-days-grid-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.datepicker-month-days-grid-day-names {
+  display: flex;
+  justify-content: center;
+
+  width: calc(100% - 7);
+}
+
+.datepicker-month-days-grid-cell:hover {
+  background: var(--c-bg-gray);
+  cursor: pointer;
+}

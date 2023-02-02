@@ -1,19 +1,70 @@
-.date-time-picker-open {
-  height: 40px;
-  width: 100%;
-}
-
 .date-time-picker-close {
   display: flex;
   align-items: center;
-  border-radius: 12px;
   height: 100%;
   width: 100%;
   border: 1px solid var(--c-bg-gray);
   border-radius: 12px;
-  background: red;
   background: var(--c-bg-white);
-  overflow: hidden;
+  position: relative;
+}
+.round-top {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: var(--bs);
+}
+.date-time-picker-mini-calendar-container {
+  position: absolute;
+  bottom: calc(100% + 2px);
+  width: calc(100% + 2px);
+  box-shadow: var(--bs);
+  left: -1px;
+  background: var(--c-bg-white);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border: 1px solid var(--c-bg-gray);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+}
+.date-time-picker-mini-calendar-week-names {
+  height: 20px;
+}
+.date-time-picker-mini-calendar-body {
+  height: 190px;
+}
+
+.date-time-picker-mini-calendar-header-buttons {
+  color: var(--c-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+
+  transition: color 0.3s ease-in-out;
+}
+
+.date-time-picker-mini-calendar-header-buttons:hover {
+  color: var(--c-primary);
+  cursor: pointer;
+}
+
+.date-time-picker-mini-calendar-header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  height: 100%;
+  width: calc(100% - 80px);
+}
+
+.date-time-picker-mini-calendar-header {
+  display: flex;
+
+  align-items: center;
+  height: 40px;
+  width: 100%;
 }
 
 .date-time-picker-date {
@@ -84,9 +135,16 @@
   justify-content: center;
   height: 100%;
   width: 40px;
-
+  color: var(--c-secondary);
   position: relative;
+  transition: color 0.3s ease-in-out;
 }
+
+.date-time-picker-calendar-icon:hover {
+  cursor: pointer;
+  color: var(--c-primary);
+}
+
 .date-time-picker-calendar-edit-icon {
   position: absolute;
   display: flex;
