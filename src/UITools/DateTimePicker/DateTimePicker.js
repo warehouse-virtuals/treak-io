@@ -9,43 +9,75 @@ import {
   addDays,
   subDays,
   parse,
-  startOfToday,
   endOfMonth,
   previousDay,
   eachDayOfInterval,
   startOfWeek,
   endOfWeek,
-  setHours,
-  setMinutes,
   getHours,
   getMinutes,
+  subYears,
+  startOfYear,
+  endOfYear,
+  addYears,
+  setMinutes,
+  setHours,
 } from "date-fns"
-import { tr } from "date-fns/locale"
+import { da, tr } from "date-fns/locale"
 
 import {
   FiCalendar,
   FiEdit2,
   FiChevronRight,
   FiChevronLeft,
+  FiCircle,
 } from "react-icons/fi"
 import "./DateTimePicker.css"
 
-import MonthDaysGrid from "./MonthDaysGrid"
+import HoursMinutesGrid from "./HoursMinutesGrid.js"
+import DaysGrid from "./DaysGrid.js"
+import MonthGrid from "./MonthGrid.js"
+import YearGrid from "./YearGrid.js"
 
 const DateTimePicker = ({ date, setNewDate }) => {
   const [isPickerOpen, setIsPickerOpen] = useState(false)
   const [touchStartPos, setTouchStartPos] = useState()
-  const [activeViewTypeIndex, setActiveViewTypeIndex] = useState(0)
+  const [activeViewTypeIndex, setActiveViewTypeIndex] = useState(1)
 
   const [days, setDays] = useState([])
   const [month, setMonth] = useState(new Date())
+  const [year, setYear] = useState(new Date())
   const [weekDays, setWeekDays] = useState([])
 
   const handlePickedDate = (date) => {
     setNewDate((prevDate) =>
       setHours(setMinutes(date, getMinutes(prevDate)), getHours(prevDate))
     )
+    console.log(date)
+    setMonth(date)
+    setYear(date)
+    if (activeViewTypeIndex === 0) {
+      setIsPickerOpen(false)
+      setActiveViewTypeIndex(1)
+    } else if (activeViewTypeIndex === 1) {
+      setActiveViewTypeIndex(0)
+    } else if (activeViewTypeIndex === 2) {
+      setActiveViewTypeIndex(1)
+    } else if (activeViewTypeIndex === 3) {
+      setActiveViewTypeIndex(2)
+    }
+  }
+
+  const handlePickedHour = (dateWithPickedHour) => {
+    setNewDate((prevDate) => setHours(prevDate, getHours(dateWithPickedHour)))
+  }
+
+  const handlePickedMinute = (dateWithPickedMinute) => {
+    setNewDate((prevDate) =>
+      setMinutes(prevDate, getMinutes(dateWithPickedMinute))
+    )
     setIsPickerOpen(false)
+    setActiveViewTypeIndex(1)
   }
 
   const handleScrollTime = (event) => {
@@ -112,11 +144,18 @@ const DateTimePicker = ({ date, setNewDate }) => {
   }, [month])
 
   useEffect(() => {
-    console.log("sa", activeViewTypeIndex)
-  })
+    console.log(date)
+  }, [date])
+
   return (
     <div
-      className={`date-time-picker-close ${isPickerOpen ? "round-top" : null}`}
+      className={`date-time-picker-close ${
+        isPickerOpen && activeViewTypeIndex !== 0 ? "round-top" : null
+      } ${
+        isPickerOpen && activeViewTypeIndex === 0
+          ? "round-except-top-right"
+          : null
+      }`}
     >
       <div
         id='date-time-picker-date'
@@ -156,9 +195,20 @@ const DateTimePicker = ({ date, setNewDate }) => {
             { locale: tr }
           )}`}
         </div>
-        <div>{`${format(date, "HH:mm", {
-          locale: tr,
-        })}`}</div>
+        <div>{`${format(
+          // subMinutes(
+          //   roundToNearestMinutes(date, {
+          //     nearestTo: 1,
+          //     roundingMethod: "ceil",
+          //   }),
+          //   5
+          // ),
+          date,
+          "HH:mm",
+          {
+            locale: tr,
+          }
+        )}`}</div>
 
         <div className='date-time-picker-later'>
           {`${format(
@@ -176,7 +226,12 @@ const DateTimePicker = ({ date, setNewDate }) => {
       </div>
       <div
         className='date-time-picker-calendar-icon'
-        onClick={() => setIsPickerOpen((prevState) => !prevState)}
+        onClick={() => {
+          setMonth(date)
+          setYear(date)
+          setIsPickerOpen((prevState) => !prevState)
+          setActiveViewTypeIndex(1)
+        }}
         style={isPickerOpen ? { color: "var(--c-primary)" } : null}
       >
         <FiCalendar size={18} />
@@ -185,57 +240,113 @@ const DateTimePicker = ({ date, setNewDate }) => {
         </div>
       </div>
       {isPickerOpen ? (
-        <div className='date-time-picker-mini-calendar-container'>
-          <div className='date-time-picker-mini-calendar-header'>
-            <div
-              className='date-time-picker-mini-calendar-header-buttons'
-              onClick={() => {
-                setMonth(subMonths(month, 1))
-              }}
-            >
-              <FiChevronLeft size={14} />
-            </div>
-            <div
-              className='date-time-picker-mini-calendar-header-title'
-              onClick={() =>
-                setActiveViewTypeIndex((prevIndex) => {
-                  if (prevIndex === 2) {
-                    return 0
-                  }
-                  return prevIndex + 1
-                })
-              }
-            >
-              {format(month, "LLLL yy", { locale: tr })}
-            </div>
-            <div
-              className='date-time-picker-mini-calendar-header-buttons'
-              onClick={() => setMonth(addMonths(month, 1))}
-            >
-              <FiChevronRight size={14} />
-            </div>
+        <div
+          className='date-picker-pick-today-button-container'
+          onClick={() => {
+            setNewDate(new Date())
+            setMonth(new Date())
+            setYear(new Date())
+            setIsPickerOpen(false)
+          }}
+        >
+          <FiCalendar size={20} />
+          <div className='date-picker-pick-today-circle-button'>
+            <FiCircle size={3} />
           </div>
+        </div>
+      ) : null}
 
+      {isPickerOpen ? (
+        <div
+          className={`date-time-picker-mini-calendar-container ${
+            activeViewTypeIndex === 0 ? "date-time-picker-hour-minutes" : null
+          }`}
+        >
+          {activeViewTypeIndex === 0 ? null : (
+            <div className='date-time-picker-mini-calendar-header'>
+              <div
+                className='date-time-picker-mini-calendar-header-buttons'
+                onClick={() => {
+                  if (activeViewTypeIndex === 0) {
+                    console.log("saat zamanı")
+                  } else if (activeViewTypeIndex === 1) {
+                    setMonth(subMonths(month, 1))
+                  } else if (activeViewTypeIndex === 2) {
+                    setYear(subYears(year, 1))
+                  } else if (activeViewTypeIndex === 3) {
+                    setYear(subYears(year, 9))
+                  }
+                }}
+              >
+                <FiChevronLeft size={14} />
+              </div>
+              <div
+                className='date-time-picker-mini-calendar-header-title'
+                onClick={() =>
+                  setActiveViewTypeIndex((prevIndex) => {
+                    if (prevIndex === 3) {
+                      return prevIndex
+                    }
+                    return prevIndex + 1
+                  })
+                }
+              >
+                {activeViewTypeIndex === 1
+                  ? format(month, "LLLL yy", { locale: tr })
+                  : null}
+                {activeViewTypeIndex === 2
+                  ? format(startOfYear(year), "MMM", { locale: tr }) +
+                    " - " +
+                    format(endOfYear(year), "MMM yy", { locale: tr })
+                  : null}
+                {activeViewTypeIndex === 3
+                  ? format(subYears(year, 4), "yyyy") +
+                    " - " +
+                    format(addYears(year, 4), "yyyy")
+                  : null}
+              </div>
+              <div
+                className='date-time-picker-mini-calendar-header-buttons'
+                onClick={() => {
+                  if (activeViewTypeIndex === 0) {
+                    console.log("saat zamanı")
+                  } else if (activeViewTypeIndex === 1) {
+                    setMonth(addMonths(month, 1))
+                  } else if (activeViewTypeIndex === 2) {
+                    setYear(addYears(year, 1))
+                  } else if (activeViewTypeIndex === 3) {
+                    setYear(addYears(year, 9))
+                  }
+                }}
+              >
+                <FiChevronRight size={14} />
+              </div>
+            </div>
+          )}
           <div className='date-time-picker-mini-calendar-body'>
             {activeViewTypeIndex === 0 ? (
-              <MonthDaysGrid
-                days={days}
-                weekDays={weekDays}
-                month={month}
-                handlePickedDate={handlePickedDate}
+              <HoursMinutesGrid
+                date={date}
+                handlePickedHour={handlePickedHour}
+                handlePickedMinute={handlePickedMinute}
               />
             ) : activeViewTypeIndex === 1 ? (
-              <MonthDaysGrid
+              <DaysGrid
                 days={days}
                 weekDays={weekDays}
                 month={month}
                 handlePickedDate={handlePickedDate}
               />
             ) : activeViewTypeIndex === 2 ? (
-              <MonthDaysGrid
-                days={days}
-                weekDays={weekDays}
-                month={month}
+              <MonthGrid
+                date={date}
+                year={year}
+                handlePickedDate={handlePickedDate}
+              />
+            ) : activeViewTypeIndex === 3 ? (
+              <YearGrid
+                date={date}
+                year={year}
                 handlePickedDate={handlePickedDate}
               />
             ) : null}

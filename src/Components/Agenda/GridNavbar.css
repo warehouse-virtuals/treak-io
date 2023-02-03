@@ -65,7 +65,7 @@
   position: relative;
 }
 .navbar-view-today-circle-button {
-  color: #4386f4;
+  color: var(--c-blue-400);
   width: 5px;
   height: 5px;
   display: flex;
@@ -75,7 +75,7 @@
   top: 50%;
   left: calc(50% - 7.5px);
   border-radius: 50%;
-  background: #4386f4;
+  background: var(--c-blue-400);
 }
 
 .navbar-view-dropdown-menu-button {

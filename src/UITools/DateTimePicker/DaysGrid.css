@@ -1,25 +1,24 @@
-.datepicker-month-days-grid-container {
+.datepicker-days-grid-container {
   display: inline-grid;
   font-size: 10px;
   grid-template-columns: repeat(7, calc(200px / 7));
   height: 100%;
 }
 
-.datepicker-month-days-grid-cell {
+.datepicker-days-grid-cell {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 30px;
 }
 
-.datepicker-month-days-grid-day-names {
+.datepicker-days-grid-day-names {
   display: flex;
   justify-content: center;
-
   width: calc(100% - 7);
 }
-
-.datepicker-month-days-grid-cell:hover {
-  background: var(--c-bg-gray);
+.datepicker-days-grid-cell:hover {
   cursor: pointer;
+  color: var(--c-blue-500);
 }

@@ -9,6 +9,10 @@ import {
   previousDay,
   startOfToday,
   startOfWeek,
+  setHours,
+  setMinutes,
+  getMinutes,
+  getHours,
 } from "date-fns"
 import { tr } from "date-fns/locale"
 
@@ -120,7 +124,12 @@ function Agenda() {
   }
 
   const cellOnClickHandler = (appointmentDay) => {
-    setNewAppointmentDay(appointmentDay)
+    setNewAppointmentDay(
+      setHours(
+        setMinutes(appointmentDay, getMinutes(new Date())),
+        getHours(new Date())
+      )
+    )
   }
 
   useEffect(() => {

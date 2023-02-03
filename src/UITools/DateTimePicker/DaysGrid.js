@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react"
 import { format, isSameMonth, isToday } from "date-fns"
 import { tr } from "date-fns/locale"
 
-import "./MonthDaysGrid.css"
+import "./DaysGrid.css"
 
-const MonthDaysGrid = ({ days, month, weekDays, handlePickedDate }) => {
+const DaysGrid = ({ days, month, weekDays, handlePickedDate }) => {
   return (
-    <div className='datepicker-month-days-grid-container'>
+    <div className='datepicker-days-grid-container'>
       {weekDays.map((day, index) => {
         return (
-          <div key={day} className='datepicker-month-days-grid-day-names'>
+          <div key={day} className='datepicker-days-grid-day-names'>
             {format(day, "EE", { locale: tr })}
           </div>
         )
@@ -19,7 +18,7 @@ const MonthDaysGrid = ({ days, month, weekDays, handlePickedDate }) => {
           <div
             key={index}
             id={day}
-            className='datepicker-month-days-grid-cell'
+            className='datepicker-days-grid-cell'
             style={
               isSameMonth(day, month) ? null : { color: "var(--c-secondary)" }
             }
@@ -28,7 +27,9 @@ const MonthDaysGrid = ({ days, month, weekDays, handlePickedDate }) => {
             <div
               className='grid-cell-day'
               style={
-                isToday(day) ? { color: "white", background: "#4285f4" } : null
+                isToday(day)
+                  ? { color: "white", background: "var(--c-blue-400)" }
+                  : null
               }
             >
               {format(day, "dd")}
@@ -40,4 +41,4 @@ const MonthDaysGrid = ({ days, month, weekDays, handlePickedDate }) => {
   )
 }
 
-export default MonthDaysGrid
+export default DaysGrid

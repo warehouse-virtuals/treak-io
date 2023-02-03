@@ -1,0 +1,21 @@
+.datepicker-year-grid-container {
+  display: inline-grid;
+  font-size: 10px;
+  grid-template-columns: repeat(3, calc(200px / 3));
+  height: 100%;
+}
+
+.datepicker-year-grid-cell {
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  height: 40px;
+}
+
+.datepicker-year-grid-cell:hover {
+  cursor: pointer;
+  color: var(--c-blue-500);
+}

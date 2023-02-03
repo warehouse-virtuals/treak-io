@@ -28,10 +28,6 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
     new Date(newAppointmentDay)
   )
 
-  useEffect(() => {
-    console.log(appointmentStartDate, appointmentEndDate)
-  }, [appointmentStartDate, appointmentEndDate])
-
   const appointmentReasonRef = useRef("")
   const appointmentStatusRef = useRef("")
 
