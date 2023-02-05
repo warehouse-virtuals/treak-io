@@ -41,7 +41,7 @@ const TopBar = () => {
               : "searchfield-component"
           }
         >
-          <SearchField expandSearchBar={expandSearchBar} />
+          <SearchField isDynamic expandSearchBar={expandSearchBar} />
         </div>
         {/* <div className='datentime-component'>
           <DateAndTime />

@@ -3,9 +3,8 @@
   display: flex;
   width: 100%;
   align-items: center;
+  border: 1px solid var(--c-border);
   border-radius: 12px;
-
-  background: var(--c-bg-gray);
 }
 
 .make-appt-btn-container {
@@ -38,7 +37,6 @@
   font-size: 16px;
   font-family: inherit;
   flex: 1;
-  background: var(--c-bg-gray);
 
   outline: none;
   border-radius: 12px;
@@ -46,12 +44,6 @@
 .found {
   border-bottom-right-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
-}
-
-::placeholder {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--c-secondary);
 }
 
 .search-icon {
@@ -70,14 +62,13 @@
 .found-patient-container {
   overflow: hidden;
   position: absolute;
-  width: 100%;
+  width: calc(100% + 2px);
   top: calc(100% - 1px);
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-
-  box-shadow: var(--bs);
+  left: -1px;
   background: var(--c-bg-white);
-  border: 1px solid var(--c-bg-gray);
+  border: 1px solid var(--c-border);
   z-index: 1;
 }
 .found-patient {
@@ -167,15 +158,22 @@
 }
 
 .search-icon:hover,
-.close-icon:hover {
+.close-icon:hover,
+.searchfield-input {
   color: var(--c-neutral-1000);
-  cursor: pointer;
+}
+
+.searchfield-input::placeholder {
+  color: var(--c-secondary);
+}
+
+.searchfield-input:focus + .search-icon {
+  color: var(--c-primary);
 }
 
 @media (max-width: 992px) {
   .search-icon {
     color: var(--c-neutral-200);
-    border-bottom: none;
   }
   .close-icon {
     color: var(--c-neutral-200);

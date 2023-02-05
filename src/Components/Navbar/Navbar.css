@@ -9,9 +9,9 @@
   font-size: 12px;
   font-weight: 500;
   color: var(--c-primary);
-  box-shadow: var(--bs);
+  /* box-shadow: var(--bs); */
   background: var(--c-bg-white);
-  /* background: var(--c-bg-gray); */
+  border-right: 1px solid var(--c-border);
 }
 .closed-navbar {
   left: -100% !important;

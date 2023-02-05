@@ -69,20 +69,17 @@ const Patients = () => {
         </div>
       </div>
 
-      <div
-        className={`patients-body-overview ${
-          focusedPatient.name ? null : " closed-patients"
-        }`}
-        onKeyDown={handleKeyDown}
-      >
-        <PatientOverview
-          focusedPatientData={focusedPatient}
-          close={() => setFocusedPatient("")}
-          patientDeleted={(confirm) => {
-            setFocusedPatient(confirm)
-          }}
-        />
-      </div>
+      {focusedPatient.name ? (
+        <div className='patients-body-overview' onKeyDown={handleKeyDown}>
+          <PatientOverview
+            focusedPatientData={focusedPatient}
+            close={() => setFocusedPatient("")}
+            patientDeleted={(confirm) => {
+              setFocusedPatient(confirm)
+            }}
+          />
+        </div>
+      ) : null}
 
       {/* {newPatientForm ? (
         <div className='add-patient-form-container'>

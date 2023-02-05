@@ -17,9 +17,11 @@ import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import { UIToolsStatus } from "../../Context/UIToolsStatusContext"
 
-const SearchField = ({ selectedPatientName, expandSearchBar }) => {
-  // eslint-disable-next-line
-  const [searchSelectedPerson, setSearchSelectedPerson] = useState("")
+const SearchField = ({
+  setSelectedPatient,
+  selectedPatient,
+  expandSearchBar,
+}) => {
   const [foundPatients, setFoundPatients] = useState([])
   const [timer, setTimer] = useState(null)
 
@@ -52,22 +54,22 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
     findPatients().then((data) => setFoundPatients(data))
   }
 
-  const handleOnClickOutside = (event) => {
-    if (
-      "found-patient" !== event.target.className &&
-      foundPatients.length > 0
-    ) {
-      setFoundPatients([])
-    }
-  }
+  const foundPatientRef = useRef(null)
 
   useEffect(() => {
-    document.addEventListener("click", handleOnClickOutside, true)
-    return () => {
-      document.removeEventListener("click", handleOnClickOutside, true)
+    const handleClickOutside = (event) => {
+      if (
+        foundPatientRef.current &&
+        !foundPatientRef.current.contains(event.target)
+      ) {
+        setFoundPatients("")
+      }
     }
-    // eslint-disable-next-line
-  }, [foundPatients])
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    } // eslint-disable-next-line
+  }, [foundPatientRef])
 
   const changeDelay = (change) => {
     if (timer) {
@@ -81,7 +83,7 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
       }, 400)
     )
   }
-  useEffect(() => {}, [expandSearchBar])
+
   return (
     <div
       className={`searchfield-container ${
@@ -93,9 +95,16 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
           <input
             className='searchfield-input'
             ref={searchTextRef}
-            onClick={() => (searchTextRef.current.value = "")}
+            onClick={() => {
+              setSelectedPatient("")
+              searchTextRef.current.value = ""
+            }}
             onChange={(e) => changeDelay(e.target.value)}
-            placeholder={t("Search patients...")}
+            placeholder={
+              selectedPatient
+                ? selectedPatient.name + " " + selectedPatient.surname
+                : t("Search patients...")
+            }
           />
         ) : null}
 
@@ -108,7 +117,6 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
         >
           <FiSearch size={24} />
         </div>
-
         {expandSearchBar ? (
           <div
             className='close-icon'
@@ -121,19 +129,20 @@ const SearchField = ({ selectedPatientName, expandSearchBar }) => {
         ) : null}
       </div>
       {foundPatients.length > 0 ? (
-        <div className='found-patient-container'>
+        <div className='found-patient-container' ref={foundPatientRef}>
           {foundPatients.map((patient, i) => {
             return (
-              <div className='found-patient' key={i}>
-                <div
-                  className='found-patient-name-container'
-                  onClick={() => {
-                    selectedPatientName(patient.name + " " + patient.surname)
-                    searchTextRef.current.value =
-                      patient.name + " " + patient.surname
-                    setFoundPatients([])
-                  }}
-                >
+              <div
+                className='found-patient'
+                key={i}
+                onClick={() => {
+                  setSelectedPatient(patient)
+                  searchTextRef.current.value =
+                    patient.name + " " + patient.surname
+                  setFoundPatients([])
+                }}
+              >
+                <div className='found-patient-name-container'>
                   <div className='make-appt-btn-container'>
                     <FiUsers className='make-appt-btn' size={16} />
                   </div>

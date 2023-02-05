@@ -14,3 +14,12 @@
 .button-tool:hover {
   cursor: pointer;
 }
+
+.cancel-buton {
+  color: var(--c-red-200);
+  background: #fff;
+}
+
+.cancel-buton:hover {
+  color: var(--c-red-400);
+}

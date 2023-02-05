@@ -238,7 +238,7 @@ function Agenda() {
         </div>
       </div>
       {newAppointmentDay ? (
-        <div className='repairform-container'>
+        <div className='add-appointment-container'>
           <AddAppointment
             newAppointmentDay={newAppointmentDay}
             parentCallback={() => {

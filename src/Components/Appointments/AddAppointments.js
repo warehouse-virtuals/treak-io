@@ -109,6 +109,9 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
   }
 
   useEffect(() => {
+    console.log(selectedPatient)
+  }, [])
+  useEffect(() => {
     fetchEmployeesOfClinic().then((data) => setCarers(data))
 
     //eslint-disable-next-line
@@ -123,10 +126,9 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
             <div className='add-appt-input-title'>Kullanıcı:</div>
             <SearchField
               page='appointment'
-              selectedPatientName={(nameOfThePatient) => {
-                console.log(nameOfThePatient)
-                setSelectedPatient(nameOfThePatient)
-              }}
+              selectedPatient={selectedPatient}
+              setSelectedPatient={setSelectedPatient}
+              expandSearchBar={true}
               pHolder={selectedPatient}
             />
           </div>
@@ -178,23 +180,22 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
                 <option>{t("Cancelled")}</option>
               </select>
             </div>
+          </div>
+          <div className='add-appt-triplets' style={{ width: "100%" }}>
+            <div className='add-appt-input-title'>{t("Carer")}</div>
 
-            <div className='add-appt-triplets'>
-              <div className='add-appt-input-title'>{t("Carer")}</div>
-
-              <select
-                className='add-appt-dropdown'
-                name='gender'
-                id='gender'
-                ref={appointedToRef}
-              >
-                {carers.map((carer, i) => {
-                  return (
-                    <option key={i}>{carer.name + " " + carer.surname}</option>
-                  )
-                })}
-              </select>
-            </div>
+            <select
+              className='add-appt-dropdown'
+              name='gender'
+              id='gender'
+              ref={appointedToRef}
+            >
+              {carers.map((carer, i) => {
+                return (
+                  <option key={i}>{carer.name + " " + carer.surname}</option>
+                )
+              })}
+            </select>
           </div>
         </div>
         <div className='add-appt-footer'>
@@ -202,7 +203,7 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
             className='add-appt-btn-container-cancel'
             onClick={handleCancelButtonPress}
           >
-            <Button label={t("Cancel")} />
+            <Button cancel label={t("Cancel")} />
           </div>
           <div
             className='add-appt-btn-container-submit'

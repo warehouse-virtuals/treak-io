@@ -36,18 +36,27 @@
   color: var(--c-primary);
   background-color: var(--c-gray-light);
   font-family: "Gilroy", sans-serif !important;
-  animation: app-reveal 0.8s ease-out 0.3s 1 both;
+  animation: opacity-reveal 0.8s ease-out 0.3s 1 both;
 }
 .app-suspense {
-  animation: app-reveal 0.8s ease-out 0.3s 1 both;
+  animation: opacity-reveal 0.8s ease-out 0.3s 1 both;
 }
 
-@keyframes app-reveal {
+@keyframes opacity-reveal {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes slideup {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 0;
   }
 }
 

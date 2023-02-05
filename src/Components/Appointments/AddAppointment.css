@@ -2,12 +2,11 @@
 
 .add-appt-container {
   box-sizing: border-box;
-  height: 400px;
+  height: 500px;
   width: 480px;
   font-weight: 500;
   font-family: "Gilroy", sans-serif !important;
   background: var(--c-bg-white);
-
   border-radius: 12px;
 }
 .add-appt {
@@ -38,6 +37,7 @@
 }
 
 .add-appt-search-container {
+  width: 100%;
 }
 
 .add-appt-footer {
@@ -53,9 +53,11 @@
 .add-appt-triplets-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  gap: 20px;
 }
 .add-appt-triplets {
+  width: 50%;
+  margin-top: 20px;
 }
 .add-appt-dropdown {
   font-family: "Gilroy", sans-serif !important;
@@ -64,7 +66,7 @@
   border-radius: 12px;
   height: 32px;
   border: 1px solid var(--c-border);
-  width: 125px;
+  width: 100%;
 }
 
 .add-appt-carer {
@@ -109,4 +111,30 @@
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: calc(100% - 2px);
+}
+
+@media (max-width: 767.98px) {
+  .add-appt-container {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    width: 100%;
+    z-index: 4;
+    align-self: flex-end;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  .add-appt-date-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .add-appt-title {
+    font-size: 28px;
+    font-weight: 700;
+
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
 }

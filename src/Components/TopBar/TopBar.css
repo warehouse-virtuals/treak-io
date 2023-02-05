@@ -89,7 +89,6 @@
   }
   .topbar-container {
     padding: 0px;
-    z-index: 3;
     box-shadow: var(--bs);
   }
   .datentime-component {
