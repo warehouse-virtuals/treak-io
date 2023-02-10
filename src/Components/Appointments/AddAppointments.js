@@ -109,14 +109,18 @@ const AddAppointment = ({ newAppointmentDay, parentCallback }) => {
   }
 
   useEffect(() => {
-    console.log(selectedPatient)
-  }, [])
+    console.log(newAppointmentDay)
+  }, [newAppointmentDay])
+
   useEffect(() => {
     fetchEmployeesOfClinic().then((data) => setCarers(data))
 
     //eslint-disable-next-line
   }, [userData, addedAppointment])
 
+  if (!newAppointmentDay) {
+    return null
+  }
   return (
     <div className='add-appt-container'>
       <div className='add-appt'>

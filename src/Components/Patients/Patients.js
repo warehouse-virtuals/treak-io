@@ -1,4 +1,5 @@
 import { FirebaseActions } from "../../Context/FirebaseContext"
+import { ThemeState } from "../../Context/ThemeContext"
 import { useState, useEffect } from "react"
 import { FiUserPlus } from "react-icons/fi"
 
@@ -12,8 +13,9 @@ import "./Patients.css"
 
 const Patients = () => {
   const [newPatientForm, setNewPatientForm] = useState(false)
-  const [activeTab, setActiveTab] = useState("patients")
   const [focusedPatient, setFocusedPatient] = useState({})
+  const { setBackgroundDim } = ThemeState()
+  const [activeTab, setActiveTab] = useState("patients")
   const { currentPatients } = FirebaseActions()
 
   const handleKeyDown = (e) => {
@@ -22,7 +24,10 @@ const Patients = () => {
     }
   }
 
-  useEffect(() => {}, [focusedPatient, currentPatients])
+  useEffect(() => {
+    focusedPatient.id ? setBackgroundDim(true) : setBackgroundDim(false)
+    console.log(focusedPatient)
+  }, [focusedPatient, currentPatients])
 
   return (
     <div className='patients-cointainer'>
@@ -69,17 +74,20 @@ const Patients = () => {
         </div>
       </div>
 
-      {focusedPatient.name ? (
-        <div className='patients-body-overview' onKeyDown={handleKeyDown}>
-          <PatientOverview
-            focusedPatientData={focusedPatient}
-            close={() => setFocusedPatient("")}
-            patientDeleted={(confirm) => {
-              setFocusedPatient(confirm)
-            }}
-          />
-        </div>
-      ) : null}
+      <div
+        className={`patients-body-overview ${
+          focusedPatient.id ? "slide-in" : null
+        }`}
+        onKeyDown={handleKeyDown}
+      >
+        <PatientOverview
+          focusedPatient={focusedPatient}
+          close={() => setFocusedPatient("")}
+          patientDeleted={(deletedPatient) => {
+            setFocusedPatient(deletedPatient)
+          }}
+        />
+      </div>
 
       {/* {newPatientForm ? (
         <div className='add-patient-form-container'>

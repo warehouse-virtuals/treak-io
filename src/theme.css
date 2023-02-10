@@ -32,7 +32,7 @@
   --c-border: #dcdcdc;
 
   --c-dropdown-item: #222222;
-  --c-boxshadow: 0px 16px 20px 0px rgb(0 0 0 / 8%);
+  --c-boxshadow: 0px 5px 10px 0px rgb(0 0 0 / 8%);
 
   --c-secondary-dark-red: #8f0031;
   --c-secondary-ochre-yellow: #f79b19;
@@ -120,7 +120,8 @@
   --c-bg-gray-dark: #121212;
 
   /* Component border */
-  --bs: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  --bs: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
   --ts: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
 

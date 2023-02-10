@@ -1,0 +1,17 @@
+.background-dim-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  transition: background-color 0.3s ease-in-out, visibility 0.3s linear;
+}
+
+.open {
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: visible;
+}
+
+.closed {
+  background-color: rgba(0, 0, 0, 0);
+  visibility: hidden;
+}

@@ -73,6 +73,7 @@ export const UserContextProvider = ({ children }) => {
   }
 
   const login = (email, password) => {
+    console.log("sa")
     return signInWithEmailAndPassword(auth, email, password)
   }
 
@@ -132,6 +133,7 @@ export const UserContextProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         try {
+          console.log("burada overlayin stateini değiştir")
           setUser(currentUser)
           fetchUserData(auth.currentUser.uid)
         } catch (error) {

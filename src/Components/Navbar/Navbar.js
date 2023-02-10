@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { UserAuth } from "../../Context/UserContext"
+import { ThemeState } from "../../Context/ThemeContext"
 import { UIToolsStatus } from "../../Context/UIToolsStatusContext"
 
 import { FiLogOut } from "react-icons/fi"
@@ -17,6 +18,7 @@ import "./Navbar.css"
 const Navbar = () => {
   const { isNavbarCollapsed, navbarButtonClick, toggleCollapse } =
     UIToolsStatus()
+  const { setBackgroundDim } = ThemeState()
 
   const { user, logout } = UserAuth()
   const { t } = useTranslation("navbar")
@@ -39,7 +41,9 @@ const Navbar = () => {
     navbarButtonClick()
   }
 
-  useEffect(() => {}, [user, isNavbarCollapsed])
+  useEffect(() => {
+    // isNavbarCollapsed ? setBackgroundDim(false) : setBackgroundDim(true)
+  }, [user, isNavbarCollapsed])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -71,7 +75,7 @@ const Navbar = () => {
             onClick={() => handleNavbarButtonClick("/dashboard")}
           >
             <img className='navbar-logo' alt='logo' src={treatLogo} />
-            {/* <span className='navbar-logo-brand'>Treat</span> */}
+            <span className='navbar-logo-brand'>treat</span>
           </div>
           <div className='navbar-user-info-container'>
             <div className='navbar-user-info'>

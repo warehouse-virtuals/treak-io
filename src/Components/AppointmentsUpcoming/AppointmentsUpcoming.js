@@ -53,9 +53,10 @@ const AppointmentsUpcoming = (props) => {
         </div>
       </div>
       <div className='appointment-container'>
-        {appointments.map((appointment) => {
+        {appointments.map((appointment, i) => {
           return (
             <div
+              key={i}
               className='appointment'
               style={{
                 borderRight: `6px solid ${colorPicker(appointment.status)}`,

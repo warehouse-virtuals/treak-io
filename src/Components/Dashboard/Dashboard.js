@@ -1,4 +1,4 @@
-import React from "react"
+import { useEffect } from "react"
 
 import { useTranslation } from "react-i18next"
 import "./Dashboard.css"
@@ -12,8 +12,19 @@ import ChartRadar from "../ChartRadar/ChartRadar"
 import AppointmentsUpcoming from "../AppointmentsUpcoming/AppointmentsUpcoming"
 import RecentActivity from "../RecentActivity/RecentActivity"
 
+import { FirebaseActions } from "../../Context/FirebaseContext"
+
 const Dashboard = () => {
+  const { helloWorld } = FirebaseActions()
   const { t } = useTranslation("dashboard")
+
+  useEffect(() => {
+    helloWorld("fonksiyonun data değişkeni")
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((err) => console.log("Error:", err))
+  }, [])
 
   return (
     <div className='dashboard-cointainer'>

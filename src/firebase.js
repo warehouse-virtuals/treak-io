@@ -4,8 +4,12 @@ import {
   initializeFirestore,
   enableIndexedDbPersistence,
   CACHE_SIZE_UNLIMITED,
+  getFirestore,
 } from "firebase/firestore"
+
 import { getStorage } from "firebase/storage"
+
+import { getFunctions, httpsCallable } from "firebase/functions"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAInT-boFBdPYOwyHk7bhoYGeX72A2p7oI",
@@ -38,6 +42,9 @@ enableIndexedDbPersistence(db).catch((err) => {
     console.log(err.code)
   }
 })
+getFirestore()
+export const firestore = getFirestore()
+export const functions = getFunctions(app, "europe-west1")
 export const storage = getStorage(app)
 
 export default app

@@ -27,11 +27,14 @@ import DayView from "./DayView"
 import AddAppointment from "../Appointments/AddAppointments"
 
 import { useTranslation } from "react-i18next"
+import { ThemeState } from "../../Context/ThemeContext"
 import { FirebaseActions } from "../../Context/FirebaseContext"
 
 import "./Agenda.css"
 
 function Agenda() {
+  const { setBackgroundDim } = ThemeState()
+
   const [viewType, setViewType] = useState("month")
 
   const [days, setDays] = useState([new Date()])
@@ -42,7 +45,7 @@ function Agenda() {
   const [appointments, setAppointments] = useState([]) // eslint-disable-next-line
   const [updatedData, setUpdatedData] = useState("")
 
-  const [newAppointmentDay, setNewAppointmentDay] = useState("")
+  const [newAppointmentDay, setNewAppointmentDay] = useState(false)
 
   const {
     currentAppointments,
@@ -167,6 +170,10 @@ function Agenda() {
     // eslint-disable-next-line
   }, [newMonth])
 
+  useEffect(() => {
+    newAppointmentDay ? setBackgroundDim(true) : setBackgroundDim(false)
+  }, [newAppointmentDay])
+
   return (
     <div className='agenda-container'>
       <TopBar />
@@ -237,17 +244,20 @@ function Agenda() {
           </div>
         </div>
       </div>
-      {newAppointmentDay ? (
-        <div className='add-appointment-container'>
-          <AddAppointment
-            newAppointmentDay={newAppointmentDay}
-            parentCallback={() => {
-              setNewAppointmentDay("")
-              setUpdatedData(new Date())
-            }}
-          />
-        </div>
-      ) : null}
+
+      <div
+        className={`add-appointment-container ${
+          newAppointmentDay ? "slide-in" : null
+        }  `}
+      >
+        <AddAppointment
+          newAppointmentDay={newAppointmentDay}
+          parentCallback={() => {
+            setNewAppointmentDay("")
+            setUpdatedData(new Date())
+          }}
+        />
+      </div>
     </div>
   )
 }

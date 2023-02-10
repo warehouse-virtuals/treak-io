@@ -4,9 +4,17 @@ const ThemeContext = createContext()
 
 export const ThemeProvider = ({ children }) => {
   const [currentTheme, setCurrentTheme] = useState("light")
+  const [backgroundDim, setBackgroundDim] = useState(false)
 
   return (
-    <ThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
+    <ThemeContext.Provider
+      value={{
+        currentTheme,
+        setCurrentTheme,
+        backgroundDim,
+        setBackgroundDim,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   )

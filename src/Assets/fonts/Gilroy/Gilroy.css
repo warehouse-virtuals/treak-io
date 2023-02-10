@@ -60,13 +60,13 @@
 }
 @font-face {
   font-family: "Gilroy";
-  src: url(Gilroy-Semibold.ttf);
+  src: url(Gilroy-SemiBold.ttf);
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "Gilroy";
-  src: url(Gilroy-SemiboldItalic.ttf);
+  src: url(Gilroy-SemiBoldItalic.ttf);
   font-weight: 600;
   font-style: italic;
 }
@@ -84,13 +84,13 @@
 }
 @font-face {
   font-family: "Gilroy";
-  src: url(Gilroy-Extrabold.ttf);
+  src: url(Gilroy-ExtraBold.ttf);
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
   font-family: "Gilroy";
-  src: url(Gilroy-ExtraboldItalic.ttf);
+  src: url(Gilroy-ExtraBoldItalic.ttf);
   font-weight: 800;
   font-style: italic;
 }

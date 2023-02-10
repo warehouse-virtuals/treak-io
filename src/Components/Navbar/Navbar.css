@@ -26,7 +26,7 @@
   font-size: 24px;
   width: 240px;
   height: 180;
-  color: var(--c-secondary);
+  color: var(--c-brand-400);
   cursor: pointer;
 }
 
@@ -171,21 +171,6 @@
     height: 170px;
     align-items: center;
     margin-top: 10px;
-  }
-
-  .navbar-container::after {
-    pointer-events: none;
-
-    display: block;
-    content: " ";
-    position: absolute;
-    width: calc(100vw - 240px);
-    height: 100%;
-    background: var(--bg-lg-rtl);
-    left: 240px;
-    top: 0px;
-    backdrop-filter: blur(1px);
-    z-index: 99;
   }
 
   .navbar-button-logout-container {

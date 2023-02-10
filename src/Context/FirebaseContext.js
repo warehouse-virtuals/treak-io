@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { startOfMonth, endOfMonth } from "date-fns"
 
+import { httpsCallable } from "firebase/functions"
+
 import {
   onSnapshot,
   collection,
@@ -22,8 +24,11 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { UserAuth } from "./UserContext"
 
 const FirebaseContext = createContext()
+import { functions } from "../firebase"
 
 export const FirebaseContextProvider = ({ children }) => {
+  const helloWorld = httpsCallable(functions, "helloWorld")
+
   const storage = getStorage()
   const { userData, db } = UserAuth()
 
@@ -555,6 +560,7 @@ export const FirebaseContextProvider = ({ children }) => {
   return (
     <FirebaseContext.Provider
       value={{
+        helloWorld,
         messages,
         userData,
         lastSender,

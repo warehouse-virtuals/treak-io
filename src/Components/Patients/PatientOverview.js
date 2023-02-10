@@ -23,9 +23,8 @@ import {
 
 import TabMenu from "../TabMenu/TabMenu"
 
-const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
+const PatientOverview = ({ focusedPatient, patientDeleted, close }) => {
   const [activeTab, setActiveTab] = useState("general")
-  const [person, setPerson] = useState({})
 
   const { userData } = UserAuth()
   const { deletePatient } = FirebaseActions()
@@ -35,12 +34,8 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
     patientDeleted("confirm")
   }
 
-  useEffect(() => {
-    setPerson(focusedPatientData)
-  }, [focusedPatientData])
-
-  if (!person.name) {
-    return null //Buraya bir filler component lazım
+  if (!focusedPatient.id) {
+    return <div className='patient-overview-container'></div>
   } else {
     return (
       <div className='patient-overview-container'>
@@ -52,24 +47,24 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
             <div className='patient-overview-patient-info'>
               <div className='patient-overview-patient-additionals'>
                 <div className='patient-overview-patient-ssn'>
-                  {person.SSN}
+                  {focusedPatient.SSN}
                   <div className='patient-overview-patient-gender'>
-                    {person.isMale ? "E" : "K"}, 33
+                    {focusedPatient.isMale ? "E" : "K"}, 33
                   </div>{" "}
                 </div>
                 <div className='patient-overview-patient-name'>
-                  {person.name}&nbsp;{person.surname}
+                  {focusedPatient.name}&nbsp;{focusedPatient.surname}
                 </div>
                 <div className='patient-overview-patient-subinfo'>
-                  {person.address}
+                  {focusedPatient.address}
                 </div>
                 <div className='patient-overview-header-buttons'>
                   <div className='patient-overview-header-button'>
-                    <FiPhone size={14} /> {person.phone}
+                    <FiPhone size={14} /> {focusedPatient.phone}
                   </div>
                   <div className='patient-overview-header-button'>
                     <FiGift size={14} />
-                    {format(person.DOB.toMillis(), "PP", {
+                    {format(focusedPatient.DOB.toMillis(), "PP", {
                       locale: tr,
                     })}
                   </div>
@@ -100,8 +95,8 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
         <div className='patient-overview-hearingaid-container'>
           <div className='patient-overview-titles'>Cihaz Bilgileri</div>
           <div className='patient-overview-hearingaids'>
-            {person.hearingAids
-              ? person.hearingAids.map((hearingAid, index) => {
+            {focusedPatient.hearingAids
+              ? focusedPatient.hearingAids.map((hearingAid, index) => {
                   if (hearingAid.isRightSide) {
                     return (
                       <div
@@ -167,7 +162,7 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
           </div>
           <div
             className='patient-overview-calendar-btn'
-            onClick={() => navigate("/agenda", { state: { patient: person } })}
+            onClick={() => navigate("/agenda", { state: { patient: focusedPatient } })}
           >
             <FiCalendar size={24} />
           </div>
@@ -175,7 +170,7 @@ const PatientOverview = ({ focusedPatientData, patientDeleted, close }) => {
             <FiTrash
               size={24}
               onClick={() => {
-                handleDeleteOnClick(person.id).then(() => {})
+                handleDeleteOnClick(focusedPatient.id).then(() => {})
               }}
             />
           </div>
