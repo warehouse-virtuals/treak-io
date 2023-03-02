@@ -12,13 +12,13 @@ import { getStorage } from "firebase/storage"
 import { getFunctions, httpsCallable } from "firebase/functions"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD5akf37N-YuKyCCVSMYcpAvJziC806nzg",
-  authDomain: "treak-e981a.firebaseapp.com",
-  projectId: "treak-e981a",
-  storageBucket: "treak-e981a.appspot.com",
-  messagingSenderId: "564206749916",
-  appId: "1:564206749916:web:db5fa044727edc9dfd0c19",
-  measurementId: "G-TDSFJCQXQ2",
+  apiKey: "AIzaSyA-33Y2nZuwtr2InuJULj8jinbOiKUluXo",
+  authDomain: "treak-io.firebaseapp.com",
+  projectId: "treak-io",
+  storageBucket: "treak-io.appspot.com",
+  messagingSenderId: "641364415849",
+  appId: "1:641364415849:web:f326c0680b619edb23d9f8",
+  measurementId: "G-EKTXT7TEJX",
 }
 
 // Initialize Firebase
